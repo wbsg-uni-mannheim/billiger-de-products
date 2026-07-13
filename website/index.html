@@ -200,6 +200,31 @@
                 font-size: 0.85rem;
                 color: #777;
             }
+            .prompt-details {
+                margin-top: 1rem;
+                border: 1px solid #e6e6e6;
+                border-radius: 6px;
+                background: #fafafa;
+            }
+            .prompt-details summary {
+                cursor: pointer;
+                font-weight: 600;
+                padding: 0.75rem 1rem;
+            }
+            .prompt-details[open] summary {
+                border-bottom: 1px solid #e6e6e6;
+            }
+            .prompt-details-content {
+                padding: 1rem;
+            }
+            .prompt-details pre {
+                white-space: pre-wrap;
+                overflow-wrap: anywhere;
+                background: #fff;
+                border: 1px solid #e6e6e6;
+                border-radius: 6px;
+                font-size: 0.78rem;
+            }
         </style>
     </head>
 
@@ -498,9 +523,10 @@
                         category paths, with the remaining cases classified by
                         GPT-5-mini. A manual validation of 500 random products
                         found 89.0&nbsp;% of the assignments correct, 7.4&nbsp;%
-                        ambiguous, and 3.6&nbsp;% [@Chris wollen wir das so transparent sagen?]. Clothing, furniture,
-                        and electronics account for the largest shares, followed by
-                        home-related goods and electronics. 
+                        ambiguous, and 3.6&nbsp;% [@Chris wollen wir das so
+                        transparent sagen?]. Clothing, furniture, and
+                        electronics account for the largest shares, followed by
+                        home-related goods and electronics.
                     </p>
                 </div>
                 <div class="columns">
@@ -991,9 +1017,9 @@
                         graph-based architectures) were evaluated across all 27
                         configurations of both language versions, plus GPT-5.2
                         in a strict zero-shot setting. The table shows F1 scores
-                        on the German benchmark for the <b>large</b> training
-                        size. GPT-5.2 uses the rule-guided prompt and no
-                        training data at all.
+                        on the German benchmark for all three training sizes.
+                        GPT-5.2 uses no training data. Both the Simple and the
+                        Rule-Guided prompt results are included.
                     </p>
                 </div>
                 <div class="table-container">
@@ -1003,6 +1029,7 @@
                         <thead>
                             <tr>
                                 <th class="has-text-left">Corner cases</th>
+                                <th class="has-text-left">Training size</th>
                                 <th class="has-text-left">Test set</th>
                                 <th>WordCooc</th>
                                 <th>Magellan</th>
@@ -1010,14 +1037,86 @@
                                 <th>R-SupCon</th>
                                 <th>HierGAT</th>
                                 <th>Ditto</th>
-                                <th>GPT-5.2 zero-shot</th>
+                                <th>GPT-5.2 Simple</th>
+                                <th>GPT-5.2 Rule-Guided</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="has-text-left" rowspan="3">
+                                <td class="has-text-left" rowspan="9">
                                     20&nbsp;%
                                 </td>
+                                <td class="has-text-left" rowspan="3">Small</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>57.40</td>
+                                <td>55.85</td>
+                                <td>72.11</td>
+                                <td>63.01</td>
+                                <td>70.69</td>
+                                <td>77.31</td>
+                                <td class="best">85.34</td>
+                                <td>79.94</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>45.70</td>
+                                <td>50.71</td>
+                                <td>61.36</td>
+                                <td>48.34</td>
+                                <td>64.50</td>
+                                <td>68.52</td>
+                                <td>81.81</td>
+                                <td class="best">84.91</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>32.59</td>
+                                <td>48.62</td>
+                                <td>55.11</td>
+                                <td>41.68</td>
+                                <td>57.48</td>
+                                <td>59.16</td>
+                                <td>81.58</td>
+                                <td class="best">84.67</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    Medium
+                                </td>
+                                <td class="has-text-left">Seen</td>
+                                <td>67.36</td>
+                                <td>56.98</td>
+                                <td>81.25</td>
+                                <td>75.12</td>
+                                <td>85.17</td>
+                                <td class="best">87.51</td>
+                                <td>85.34</td>
+                                <td>79.94</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>53.51</td>
+                                <td>52.90</td>
+                                <td>65.68</td>
+                                <td>54.26</td>
+                                <td>75.36</td>
+                                <td>75.29</td>
+                                <td>81.81</td>
+                                <td class="best">84.91</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>37.45</td>
+                                <td>49.27</td>
+                                <td>58.01</td>
+                                <td>44.08</td>
+                                <td>63.40</td>
+                                <td>64.26</td>
+                                <td>81.58</td>
+                                <td class="best">84.67</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
                                 <td>72.12</td>
                                 <td>55.73</td>
@@ -1025,6 +1124,7 @@
                                 <td>82.33</td>
                                 <td>89.41</td>
                                 <td class="best">91.76</td>
+                                <td>85.34</td>
                                 <td>79.94</td>
                             </tr>
                             <tr>
@@ -1035,6 +1135,7 @@
                                 <td>58.28</td>
                                 <td>79.43</td>
                                 <td>78.54</td>
+                                <td>81.81</td>
                                 <td class="best">84.91</td>
                             </tr>
                             <tr>
@@ -1045,12 +1146,84 @@
                                 <td>46.65</td>
                                 <td>65.80</td>
                                 <td>65.24</td>
+                                <td>81.58</td>
                                 <td class="best">84.67</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">
+                                <td class="has-text-left" rowspan="9">
                                     50&nbsp;%
                                 </td>
+                                <td class="has-text-left" rowspan="3">Small</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>43.42</td>
+                                <td>40.37</td>
+                                <td>34.25</td>
+                                <td>55.85</td>
+                                <td>37.51</td>
+                                <td>59.90</td>
+                                <td>80.62</td>
+                                <td class="best">83.93</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>37.98</td>
+                                <td>39.66</td>
+                                <td>29.12</td>
+                                <td>42.63</td>
+                                <td>37.83</td>
+                                <td>55.66</td>
+                                <td>72.44</td>
+                                <td class="best">80.65</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>27.38</td>
+                                <td>38.24</td>
+                                <td>28.83</td>
+                                <td>32.89</td>
+                                <td>35.02</td>
+                                <td>49.83</td>
+                                <td>74.86</td>
+                                <td class="best">77.78</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    Medium
+                                </td>
+                                <td class="has-text-left">Seen</td>
+                                <td>55.84</td>
+                                <td>43.78</td>
+                                <td>70.83</td>
+                                <td>66.25</td>
+                                <td>70.08</td>
+                                <td>78.08</td>
+                                <td>80.62</td>
+                                <td class="best">83.93</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>48.32</td>
+                                <td>44.86</td>
+                                <td>57.37</td>
+                                <td>47.84</td>
+                                <td>64.68</td>
+                                <td>67.77</td>
+                                <td>72.44</td>
+                                <td class="best">80.65</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>29.91</td>
+                                <td>42.11</td>
+                                <td>52.68</td>
+                                <td>36.14</td>
+                                <td>55.96</td>
+                                <td>59.33</td>
+                                <td>74.86</td>
+                                <td class="best">77.78</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
                                 <td>64.78</td>
                                 <td>42.91</td>
@@ -1058,6 +1231,7 @@
                                 <td>73.48</td>
                                 <td>79.90</td>
                                 <td class="best">84.91</td>
+                                <td>80.62</td>
                                 <td>83.93</td>
                             </tr>
                             <tr>
@@ -1068,6 +1242,7 @@
                                 <td>50.83</td>
                                 <td>71.09</td>
                                 <td>71.75</td>
+                                <td>72.44</td>
                                 <td class="best">80.65</td>
                             </tr>
                             <tr>
@@ -1078,12 +1253,84 @@
                                 <td>38.38</td>
                                 <td>62.16</td>
                                 <td>59.33</td>
+                                <td>74.86</td>
                                 <td class="best">77.78</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">
+                                <td class="has-text-left" rowspan="9">
                                     80&nbsp;%
                                 </td>
+                                <td class="has-text-left" rowspan="3">Small</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>38.72</td>
+                                <td>33.71</td>
+                                <td>23.99</td>
+                                <td>53.85</td>
+                                <td>30.10</td>
+                                <td>61.86</td>
+                                <td>72.79</td>
+                                <td class="best">79.32</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>36.40</td>
+                                <td>34.44</td>
+                                <td>24.56</td>
+                                <td>43.12</td>
+                                <td>31.79</td>
+                                <td>54.36</td>
+                                <td>68.03</td>
+                                <td class="best">79.82</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>24.42</td>
+                                <td>32.79</td>
+                                <td>23.94</td>
+                                <td>30.77</td>
+                                <td>30.33</td>
+                                <td>49.38</td>
+                                <td>66.19</td>
+                                <td class="best">80.63</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    Medium
+                                </td>
+                                <td class="has-text-left">Seen</td>
+                                <td>49.72</td>
+                                <td>35.44</td>
+                                <td>43.16</td>
+                                <td>63.20</td>
+                                <td>65.10</td>
+                                <td>74.11</td>
+                                <td>72.79</td>
+                                <td class="best">79.32</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>44.87</td>
+                                <td>37.39</td>
+                                <td>37.70</td>
+                                <td>47.14</td>
+                                <td>60.66</td>
+                                <td>64.91</td>
+                                <td>68.03</td>
+                                <td class="best">79.82</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>25.68</td>
+                                <td>34.50</td>
+                                <td>32.83</td>
+                                <td>31.69</td>
+                                <td>52.61</td>
+                                <td>54.16</td>
+                                <td>66.19</td>
+                                <td class="best">80.63</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
                                 <td>51.36</td>
                                 <td>35.98</td>
@@ -1091,6 +1338,7 @@
                                 <td>65.65</td>
                                 <td>73.39</td>
                                 <td>72.69</td>
+                                <td>72.79</td>
                                 <td class="best">79.32</td>
                             </tr>
                             <tr>
@@ -1101,6 +1349,7 @@
                                 <td>47.27</td>
                                 <td>65.40</td>
                                 <td>64.10</td>
+                                <td>68.03</td>
                                 <td class="best">79.82</td>
                             </tr>
                             <tr>
@@ -1111,27 +1360,68 @@
                                 <td>30.86</td>
                                 <td>54.01</td>
                                 <td>51.69</td>
+                                <td>66.19</td>
                                 <td class="best">80.63</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <p class="footer-note">
-                    F1 on the German benchmark, large training size, best value
-                    per row in bold. GPT-5.2: zero-shot with rule-guided prompt.
+                    F1 on the German benchmark across all 27 variants, best
+                    value per row in bold. Both GPT-5.2 variants are zero-shot,
+                    so their scores do not vary with the training size.
                 </p>
+                <details class="prompt-details">
+                    <summary>GPT-5.2 prompts</summary>
+                    <div class="prompt-details-content content is-size-6">
+                        <p>
+                            The German benchmark used German-language versions
+                            with the same instructions and record attributes.
+                        </p>
+                        <h3 class="title is-6">Simple prompt</h3>
+                        <pre>
+Do these two product descriptions refer to the same real-world product?
+Answer with Yes or No only.
+Product 1: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&gt; Price: &lt;price&gt; Euro
+Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&gt; Price: &lt;price&gt; Euro</pre
+                        >
+                        <h3 class="title is-6">Rule-Guided prompt</h3>
+                        <pre>
+You are an expert product matcher. Your task is to decide whether two product records refer to the EXACT same product (same GTIN/SKU). Analyze the provided records carefully and return your decision as strict Yes or No.
+
+CRITICAL: Product variants are NOT matches. Different sizes, colors, configurations, or package quantities are DIFFERENT products with different GTINs.
+
+Guidelines:
+Yes ONLY if both records refer to the exact same product that would have the same GTIN or barcode.
+No if they are variants of the same product line such as different size, color, capacity, or configuration.
+No if core identifying attributes conflict, including model numbers, dimensions, capacity, color, or configuration.
+Missing attributes alone are NOT a conflict.
+A match requires positive evidence of equivalence.
+Respond ONLY with Yes or No.
+Product 1: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&gt; Price: &lt;price&gt; Euro
+Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&gt; Price: &lt;price&gt; Euro</pre
+                        >
+                    </div>
+                </details>
                 <div class="content is-size-6" style="margin-top: 1.4rem">
                     <p>
-                        The three difficulty dimensions work as intended. F1
-                        increases with the training set size, decreases as the
-                        corner-case ratio grows from 20&nbsp;% to 80&nbsp;%, and
-                        decreases from the Seen to the Unseen test sets. Between
-                        its easiest and its hardest German variant, each
-                        supervised model loses between 24 (Magellan) and 61
-                        (RoBERTa) F1 points. The Seen-to-Unseen drops are larger
-                        than those reported on WDC Products, because unseen
-                        entities can come from any of the thirteen product
-                        domains instead of staying within a single familiar one.
+                        The three difficulty dimensions separate the benchmark
+                        variants as intended. Overall, F1 tends to increase with
+                        the training set size, decreases as the corner-case
+                        ratio grows from 20&nbsp;% to 80&nbsp;%, and decreases
+                        from the Seen to the Unseen test sets. Individual
+                        medium-to-large results can deviate from the overall
+                        training-size trend. Comparing the Large, 20&nbsp;%
+                        corner-case, Seen row with the Small, 80&nbsp;%
+                        corner-case, Unseen row, the losses range from 22.94 F1
+                        for Magellan (55.73 to 32.79) to 61.01 F1 for RoBERTa
+                        (84.95 to 23.94). In the Large, 20&nbsp;% corner-case
+                        rows, the Seen-to-Unseen drops for R-SupCon, Ditto, and
+                        RoBERTa are 35.68, 26.52, and 25.71 F1, compared with
+                        26.59, 9.60, and 9.16 F1 reported for WDC Products. The
+                        broader range of product categories may contribute to
+                        the larger drops, but this comparison does not establish
+                        their cause.
                     </p>
                     <p>
                         Ditto and HierGAT are the strongest supervised systems
@@ -1142,23 +1432,29 @@
                         prompt), and it leads on every Unseen test set, where
                         supervised models lose the training signal they depend
                         on. Supervised matchers overtake GPT-5.2 only on Seen
-                        test sets with medium or large training data. One caveat
-                        applies to the GPT-5.2 numbers: the model also served as
-                        the flagging tool during test set verification, so the
-                        exact margins between GPT-5.2 and the supervised systems
-                        should be read with care.
+                        test sets with medium or large training data. A caveat
+                        applies to interpreting the GPT-5.2 results on the
+                        Seen/Unseen dimension. GPT-5.2 was trained on a large,
+                        undisclosed corpus, and all products in the benchmark
+                        were publicly available online. Some or all individual
+                        product records may therefore have appeared in its
+                        pre-training data. Here, Seen and Unseen only indicate
+                        whether the products occur in the benchmark's supervised
+                        training sets, not whether GPT-5.2 encountered them
+                        during pre-training.
                     </p>
                     <p>
-                        Matching difficulty also differs between product
-                        domains, and the ranking is the same for every model and
-                        both languages. Tools and electronics are the easiest
-                        categories, as their product titles contain model
-                        numbers and technical specifications. Clothing and
-                        furniture are the hardest, because offers for different
-                        product variants share nearly identical descriptions.
-                        Evaluations on electronics-centric benchmarks therefore
-                        overestimate matching performance on broad product
-                        assortments.
+                        Matching performance differs across product domains,
+                        with a stable category ranking across models and both
+                        languages. Tools and electronics are among the
+                        best-performing categories, likely because their product
+                        titles often contain distinctive model numbers and
+                        technical specifications. Clothing and furniture
+                        generally achieve lower F1, as different product variants
+                        often share nearly identical descriptions. These results
+                        suggest that evaluations limited to electronics-centric
+                        benchmarks may not represent performance across broader
+                        product assortments.
                     </p>
                 </div>
             </div>
@@ -1187,6 +1483,7 @@
                         <thead>
                             <tr>
                                 <th class="has-text-left">Corner cases</th>
+                                <th class="has-text-left">Training size</th>
                                 <th class="has-text-left">Test set</th>
                                 <th>WordCooc</th>
                                 <th>Magellan</th>
@@ -1195,14 +1492,83 @@
                                 <th>HierGAT</th>
                                 <th>Ditto</th>
                                 <th>GPT-5.2 Simple</th>
-                                <th>GPT-5.2 Rule</th>
+                                <th>GPT-5.2 Rule-Guided</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="has-text-left" rowspan="3">
+                                <td class="has-text-left" rowspan="9">
                                     20&nbsp;%
                                 </td>
+                                <td class="has-text-left" rowspan="3">Small</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>&minus;0.52</td>
+                                <td>&minus;3.50</td>
+                                <td>+1.87</td>
+                                <td>+5.11</td>
+                                <td>+1.22</td>
+                                <td>&minus;0.52</td>
+                                <td>&minus;0.10</td>
+                                <td>&minus;2.19</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>+0.58</td>
+                                <td>&minus;4.17</td>
+                                <td>+3.29</td>
+                                <td>+0.11</td>
+                                <td>&minus;0.14</td>
+                                <td>&minus;3.73</td>
+                                <td>&minus;0.09</td>
+                                <td>+0.63</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>+4.72</td>
+                                <td>&minus;3.83</td>
+                                <td>+2.48</td>
+                                <td>&minus;1.33</td>
+                                <td>+0.06</td>
+                                <td>&minus;2.65</td>
+                                <td>&minus;0.82</td>
+                                <td>+0.15</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Medium</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>&minus;0.04</td>
+                                <td>&minus;1.67</td>
+                                <td>+0.57</td>
+                                <td>+3.90</td>
+                                <td>&minus;6.88</td>
+                                <td>&minus;3.72</td>
+                                <td>&minus;0.10</td>
+                                <td>&minus;2.19</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>+1.44</td>
+                                <td>&minus;2.20</td>
+                                <td>+2.84</td>
+                                <td>+0.89</td>
+                                <td>&minus;8.91</td>
+                                <td>&minus;6.99</td>
+                                <td>&minus;0.09</td>
+                                <td>+0.63</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>+4.43</td>
+                                <td>&minus;1.69</td>
+                                <td>+4.28</td>
+                                <td>+1.17</td>
+                                <td>&minus;5.38</td>
+                                <td>&minus;5.27</td>
+                                <td>&minus;0.82</td>
+                                <td>+0.15</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
                                 <td>+0.81</td>
                                 <td>&minus;0.79</td>
@@ -1236,9 +1602,78 @@
                                 <td>+0.15</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">
+                                <td class="has-text-left" rowspan="9">
                                     50&nbsp;%
                                 </td>
+                                <td class="has-text-left" rowspan="3">Small</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>+0.85</td>
+                                <td>&minus;0.33</td>
+                                <td>+5.87</td>
+                                <td>+1.36</td>
+                                <td>+18.86</td>
+                                <td>&minus;22.47</td>
+                                <td>+0.57</td>
+                                <td>&minus;2.08</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>+0.54</td>
+                                <td>+0.03</td>
+                                <td>+5.67</td>
+                                <td>&minus;2.02</td>
+                                <td>+13.49</td>
+                                <td>&minus;21.29</td>
+                                <td>+0.41</td>
+                                <td>+2.89</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>+4.86</td>
+                                <td>&minus;0.65</td>
+                                <td>+4.78</td>
+                                <td>&minus;0.45</td>
+                                <td>+12.63</td>
+                                <td>&minus;18.08</td>
+                                <td>&minus;1.06</td>
+                                <td>+3.34</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Medium</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>+0.30</td>
+                                <td>+1.29</td>
+                                <td>+2.78</td>
+                                <td>+4.35</td>
+                                <td>+0.69</td>
+                                <td>&minus;4.91</td>
+                                <td>+0.57</td>
+                                <td>&minus;2.08</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>&minus;0.57</td>
+                                <td>+0.14</td>
+                                <td>+4.86</td>
+                                <td>&minus;0.33</td>
+                                <td>&minus;0.94</td>
+                                <td>&minus;7.26</td>
+                                <td>+0.41</td>
+                                <td>+2.89</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>+2.99</td>
+                                <td>&minus;0.99</td>
+                                <td>+3.02</td>
+                                <td>+0.27</td>
+                                <td>+1.85</td>
+                                <td>&minus;4.92</td>
+                                <td>&minus;1.06</td>
+                                <td>+3.34</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
                                 <td>&minus;1.72</td>
                                 <td>&minus;1.27</td>
@@ -1272,9 +1707,78 @@
                                 <td>+3.34</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">
+                                <td class="has-text-left" rowspan="9">
                                     80&nbsp;%
                                 </td>
+                                <td class="has-text-left" rowspan="3">Small</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>+3.06</td>
+                                <td>&minus;1.57</td>
+                                <td>&minus;20.99</td>
+                                <td>&minus;0.03</td>
+                                <td>+12.56</td>
+                                <td>&minus;3.60</td>
+                                <td>&minus;0.76</td>
+                                <td>&minus;0.38</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>+0.39</td>
+                                <td>&minus;1.17</td>
+                                <td>&minus;21.49</td>
+                                <td>&minus;1.17</td>
+                                <td>+9.42</td>
+                                <td>+0.03</td>
+                                <td>+2.99</td>
+                                <td>+2.96</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>+1.65</td>
+                                <td>&minus;0.55</td>
+                                <td>&minus;20.91</td>
+                                <td>&minus;0.97</td>
+                                <td>+7.62</td>
+                                <td>&minus;2.15</td>
+                                <td>+1.31</td>
+                                <td>+0.89</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Medium</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>&minus;2.66</td>
+                                <td>&minus;2.61</td>
+                                <td>+23.71</td>
+                                <td>+0.51</td>
+                                <td>&minus;1.94</td>
+                                <td>&minus;6.40</td>
+                                <td>&minus;0.76</td>
+                                <td>&minus;0.38</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>&minus;2.82</td>
+                                <td>&minus;3.02</td>
+                                <td>+22.02</td>
+                                <td>&minus;0.81</td>
+                                <td>&minus;2.72</td>
+                                <td>&minus;0.99</td>
+                                <td>+2.99</td>
+                                <td>+2.96</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>+3.07</td>
+                                <td>&minus;1.63</td>
+                                <td>+20.29</td>
+                                <td>+1.24</td>
+                                <td>&minus;1.04</td>
+                                <td>&minus;1.24</td>
+                                <td>+1.31</td>
+                                <td>+0.89</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
                                 <td>+0.93</td>
                                 <td>&minus;2.59</td>
@@ -1308,7 +1812,7 @@
                                 <td>+0.89</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" colspan="2">
+                                <td class="has-text-left" colspan="3">
                                     <b>Mean (all 27 variants)</b>
                                 </td>
                                 <td><b>+1.49</b></td>
@@ -1321,7 +1825,7 @@
                                 <td><b>+0.69</b></td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" colspan="2">
+                                <td class="has-text-left" colspan="3">
                                     <b>Median (all 27 variants)</b>
                                 </td>
                                 <td><b>+0.93</b></td>
@@ -1338,7 +1842,7 @@
                 </div>
                 <p class="footer-note">
                     F1 difference English minus German per benchmark variant,
-                    shown for the large training size. Positive values mean the
+                    shown for all three training sizes. Positive values mean the
                     model scores higher on the English version, negative values
                     mean it scores higher on the German original. The mean and
                     median rows summarize all 27 variants. GPT-5.2 results are
@@ -1463,15 +1967,15 @@ pairs = pd.read_json(
                                     9 training sets, 27 validation sets, 9
                                     manually verified test sets.
                                 </p>
-                                <!-- TODO: replace with final hosting URL -->
                                 <a
                                     class="button is-small is-dark is-rounded"
-                                    href="#"
+                                    href="https://media.githubusercontent.com/media/wbsg-uni-mannheim/german-wdc/main/data/solute_de.zip"
+                                    download="solute_de.zip"
                                 >
                                     <span class="icon"
                                         ><i class="fas fa-download"></i
                                     ></span>
-                                    <span>solute_de.zip (coming soon)</span>
+                                    <span>Download solute_de.zip</span>
                                 </a>
                             </div>
                         </div>
@@ -1490,15 +1994,15 @@ pairs = pd.read_json(
                                     record with the same splits, labels, and
                                     identifiers.
                                 </p>
-                                <!-- TODO: replace with final hosting URL -->
                                 <a
                                     class="button is-small is-dark is-rounded"
-                                    href="#"
+                                    href="https://media.githubusercontent.com/media/wbsg-uni-mannheim/german-wdc/main/data/solute_en.zip"
+                                    download="solute_en.zip"
                                 >
                                     <span class="icon"
                                         ><i class="fas fa-download"></i
                                     ></span>
-                                    <span>solute_en.zip (coming soon)</span>
+                                    <span>Download solute_en.zip</span>
                                 </a>
                             </div>
                         </div>
