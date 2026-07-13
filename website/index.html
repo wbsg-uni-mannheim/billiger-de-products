@@ -1405,6 +1405,23 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                 </details>
                 <div class="content is-size-6" style="margin-top: 1.4rem">
                     <p>
+                        The baseline results underline the difficulty of the
+                        benchmark. The traditional feature-based approaches
+                        WordCooc and Magellan average only 43.89 and 42.85 F1
+                        across the 27 German variants, which is too low for
+                        practical use on this benchmark. Neural matchers such as
+                        Ditto are more viable and can reach strong scores in
+                        favorable configurations, but, as reported for WDC
+                        Products, they remain strongly affected by unseen
+                        entities. Averaged across all corner-case ratios and
+                        training sizes, Ditto loses 19.53 F1 from Seen to Unseen
+                        test sets. Even zero-shot GPT-5.2 does not solve the
+                        benchmark: with the stronger Rule-Guided prompt, its
+                        scores remain between 77.78 and 84.91 F1. The benchmark
+                        therefore remains challenging for traditional matchers,
+                        supervised neural models, and the evaluated LLM.
+                    </p>
+                    <p>
                         The three difficulty dimensions separate the benchmark
                         variants as intended. Overall, F1 tends to increase with
                         the training set size, decreases as the corner-case
@@ -1443,18 +1460,147 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         training sets, not whether GPT-5.2 encountered them
                         during pre-training.
                     </p>
+                    <h3 class="title is-5">
+                        Performance by product domain
+                    </h3>
                     <p>
-                        Matching performance differs across product domains,
-                        with a stable category ranking across models and both
-                        languages. Tools and electronics are among the
-                        best-performing categories, likely because their product
-                        titles often contain distinctive model numbers and
-                        technical specifications. Clothing and furniture
-                        generally achieve lower F1, as different product variants
-                        often share nearly identical descriptions. These results
-                        suggest that evaluations limited to electronics-centric
-                        benchmarks may not represent performance across broader
-                        product assortments.
+                        [@Chris: Die von Ksenia &uuml;bernommenen
+                        Kategorieergebnisse sind methodisch nicht sauber
+                        vergleichbar, da f&uuml;r die Modelle unterschiedliche
+                        Testset-Varianten verwendet wurden. Ich werde die Zahlen
+                        in dieser Tabelle noch einmal auf Basis eines
+                        gemeinsamen Testsets neu berechnen.]
+                    </p>
+                    <p>
+                        Product domain is another important source of matching
+                        difficulty. On the German benchmark, Tools &amp; DIY and
+                        Electronics &amp; Computers each rank among the top three
+                        categories for six of the seven models below. Clothing
+                        &amp; Accessories appears among the bottom three for all
+                        seven models, and Furniture &amp; Living for four.
+                        Distinctive model numbers and technical specifications
+                        may contribute to the stronger results for tools and
+                        electronics, while highly similar descriptions of
+                        product variants may contribute to the lower results for
+                        clothing and furniture. The table does not isolate these
+                        causes, but it shows why results from electronics-focused
+                        data may not represent a broader product assortment.
+                    </p>
+                    <div class="table-container">
+                        <table
+                            class="table is-narrow is-fullwidth is-striped has-text-right is-size-7"
+                        >
+                            <thead>
+                                <tr>
+                                    <th class="has-text-left">Category</th>
+                                    <th>WordCooc</th>
+                                    <th>Magellan</th>
+                                    <th>RoBERTa</th>
+                                    <th>R-SupCon</th>
+                                    <th>HierGAT</th>
+                                    <th>Ditto</th>
+                                    <th>GPT-5.2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="has-text-left">
+                                        Automotive &amp; Motorcycle
+                                    </td>
+                                    <td>41.38</td>
+                                    <td>51.99</td>
+                                    <td>66.67</td>
+                                    <td>44.24</td>
+                                    <td>96.62</td>
+                                    <td>100.00</td>
+                                    <td>85.71</td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-left">
+                                        Electronics &amp; Computers
+                                    </td>
+                                    <td>73.17</td>
+                                    <td>61.33</td>
+                                    <td>91.43</td>
+                                    <td>82.63</td>
+                                    <td>97.02</td>
+                                    <td>94.88</td>
+                                    <td>91.18</td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-left">
+                                        Clothing &amp; Accessories
+                                    </td>
+                                    <td>58.48</td>
+                                    <td>39.46</td>
+                                    <td>62.10</td>
+                                    <td>63.04</td>
+                                    <td>77.06</td>
+                                    <td>77.82</td>
+                                    <td>75.41</td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-left">
+                                        Cosmetics &amp; Drugstore
+                                    </td>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                    <td>65.24</td>
+                                    <td>n/a</td>
+                                    <td>70.32</td>
+                                    <td>70.24</td>
+                                    <td>77.78</td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-left">
+                                        Furniture &amp; Living
+                                    </td>
+                                    <td>74.60</td>
+                                    <td>62.16</td>
+                                    <td>55.27</td>
+                                    <td>76.01</td>
+                                    <td>64.79</td>
+                                    <td>60.56</td>
+                                    <td>79.03</td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-left">Toys &amp; Baby</td>
+                                    <td>80.00</td>
+                                    <td>52.64</td>
+                                    <td>74.01</td>
+                                    <td>90.89</td>
+                                    <td>82.20</td>
+                                    <td>78.34</td>
+                                    <td>84.21</td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-left">
+                                        Sports &amp; Leisure
+                                    </td>
+                                    <td>80.00</td>
+                                    <td>47.90</td>
+                                    <td>n/a</td>
+                                    <td>85.24</td>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                    <td>76.19</td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-left">Tools &amp; DIY</td>
+                                    <td>80.85</td>
+                                    <td>67.61</td>
+                                    <td>92.33</td>
+                                    <td>82.45</td>
+                                    <td>94.95</td>
+                                    <td>96.39</td>
+                                    <td>85.71</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="footer-note">
+                        Same-category F1 on the German benchmark for category
+                        pairs with at least 45 test pairs. 
                     </p>
                 </div>
             </div>
@@ -1850,34 +1996,49 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                 </p>
                 <div class="content is-size-6" style="margin-top: 1.4rem">
                     <p>
-                        Matchers that depend on English surface forms score
-                        higher on the English version. WordCooc gains up to 6.5
-                        F1 points, because German compounds and rich morphology
-                        reduce the exact token overlap it relies on. RoBERTa,
-                        pre-trained mostly on English text, wins 22 of 27
-                        configurations on the English version with a mean
-                        difference of +2.31 F1. Magellan leans the other way, as
-                        its character-level similarity features turn the long
-                        shared substrings inside German compounds into a usable
-                        signal.
+                        The main result is that changing the language rarely
+                        changes the practical assessment of a matcher. WordCooc
+                        and Magellan remain below 46 mean F1 in both languages,
+                        which is too low for practical matching on this
+                        benchmark. Their small mean language differences do not
+                        alter that conclusion. More generally, the mean language
+                        difference remains within &plusmn;2.31 F1 for every
+                        matcher except Ditto. GPT-5.2 is similarly stable: the
+                        mean differences are +0.27 F1 with the Simple prompt
+                        and +0.69 F1 with the Rule-Guided prompt, and no
+                        individual difference exceeds 3.34 F1. At this scale,
+                        the results do not suggest a substantial systematic
+                        language effect for GPT-5.2.
                     </p>
                     <p>
-                        Task-specific supervision compensates the English
-                        pre-training bias. R-SupCon is balanced with 13 wins for
-                        English and 14 for German. HierGAT favours the German
-                        original in 17 of 27 configurations, including all nine
-                        large-training configurations shown above, and Ditto in
-                        23 of 27 with a mean difference of &minus;5.73 F1.
-                        Zero-shot GPT-5.2 differs by less than 4 F1 points
-                        between the languages in every configuration.
+                        Ditto is the notable exception. It scores 5.73 F1 lower
+                        on average on the English version, which is surprising
+                        because its RoBERTa backbone was pre-trained primarily
+                        on English text. The English disadvantage is largest
+                        with Small training sets at 8.27 F1 on average and
+                        narrows to 4.63 with Medium and 4.28 with Large training
+                        sets. Although the disadvantage becomes smaller as the
+                        training set grows, the results do not explain why Ditto
+                        performs worse on English overall. [@Chris: Hast du eine
+                        Intuition oder eine gute Erkl&auml;rung daf&uuml;r, warum
+                        Ditto trotz des &uuml;berwiegend auf englischen Texten
+                        vortrainierten RoBERTa-Backbones auf der englischen
+                        Version schlechter abschneidet?]
                     </p>
                     <p>
-                        The practical implication is direct. Matchers that rely
-                        on English pre-trained representations or surface token
-                        statistics should not be applied to German product data
-                        without prior evaluation. Matchers with strong
-                        task-specific supervision and zero-shot LLMs transfer
-                        across the two languages without a systematic penalty.
+                        The broader training-size pattern provides partial
+                        support for the same interpretation. Across the six
+                        supervised matchers, the mean absolute language gap
+                        decreases from 5.25 F1 with Small training sets to 3.77
+                        with Medium and 2.76 with Large sets. RoBERTa's extreme
+                        differences account for part of this trend; after
+                        excluding RoBERTa, the corresponding values are 4.36,
+                        2.65, and 2.86 F1. Language sensitivity therefore tends to
+                        be greater when little training data is available, but
+                        the decrease is not consistent for every matcher. It
+                        does not confirm a general English advantage: even with
+                        Small training sets, fewer than half of the non-RoBERTa
+                        comparisons favor English.
                     </p>
                 </div>
             </div>
@@ -1918,13 +2079,10 @@ pairs = pd.read_json(
                         set, and report F1 on the nine test sets. The test sets
                         are the same for all training set sizes, so results
                         obtained with different amounts of training data remain
-                        comparable. Please do not use the test pairs for
-                        training, hyperparameter selection, or prompt
-                        engineering.
+                        comparable.
                     </p>
                     <p>
-                        For <b>zero-shot and in-context learning</b>, the nine
-                        test sets can be used directly. If a method needs
+                        For <b>zero-shot and in-context learning:</b> If a method needs
                         demonstration examples, they should be drawn from the
                         training or validation sets.
                     </p>
@@ -2010,10 +2168,7 @@ pairs = pd.read_json(
                 </div>
                 <p class="footer-note">
                     The product data was kindly provided by
-                    <a href="https://www.solute.de/">solute GmbH</a>. The
-                    release comprises the benchmark sets listed above, while the
-                    underlying product corpus is not published. Please see the
-                    download package for licensing terms.
+                    <a href="https://www.solute.de/">solute GmbH</a>.
                 </p>
             </div>
         </section>
@@ -2024,20 +2179,39 @@ pairs = pd.read_json(
                 <h2 class="title is-3 has-text-centered">Conclusion</h2>
                 <div class="content is-size-6">
                     <p>
-                        Billiger.de Products extends entity matching evaluation
-                        beyond English. It combines the largest German-language
-                        product matching benchmark to date with a structurally
-                        identical English translation, covers thirteen product
-                        domains instead of a single one, and controls task
-                        difficulty along the three dimensions of WDC Products.
-                        The baseline experiments show that all three dimensions
-                        work as intended, that broad product assortments are
-                        harder to match than the electronics-centric data of
-                        most existing benchmarks, and that the effect of the
-                        data language depends on the architecture of the
-                        matcher. A matcher that was only evaluated on English
-                        data should therefore not be expected to behave the same
-                        on German offers.
+                        Billiger.de Products extends product matching evaluation
+                        beyond English with a large-scale German benchmark and
+                        an aligned English translation spanning thirteen product
+                        domains. Its variants control the training set size, the
+                        share of corner cases, and whether test entities occur
+                        in the supervised training data. This makes it possible
+                        to study matcher performance across several difficulty
+                        settings instead of relying on a single aggregate score.
+                    </p>
+                    <p>
+                        The results show that both the benchmark configuration
+                        and the product domain matter. Supervised matchers
+                        generally benefit from more training data and perform
+                        less well as the corner-case share increases or test
+                        entities move from Seen to Unseen, although individual
+                        configurations can deviate from these trends. Tools and
+                        electronics are among the best-performing domains,
+                        whereas clothing and furniture generally achieve lower
+                        scores. Results from electronics-focused data may
+                        therefore not represent performance across a broad
+                        product assortment.
+                    </p>
+                    <p>
+                        The aggregate differences between the German and
+                        English versions are small for most matchers and usually
+                        do not change their practical assessment. Language
+                        sensitivity tends to be greater when little training
+                        data is available, but this pattern is not consistent
+                        for every model, and Ditto remains an unexplained
+                        exception. Taken together, the findings support
+                        evaluating product matchers across languages, product
+                        domains, and difficulty settings rather than
+                        generalizing from one benchmark configuration.
                     </p>
                     <p>
                         Questions and feedback are welcome. Please contact
