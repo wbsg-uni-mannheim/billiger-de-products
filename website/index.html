@@ -236,13 +236,16 @@
                 <div id="mainNav" class="navbar-menu">
                     <div class="navbar-end">
                         <a class="navbar-item" href="#abstract">Abstract</a>
-                        <a class="navbar-item" href="#design">Design</a>
+                        <a class="navbar-item" href="#introduction"
+                            >Introduction</a
+                        >
+                        <a class="navbar-item" href="#design">Benchmark</a>
                         <a class="navbar-item" href="#example">Example</a>
-                        <a class="navbar-item" href="#statistics">Statistics</a>
                         <a class="navbar-item" href="#results">Results</a>
                         <a class="navbar-item" href="#language">Language</a>
+                        <a class="navbar-item" href="#usage">How to Use</a>
                         <a class="navbar-item" href="#downloads">Downloads</a>
-                        <a class="navbar-item" href="#bibtex">BibTeX</a>
+                        <a class="navbar-item" href="#citation">Citation</a>
                     </div>
                 </div>
             </div>
@@ -253,7 +256,8 @@
             <div class="hero-body">
                 <div class="container is-max-desktop has-text-centered">
                     <h1 class="title is-2 publication-title">
-                        Billiger.de Products: A Bilingual Entity Matching Benchmark
+                        Billiger.de Products: A Bilingual Entity Matching
+                        Benchmark
                     </h1>
                     <div class="is-size-5 publication-authors">
                         <span class="author-block"
@@ -321,21 +325,6 @@
                                     ><span>Code</span></a
                                 ></span
                             >
-                            <span class="link-block"
-                                ><a
-                                    href="#bibtex"
-                                    class="external-link button is-normal is-rounded is-dark"
-                                    onclick="
-                                        copyBibtex(this);
-                                        return false;
-                                    "
-                                    ><span class="icon"
-                                        ><i
-                                            class="fas fa-quote-right"
-                                        ></i></span
-                                    ><span>Cite</span></a
-                                ></span
-                            >
                         </div>
                     </div>
                 </div>
@@ -348,38 +337,31 @@
                 <h2 class="title is-3 has-text-centered">Abstract</h2>
                 <div class="content is-size-6">
                     <p>
-                        Existing entity matching benchmarks mostly contain
-                        English-language product data and often focus on a
-                        single domain such as consumer electronics.
-                        <b>Billiger.de Products</b> is an entity matching benchmark
-                        built from the manually grouped product catalog of the
-                        price comparison platform
+                        <b>Billiger.de Products</b> is an entity matching
+                        benchmark built from the manually grouped product
+                        catalog of the price comparison platform
                         <a href="https://www.billiger.de">billiger.de</a>
                         (operated by solute GmbH). To the best of our knowledge,
                         it is the largest entity matching benchmark for
-                        German-language data to date.
-                    </p>
-                    <p>
-                        The benchmark follows the multi-dimensional design of
+                        German-language product data to date. The benchmark
+                        follows the multi-dimensional design of
                         <a
                             href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
                             >WDC Products</a
                         >
-                        and provides controlled variation along three
-                        dimensions: the size of the training set, the fraction
-                        of hard corner cases, and the fraction of entities
-                        unseen during training. Since every record was
-                        additionally machine-translated into English, the
-                        benchmark doubles as a controlled instrument for
-                        measuring how the data language affects matching
-                        performance while keeping the task structurally
-                        identical down to individual record pairs. Baseline
-                        results cover six supervised matchers as well as GPT-5.2
-                        in a zero-shot setting on both language versions. The
-                        influence of language turns out to be
-                        architecture-dependent: models relying on English
+                        and varies the size of the training set, the fraction of
+                        hard corner cases, and the fraction of entities unseen
+                        during training. Every record additionally exists in a
+                        machine-translated English version with identical
+                        splits, labels, and identifiers, so the effect of the
+                        data language on matching performance can be measured
+                        down to individual record pairs. Baseline results cover
+                        six supervised matchers as well as GPT-5.2 in a
+                        zero-shot setting on both language versions. The
+                        influence of the language turns out to be
+                        architecture-dependent: matchers relying on English
                         pre-training or token overlap score higher on the
-                        English version, models with strong task-specific
+                        English version, matchers with strong task-specific
                         supervision score equal or higher on the German
                         original, and GPT-5.2 differs by less than 4 F1 points
                         between the languages.
@@ -388,32 +370,86 @@
             </div>
         </section>
 
-        <!-- BENCHMARK DESIGN -->
-        <section
-            class="section"
-            id="design"
-            style="background: #fafafa; padding-top: 2rem"
-        >
+        <!-- INTRODUCTION -->
+        <section class="section" id="introduction" style="background: #fafafa">
             <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">Benchmark Design</h2>
+                <h2 class="title is-3 has-text-centered">Introduction</h2>
+                <div class="content is-size-6">
+                    <p>
+                        Entity matching is the task of deciding whether two
+                        records refer to the same real-world entity, for example
+                        whether two product offers describe the same product.
+                        The benchmarks that are used to evaluate entity matching
+                        systems, such as Abt-Buy, Amazon-Google, or
+                        <a
+                            href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
+                            >WDC Products</a
+                        >, are single-language by nature: each of them contains
+                        records in one language, almost always English. Many
+                        applications do not fit this picture. A shopper in
+                        Europe who is looking for the cheapest offer for a
+                        product does not care whether that offer is published on
+                        a German, French, or Italian shop, and a price
+                        comparison portal that wants to answer such queries has
+                        to match offers across languages. Benchmarks for
+                        evaluating matchers under these conditions barely exist.
+                    </p>
+                    <p>
+                        <b>Billiger.de Products</b> is a step in this direction.
+                        The benchmark is built from the manually grouped product
+                        catalog of the German price comparison platform
+                        <a href="https://www.billiger.de">billiger.de</a>
+                        (operated by solute GmbH) and is, to the best of our
+                        knowledge, the largest entity matching benchmark for
+                        German-language product data to date. In addition to the
+                        German original, we provide a machine-translated English
+                        version of every record. Splits, labels, and identifiers
+                        are identical in both versions, so the benchmark can be
+                        used as a German benchmark, as an English benchmark, or
+                        as a pair of parallel versions for measuring how the
+                        data language affects matching performance down to
+                        individual record pairs. Since every German record can
+                        also be paired with the English translation of its
+                        counterpart, the benchmark is also a starting point for
+                        cross-lingual matching experiments.
+                    </p>
+                    <p>
+                        The benchmark follows the multi-dimensional design of
+                        WDC Products and controls task difficulty along three
+                        dimensions: the size of the training set, the fraction
+                        of hard corner cases, and the fraction of entities
+                        unseen during training. The sections below describe the
+                        benchmark in detail and report baseline results for six
+                        supervised matchers and for GPT-5.2 in a zero-shot
+                        setting on both language versions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENCHMARK DESIGN -->
+        <section class="section" id="design" style="padding-top: 2rem">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">The Benchmark</h2>
                 <div class="content is-size-6">
                     <p>
                         The benchmark is derived from a snapshot of the
                         operational matching process of billiger.de: 6,309,224
                         product offers grouped into 692,495 product entities,
                         where each group was created and manually verified by
-                        platform employees. Offers carry the attributes
+                        platform employees. The benchmark itself contains
+                        <b>13,730 product offers</b> describing
+                        <b>2,168 distinct products</b> per language version.
+                        Every record carries the attributes
                         <span class="mono">name</span>,
                         <span class="mono">description</span>,
                         <span class="mono">brand</span>, and
-                        <span class="mono">price</span>. Identifiers such as EAN
-                        or manufacturer part numbers are deliberately excluded
-                        so that matching has to rely on the textual description
-                        of a product rather than identifier lookup. All test
-                        sets were verified in a two-round manual audit against a
-                        strict product identity definition: product variants
-                        that differ in size, colour, configuration, capacity, or
-                        package quantity count as <em>non-matches</em>.
+                        <span class="mono">price</span>, with name and price
+                        complete and brand and description above 99&nbsp;%
+                        coverage. Identifiers such as EAN or manufacturer part
+                        numbers are deliberately excluded so that matching has
+                        to rely on the textual description of a product rather
+                        than identifier lookup.
                     </p>
                     <p>
                         Following WDC Products, task difficulty is controlled
@@ -452,120 +488,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-        </section>
-
-        <!-- EXAMPLE -->
-        <section class="section" id="example">
-            <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">Matching Example</h2>
-                <div class="content is-size-6">
-                    <p>
-                        A real corner case from the benchmark: two wardrobe
-                        offers that agree in brand, model name, colour, and
-                        almost the entire description, yet refer to
-                        <b>different product variants</b> (168&nbsp;cm vs.
-                        85&nbsp;cm width). Under the strict identity definition
-                        of the benchmark, this pair is a <b>non-match</b>.
-                        Matchers that rely on surface similarity are reliably
-                        fooled by such pairs.
-                    </p>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <div class="dcard">
-                            <div class="dh">
-                                <span class="icon has-text-grey"
-                                    ><i class="fas fa-file-lines"></i
-                                ></span>
-                                Record A
-                                <span class="file">id&nbsp;2070627808</span>
-                            </div>
-                            <div class="db">
-                                <p class="record-attr">
-                                    <span class="tagname">brand</span> RAUCH
-                                </p>
-                                <p class="record-attr">
-                                    <span class="tagname">name</span> rauch
-                                    Kleiderschrank »Rasa« beige
-                                    <span class="hl">168 cm</span> x 188 cm x 52
-                                    cm
-                                </p>
-                                <p class="record-attr">
-                                    <span class="tagname">desc</span> …Anzahl
-                                    Türen, <span class="hl">4 St.</span>, Art
-                                    Türen, Spiegeltüren Drehtüren, Maßangaben
-                                    Breite, <span class="hl">168 cm</span>,
-                                    Tiefe, 52 cm, Höhe, 188 cm…
-                                </p>
-                                <p class="record-attr">
-                                    <span class="tagname">price</span> 409.99
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="dcard">
-                            <div class="dh">
-                                <span class="icon has-text-grey"
-                                    ><i class="fas fa-file-lines"></i
-                                ></span>
-                                Record B
-                                <span class="file">id&nbsp;2056478070</span>
-                            </div>
-                            <div class="db">
-                                <p class="record-attr">
-                                    <span class="tagname">brand</span> RAUCH
-                                </p>
-                                <p class="record-attr">
-                                    <span class="tagname">name</span> rauch
-                                    Kleiderschrank »Rasa« beige
-                                    <span class="hl">85 cm</span> x 188 cm x 52
-                                    cm
-                                </p>
-                                <p class="record-attr">
-                                    <span class="tagname">desc</span> …Anzahl
-                                    Türen, <span class="hl">2 St.</span>, Art
-                                    Türen, Drehtüren, Maßangaben Breite,
-                                    <span class="hl">85 cm</span>, Tiefe, 52 cm,
-                                    Höhe, 188 cm…
-                                </p>
-                                <p class="record-attr">
-                                    <span class="tagname">price</span> 249.99
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="has-text-centered" style="margin-top: -0.4rem">
-                    <span class="tag is-danger is-light is-medium">
-                        <span class="icon"><i class="fas fa-xmark"></i></span>
-                        <span
-                            >&nbsp;Non-match: different width and door variants
-                            of the same product line</span
-                        >
-                    </span>
-                </p>
-            </div>
-        </section>
-
-        <!-- STATISTICS -->
-        <section class="section" id="statistics" style="background: #fafafa">
-            <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">Dataset Statistics</h2>
-                <div class="content is-size-6">
-                    <p>
-                        Each language version contains
-                        <b>13,730 product offers</b> describing
-                        <b>2,168 distinct products</b>. Every record carries the
-                        attributes <span class="mono">name</span>,
-                        <span class="mono">description</span>,
-                        <span class="mono">brand</span>, and
-                        <span class="mono">price</span>, with name and price
-                        complete and brand and description above 99&nbsp;%
-                        coverage.
-                    </p>
-                </div>
                 <h3 class="title is-5">Product domains</h3>
                 <div class="content is-size-6">
                     <p>
@@ -576,14 +498,9 @@
                         category paths, with the remaining cases classified by
                         GPT-5-mini. A manual validation of 500 random products
                         found 89.0&nbsp;% of the assignments correct, 7.4&nbsp;%
-                        ambiguous, and 3.6&nbsp;% wrong. Clothing, furniture,
-                        and electronics account for the largest shares, which
-                        mirrors European e-commerce markets, where fashion is
-                        the most frequently purchased category, followed by
-                        home-related goods and electronics. The evaluation
-                        splits contain slightly more clothing and furniture than
-                        the training splits, because these variant-dense domains
-                        produce more corner cases.
+                        ambiguous, and 3.6&nbsp;% [@Chris wollen wir das so transparent sagen?]. Clothing, furniture,
+                        and electronics account for the largest shares, followed by
+                        home-related goods and electronics. 
                     </p>
                 </div>
                 <div class="columns">
@@ -715,7 +632,7 @@
                     </div>
                 </div>
                 <h3 class="title is-5" style="margin-top: 1.4rem">
-                    Benchmark sets
+                    Pairs and labels
                 </h3>
                 <div class="content is-size-6">
                     <p>
@@ -724,21 +641,19 @@
                         generated exhaustively within each product group,
                         negative pairs combine similarity-based hard negatives
                         with one random negative per offer. The number of hard
-                        negatives per offer grows with the training set size,
-                        which is why the large training sets are close to
-                        balanced while the evaluation sets are strongly
-                        imbalanced.
+                        negatives per offer grows with the training set size.
                     </p>
                     <p>
                         The test sets contain roughly 4,470 pairs each with a
                         class imbalance of 1:10 to 1:12 between matches and
                         non-matches, the condition matchers face in production
                         candidate streams. All nine test sets went through a
-                        two-round manual audit against the strict identity
-                        definition described above. The audit mainly relabelled
-                        pairs in which distinct product variants had been
-                        grouped together, so the test labels are cleaner than
-                        the operational labels that the training splits retain.
+                        two-round manual audit against a strict product identity
+                        definition: product variants that differ in size, color,
+                        configuration, capacity, or package quantity count as
+                        <em>non-matches</em>. The audit mainly relabelled pairs
+                        in which distinct product variants had been grouped
+                        together.
                     </p>
                 </div>
                 <div class="columns">
@@ -970,6 +885,100 @@
             </div>
         </section>
 
+        <!-- EXAMPLE -->
+        <section class="section" id="example" style="background: #fafafa">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Matching Example</h2>
+                <div class="content is-size-6">
+                    <p>
+                        A real corner case from the benchmark: two wardrobe
+                        offers that agree in brand, model name, color, and
+                        almost the entire description, yet refer to
+                        <b>different product variants</b> (168&nbsp;cm vs.
+                        85&nbsp;cm width). Under the strict identity definition
+                        of the benchmark, this pair is a <b>non-match</b>.
+                        Matchers that rely on surface similarity are reliably
+                        fooled by such pairs.
+                    </p>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-grey"
+                                    ><i class="fas fa-file-lines"></i
+                                ></span>
+                                Record A
+                                <span class="file">id&nbsp;2070627808</span>
+                            </div>
+                            <div class="db">
+                                <p class="record-attr">
+                                    <span class="tagname">brand</span> RAUCH
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">name</span> rauch
+                                    Kleiderschrank »Rasa« beige
+                                    <span class="hl">168 cm</span> x 188 cm x 52
+                                    cm
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">desc</span> …Anzahl
+                                    Türen, <span class="hl">4 St.</span>, Art
+                                    Türen, Spiegeltüren Drehtüren, Maßangaben
+                                    Breite, <span class="hl">168 cm</span>,
+                                    Tiefe, 52 cm, Höhe, 188 cm…
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">price</span> 409.99
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-grey"
+                                    ><i class="fas fa-file-lines"></i
+                                ></span>
+                                Record B
+                                <span class="file">id&nbsp;2056478070</span>
+                            </div>
+                            <div class="db">
+                                <p class="record-attr">
+                                    <span class="tagname">brand</span> RAUCH
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">name</span> rauch
+                                    Kleiderschrank »Rasa« beige
+                                    <span class="hl">85 cm</span> x 188 cm x 52
+                                    cm
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">desc</span> …Anzahl
+                                    Türen, <span class="hl">2 St.</span>, Art
+                                    Türen, Drehtüren, Maßangaben Breite,
+                                    <span class="hl">85 cm</span>, Tiefe, 52 cm,
+                                    Höhe, 188 cm…
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">price</span> 249.99
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="has-text-centered" style="margin-top: -0.4rem">
+                    <span class="tag is-danger is-light is-medium">
+                        <span class="icon"><i class="fas fa-xmark"></i></span>
+                        <span
+                            >&nbsp;Non-match: different width and door variants
+                            of the same product line</span
+                        >
+                    </span>
+                </p>
+            </div>
+        </section>
+
         <!-- RESULTS -->
         <section class="section" id="results">
             <div class="container is-max-desktop">
@@ -1110,8 +1119,6 @@
                 <p class="footer-note">
                     F1 on the German benchmark, large training size, best value
                     per row in bold. GPT-5.2: zero-shot with rule-guided prompt.
-                    Full results for all 27 configurations, both languages, and
-                    both prompts are reported in the paper.
                 </p>
                 <div class="content is-size-6" style="margin-top: 1.4rem">
                     <p>
@@ -1372,21 +1379,74 @@
             </div>
         </section>
 
-        <!-- DOWNLOADS -->
-        <section class="section" id="downloads">
+        <!-- HOW TO USE -->
+        <section class="section" id="usage">
             <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">Downloads</h2>
+                <h2 class="title is-3 has-text-centered">
+                    How to Use the Benchmark
+                </h2>
                 <div class="content is-size-6">
                     <p>
-                        The benchmark is distributed as gzipped JSON files (one
-                        record pair per line, containing both product records,
-                        the binary match label, and a hard-negative indicator).
-                        The naming scheme encodes the configuration:
+                        The benchmark is distributed as gzipped JSON files with
+                        one record pair per line. Each line contains both
+                        product records, the binary match label, and a
+                        hard-negative indicator. The file name encodes the
+                        configuration:
                         <span class="mono"
                             >products80cc20rnd050un_train_large.json.gz</span
                         >
                         denotes 80&nbsp;% corner cases, 20&nbsp;% random pairs,
-                        50&nbsp;% unseen entities, large training split.
+                        50&nbsp;% unseen entities, large training split. The
+                        files can be read directly with pandas:
+                    </p>
+                    <pre class="bibtex">
+import pandas as pd
+
+pairs = pd.read_json(
+    "products80cc20rnd050un_train_large.json.gz",
+    compression="gzip",
+    lines=True,
+)</pre
+                    >
+                    <p>
+                        For <b>supervised matchers</b>, pick a training set,
+                        select hyperparameters on the corresponding validation
+                        set, and report F1 on the nine test sets. The test sets
+                        are the same for all training set sizes, so results
+                        obtained with different amounts of training data remain
+                        comparable. Please do not use the test pairs for
+                        training, hyperparameter selection, or prompt
+                        engineering.
+                    </p>
+                    <p>
+                        For <b>zero-shot and in-context learning</b>, the nine
+                        test sets can be used directly. If a method needs
+                        demonstration examples, they should be drawn from the
+                        training or validation sets.
+                    </p>
+                    <p>
+                        For <b>language comparisons</b>, run the same
+                        configuration on the German and the English version.
+                        Splits, labels, and identifiers are identical, so any
+                        difference in the scores is attributable to the language
+                        of the records and the translation process. Since the
+                        record identifiers line up across the two versions,
+                        German records can also be paired with English ones to
+                        build cross-lingual matching tasks.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOWNLOADS -->
+        <section class="section" id="downloads" style="background: #fafafa">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Downloads</h2>
+                <div class="content is-size-6">
+                    <p>
+                        Both language versions are available as zip archives
+                        containing all training, validation, and test sets
+                        described above.
                     </p>
                 </div>
                 <div class="columns">
@@ -1454,50 +1514,51 @@
             </div>
         </section>
 
-        <!-- BIBTEX -->
-        <section class="section" id="bibtex" style="background: #fafafa">
+        <!-- CONCLUSION -->
+        <section class="section" id="conclusion">
             <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">BibTeX</h2>
-                <!-- TODO: update once the paper is accepted/published -->
-                <pre class="bibtex" id="bibtexContent">
-@inproceedings{steiner2027billigerproducts,
-  title     = {Billiger.de Products: A Bilingual Entity Matching Benchmark},
-  author    = {Steiner, Aaron and Elagin, Ksenia and Peeters, Ralph and Bizer, Christian},
-  booktitle = {Datenbanksysteme f{\"u}r Business, Technologie und Web (BTW 2027)},
-  series    = {Lecture Notes in Informatics (LNI)},
-  publisher = {Gesellschaft f{\"u}r Informatik},
-  year      = {2027}
-}</pre
-                >
-                <script>
-                    function copyBibtex(btn) {
-                        var text = document
-                            .getElementById("bibtexContent")
-                            .textContent.trim();
-                        function feedback() {
-                            var label = btn.querySelector("span:last-child");
-                            var old = label.textContent;
-                            label.textContent = "Copied!";
-                            setTimeout(function () {
-                                label.textContent = old;
-                            }, 1600);
-                        }
-                        if (
-                            navigator.clipboard &&
-                            navigator.clipboard.writeText
-                        ) {
-                            navigator.clipboard.writeText(text).then(feedback);
-                        } else {
-                            var ta = document.createElement("textarea");
-                            ta.value = text;
-                            document.body.appendChild(ta);
-                            ta.select();
-                            document.execCommand("copy");
-                            document.body.removeChild(ta);
-                            feedback();
-                        }
-                    }
-                </script>
+                <h2 class="title is-3 has-text-centered">Conclusion</h2>
+                <div class="content is-size-6">
+                    <p>
+                        Billiger.de Products extends entity matching evaluation
+                        beyond English. It combines the largest German-language
+                        product matching benchmark to date with a structurally
+                        identical English translation, covers thirteen product
+                        domains instead of a single one, and controls task
+                        difficulty along the three dimensions of WDC Products.
+                        The baseline experiments show that all three dimensions
+                        work as intended, that broad product assortments are
+                        harder to match than the electronics-centric data of
+                        most existing benchmarks, and that the effect of the
+                        data language depends on the architecture of the
+                        matcher. A matcher that was only evaluated on English
+                        data should therefore not be expected to behave the same
+                        on German offers.
+                    </p>
+                    <p>
+                        Questions and feedback are welcome. Please contact
+                        <a
+                            href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/aaron-steiner/"
+                            >Aaron Steiner</a
+                        >
+                        or open an issue in the GitHub repository.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CITATION -->
+        <section class="section" id="citation" style="background: #fafafa">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Citation</h2>
+                <div class="content is-size-6">
+                    <!-- TODO: add BibTeX once the paper is published -->
+                    <p>
+                        The paper describing the benchmark is not published yet.
+                        Citation information will be added here as soon as it is
+                        available.
+                    </p>
+                </div>
             </div>
         </section>
 
