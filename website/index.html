@@ -1,0 +1,1517 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="description"
+            content="Billiger.de Products: a bilingual entity matching benchmark built from the manually grouped product catalog of the price comparison platform billiger.de, with a structurally identical English translation for cross-lingual evaluation."
+        />
+        <meta
+            name="keywords"
+            content="entity matching, entity resolution, benchmark, product matching, e-commerce, German, multilingual, WDC Products"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+            Billiger.de Products: A Bilingual Entity Matching Benchmark
+        </title>
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+
+        <style>
+            body {
+                font-family: "Noto Sans", sans-serif;
+            }
+            html {
+                scroll-behavior: smooth;
+                scroll-padding-top: 70px;
+            }
+            .navbar.is-spaced {
+                position: sticky;
+                top: 0;
+                z-index: 30;
+                background: #fff;
+                box-shadow:
+                    0 1px 0 rgba(0, 0, 0, 0.05),
+                    0 4px 12px rgba(0, 0, 0, 0.04);
+                padding-top: 0.6rem;
+                padding-bottom: 0.6rem;
+            }
+            .navbar-menu.is-active {
+                box-shadow: 0 8px 12px rgba(0, 0, 0, 0.06);
+            }
+            .publication-title,
+            .publication-authors,
+            .title {
+                font-family: "Google Sans", sans-serif;
+            }
+            .publication-authors a {
+                color: hsl(204, 86%, 53%) !important;
+            }
+            .publication-authors a:hover {
+                text-decoration: underline;
+            }
+            .author-block {
+                display: inline-block;
+            }
+            .section .content,
+            .section .content p,
+            .section p,
+            .section li {
+                text-align: justify;
+            }
+            .link-block a {
+                margin: 5px;
+            }
+            .mono {
+                font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+            }
+
+            /* dimension / record cards */
+            .dcard {
+                border: 1px solid #dbdbdb;
+                border-radius: 6px;
+                overflow: hidden;
+                background: #fff;
+                height: 100%;
+            }
+            .dcard .dh {
+                background: #fafafa;
+                border-bottom: 1px solid #ededed;
+                padding: 0.5rem 0.75rem;
+                font-weight: 600;
+                font-size: 0.92rem;
+                display: flex;
+                align-items: center;
+                gap: 0.45rem;
+            }
+            .dcard .db {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+            .dcard .db p {
+                margin-bottom: 0.4rem;
+            }
+            .statbox {
+                border: 1px solid #dbdbdb;
+                border-radius: 6px;
+                padding: 1rem 0.5rem;
+                background: #fff;
+                text-align: center;
+                height: 100%;
+            }
+            .statbox .title {
+                margin-bottom: 0.2rem;
+            }
+            .statbox .heading {
+                letter-spacing: 0.04em;
+            }
+
+            /* record comparison */
+            .record-attr {
+                font-size: 0.82rem;
+                margin-bottom: 0.35rem;
+                line-height: 1.35;
+            }
+            .record-attr .tagname {
+                display: inline-block;
+                min-width: 4.2em;
+                font-family: ui-monospace, Menlo, monospace;
+                font-size: 0.75rem;
+                color: #7a7a7a;
+            }
+            .hl {
+                background: #fff3c4;
+                border-radius: 3px;
+                padding: 0 2px;
+            }
+
+            /* domain distribution bars */
+            .dombar {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                margin-bottom: 0.32rem;
+                font-size: 0.85rem;
+            }
+            .dombar .dlabel {
+                flex: 0 0 12.5rem;
+                text-align: right;
+            }
+            .dombar .dtrack {
+                flex: 1;
+                background: #f1f1f1;
+                border-radius: 3px;
+                height: 0.95rem;
+                overflow: hidden;
+            }
+            .dombar .dfill {
+                height: 100%;
+                background: hsl(204, 86%, 53%);
+                border-radius: 3px;
+            }
+            .dombar .dval {
+                flex: 0 0 3.4rem;
+                font-variant-numeric: tabular-nums;
+                color: #555;
+            }
+
+            /* results tables */
+            .table.is-narrow td,
+            .table.is-narrow th {
+                padding: 0.28em 0.55em;
+                font-size: 0.83rem;
+                font-variant-numeric: tabular-nums;
+            }
+            .table thead th {
+                background: #fafafa;
+            }
+            .best {
+                font-weight: 700;
+            }
+            .takeaway {
+                border-left: 4px solid hsl(204, 86%, 53%);
+                background: #f6fbff;
+                padding: 0.9rem 1.1rem;
+                border-radius: 0 6px 6px 0;
+                margin-bottom: 0.9rem;
+            }
+            .takeaway p {
+                margin: 0;
+            }
+            pre.bibtex {
+                background: #f6f6f6;
+                border: 1px solid #e6e6e6;
+                border-radius: 6px;
+                font-size: 0.78rem;
+                overflow-x: auto;
+            }
+            .footer-note {
+                font-size: 0.85rem;
+                color: #777;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- NAV -->
+        <nav
+            class="navbar is-spaced"
+            role="navigation"
+            aria-label="main navigation"
+        >
+            <div class="container is-max-desktop">
+                <div class="navbar-brand">
+                    <a class="navbar-item has-text-weight-bold" href="#top"
+                        >Billiger.de&nbsp;Products</a
+                    >
+                    <a
+                        role="button"
+                        class="navbar-burger"
+                        aria-label="menu"
+                        aria-expanded="false"
+                        data-target="mainNav"
+                        onclick="
+                            this.classList.toggle('is-active');
+                            document
+                                .getElementById('mainNav')
+                                .classList.toggle('is-active');
+                        "
+                    >
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div id="mainNav" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="#abstract">Abstract</a>
+                        <a class="navbar-item" href="#design">Design</a>
+                        <a class="navbar-item" href="#example">Example</a>
+                        <a class="navbar-item" href="#statistics">Statistics</a>
+                        <a class="navbar-item" href="#results">Results</a>
+                        <a class="navbar-item" href="#language">Language</a>
+                        <a class="navbar-item" href="#downloads">Downloads</a>
+                        <a class="navbar-item" href="#bibtex">BibTeX</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- HERO -->
+        <section class="hero" id="top">
+            <div class="hero-body">
+                <div class="container is-max-desktop has-text-centered">
+                    <h1 class="title is-2 publication-title">
+                        Billiger.de Products: A Bilingual Entity Matching Benchmark
+                    </h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"
+                            ><a
+                                href="https://www.uni-mannheim.de/dws/people/researchers/phd-students/aaron-steiner/"
+                                >Aaron Steiner</a
+                            >,</span
+                        >
+                        <span class="author-block">Ksenia Elagin,</span>
+                        <span class="author-block"
+                            ><a
+                                href="https://www.uni-mannheim.de/dws/people/professors/dr-ralph-peeters/"
+                                >Ralph Peeters</a
+                            >,</span
+                        >
+                        <span class="author-block"
+                            ><a
+                                href="https://www.uni-mannheim.de/dws/people/professors/prof-dr-christian-bizer/"
+                                >Christian Bizer</a
+                            ></span
+                        >
+                    </div>
+                    <div
+                        class="is-size-6 publication-authors"
+                        style="margin-top: 0.4rem"
+                    >
+                        <span class="author-block"
+                            ><a
+                                href="https://www.uni-mannheim.de/dws/research/focus-groups/web-based-systems-prof-bizer/"
+                                >Data and Web Science Group, University of
+                                Mannheim</a
+                            ></span
+                        >
+                    </div>
+                    <div
+                        class="column has-text-centered"
+                        style="margin-top: 1rem"
+                    >
+                        <div class="publication-links">
+                            <!-- TODO: replace placeholder links once paper / repository are public -->
+                            <span class="link-block"
+                                ><a
+                                    href="#"
+                                    class="external-link button is-normal is-rounded is-dark"
+                                    ><span class="icon"
+                                        ><i class="fas fa-file-lines"></i></span
+                                    ><span>Paper (coming soon)</span></a
+                                ></span
+                            >
+                            <span class="link-block"
+                                ><a
+                                    href="#downloads"
+                                    class="external-link button is-normal is-rounded is-dark"
+                                    ><span class="icon"
+                                        ><i class="fas fa-database"></i></span
+                                    ><span>Download Data</span></a
+                                ></span
+                            >
+                            <span class="link-block"
+                                ><a
+                                    href="https://github.com/wbsg-uni-mannheim"
+                                    class="external-link button is-normal is-rounded is-dark"
+                                    ><span class="icon"
+                                        ><i class="fab fa-github"></i></span
+                                    ><span>Code</span></a
+                                ></span
+                            >
+                            <span class="link-block"
+                                ><a
+                                    href="#bibtex"
+                                    class="external-link button is-normal is-rounded is-dark"
+                                    onclick="
+                                        copyBibtex(this);
+                                        return false;
+                                    "
+                                    ><span class="icon"
+                                        ><i
+                                            class="fas fa-quote-right"
+                                        ></i></span
+                                    ><span>Cite</span></a
+                                ></span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABSTRACT -->
+        <section class="section" id="abstract" style="padding-top: 1rem">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Abstract</h2>
+                <div class="content is-size-6">
+                    <p>
+                        Existing entity matching benchmarks mostly contain
+                        English-language product data and often focus on a
+                        single domain such as consumer electronics.
+                        <b>Billiger.de Products</b> is an entity matching benchmark
+                        built from the manually grouped product catalog of the
+                        price comparison platform
+                        <a href="https://www.billiger.de">billiger.de</a>
+                        (operated by solute GmbH). To the best of our knowledge,
+                        it is the largest entity matching benchmark for
+                        German-language data to date.
+                    </p>
+                    <p>
+                        The benchmark follows the multi-dimensional design of
+                        <a
+                            href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
+                            >WDC Products</a
+                        >
+                        and provides controlled variation along three
+                        dimensions: the size of the training set, the fraction
+                        of hard corner cases, and the fraction of entities
+                        unseen during training. Since every record was
+                        additionally machine-translated into English, the
+                        benchmark doubles as a controlled instrument for
+                        measuring how the data language affects matching
+                        performance while keeping the task structurally
+                        identical down to individual record pairs. Baseline
+                        results cover six supervised matchers as well as GPT-5.2
+                        in a zero-shot setting on both language versions. The
+                        influence of language turns out to be
+                        architecture-dependent: models relying on English
+                        pre-training or token overlap score higher on the
+                        English version, models with strong task-specific
+                        supervision score equal or higher on the German
+                        original, and GPT-5.2 differs by less than 4 F1 points
+                        between the languages.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENCHMARK DESIGN -->
+        <section
+            class="section"
+            id="design"
+            style="background: #fafafa; padding-top: 2rem"
+        >
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Benchmark Design</h2>
+                <div class="content is-size-6">
+                    <p>
+                        The benchmark is derived from a snapshot of the
+                        operational matching process of billiger.de: 6,309,224
+                        product offers grouped into 692,495 product entities,
+                        where each group was created and manually verified by
+                        platform employees. Offers carry the attributes
+                        <span class="mono">name</span>,
+                        <span class="mono">description</span>,
+                        <span class="mono">brand</span>, and
+                        <span class="mono">price</span>. Identifiers such as EAN
+                        or manufacturer part numbers are deliberately excluded
+                        so that matching has to rely on the textual description
+                        of a product rather than identifier lookup. All test
+                        sets were verified in a two-round manual audit against a
+                        strict product identity definition: product variants
+                        that differ in size, colour, configuration, capacity, or
+                        package quantity count as <em>non-matches</em>.
+                    </p>
+                    <p>
+                        Following WDC Products, task difficulty is controlled
+                        along three dimensions, resulting in 9 training sets, 27
+                        validation sets, and 9 test sets per language:
+                    </p>
+                </div>
+                <div class="content is-size-6">
+                    <ul>
+                        <li>
+                            <b>Training set size:</b> small (2,500 pairs),
+                            medium (6,000 pairs), and large (26,888&ndash;27,393
+                            pairs) training sets. The smaller sets are subsets
+                            of the larger ones, and all three are built from the
+                            same 500 product groups.
+                        </li>
+                        <li>
+                            <b>Corner cases:</b> groups of four highly similar
+                            but distinct products generate hard positives and
+                            hard negatives. Datasets contain 20&nbsp;%,
+                            50&nbsp;%, or 80&nbsp;% corner-case product groups.
+                        </li>
+                        <li>
+                            <b>Unseen entities:</b> in the Seen, Half-Seen, and
+                            Unseen test sets, 0&nbsp;%, 50&nbsp;%, or 100&nbsp;%
+                            of the evaluated products do not occur in the
+                            training data.
+                        </li>
+                        <li>
+                            <b>Two languages:</b> every record exists in the
+                            German original and in an English machine
+                            translation. Splits, labels, and identifiers are
+                            identical, so performance differences are
+                            attributable to the language of the records and the
+                            translation process.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXAMPLE -->
+        <section class="section" id="example">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Matching Example</h2>
+                <div class="content is-size-6">
+                    <p>
+                        A real corner case from the benchmark: two wardrobe
+                        offers that agree in brand, model name, colour, and
+                        almost the entire description, yet refer to
+                        <b>different product variants</b> (168&nbsp;cm vs.
+                        85&nbsp;cm width). Under the strict identity definition
+                        of the benchmark, this pair is a <b>non-match</b>.
+                        Matchers that rely on surface similarity are reliably
+                        fooled by such pairs.
+                    </p>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-grey"
+                                    ><i class="fas fa-file-lines"></i
+                                ></span>
+                                Record A
+                                <span class="file">id&nbsp;2070627808</span>
+                            </div>
+                            <div class="db">
+                                <p class="record-attr">
+                                    <span class="tagname">brand</span> RAUCH
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">name</span> rauch
+                                    Kleiderschrank »Rasa« beige
+                                    <span class="hl">168 cm</span> x 188 cm x 52
+                                    cm
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">desc</span> …Anzahl
+                                    Türen, <span class="hl">4 St.</span>, Art
+                                    Türen, Spiegeltüren Drehtüren, Maßangaben
+                                    Breite, <span class="hl">168 cm</span>,
+                                    Tiefe, 52 cm, Höhe, 188 cm…
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">price</span> 409.99
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-grey"
+                                    ><i class="fas fa-file-lines"></i
+                                ></span>
+                                Record B
+                                <span class="file">id&nbsp;2056478070</span>
+                            </div>
+                            <div class="db">
+                                <p class="record-attr">
+                                    <span class="tagname">brand</span> RAUCH
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">name</span> rauch
+                                    Kleiderschrank »Rasa« beige
+                                    <span class="hl">85 cm</span> x 188 cm x 52
+                                    cm
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">desc</span> …Anzahl
+                                    Türen, <span class="hl">2 St.</span>, Art
+                                    Türen, Drehtüren, Maßangaben Breite,
+                                    <span class="hl">85 cm</span>, Tiefe, 52 cm,
+                                    Höhe, 188 cm…
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">price</span> 249.99
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="has-text-centered" style="margin-top: -0.4rem">
+                    <span class="tag is-danger is-light is-medium">
+                        <span class="icon"><i class="fas fa-xmark"></i></span>
+                        <span
+                            >&nbsp;Non-match: different width and door variants
+                            of the same product line</span
+                        >
+                    </span>
+                </p>
+            </div>
+        </section>
+
+        <!-- STATISTICS -->
+        <section class="section" id="statistics" style="background: #fafafa">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Dataset Statistics</h2>
+                <div class="content is-size-6">
+                    <p>
+                        Each language version contains
+                        <b>13,730 product offers</b> describing
+                        <b>2,168 distinct products</b>. Every record carries the
+                        attributes <span class="mono">name</span>,
+                        <span class="mono">description</span>,
+                        <span class="mono">brand</span>, and
+                        <span class="mono">price</span>, with name and price
+                        complete and brand and description above 99&nbsp;%
+                        coverage.
+                    </p>
+                </div>
+                <h3 class="title is-5">Product domains</h3>
+                <div class="content is-size-6">
+                    <p>
+                        The products span thirteen top-level domains. Since the
+                        retailer-provided category paths follow no common
+                        standard, each product was assigned to the taxonomy
+                        through a rule-based keyword mapping over the normalized
+                        category paths, with the remaining cases classified by
+                        GPT-5-mini. A manual validation of 500 random products
+                        found 89.0&nbsp;% of the assignments correct, 7.4&nbsp;%
+                        ambiguous, and 3.6&nbsp;% wrong. Clothing, furniture,
+                        and electronics account for the largest shares, which
+                        mirrors European e-commerce markets, where fashion is
+                        the most frequently purchased category, followed by
+                        home-related goods and electronics. The evaluation
+                        splits contain slightly more clothing and furniture than
+                        the training splits, because these variant-dense domains
+                        produce more corner cases.
+                    </p>
+                </div>
+                <div class="columns">
+                    <div class="column is-two-thirds">
+                        <div class="dombar">
+                            <span class="dlabel"
+                                >Clothing &amp; Accessories</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 100%"
+                                ></span></span
+                            ><span class="dval">25.7%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Furniture &amp; Living</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 95%"
+                                ></span></span
+                            ><span class="dval">24.4%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel"
+                                >Electronics &amp; Computers</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 61%"
+                                ></span></span
+                            ><span class="dval">15.7%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Tools &amp; DIY</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 36%"
+                                ></span></span
+                            ><span class="dval">9.4%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Sports &amp; Leisure</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 25%"
+                                ></span></span
+                            ><span class="dval">6.4%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Toys &amp; Baby</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 22%"
+                                ></span></span
+                            ><span class="dval">5.6%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel"
+                                >Automotive &amp; Motorcycle</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 18%"
+                                ></span></span
+                            ><span class="dval">4.6%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Cosmetics &amp; Drugstore</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 14%"
+                                ></span></span
+                            ><span class="dval">3.6%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Health &amp; Care</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 7%"
+                                ></span></span
+                            ><span class="dval">1.8%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Office Supplies</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 4%"
+                                ></span></span
+                            ><span class="dval">1.0%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Food &amp; Beverages</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 3.3%"
+                                ></span></span
+                            ><span class="dval">0.9%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Books, Movies &amp; Music</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 3.2%"
+                                ></span></span
+                            ><span class="dval">0.8%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Pet Supplies</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 1.4%"
+                                ></span></span
+                            ><span class="dval">0.4%</span>
+                        </div>
+                        <p class="footer-note" style="margin-top: 0.6rem">
+                            Average share of each product domain across all
+                            benchmark variants.
+                        </p>
+                    </div>
+                </div>
+                <h3 class="title is-5" style="margin-top: 1.4rem">
+                    Benchmark sets
+                </h3>
+                <div class="content is-size-6">
+                    <p>
+                        Match labels are inherited from the manually verified
+                        product groups of billiger.de. Positive pairs are
+                        generated exhaustively within each product group,
+                        negative pairs combine similarity-based hard negatives
+                        with one random negative per offer. The number of hard
+                        negatives per offer grows with the training set size,
+                        which is why the large training sets are close to
+                        balanced while the evaluation sets are strongly
+                        imbalanced.
+                    </p>
+                    <p>
+                        The test sets contain roughly 4,470 pairs each with a
+                        class imbalance of 1:10 to 1:12 between matches and
+                        non-matches, the condition matchers face in production
+                        candidate streams. All nine test sets went through a
+                        two-round manual audit against the strict identity
+                        definition described above. The audit mainly relabelled
+                        pairs in which distinct product variants had been
+                        grouped together, so the test labels are cleaner than
+                        the operational labels that the training splits retain.
+                    </p>
+                </div>
+                <div class="columns">
+                    <div class="column is-7">
+                        <h3 class="title is-5">Training and validation sets</h3>
+                        <div class="table-container">
+                            <table
+                                class="table is-narrow is-fullwidth is-striped has-text-right"
+                            >
+                                <thead>
+                                    <tr>
+                                        <th class="has-text-left" rowspan="2">
+                                            Corner cases
+                                        </th>
+                                        <th class="has-text-left" rowspan="2">
+                                            Size
+                                        </th>
+                                        <th colspan="3">Training</th>
+                                        <th colspan="3">Validation</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Pos.</th>
+                                        <th>Neg.</th>
+                                        <th>Total</th>
+                                        <th>Pos.</th>
+                                        <th>Neg.</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="has-text-left" rowspan="3">
+                                            20&nbsp;%
+                                        </td>
+                                        <td class="has-text-left">Small</td>
+                                        <td>500</td>
+                                        <td>2,000</td>
+                                        <td>2,500</td>
+                                        <td>500</td>
+                                        <td>2,000</td>
+                                        <td>2,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">Medium</td>
+                                        <td>1,500</td>
+                                        <td>4,500</td>
+                                        <td>6,000</td>
+                                        <td>500</td>
+                                        <td>3,000</td>
+                                        <td>3,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">Large</td>
+                                        <td>13,273</td>
+                                        <td>14,120</td>
+                                        <td>27,393</td>
+                                        <td>500</td>
+                                        <td>4,000</td>
+                                        <td>4,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left" rowspan="3">
+                                            50&nbsp;%
+                                        </td>
+                                        <td class="has-text-left">Small</td>
+                                        <td>500</td>
+                                        <td>2,000</td>
+                                        <td>2,500</td>
+                                        <td>500</td>
+                                        <td>2,000</td>
+                                        <td>2,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">Medium</td>
+                                        <td>1,500</td>
+                                        <td>4,500</td>
+                                        <td>6,000</td>
+                                        <td>500</td>
+                                        <td>3,000</td>
+                                        <td>3,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">Large</td>
+                                        <td>13,196</td>
+                                        <td>14,128</td>
+                                        <td>27,324</td>
+                                        <td>500</td>
+                                        <td>4,000</td>
+                                        <td>4,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left" rowspan="3">
+                                            80&nbsp;%
+                                        </td>
+                                        <td class="has-text-left">Small</td>
+                                        <td>500</td>
+                                        <td>2,000</td>
+                                        <td>2,500</td>
+                                        <td>500</td>
+                                        <td>2,000</td>
+                                        <td>2,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">Medium</td>
+                                        <td>1,500</td>
+                                        <td>4,500</td>
+                                        <td>6,000</td>
+                                        <td>500</td>
+                                        <td>3,000</td>
+                                        <td>3,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">Large</td>
+                                        <td>12,896</td>
+                                        <td>13,992</td>
+                                        <td>26,888</td>
+                                        <td>500</td>
+                                        <td>4,000</td>
+                                        <td>4,500</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="footer-note">
+                            All 9 training sets (3 corner-case ratios &times; 3
+                            sizes). Validation counts depend only on the size,
+                            resulting in 27 validation sets per language (3
+                            ratios &times; 3 sizes &times; 3 unseen levels).
+                        </p>
+                    </div>
+                    <div class="column is-5">
+                        <h3 class="title is-5">Test sets</h3>
+                        <div class="table-container">
+                            <table
+                                class="table is-narrow is-fullwidth is-striped has-text-right"
+                            >
+                                <thead>
+                                    <tr>
+                                        <th class="has-text-left">
+                                            Corner cases
+                                        </th>
+                                        <th class="has-text-left">Unseen</th>
+                                        <th>Pos.</th>
+                                        <th>Neg.</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="has-text-left" rowspan="3">
+                                            20&nbsp;%
+                                        </td>
+                                        <td class="has-text-left">0&nbsp;%</td>
+                                        <td>408</td>
+                                        <td>4,070</td>
+                                        <td>4,478</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">50&nbsp;%</td>
+                                        <td>355</td>
+                                        <td>4,100</td>
+                                        <td>4,455</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">
+                                            100&nbsp;%
+                                        </td>
+                                        <td>366</td>
+                                        <td>4,093</td>
+                                        <td>4,459</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left" rowspan="3">
+                                            50&nbsp;%
+                                        </td>
+                                        <td class="has-text-left">0&nbsp;%</td>
+                                        <td>366</td>
+                                        <td>4,104</td>
+                                        <td>4,470</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">50&nbsp;%</td>
+                                        <td>355</td>
+                                        <td>4,111</td>
+                                        <td>4,466</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">
+                                            100&nbsp;%
+                                        </td>
+                                        <td>382</td>
+                                        <td>4,097</td>
+                                        <td>4,479</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left" rowspan="3">
+                                            80&nbsp;%
+                                        </td>
+                                        <td class="has-text-left">0&nbsp;%</td>
+                                        <td>346</td>
+                                        <td>4,128</td>
+                                        <td>4,474</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">50&nbsp;%</td>
+                                        <td>371</td>
+                                        <td>4,099</td>
+                                        <td>4,470</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="has-text-left">
+                                            100&nbsp;%
+                                        </td>
+                                        <td>356</td>
+                                        <td>4,107</td>
+                                        <td>4,463</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="footer-note">
+                            All 9 verified test sets (3 corner-case ratios
+                            &times; 3 unseen levels). Test sets do not vary with
+                            the training set size. Counts are identical for the
+                            German and the English version.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTS -->
+        <section class="section" id="results">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Baseline Results</h2>
+                <div class="content is-size-6">
+                    <p>
+                        Six supervised matchers spanning four methodological
+                        generations (word co-occurrence, feature-based machine
+                        learning, fine-tuned transformers, contrastive and
+                        graph-based architectures) were evaluated across all 27
+                        configurations of both language versions, plus GPT-5.2
+                        in a strict zero-shot setting. The table shows F1 scores
+                        on the German benchmark for the <b>large</b> training
+                        size. GPT-5.2 uses the rule-guided prompt and no
+                        training data at all.
+                    </p>
+                </div>
+                <div class="table-container">
+                    <table
+                        class="table is-narrow is-fullwidth is-striped has-text-right"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="has-text-left">Corner cases</th>
+                                <th class="has-text-left">Test set</th>
+                                <th>WordCooc</th>
+                                <th>Magellan</th>
+                                <th>RoBERTa</th>
+                                <th>R-SupCon</th>
+                                <th>HierGAT</th>
+                                <th>Ditto</th>
+                                <th>GPT-5.2 zero-shot</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    20&nbsp;%
+                                </td>
+                                <td class="has-text-left">Seen</td>
+                                <td>72.12</td>
+                                <td>55.73</td>
+                                <td>84.95</td>
+                                <td>82.33</td>
+                                <td>89.41</td>
+                                <td class="best">91.76</td>
+                                <td>79.94</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>55.98</td>
+                                <td>49.78</td>
+                                <td>69.57</td>
+                                <td>58.28</td>
+                                <td>79.43</td>
+                                <td>78.54</td>
+                                <td class="best">84.91</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>38.11</td>
+                                <td>47.15</td>
+                                <td>59.24</td>
+                                <td>46.65</td>
+                                <td>65.80</td>
+                                <td>65.24</td>
+                                <td class="best">84.67</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    50&nbsp;%
+                                </td>
+                                <td class="has-text-left">Seen</td>
+                                <td>64.78</td>
+                                <td>42.91</td>
+                                <td>76.31</td>
+                                <td>73.48</td>
+                                <td>79.90</td>
+                                <td class="best">84.91</td>
+                                <td>83.93</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>49.65</td>
+                                <td>42.87</td>
+                                <td>61.87</td>
+                                <td>50.83</td>
+                                <td>71.09</td>
+                                <td>71.75</td>
+                                <td class="best">80.65</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>31.08</td>
+                                <td>40.95</td>
+                                <td>53.31</td>
+                                <td>38.38</td>
+                                <td>62.16</td>
+                                <td>59.33</td>
+                                <td class="best">77.78</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    80&nbsp;%
+                                </td>
+                                <td class="has-text-left">Seen</td>
+                                <td>51.36</td>
+                                <td>35.98</td>
+                                <td>70.71</td>
+                                <td>65.65</td>
+                                <td>73.39</td>
+                                <td>72.69</td>
+                                <td class="best">79.32</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>43.16</td>
+                                <td>36.42</td>
+                                <td>60.56</td>
+                                <td>47.27</td>
+                                <td>65.40</td>
+                                <td>64.10</td>
+                                <td class="best">79.82</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>22.01</td>
+                                <td>33.63</td>
+                                <td>48.86</td>
+                                <td>30.86</td>
+                                <td>54.01</td>
+                                <td>51.69</td>
+                                <td class="best">80.63</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="footer-note">
+                    F1 on the German benchmark, large training size, best value
+                    per row in bold. GPT-5.2: zero-shot with rule-guided prompt.
+                    Full results for all 27 configurations, both languages, and
+                    both prompts are reported in the paper.
+                </p>
+                <div class="content is-size-6" style="margin-top: 1.4rem">
+                    <p>
+                        The three difficulty dimensions work as intended. F1
+                        increases with the training set size, decreases as the
+                        corner-case ratio grows from 20&nbsp;% to 80&nbsp;%, and
+                        decreases from the Seen to the Unseen test sets. Between
+                        its easiest and its hardest German variant, each
+                        supervised model loses between 24 (Magellan) and 61
+                        (RoBERTa) F1 points. The Seen-to-Unseen drops are larger
+                        than those reported on WDC Products, because unseen
+                        entities can come from any of the thirteen product
+                        domains instead of staying within a single familiar one.
+                    </p>
+                    <p>
+                        Ditto and HierGAT are the strongest supervised systems
+                        and reach 91.76 and 89.41 F1 on the easiest German
+                        variant. Zero-shot GPT-5.2 behaves differently. Under
+                        the rule-guided prompt it varies by at most 7 F1 points
+                        across all difficulty settings (19 under the simple
+                        prompt), and it leads on every Unseen test set, where
+                        supervised models lose the training signal they depend
+                        on. Supervised matchers overtake GPT-5.2 only on Seen
+                        test sets with medium or large training data. One caveat
+                        applies to the GPT-5.2 numbers: the model also served as
+                        the flagging tool during test set verification, so the
+                        exact margins between GPT-5.2 and the supervised systems
+                        should be read with care.
+                    </p>
+                    <p>
+                        Matching difficulty also differs between product
+                        domains, and the ranking is the same for every model and
+                        both languages. Tools and electronics are the easiest
+                        categories, as their product titles contain model
+                        numbers and technical specifications. Clothing and
+                        furniture are the hardest, because offers for different
+                        product variants share nearly identical descriptions.
+                        Evaluations on electronics-centric benchmarks therefore
+                        overestimate matching performance on broad product
+                        assortments.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LANGUAGE EFFECTS -->
+        <section class="section" id="language" style="background: #fafafa">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">German vs. English</h2>
+                <div class="content is-size-6">
+                    <p>
+                        Because the English version is a record-level
+                        translation of the German original with identical splits
+                        and labels, the benchmark measures the combined effect
+                        of the data language and the translation on matching
+                        performance. For most architectures this effect is small
+                        (mean differences within &plusmn;1.6 F1). Where it is
+                        larger,
+                        <b>the direction depends on the architecture.</b>
+                    </p>
+                </div>
+                <div class="table-container">
+                    <table
+                        class="table is-narrow is-fullwidth is-striped has-text-right"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="has-text-left">Corner cases</th>
+                                <th class="has-text-left">Test set</th>
+                                <th>WordCooc</th>
+                                <th>Magellan</th>
+                                <th>RoBERTa</th>
+                                <th>R-SupCon</th>
+                                <th>HierGAT</th>
+                                <th>Ditto</th>
+                                <th>GPT-5.2 Simple</th>
+                                <th>GPT-5.2 Rule</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    20&nbsp;%
+                                </td>
+                                <td class="has-text-left">Seen</td>
+                                <td>+0.81</td>
+                                <td>&minus;0.79</td>
+                                <td>&minus;0.21</td>
+                                <td>+1.67</td>
+                                <td>&minus;5.23</td>
+                                <td>&minus;5.60</td>
+                                <td>&minus;0.10</td>
+                                <td>&minus;2.19</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>+0.71</td>
+                                <td>&minus;0.38</td>
+                                <td>&minus;1.06</td>
+                                <td>&minus;0.82</td>
+                                <td>&minus;8.87</td>
+                                <td>&minus;9.18</td>
+                                <td>&minus;0.09</td>
+                                <td>+0.63</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>+6.47</td>
+                                <td>+0.38</td>
+                                <td>+2.10</td>
+                                <td>&minus;0.68</td>
+                                <td>&minus;3.83</td>
+                                <td>&minus;4.92</td>
+                                <td>&minus;0.82</td>
+                                <td>+0.15</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    50&nbsp;%
+                                </td>
+                                <td class="has-text-left">Seen</td>
+                                <td>&minus;1.72</td>
+                                <td>&minus;1.27</td>
+                                <td>+0.56</td>
+                                <td>+1.81</td>
+                                <td>&minus;4.92</td>
+                                <td>&minus;6.91</td>
+                                <td>+0.57</td>
+                                <td>&minus;2.08</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>+1.18</td>
+                                <td>&minus;2.99</td>
+                                <td>+1.48</td>
+                                <td>&minus;0.48</td>
+                                <td>&minus;5.46</td>
+                                <td>&minus;9.04</td>
+                                <td>+0.41</td>
+                                <td>+2.89</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>+3.74</td>
+                                <td>&minus;2.53</td>
+                                <td>+1.49</td>
+                                <td>&minus;1.29</td>
+                                <td>&minus;2.55</td>
+                                <td>&minus;6.06</td>
+                                <td>&minus;1.06</td>
+                                <td>+3.34</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    80&nbsp;%
+                                </td>
+                                <td class="has-text-left">Seen</td>
+                                <td>+0.93</td>
+                                <td>&minus;2.59</td>
+                                <td>+2.31</td>
+                                <td>&minus;0.59</td>
+                                <td>&minus;5.30</td>
+                                <td>+0.27</td>
+                                <td>&minus;0.76</td>
+                                <td>&minus;0.38</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>+1.18</td>
+                                <td>&minus;1.85</td>
+                                <td>+5.54</td>
+                                <td>&minus;0.73</td>
+                                <td>&minus;2.54</td>
+                                <td>+0.40</td>
+                                <td>+2.99</td>
+                                <td>+2.96</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>+4.74</td>
+                                <td>&minus;1.10</td>
+                                <td>+5.35</td>
+                                <td>+1.16</td>
+                                <td>&minus;0.52</td>
+                                <td>+2.55</td>
+                                <td>+1.31</td>
+                                <td>+0.89</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" colspan="2">
+                                    <b>Mean (all 27 variants)</b>
+                                </td>
+                                <td><b>+1.49</b></td>
+                                <td><b>&minus;1.53</b></td>
+                                <td><b>+2.31</b></td>
+                                <td><b>+0.44</b></td>
+                                <td><b>+0.42</b></td>
+                                <td><b>&minus;5.73</b></td>
+                                <td><b>+0.27</b></td>
+                                <td><b>+0.69</b></td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" colspan="2">
+                                    <b>Median (all 27 variants)</b>
+                                </td>
+                                <td><b>+0.93</b></td>
+                                <td><b>&minus;1.57</b></td>
+                                <td><b>+2.78</b></td>
+                                <td><b>&minus;0.03</b></td>
+                                <td><b>&minus;1.04</b></td>
+                                <td><b>&minus;4.92</b></td>
+                                <td><b>&minus;0.09</b></td>
+                                <td><b>+0.63</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="footer-note">
+                    F1 difference English minus German per benchmark variant,
+                    shown for the large training size. Positive values mean the
+                    model scores higher on the English version, negative values
+                    mean it scores higher on the German original. The mean and
+                    median rows summarize all 27 variants. GPT-5.2 results are
+                    independent of the training set size.
+                </p>
+                <div class="content is-size-6" style="margin-top: 1.4rem">
+                    <p>
+                        Matchers that depend on English surface forms score
+                        higher on the English version. WordCooc gains up to 6.5
+                        F1 points, because German compounds and rich morphology
+                        reduce the exact token overlap it relies on. RoBERTa,
+                        pre-trained mostly on English text, wins 22 of 27
+                        configurations on the English version with a mean
+                        difference of +2.31 F1. Magellan leans the other way, as
+                        its character-level similarity features turn the long
+                        shared substrings inside German compounds into a usable
+                        signal.
+                    </p>
+                    <p>
+                        Task-specific supervision compensates the English
+                        pre-training bias. R-SupCon is balanced with 13 wins for
+                        English and 14 for German. HierGAT favours the German
+                        original in 17 of 27 configurations, including all nine
+                        large-training configurations shown above, and Ditto in
+                        23 of 27 with a mean difference of &minus;5.73 F1.
+                        Zero-shot GPT-5.2 differs by less than 4 F1 points
+                        between the languages in every configuration.
+                    </p>
+                    <p>
+                        The practical implication is direct. Matchers that rely
+                        on English pre-trained representations or surface token
+                        statistics should not be applied to German product data
+                        without prior evaluation. Matchers with strong
+                        task-specific supervision and zero-shot LLMs transfer
+                        across the two languages without a systematic penalty.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOWNLOADS -->
+        <section class="section" id="downloads">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Downloads</h2>
+                <div class="content is-size-6">
+                    <p>
+                        The benchmark is distributed as gzipped JSON files (one
+                        record pair per line, containing both product records,
+                        the binary match label, and a hard-negative indicator).
+                        The naming scheme encodes the configuration:
+                        <span class="mono"
+                            >products80cc20rnd050un_train_large.json.gz</span
+                        >
+                        denotes 80&nbsp;% corner cases, 20&nbsp;% random pairs,
+                        50&nbsp;% unseen entities, large training split.
+                    </p>
+                </div>
+                <div class="columns">
+                    <div class="column is-half">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-info"
+                                    ><i class="fas fa-flag"></i
+                                ></span>
+                                German version (original)
+                            </div>
+                            <div class="db">
+                                <p>
+                                    9 training sets, 27 validation sets, 9
+                                    manually verified test sets.
+                                </p>
+                                <!-- TODO: replace with final hosting URL -->
+                                <a
+                                    class="button is-small is-dark is-rounded"
+                                    href="#"
+                                >
+                                    <span class="icon"
+                                        ><i class="fas fa-download"></i
+                                    ></span>
+                                    <span>solute_de.zip (coming soon)</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-info"
+                                    ><i class="fas fa-language"></i
+                                ></span>
+                                English version (translation)
+                            </div>
+                            <div class="db">
+                                <p>
+                                    Structurally identical translation of every
+                                    record with the same splits, labels, and
+                                    identifiers.
+                                </p>
+                                <!-- TODO: replace with final hosting URL -->
+                                <a
+                                    class="button is-small is-dark is-rounded"
+                                    href="#"
+                                >
+                                    <span class="icon"
+                                        ><i class="fas fa-download"></i
+                                    ></span>
+                                    <span>solute_en.zip (coming soon)</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="footer-note">
+                    The product data was kindly provided by
+                    <a href="https://www.solute.de/">solute GmbH</a>. The
+                    release comprises the benchmark sets listed above, while the
+                    underlying product corpus is not published. Please see the
+                    download package for licensing terms.
+                </p>
+            </div>
+        </section>
+
+        <!-- BIBTEX -->
+        <section class="section" id="bibtex" style="background: #fafafa">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">BibTeX</h2>
+                <!-- TODO: update once the paper is accepted/published -->
+                <pre class="bibtex" id="bibtexContent">
+@inproceedings{steiner2027billigerproducts,
+  title     = {Billiger.de Products: A Bilingual Entity Matching Benchmark},
+  author    = {Steiner, Aaron and Elagin, Ksenia and Peeters, Ralph and Bizer, Christian},
+  booktitle = {Datenbanksysteme f{\"u}r Business, Technologie und Web (BTW 2027)},
+  series    = {Lecture Notes in Informatics (LNI)},
+  publisher = {Gesellschaft f{\"u}r Informatik},
+  year      = {2027}
+}</pre
+                >
+                <script>
+                    function copyBibtex(btn) {
+                        var text = document
+                            .getElementById("bibtexContent")
+                            .textContent.trim();
+                        function feedback() {
+                            var label = btn.querySelector("span:last-child");
+                            var old = label.textContent;
+                            label.textContent = "Copied!";
+                            setTimeout(function () {
+                                label.textContent = old;
+                            }, 1600);
+                        }
+                        if (
+                            navigator.clipboard &&
+                            navigator.clipboard.writeText
+                        ) {
+                            navigator.clipboard.writeText(text).then(feedback);
+                        } else {
+                            var ta = document.createElement("textarea");
+                            ta.value = text;
+                            document.body.appendChild(ta);
+                            ta.select();
+                            document.execCommand("copy");
+                            document.body.removeChild(ta);
+                            feedback();
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+
+        <footer class="footer" style="padding: 2rem 1.5rem">
+            <div class="container is-max-desktop has-text-centered footer-note">
+                <p>
+                    Data and Web Science Group, University of Mannheim &middot;
+                    Benchmark data provided by solute GmbH / billiger.de
+                    &middot; Website based on the
+                    <a href="https://github.com/nerfies/nerfies.github.io"
+                        >Nerfies</a
+                    >-style academic page template.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>
