@@ -322,16 +322,7 @@
                         style="margin-top: 1rem"
                     >
                         <div class="publication-links">
-                            <!-- TODO: replace placeholder links once paper / repository are public -->
-                            <span class="link-block"
-                                ><a
-                                    href="#"
-                                    class="external-link button is-normal is-rounded is-dark"
-                                    ><span class="icon"
-                                        ><i class="fas fa-file-lines"></i></span
-                                    ><span>Paper (coming soon)</span></a
-                                ></span
-                            >
+                            <!-- TODO: add a Paper button here once the paper is published -->
                             <span class="link-block"
                                 ><a
                                     href="#downloads"
@@ -343,7 +334,7 @@
                             >
                             <span class="link-block"
                                 ><a
-                                    href="https://github.com/wbsg-uni-mannheim"
+                                    href="https://github.com/wbsg-uni-mannheim/billiger-de-products"
                                     class="external-link button is-normal is-rounded is-dark"
                                     ><span class="icon"
                                         ><i class="fab fa-github"></i></span
@@ -523,10 +514,9 @@
                         category paths, with the remaining cases classified by
                         GPT-5-mini. A manual validation of 500 random products
                         found 89.0&nbsp;% of the assignments correct, 7.4&nbsp;%
-                        ambiguous, and 3.6&nbsp;% [@Chris wollen wir das so
-                        transparent sagen?]. Clothing, furniture, and
-                        electronics account for the largest shares, followed by
-                        home-related goods and electronics.
+                        ambiguous, and 3.6&nbsp;% wrong [@Chris wollen wir das
+                        so transparent sagen?]. Clothing, furniture, and
+                        electronics account for the largest shares.
                     </p>
                 </div>
                 <div class="columns">
@@ -1018,8 +1008,8 @@
                         configurations of both language versions, plus GPT-5.2
                         in a strict zero-shot setting. The table shows F1 scores
                         on the German benchmark for all three training sizes.
-                        GPT-5.2 uses no training data. Both the Simple and the
-                        Rule-Guided prompt results are included.
+                        GPT-5.2 uses no training data, and results are shown for
+                        both the Simple and the Rule-Guided prompt.
                     </p>
                 </div>
                 <div class="table-container">
@@ -1410,10 +1400,9 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         WordCooc and Magellan average only 43.89 and 42.85 F1
                         across the 27 German variants, which is too low for
                         practical use on this benchmark. Neural matchers such as
-                        Ditto are more viable and can reach strong scores in
-                        favorable configurations, but, as reported for WDC
-                        Products, they remain strongly affected by unseen
-                        entities. Averaged across all corner-case ratios and
+                        Ditto reach up to 91.76 F1 in favorable configurations,
+                        but, as reported for WDC Products, they remain strongly
+                        affected by unseen entities. Averaged across all corner-case ratios and
                         training sizes, Ditto loses 19.53 F1 from Seen to Unseen
                         test sets. Even zero-shot GPT-5.2 does not solve the
                         benchmark: with the stronger Rule-Guided prompt, its
@@ -1423,10 +1412,10 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                     </p>
                     <p>
                         The three difficulty dimensions separate the benchmark
-                        variants as intended. Overall, F1 tends to increase with
-                        the training set size, decreases as the corner-case
-                        ratio grows from 20&nbsp;% to 80&nbsp;%, and decreases
-                        from the Seen to the Unseen test sets. Individual
+                        variants as intended. F1 generally increases with the
+                        training set size, decreases as the corner-case ratio
+                        grows from 20&nbsp;% to 80&nbsp;%, and decreases from
+                        the Seen to the Unseen test sets. Individual
                         medium-to-large results can deviate from the overall
                         training-size trend. Comparing the Large, 20&nbsp;%
                         corner-case, Seen row with the Small, 80&nbsp;%
@@ -1444,8 +1433,8 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         Ditto and HierGAT are the strongest supervised systems
                         and reach 91.76 and 89.41 F1 on the easiest German
                         variant. Zero-shot GPT-5.2 behaves differently. Under
-                        the rule-guided prompt it varies by at most 7 F1 points
-                        across all difficulty settings (19 under the simple
+                        the Rule-Guided prompt its F1 varies by 7.13 points
+                        across all difficulty settings (19.15 under the Simple
                         prompt), and it leads on every Unseen test set, where
                         supervised models lose the training signal they depend
                         on. Supervised matchers overtake GPT-5.2 only on Seen
@@ -1616,9 +1605,9 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         translation of the German original with identical splits
                         and labels, the benchmark measures the combined effect
                         of the data language and the translation on matching
-                        performance. For most architectures this effect is small
-                        (mean differences within &plusmn;1.6 F1). Where it is
-                        larger,
+                        performance. For four of the six supervised matchers and
+                        both GPT-5.2 prompts, the mean difference stays within
+                        &plusmn;1.6 F1. Where it is larger,
                         <b>the direction depends on the architecture.</b>
                     </p>
                 </div>
@@ -2031,12 +2020,12 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         supervised matchers, the mean absolute language gap
                         decreases from 5.25 F1 with Small training sets to 3.77
                         with Medium and 2.76 with Large sets. RoBERTa's extreme
-                        differences account for part of this trend; after
+                        differences account for part of this trend. After
                         excluding RoBERTa, the corresponding values are 4.36,
                         2.65, and 2.86 F1. Language sensitivity therefore tends to
                         be greater when little training data is available, but
-                        the decrease is not consistent for every matcher. It
-                        does not confirm a general English advantage: even with
+                        the decrease is not consistent for every matcher. This
+                        pattern does not confirm a general English advantage: even with
                         Small training sets, fewer than half of the non-RoBERTa
                         comparisons favor English.
                     </p>
@@ -2082,9 +2071,9 @@ pairs = pd.read_json(
                         comparable.
                     </p>
                     <p>
-                        For <b>zero-shot and in-context learning:</b> If a method needs
-                        demonstration examples, they should be drawn from the
-                        training or validation sets.
+                        For <b>zero-shot and in-context learning</b>,
+                        demonstration examples should be drawn from the training
+                        or validation sets.
                     </p>
                     <p>
                         For <b>language comparisons</b>, run the same
@@ -2127,7 +2116,7 @@ pairs = pd.read_json(
                                 </p>
                                 <a
                                     class="button is-small is-dark is-rounded"
-                                    href="https://media.githubusercontent.com/media/wbsg-uni-mannheim/german-wdc/main/data/solute_de.zip"
+                                    href="https://media.githubusercontent.com/media/wbsg-uni-mannheim/billiger-de-products/main/data/solute_de.zip"
                                     download="solute_de.zip"
                                 >
                                     <span class="icon"
@@ -2154,7 +2143,7 @@ pairs = pd.read_json(
                                 </p>
                                 <a
                                     class="button is-small is-dark is-rounded"
-                                    href="https://media.githubusercontent.com/media/wbsg-uni-mannheim/german-wdc/main/data/solute_en.zip"
+                                    href="https://media.githubusercontent.com/media/wbsg-uni-mannheim/billiger-de-products/main/data/solute_en.zip"
                                     download="solute_en.zip"
                                 >
                                     <span class="icon"
@@ -2191,8 +2180,8 @@ pairs = pd.read_json(
                     <p>
                         The results show that both the benchmark configuration
                         and the product domain matter. Supervised matchers
-                        generally benefit from more training data and perform
-                        less well as the corner-case share increases or test
+                        generally benefit from more training data and score
+                        lower as the corner-case share increases or test
                         entities move from Seen to Unseen, although individual
                         configurations can deviate from these trends. Tools and
                         electronics are among the best-performing domains,
@@ -2208,10 +2197,10 @@ pairs = pd.read_json(
                         sensitivity tends to be greater when little training
                         data is available, but this pattern is not consistent
                         for every model, and Ditto remains an unexplained
-                        exception. Taken together, the findings support
-                        evaluating product matchers across languages, product
-                        domains, and difficulty settings rather than
-                        generalizing from one benchmark configuration.
+                        exception. The findings support evaluating product
+                        matchers across languages, product domains, and
+                        difficulty settings rather than generalizing from one
+                        benchmark configuration.
                     </p>
                     <p>
                         Questions and feedback are welcome. Please contact
