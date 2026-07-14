@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta
             name="description"
-            content="Billiger.de Products: a bilingual entity matching benchmark built from the manually grouped product catalog of the price comparison platform billiger.de, with a structurally identical English translation for cross-lingual evaluation."
+            content="Billiger.de Products: a bilingual entity matching benchmark built using offers originating from the price comparison platform billiger.de. The offers are also translated to English to enable cross-lingual evaluation."
         />
         <meta
             name="keywords"
@@ -265,9 +265,9 @@
                             >Introduction</a
                         >
                         <a class="navbar-item" href="#design">Benchmark</a>
-                        <a class="navbar-item" href="#example">Example</a>
+                        <a class="navbar-item" href="#example">Examples</a>
                         <a class="navbar-item" href="#results">Results</a>
-                        <a class="navbar-item" href="#language">Language</a>
+                        <a class="navbar-item" href="#language">Translation</a>
                         <a class="navbar-item" href="#usage">How to Use</a>
                         <a class="navbar-item" href="#downloads">Downloads</a>
                         <a class="navbar-item" href="#citation">Citation</a>
@@ -449,26 +449,22 @@
                 <h2 class="title is-3 has-text-centered">The Benchmark</h2>
                 <div class="content is-size-6">
                     <p>
-                        The benchmark is derived from a snapshot of the
-                        operational matching process of billiger.de: 6,309,224
-                        product offers grouped into 692,495 product entities,
-                        where each group was created and manually verified by
-                        platform employees. The benchmark itself contains
+                        The benchmark use product offers originating from the German price comparison portal <a href="https://www.billiger.de/">billiger.de</a>.  The benchmark consists of
                         <b>13,730 product offers</b> describing
-                        <b>2,168 distinct products</b> per language version.
-                        Every record carries the attributes
+                        <b>2,168 distinct products</b>.
+                        Every offer carries the attributes
                         <span class="mono">name</span>,
                         <span class="mono">description</span>,
                         <span class="mono">brand</span>, and
-                        <span class="mono">price</span>, with name and price
-                        complete and brand and description above 99&nbsp;%
-                        coverage. Identifiers such as EAN or manufacturer part
-                        numbers are deliberately excluded so that matching has
-                        to rely on the textual description of a product rather
+                        <span class="mono">price</span>, with the attributes name and price
+                        having a value density of 100%, while brand and description have a density above 99&nbsp;%
+                        . Identifiers such as EAN or manufacturer part
+                        numbers are deleted from the offers so that matchers need to
+                        rely on the textual description of a product rather
                         than identifier lookup.
                     </p>
                     <p>
-                        Following WDC Products, task difficulty is controlled
+                        Following the design of <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/">WDC Products</a>, task difficulty is controlled
                         along three dimensions, resulting in 9 training sets, 27
                         validation sets, and 9 test sets per language:
                     </p>
@@ -504,19 +500,10 @@
                         </li>
                     </ul>
                 </div>
-                <h3 class="title is-5">Product domains</h3>
+                <h3 class="title is-5">Product Categories</h3>
                 <div class="content is-size-6">
                     <p>
-                        The products span thirteen top-level domains. Since the
-                        retailer-provided category paths follow no common
-                        standard, each product was assigned to the taxonomy
-                        through a rule-based keyword mapping over the normalized
-                        category paths, with the remaining cases classified by
-                        GPT-5-mini. A manual validation of 500 random products
-                        found 89.0&nbsp;% of the assignments correct, 7.4&nbsp;%
-                        ambiguous, and 3.6&nbsp;% wrong [@Chris wollen wir das
-                        so transparent sagen?]. Clothing, furniture, and
-                        electronics account for the largest shares.
+                        The products belong to thirteen different product categories. The figure below shows the amount of product offers that belong to each category. Clothing, furniture, and electronics account for the largest shares.
                     </p>
                 </div>
                 <div class="columns">
@@ -642,7 +629,7 @@
                             ><span class="dval">0.4%</span>
                         </div>
                         <p class="footer-note" style="margin-top: 0.6rem">
-                            Average share of each product domain across all
+                            Average share of offers belonging to the each product category across all
                             benchmark variants.
                         </p>
                     </div>
@@ -904,10 +891,16 @@
         <!-- EXAMPLE -->
         <section class="section" id="example" style="background: #fafafa">
             <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">Matching Example</h2>
+                <h2 class="title is-3 has-text-centered">Matching Examples</h2>
+				<div class="content is-size-6">
+                    <p>
+                        [@Aaron: Please add 2 additional examples covering different product categories (one corner-case match and another non-match).]
+						Several examples of matching and non-matching product pairs from different product categories are provided below.
+                    </p>
+                </div>
                 <div class="content is-size-6">
                     <p>
-                        A real corner case from the benchmark: two wardrobe
+						A real corner case from the benchmark: two wardrobe
                         offers that agree in brand, model name, color, and
                         almost the entire description, yet refer to
                         <b>different product variants</b> (168&nbsp;cm vs.
@@ -1598,17 +1591,11 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
         <!-- LANGUAGE EFFECTS -->
         <section class="section" id="language" style="background: #fafafa">
             <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">German vs. English</h2>
+                <h2 class="title is-3 has-text-centered">English Translation</h2>
                 <div class="content is-size-6">
                     <p>
-                        Because the English version is a record-level
-                        translation of the German original with identical splits
-                        and labels, the benchmark measures the combined effect
-                        of the data language and the translation on matching
-                        performance. For four of the six supervised matchers and
-                        both GPT-5.2 prompts, the mean difference stays within
-                        &plusmn;1.6 F1. Where it is larger,
-                        <b>the direction depends on the architecture.</b>
+                        In addition to the German version of the benchmark, we also provide a Englisch version of the benchmark. The Englisch version was created by translating the German product offers to English using GPT-5.2. The English version offers exactly the same variants and the same splits as the German version. 
+						The table below compares the F1 results of the eight matchers on the English version to the results on the original German version. The table reports  the difference of the F1 score on the English version minus the F1 score on the German version for all 27 benchmark variants.
                     </p>
                 </div>
                 <div class="table-container">
@@ -2041,6 +2028,7 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                 </h2>
                 <div class="content is-size-6">
                     <p>
+						[@Aaron: Please exlain how the experiments can be replicated and point at the code that can be used for this. Please add the code to the repository so that everything is in one place.]
                         The benchmark is distributed as gzipped JSON files with
                         one record pair per line. Each line contains both
                         product records, the binary match label, and a
@@ -2155,10 +2143,6 @@ pairs = pd.read_json(
                         </div>
                     </div>
                 </div>
-                <p class="footer-note">
-                    The product data was kindly provided by
-                    <a href="https://www.solute.de/">solute GmbH</a>.
-                </p>
             </div>
         </section>
 
@@ -2221,7 +2205,7 @@ pairs = pd.read_json(
                 <div class="content is-size-6">
                     <!-- TODO: add BibTeX once the paper is published -->
                     <p>
-                        The paper describing the benchmark is not published yet.
+                        A paper describing the benchmark will be published on Arxiv in August 2026.
                         Citation information will be added here as soon as it is
                         available.
                     </p>
@@ -2233,8 +2217,7 @@ pairs = pd.read_json(
             <div class="container is-max-desktop has-text-centered footer-note">
                 <p>
                     Data and Web Science Group, University of Mannheim &middot;
-                    Benchmark data provided by solute GmbH / billiger.de
-                    &middot; Website based on the
+                    Website based on the
                     <a href="https://github.com/nerfies/nerfies.github.io"
                         >Nerfies</a
                     >-style academic page template.
