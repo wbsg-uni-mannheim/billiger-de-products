@@ -353,34 +353,18 @@
                 <h2 class="title is-3 has-text-centered">Abstract</h2>
                 <div class="content is-size-6">
                     <p>
-                        <b>Billiger.de Products</b> is an entity matching
-                        benchmark built from the manually grouped product
-                        catalog of the price comparison platform
-                        <a href="https://www.billiger.de">billiger.de</a>
-                        (operated by solute GmbH). To the best of our knowledge,
-                        it is the largest entity matching benchmark for
-                        German-language product data to date. The benchmark
-                        follows the multi-dimensional design of
+                        <b>Billiger.de Products</b> is a entity matching
+                        benchmark which requires systems to match German product offers, or alternatively English translations of the same offers.
+						The benchmark consists of 13,730 product offers describing 2,168 distinct products. The product offers originate from the German price comparison platform
+                        <a href="https://www.billiger.de">billiger.de</a>. The benchmark
+                        follows the multi-dimensional design of the
                         <a
                             href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
                             >WDC Products</a
                         >
-                        and varies the size of the training set, the fraction of
-                        hard corner cases, and the fraction of entities unseen
-                        during training. Every record additionally exists in a
-                        machine-translated English version with identical
-                        splits, labels, and identifiers, so the effect of the
-                        data language on matching performance can be measured
-                        down to individual record pairs. Baseline results cover
-                        six supervised matchers as well as GPT-5.2 in a
-                        zero-shot setting on both language versions. The
-                        influence of the language turns out to be
-                        architecture-dependent: matchers relying on English
-                        pre-training or token overlap score higher on the
-                        English version, matchers with strong task-specific
-                        supervision score equal or higher on the German
-                        original, and GPT-5.2 differs by less than 4 F1 points
-                        between the languages.
+                        benchmark and varies the size of the training set, the fraction of
+                        difficult to match corner cases, and the amount of products unseen
+                        during training. Machine-translated English versions of all training, validation, and test sets are provided, enabling the fine-grained assessment of the impact of the language on entity matching performance. We validate the benchmark using six supervised matchers as well as GPT-5.2 in a zero-shot setting. 
                     </p>
                 </div>
             </div>
@@ -394,15 +378,14 @@
                     <p>
                         Entity matching is the task of deciding whether two
                         records refer to the same real-world entity, for example
-                        whether two product offers describe the same product.
+                        whether two product offers refer to the same product.
                         The benchmarks that are used to evaluate entity matching
-                        systems, such as Abt-Buy, Amazon-Google, or
+                        systems, such as <a href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md">Abt-Buy</a>, <a href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md">Amazon-Google</a>, or
                         <a
                             href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
                             >WDC Products</a
-                        >, are single-language by nature: each of them contains
-                        records in one language, almost always English. Many
-                        applications do not fit this picture. A shopper in
+                        >, are all single-language: each of them only contains
+                        records in one language, almost always English. But entity matching is also required by applications processing non-english data. For instance, a shopper in
                         Europe who is looking for the cheapest offer for a
                         product does not care whether that offer is published on
                         a German, French, or Italian shop, and a price
@@ -412,19 +395,17 @@
                     </p>
                     <p>
                         <b>Billiger.de Products</b> is a step in this direction.
-                        The benchmark is built from the manually grouped product
-                        catalog of the German price comparison platform
+                        The benchmark uses product data from the German price comparison platform
                         <a href="https://www.billiger.de">billiger.de</a>
-                        (operated by solute GmbH) and is, to the best of our
+                        and is, to the best of our
                         knowledge, the largest entity matching benchmark for
-                        German-language product data to date. In addition to the
+                        German-language product data. In addition to the
                         German original, we provide a machine-translated English
                         version of every record. Splits, labels, and identifiers
                         are identical in both versions, so the benchmark can be
                         used as a German benchmark, as an English benchmark, or
-                        as a pair of parallel versions for measuring how the
-                        data language affects matching performance down to
-                        individual record pairs. Since every German record can
+                        as a pair of parallel benchmarks for measuring how the
+                        language affects matching performance. Since every German record can
                         also be paired with the English translation of its
                         counterpart, the benchmark is also a starting point for
                         cross-lingual matching experiments.
@@ -635,33 +616,30 @@
                     </div>
                 </div>
                 <h3 class="title is-5" style="margin-top: 1.4rem">
-                    Pairs and labels
+                    Record Pairs and Labels
                 </h3>
                 <div class="content is-size-6">
                     <p>
-                        Match labels are inherited from the manually verified
-                        product groups of billiger.de. Positive pairs are
-                        generated exhaustively within each product group,
-                        negative pairs combine similarity-based hard negatives
-                        with one random negative per offer. The number of hard
-                        negatives per offer grows with the training set size.
+                        The record pairs in the training, validation, and test sets are eigther labeld as matches or non-matches. The labels are derived from a grouping (clustering) of offers that refer to the same product which was provided to us by billiger.de. Positive pairs (matches) are
+                        directly taken from these groups,
+                        negative pairs (non-matches) are generated by combining offers from one group with similar offers from other groups, resulting in hard negatives,
+                        with one randomly choosen negative per group. The amount of hard
+                        negatives per product grows with the training set size.
                     </p>
                     <p>
                         The test sets contain roughly 4,470 pairs each with a
                         class imbalance of 1:10 to 1:12 between matches and
-                        non-matches, the condition matchers face in production
-                        candidate streams. All nine test sets went through a
-                        two-round manual audit against a strict product identity
-                        definition: product variants that differ in size, color,
-                        configuration, capacity, or package quantity count as
-                        <em>non-matches</em>. The audit mainly relabelled pairs
-                        in which distinct product variants had been grouped
+                        non-matches. All nine test sets went through a
+                        two-round manual verification process involving two human annotators, who checked the pairs using a strict definition of what constitutes a match: product variants that differ in size, color,
+                        configuration, capacity, or package quantity were labeled as
+                        <em>non-matches</em>. The audit corrected pairs
+                        in which similar but distinct product variants had been grouped
                         together.
                     </p>
                 </div>
                 <div class="columns">
                     <div class="column is-7">
-                        <h3 class="title is-5">Training and validation sets</h3>
+                        <h3 class="title is-5">Training and Validation Sets</h3>
                         <div class="table-container">
                             <table
                                 class="table is-narrow is-fullwidth is-striped has-text-right"
@@ -788,7 +766,7 @@
                         </p>
                     </div>
                     <div class="column is-5">
-                        <h3 class="title is-5">Test sets</h3>
+                        <h3 class="title is-5">Test Sets</h3>
                         <div class="table-container">
                             <table
                                 class="table is-narrow is-fullwidth is-striped has-text-right"
@@ -891,7 +869,7 @@
         <!-- EXAMPLE -->
         <section class="section" id="example" style="background: #fafafa">
             <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">Matching Examples</h2>
+                <h2 class="title is-3 has-text-centered">Example Pairs</h2>
 				<div class="content is-size-6">
                     <p>
                         [@Aaron: Please add 2 additional examples covering different product categories (one corner-case match and another non-match).]
@@ -1443,30 +1421,19 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         during pre-training.
                     </p>
                     <h3 class="title is-5">
-                        Performance by product domain
+                        Performance by Product Category
                     </h3>
                     <p>
-                        [@Chris: Die von Ksenia &uuml;bernommenen
-                        Kategorieergebnisse sind methodisch nicht sauber
-                        vergleichbar, da f&uuml;r die Modelle unterschiedliche
-                        Testset-Varianten verwendet wurden. Ich werde die Zahlen
-                        in dieser Tabelle noch einmal auf Basis eines
-                        gemeinsamen Testsets neu berechnen.]
-                    </p>
-                    <p>
-                        Product domain is another important source of matching
-                        difficulty. On the German benchmark, Tools &amp; DIY and
-                        Electronics &amp; Computers each rank among the top three
+                        The difficulty of matching decisions depends on the product category. On the German benchmark, Tools &amp; DIY and
+                        Electronics &amp; Computers each rank among the easiest
                         categories for six of the seven models below. Clothing
-                        &amp; Accessories appears among the bottom three for all
+                        &amp; Accessories appears among the most difficult categories for all
                         seven models, and Furniture &amp; Living for four.
                         Distinctive model numbers and technical specifications
                         may contribute to the stronger results for tools and
-                        electronics, while highly similar descriptions of
+                        electronics, while vague descriptions of
                         product variants may contribute to the lower results for
-                        clothing and furniture. The table does not isolate these
-                        causes, but it shows why results from electronics-focused
-                        data may not represent a broader product assortment.
+                        the categories clothing and furniture.
                     </p>
                     <div class="table-container">
                         <table
@@ -2016,6 +1983,9 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         Small training sets, fewer than half of the non-RoBERTa
                         comparisons favor English.
                     </p>
+					<p>
+						Comparing the results of the matchers on the English version of the billiger.de benchmark to the results of the same matchers on the <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/#toc4">WDC Products Benchmark</a>, which also features English product data, shows that the F1 results on billiger.de are generally lower, meaning that billiger.de Products (English) is more difficult than WDC Products. A reason for this might that Billiger.de Products spans a broader range of product categories, whereas WDC Products is dominated by offers for electronic products.
+					</p>
                 </div>
             </div>
         </section>
@@ -2153,39 +2123,26 @@ pairs = pd.read_json(
                 <div class="content is-size-6">
                     <p>
                         Billiger.de Products extends product matching evaluation
-                        beyond English with a large-scale German benchmark and
+                        beyond English with a large German benchmark and
                         an aligned English translation spanning thirteen product
-                        domains. Its variants control the training set size, the
-                        share of corner cases, and whether test entities occur
-                        in the supervised training data. This makes it possible
-                        to study matcher performance across several difficulty
-                        settings instead of relying on a single aggregate score.
+                        categories. The 27 variants of the benchmark enable to control the training set size, the
+                        share of corner cases, and fraction of unseen products in the test set. 
                     </p>
                     <p>
-                        The results show that both the benchmark configuration
-                        and the product domain matter. Supervised matchers
-                        generally benefit from more training data and score
-                        lower as the corner-case share increases or test
-                        entities move from Seen to Unseen, although individual
-                        configurations can deviate from these trends. Tools and
-                        electronics are among the best-performing domains,
-                        whereas clothing and furniture generally achieve lower
-                        scores. Results from electronics-focused data may
-                        therefore not represent performance across a broad
-                        product assortment.
+                        The validation of the benchmark showed that both the benchmark variant
+                        and the product category influence the results. Supervised matchers
+                        generally benefit from the larger training sets and score
+                        lower as the share of corner-cases or the amount of unseen entities in the test set increases. Tools and
+                        electronics are among the easiest product categories,
+                        whereas for clothing and furniture matchers generally achieve lower
+                        scores. 
                     </p>
-                    <p>
-                        The aggregate differences between the German and
-                        English versions are small for most matchers and usually
-                        do not change their practical assessment. Language
-                        sensitivity tends to be greater when little training
-                        data is available, but this pattern is not consistent
-                        for every model, and Ditto remains an unexplained
-                        exception. The findings support evaluating product
-                        matchers across languages, product domains, and
-                        difficulty settings rather than generalizing from one
-                        benchmark configuration.
+					<p>
+                        The comparison of the performance of the matchers on billiger.de Products (English) to the performance of the same matchers on WDC Products showed that billiger.de products is more difficult than WDC products. This feature might make the English version of billiger.de Products an interesting afternative to WDC Products for matchers that have saturated WDC Products.
                     </p>
+					<p>
+						We hope that the benchmark will prove useful for the evaluation of entity matching methods within German, English, and cross-lingual use cases.
+					</p>
                     <p>
                         Questions and feedback are welcome. Please contact
                         <a
