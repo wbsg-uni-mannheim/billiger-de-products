@@ -1,1 +1,5 @@
-Billiger.de Products: A Bilingual Entity Matching Benchmark
+**Billiger.de Products: A Bilingual Entity Matching Benchmark**
+
+Billiger.de Products is a entity matching benchmark which requires systems to match German product offers, or alternatively English translations of the same offers. The benchmark consists of 13,730 product offers describing 2,168 distinct products. The product offers originate from the German price comparison platform billiger.de. The benchmark follows the multi-dimensional design of the WDC Products benchmark and varies the size of the training set, the fraction of difficult to match corner cases, and the amount of products unseen during training. Machine-translated English versions of all training, validation, and test sets are provided, enabling the fine-grained assessment of the impact of the language on entity matching performance. We validate the benchmark using six supervised matchers as well as GPT-5.2 in a zero-shot setting.
+
+[Billiger.de Products website](http://putlinkhere) provides more information about the benchmark.
