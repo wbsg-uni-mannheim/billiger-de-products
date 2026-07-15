@@ -1,4 +1,0 @@
-File: medium
-Total tokens: 17629743
-Unique tokens (Vocabulary size): 969021
-

@@ -1,5 +1,45 @@
-**Billiger.de Products: A Bilingual Entity Matching Benchmark**
+# Billiger.de Products: A Bilingual Entity Matching Benchmark
 
-Billiger.de Products is a entity matching benchmark which requires systems to match German product offers, or alternatively English translations of the same offers. The benchmark consists of 13,730 product offers describing 2,168 distinct products. The product offers originate from the German price comparison platform billiger.de. The benchmark follows the multi-dimensional design of the WDC Products benchmark and varies the size of the training set, the fraction of difficult to match corner cases, and the amount of products unseen during training. Machine-translated English versions of all training, validation, and test sets are provided, enabling the fine-grained assessment of the impact of the language on entity matching performance. We validate the benchmark using six supervised matchers as well as GPT-5.2 in a zero-shot setting.
+Billiger.de Products is a bilingual entity matching benchmark for matching German product offers and aligned English translations of the same offers. It contains 13,730 offers describing 2,168 products from the German price-comparison platform billiger.de.
 
-[Billiger.de Products website](http://putlinkhere) provides more information about the benchmark.
+The benchmark varies three dimensions: training-set size, the share of difficult corner cases, and the share of products unseen during training. German and English files have identical splits, labels, and identifiers. The repository includes the released pairs, preprocessing code, six supervised matchers, GPT-5.2 zero-shot experiments, and compact reference results.
+
+## Quick start
+
+```bash
+python3.10 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r environments/requirements.txt
+
+python src/processing/prepare_pairs.py
+python src/processing/prepare_pretraining.py
+python src/processing/prepare_ditto_hiergat.py
+python src/processing/prepare_wordcooc.py
+python src/processing/prepare_magellan.py
+```
+
+See [REPRODUCTION.md](REPRODUCTION.md) for the complete experiment matrix, model commands, generated-result layout, and the precise reproduction boundary.
+
+## Recommended configuration and result reporting
+
+For a single default evaluation, we recommend the highest corner-case setting with fully seen products: `80cc20rnd000un` (80% corner cases, 0% unseen products). Use `products80cc20rnd000un_gs.json.gz` as the test set. Supervised matchers should use the corresponding `80cc20rnd000un` training and validation files and explicitly state whether the `small`, `medium`, or `large` training split was used.
+
+Report a result in the following form:
+
+> Billiger.de Products (German or English), 80% corner cases, seen (`000un`), [training size], F1 = X (mean ± standard deviation over seeds 0, 1, and 2).
+
+Also cite the benchmark paper when available and link to this repository or identify the evaluated repository commit. Zero-shot methods should omit the training size and state the model and prompt used.
+
+## Repository layout
+
+```text
+data/solute_de/        released German benchmark pairs
+data/solute_en/        released English benchmark pairs
+src/processing/        deterministic model-input preparation
+src/models/            benchmark implementations and reference metrics
+slurm_runs/            complete experiment launchers
+environments/          Python and captured Conda environments
+website/               benchmark website
+```
+
+The benchmark website is in `website/index.html`. The public project URL is [github.com/wbsg-uni-mannheim/billiger-de-products](https://github.com/wbsg-uni-mannheim/billiger-de-products).

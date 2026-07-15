@@ -355,17 +355,27 @@
                 <div class="content is-size-6">
                     <p>
                         <b>Billiger.de Products</b> is a entity matching
-                        benchmark which requires systems to match German product offers, or alternatively English translations of the same offers.
-						The benchmark consists of 13,730 product offers describing 2,168 distinct products. The product offers originate from the German price comparison platform
-                        <a href="https://www.billiger.de">billiger.de</a>. The benchmark
-                        follows the multi-dimensional design of the
+                        benchmark which requires systems to match German product
+                        offers, or alternatively English translations of the
+                        same offers. The benchmark consists of 13,730 product
+                        offers describing 2,168 distinct products. The product
+                        offers originate from the German price comparison
+                        platform
+                        <a href="https://www.billiger.de">billiger.de</a>. The
+                        benchmark follows the multi-dimensional design of the
                         <a
                             href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
                             >WDC Products</a
                         >
-                        benchmark and varies the size of the training set, the fraction of
-                        difficult to match corner cases, and the amount of products unseen
-                        during training. Machine-translated English versions of all training, validation, and test sets are provided, enabling the fine-grained assessment of the impact of the language on entity matching performance. We validate the benchmark using six supervised matchers as well as GPT-5.2 in a zero-shot setting. 
+                        benchmark and varies the size of the training set, the
+                        fraction of difficult to match corner cases, and the
+                        amount of products unseen during training.
+                        Machine-translated English versions of all training,
+                        validation, and test sets are provided, enabling the
+                        fine-grained assessment of the impact of the language on
+                        entity matching performance. We validate the benchmark
+                        using six supervised matchers as well as GPT-5.2 in a
+                        zero-shot setting.
                     </p>
                 </div>
             </div>
@@ -381,12 +391,22 @@
                         records refer to the same real-world entity, for example
                         whether two product offers refer to the same product.
                         The benchmarks that are used to evaluate entity matching
-                        systems, such as <a href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md">Abt-Buy</a>, <a href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md">Amazon-Google</a>, or
+                        systems, such as
+                        <a
+                            href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md"
+                            >Abt-Buy</a
+                        >,
+                        <a
+                            href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md"
+                            >Amazon-Google</a
+                        >, or
                         <a
                             href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
                             >WDC Products</a
                         >, are all single-language: each of them only contains
-                        records in one language, almost always English. But entity matching is also required by applications processing non-english data. For instance, a shopper in
+                        records in one language, almost always English. But
+                        entity matching is also required by applications
+                        processing non-english data. For instance, a shopper in
                         Europe who is looking for the cheapest offer for a
                         product does not care whether that offer is published on
                         a German, French, or Italian shop, and a price
@@ -396,18 +416,19 @@
                     </p>
                     <p>
                         <b>Billiger.de Products</b> is a step in this direction.
-                        The benchmark uses product data from the German price comparison platform
+                        The benchmark uses product data from the German price
+                        comparison platform
                         <a href="https://www.billiger.de">billiger.de</a>
-                        and is, to the best of our
-                        knowledge, the largest entity matching benchmark for
-                        German-language product data. In addition to the
-                        German original, we provide a machine-translated English
-                        version of every record. Splits, labels, and identifiers
-                        are identical in both versions, so the benchmark can be
-                        used as a German benchmark, as an English benchmark, or
-                        as a pair of parallel benchmarks for measuring how the
-                        language affects matching performance. Since every German record can
-                        also be paired with the English translation of its
+                        and is, to the best of our knowledge, the largest entity
+                        matching benchmark for German-language product data. In
+                        addition to the German original, we provide a
+                        machine-translated English version of every record.
+                        Splits, labels, and identifiers are identical in both
+                        versions, so the benchmark can be used as a German
+                        benchmark, as an English benchmark, or as a pair of
+                        parallel benchmarks for measuring how the language
+                        affects matching performance. Since every German record
+                        can also be paired with the English translation of its
                         counterpart, the benchmark is also a starting point for
                         cross-lingual matching experiments.
                     </p>
@@ -431,24 +452,31 @@
                 <h2 class="title is-3 has-text-centered">The Benchmark</h2>
                 <div class="content is-size-6">
                     <p>
-                        The benchmark use product offers originating from the German price comparison portal <a href="https://www.billiger.de/">billiger.de</a>.  The benchmark consists of
+                        The benchmark use product offers originating from the
+                        German price comparison portal
+                        <a href="https://www.billiger.de/">billiger.de</a>. The
+                        benchmark consists of
                         <b>13,730 product offers</b> describing
-                        <b>2,168 distinct products</b>.
-                        Every offer carries the attributes
-                        <span class="mono">name</span>,
+                        <b>2,168 distinct products</b>. Every offer carries the
+                        attributes <span class="mono">name</span>,
                         <span class="mono">description</span>,
                         <span class="mono">brand</span>, and
-                        <span class="mono">price</span>, with the attributes name and price
-                        having a value density of 100%, while brand and description have a density above 99&nbsp;%
-                        . Identifiers such as EAN or manufacturer part
-                        numbers are deleted from the offers so that matchers need to
-                        rely on the textual description of a product rather
-                        than identifier lookup.
+                        <span class="mono">price</span>, with the attributes
+                        name and price having a value density of 100%, while
+                        brand and description have a density above 99&nbsp;% .
+                        Identifiers such as EAN or manufacturer part numbers are
+                        deleted from the offers so that matchers need to rely on
+                        the textual description of a product rather than
+                        identifier lookup.
                     </p>
                     <p>
-                        Following the design of <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/">WDC Products</a>, task difficulty is controlled
-                        along three dimensions, resulting in 9 training sets, 27
-                        validation sets, and 9 test sets per language:
+                        Following the design of
+                        <a
+                            href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
+                            >WDC Products</a
+                        >, task difficulty is controlled along three dimensions,
+                        resulting in 9 training sets, 27 validation sets, and 9
+                        test sets per language:
                     </p>
                 </div>
                 <div class="content is-size-6">
@@ -485,7 +513,11 @@
                 <h3 class="title is-5">Product Categories</h3>
                 <div class="content is-size-6">
                     <p>
-                        The products belong to thirteen different product categories. The figure below shows the amount of product offers that belong to each category. Clothing, furniture, and electronics account for the largest shares.
+                        The products belong to thirteen different product
+                        categories. The figure below shows the amount of product
+                        offers that belong to each category. Clothing,
+                        furniture, and electronics account for the largest
+                        shares.
                     </p>
                 </div>
                 <div class="columns">
@@ -611,8 +643,8 @@
                             ><span class="dval">0.4%</span>
                         </div>
                         <p class="footer-note" style="margin-top: 0.6rem">
-                            Average share of offers belonging to the each product category across all
-                            benchmark variants.
+                            Average share of offers belonging to the each
+                            product category across all benchmark variants.
                         </p>
                     </div>
                 </div>
@@ -621,20 +653,29 @@
                 </h3>
                 <div class="content is-size-6">
                     <p>
-                        The record pairs in the training, validation, and test sets are eigther labeld as matches or non-matches. The labels are derived from a grouping (clustering) of offers that refer to the same product which was provided to us by billiger.de. Positive pairs (matches) are
-                        directly taken from these groups,
-                        negative pairs (non-matches) are generated by combining offers from one group with similar offers from other groups, resulting in hard negatives,
-                        with one randomly choosen negative per group. The amount of hard
-                        negatives per product grows with the training set size.
+                        The record pairs in the training, validation, and test
+                        sets are eigther labeld as matches or non-matches. The
+                        labels are derived from a grouping (clustering) of
+                        offers that refer to the same product which was provided
+                        to us by billiger.de. Positive pairs (matches) are
+                        directly taken from these groups, negative pairs
+                        (non-matches) are generated by combining offers from one
+                        group with similar offers from other groups, resulting
+                        in hard negatives, with one randomly choosen negative
+                        per group. The amount of hard negatives per product
+                        grows with the training set size.
                     </p>
                     <p>
                         The test sets contain roughly 4,470 pairs each with a
                         class imbalance of 1:10 to 1:12 between matches and
-                        non-matches. All nine test sets went through a
-                        two-round manual verification process involving two human annotators, who checked the pairs using a strict definition of what constitutes a match: product variants that differ in size, color,
-                        configuration, capacity, or package quantity were labeled as
-                        <em>non-matches</em>. The audit corrected pairs
-                        in which similar but distinct product variants had been grouped
+                        non-matches. All nine test sets went through a two-round
+                        manual verification process involving two human
+                        annotators, who checked the pairs using a strict
+                        definition of what constitutes a match: product variants
+                        that differ in size, color, configuration, capacity, or
+                        package quantity were labeled as
+                        <em>non-matches</em>. The audit corrected pairs in which
+                        similar but distinct product variants had been grouped
                         together.
                     </p>
                 </div>
@@ -871,15 +912,16 @@
         <section class="section" id="example" style="background: #fafafa">
             <div class="container is-max-desktop">
                 <h2 class="title is-3 has-text-centered">Example Pairs</h2>
-				<div class="content is-size-6">
+                <div class="content is-size-6">
                     <p>
-                        [@Aaron: Please add 2 additional examples covering different product categories (one corner-case match and another non-match).]
-						Several examples of matching and non-matching product pairs from different product categories are provided below.
+                        The following matching and non-matching pairs illustrate
+                        the variety of product categories and comparison
+                        difficulties contained in the benchmark.
                     </p>
                 </div>
                 <div class="content is-size-6">
                     <p>
-						A real corner case from the benchmark: two wardrobe
+                        A real corner case from the benchmark: two wardrobe
                         offers that agree in brand, model name, color, and
                         almost the entire description, yet refer to
                         <b>different product variants</b> (168&nbsp;cm vs.
@@ -961,6 +1003,140 @@
                         <span
                             >&nbsp;Non-match: different width and door variants
                             of the same product line</span
+                        >
+                    </span>
+                </p>
+
+                <hr style="margin: 3rem 0 2rem" />
+                <div class="content is-size-6">
+                    <p>
+                        Two offers for the same De'Longhi coffee machine use
+                        different spelling, word order, and levels of detail,
+                        but share the identifying model number
+                        <b>ECAM 650.55 MS</b>. This pair is a <b>match</b>.
+                    </p>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-grey"
+                                    ><i class="fas fa-file-lines"></i
+                                ></span>
+                                Record A
+                                <span class="file">id&nbsp;1497975779</span>
+                            </div>
+                            <div class="db">
+                                <p class="record-attr">
+                                    <span class="tagname">brand</span> De'
+                                    Longhi
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">name</span> Delonghi
+                                    Ecam 650.55 Ms Primadonna Elite
+                                    Kaffeevollautomat
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">price</span> 1349.78
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-grey"
+                                    ><i class="fas fa-file-lines"></i
+                                ></span>
+                                Record B
+                                <span class="file">id&nbsp;61480810216</span>
+                            </div>
+                            <div class="db">
+                                <p class="record-attr">
+                                    <span class="tagname">brand</span> De'Longhi
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">name</span>
+                                    Superautomatische Kaffeemaschine DeLonghi
+                                    ECAM65055MS 1450 W Grau 2 L
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">price</span> 1484.86
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="has-text-centered" style="margin-top: -0.4rem">
+                    <span class="tag is-success is-light is-medium">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        <span>&nbsp;Match: identical ECAM 650.55 MS model</span>
+                    </span>
+                </p>
+
+                <hr style="margin: 3rem 0 2rem" />
+                <div class="content is-size-6">
+                    <p>
+                        These two METABO power tools share a brand and technical
+                        vocabulary, but the model numbers and product types
+                        conflict: one is a mitre saw, the other a rotary hammer.
+                        The hard-negative pair is therefore a <b>non-match</b>.
+                    </p>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-grey"
+                                    ><i class="fas fa-file-lines"></i
+                                ></span>
+                                Record A
+                                <span class="file">id&nbsp;191526663714</span>
+                            </div>
+                            <div class="db">
+                                <p class="record-attr">
+                                    <span class="tagname">brand</span> METABO
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">name</span> Metabo KGS
+                                    254 M Elektro-Kappsäge
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">price</span> 323.25
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-grey"
+                                    ><i class="fas fa-file-lines"></i
+                                ></span>
+                                Record B
+                                <span class="file">id&nbsp;59701070745</span>
+                            </div>
+                            <div class="db">
+                                <p class="record-attr">
+                                    <span class="tagname">brand</span> METABO
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">name</span> Metabo KHE
+                                    3250 Elektro-Bohr-/Meißelhammer inkl. Koffer
+                                </p>
+                                <p class="record-attr">
+                                    <span class="tagname">price</span> 356.23
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="has-text-centered" style="margin-top: -0.4rem">
+                    <span class="tag is-danger is-light is-medium">
+                        <span class="icon"><i class="fas fa-xmark"></i></span>
+                        <span
+                            >&nbsp;Non-match: different METABO models and tool
+                            types</span
                         >
                     </span>
                 </p>
@@ -1374,13 +1550,14 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         practical use on this benchmark. Neural matchers such as
                         Ditto reach up to 91.76 F1 in favorable configurations,
                         but, as reported for WDC Products, they remain strongly
-                        affected by unseen entities. Averaged across all corner-case ratios and
-                        training sizes, Ditto loses 19.53 F1 from Seen to Unseen
-                        test sets. Even zero-shot GPT-5.2 does not solve the
-                        benchmark: with the stronger Rule-Guided prompt, its
-                        scores remain between 77.78 and 84.91 F1. The benchmark
-                        therefore remains challenging for traditional matchers,
-                        supervised neural models, and the evaluated LLM.
+                        affected by unseen entities. Averaged across all
+                        corner-case ratios and training sizes, Ditto loses 19.53
+                        F1 from Seen to Unseen test sets. Even zero-shot GPT-5.2
+                        does not solve the benchmark: with the stronger
+                        Rule-Guided prompt, its scores remain between 77.78 and
+                        84.91 F1. The benchmark therefore remains challenging
+                        for traditional matchers, supervised neural models, and
+                        the evaluated LLM.
                     </p>
                     <p>
                         The three difficulty dimensions separate the benchmark
@@ -1421,20 +1598,19 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         training sets, not whether GPT-5.2 encountered them
                         during pre-training.
                     </p>
-                    <h3 class="title is-5">
-                        Performance by Product Category
-                    </h3>
+                    <h3 class="title is-5">Performance by Product Category</h3>
                     <p>
-                        The difficulty of matching decisions depends on the product category. On the German benchmark, Tools &amp; DIY and
-                        Electronics &amp; Computers each rank among the easiest
-                        categories for six of the seven models below. Clothing
-                        &amp; Accessories appears among the most difficult categories for all
-                        seven models, and Furniture &amp; Living for four.
-                        Distinctive model numbers and technical specifications
-                        may contribute to the stronger results for tools and
-                        electronics, while vague descriptions of
-                        product variants may contribute to the lower results for
-                        the categories clothing and furniture.
+                        The difficulty of matching decisions depends on the
+                        product category. On the German benchmark, Tools &amp;
+                        DIY and Electronics &amp; Computers each rank among the
+                        easiest categories for six of the seven models below.
+                        Clothing &amp; Accessories appears among the most
+                        difficult categories for all seven models, and Furniture
+                        &amp; Living for four. Distinctive model numbers and
+                        technical specifications may contribute to the stronger
+                        results for tools and electronics, while vague
+                        descriptions of product variants may contribute to the
+                        lower results for the categories clothing and furniture.
                     </p>
                     <div class="table-container">
                         <table
@@ -1514,7 +1690,9 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                     <td>79.03</td>
                                 </tr>
                                 <tr>
-                                    <td class="has-text-left">Toys &amp; Baby</td>
+                                    <td class="has-text-left">
+                                        Toys &amp; Baby
+                                    </td>
                                     <td>80.00</td>
                                     <td>52.64</td>
                                     <td>74.01</td>
@@ -1536,7 +1714,9 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                     <td>76.19</td>
                                 </tr>
                                 <tr>
-                                    <td class="has-text-left">Tools &amp; DIY</td>
+                                    <td class="has-text-left">
+                                        Tools &amp; DIY
+                                    </td>
                                     <td>80.85</td>
                                     <td>67.61</td>
                                     <td>92.33</td>
@@ -1550,7 +1730,7 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                     </div>
                     <p class="footer-note">
                         Same-category F1 on the German benchmark for category
-                        pairs with at least 45 test pairs. 
+                        pairs with at least 45 test pairs.
                     </p>
                 </div>
             </div>
@@ -1559,11 +1739,22 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
         <!-- LANGUAGE EFFECTS -->
         <section class="section" id="language" style="background: #fafafa">
             <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">English Translation</h2>
+                <h2 class="title is-3 has-text-centered">
+                    English Translation
+                </h2>
                 <div class="content is-size-6">
                     <p>
-                        In addition to the German version of the benchmark, we also provide a Englisch version of the benchmark. The Englisch version was created by translating the German product offers to English using GPT-5.2. The English version offers exactly the same variants and the same splits as the German version. 
-						The table below compares the F1 results of the eight matchers on the English version to the results on the original German version. The table reports  the difference of the F1 score on the English version minus the F1 score on the German version for all 27 benchmark variants.
+                        In addition to the German version of the benchmark, we
+                        also provide a Englisch version of the benchmark. The
+                        Englisch version was created by translating the German
+                        product offers to English using GPT-5.2. The English
+                        version offers exactly the same variants and the same
+                        splits as the German version. The table below compares
+                        the F1 results of the eight matchers on the English
+                        version to the results on the original German version.
+                        The table reports the difference of the F1 score on the
+                        English version minus the F1 score on the German version
+                        for all 27 benchmark variants.
                     </p>
                 </div>
                 <div class="table-container">
@@ -1624,7 +1815,9 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                 <td>+0.15</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">Medium</td>
+                                <td class="has-text-left" rowspan="3">
+                                    Medium
+                                </td>
                                 <td class="has-text-left">Seen</td>
                                 <td>&minus;0.04</td>
                                 <td>&minus;1.67</td>
@@ -1729,7 +1922,9 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                 <td>+3.34</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">Medium</td>
+                                <td class="has-text-left" rowspan="3">
+                                    Medium
+                                </td>
                                 <td class="has-text-left">Seen</td>
                                 <td>+0.30</td>
                                 <td>+1.29</td>
@@ -1834,7 +2029,9 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                 <td>+0.89</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">Medium</td>
+                                <td class="has-text-left" rowspan="3">
+                                    Medium
+                                </td>
                                 <td class="has-text-left">Seen</td>
                                 <td>&minus;2.66</td>
                                 <td>&minus;2.61</td>
@@ -1948,11 +2145,11 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         alter that conclusion. More generally, the mean language
                         difference remains within &plusmn;2.31 F1 for every
                         matcher except Ditto. GPT-5.2 is similarly stable: the
-                        mean differences are +0.27 F1 with the Simple prompt
-                        and +0.69 F1 with the Rule-Guided prompt, and no
-                        individual difference exceeds 3.34 F1. At this scale,
-                        the results do not suggest a substantial systematic
-                        language effect for GPT-5.2.
+                        mean differences are +0.27 F1 with the Simple prompt and
+                        +0.69 F1 with the Rule-Guided prompt, and no individual
+                        difference exceeds 3.34 F1. At this scale, the results
+                        do not suggest a substantial systematic language effect
+                        for GPT-5.2.
                     </p>
                     <p>
                         Ditto is the notable exception. It scores 5.73 F1 lower
@@ -1964,10 +2161,10 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         sets. Although the disadvantage becomes smaller as the
                         training set grows, the results do not explain why Ditto
                         performs worse on English overall. [@Chris: Hast du eine
-                        Intuition oder eine gute Erkl&auml;rung daf&uuml;r, warum
-                        Ditto trotz des &uuml;berwiegend auf englischen Texten
-                        vortrainierten RoBERTa-Backbones auf der englischen
-                        Version schlechter abschneidet?]
+                        Intuition oder eine gute Erkl&auml;rung daf&uuml;r,
+                        warum Ditto trotz des &uuml;berwiegend auf englischen
+                        Texten vortrainierten RoBERTa-Backbones auf der
+                        englischen Version schlechter abschneidet?]
                     </p>
                     <p>
                         The broader training-size pattern provides partial
@@ -1977,16 +2174,28 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         with Medium and 2.76 with Large sets. RoBERTa's extreme
                         differences account for part of this trend. After
                         excluding RoBERTa, the corresponding values are 4.36,
-                        2.65, and 2.86 F1. Language sensitivity therefore tends to
-                        be greater when little training data is available, but
-                        the decrease is not consistent for every matcher. This
-                        pattern does not confirm a general English advantage: even with
-                        Small training sets, fewer than half of the non-RoBERTa
-                        comparisons favor English.
+                        2.65, and 2.86 F1. Language sensitivity therefore tends
+                        to be greater when little training data is available,
+                        but the decrease is not consistent for every matcher.
+                        This pattern does not confirm a general English
+                        advantage: even with Small training sets, fewer than
+                        half of the non-RoBERTa comparisons favor English.
                     </p>
-					<p>
-						Comparing the results of the matchers on the English version of the billiger.de benchmark to the results of the same matchers on the <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/#toc4">WDC Products Benchmark</a>, which also features English product data, shows that the F1 results on billiger.de are generally lower, meaning that billiger.de Products (English) is more difficult than WDC Products. A reason for this might that Billiger.de Products spans a broader range of product categories, whereas WDC Products is dominated by offers for electronic products.
-					</p>
+                    <p>
+                        Comparing the results of the matchers on the English
+                        version of the billiger.de benchmark to the results of
+                        the same matchers on the
+                        <a
+                            href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/#toc4"
+                            >WDC Products Benchmark</a
+                        >, which also features English product data, shows that
+                        the F1 results on billiger.de are generally lower,
+                        meaning that billiger.de Products (English) is more
+                        difficult than WDC Products. A reason for this might
+                        that Billiger.de Products spans a broader range of
+                        product categories, whereas WDC Products is dominated by
+                        offers for electronic products.
+                    </p>
                 </div>
             </div>
         </section>
@@ -1999,7 +2208,6 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                 </h2>
                 <div class="content is-size-6">
                     <p>
-						[@Aaron: Please exlain how the experiments can be replicated and point at the code that can be used for this. Please add the code to the repository so that everything is in one place.]
                         The benchmark is distributed as gzipped JSON files with
                         one record pair per line. Each line contains both
                         product records, the binary match label, and a
@@ -2021,6 +2229,72 @@ pairs = pd.read_json(
     lines=True,
 )</pre
                     >
+                    <p>
+                        The complete reproduction code is available in the
+                        <a
+                            href="https://github.com/wbsg-uni-mannheim/billiger-de-products"
+                            >GitHub repository</a
+                        >. From the repository root, install the fixed
+                        dependencies and generate all model-specific inputs
+                        with:
+                    </p>
+                    <pre class="bibtex">
+python3.10 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r environments/requirements.txt
+
+python src/processing/prepare_pairs.py
+python src/processing/prepare_pretraining.py
+python src/processing/prepare_ditto_hiergat.py
+python src/processing/prepare_wordcooc.py
+python src/processing/prepare_magellan.py</pre
+                    >
+                    <p>
+                        The launchers in <span class="mono">slurm_runs/</span>
+                        and the model directories run the complete German and
+                        English experiment matrix with three fixed seeds. All
+                        generated metrics are written below
+                        <span class="mono">results/generated/</span> and can be
+                        collected into one CSV with:
+                    </p>
+                    <pre class="bibtex">python src/summarize_results.py</pre>
+                    <p>
+                        Exact commands for WordCooc, Magellan, RoBERTa,
+                        R-SupCon, Ditto, HierGAT, and GPT-5.2 are documented in
+                        <a
+                            href="https://github.com/wbsg-uni-mannheim/billiger-de-products/blob/main/REPRODUCTION.md"
+                            >REPRODUCTION.md</a
+                        >. The GPT-5.2 runs require an
+                        <span class="mono">OPENAI_API_KEY</span> and use the
+                        Batch API.
+                    </p>
+                    <div class="notification is-info is-light">
+                        <p>
+                            <b>Recommended default:</b> If only one benchmark
+                            configuration is evaluated, we recommend
+                            <span class="mono">80cc20rnd000un</span>: 80&nbsp;%
+                            corner cases and a fully seen test set. Use
+                            <span class="mono"
+                                >products80cc20rnd000un_gs.json.gz</span
+                            >
+                            and, for supervised matchers, the corresponding
+                            training and validation files. Always state the
+                            language and training-set size.
+                        </p>
+                        <p>
+                            Report the result as:
+                            <i
+                                >Billiger.de Products (German or English),
+                                80&nbsp;% corner cases, seen (<span class="mono"
+                                    >000un</span
+                                >), [training size], F1 = X (mean &plusmn;
+                                standard deviation over seeds 0, 1, and 2).</i
+                            >
+                            Cite the benchmark paper once available and link to
+                            this repository. For zero-shot methods, state the
+                            model version and prompt instead of a training size.
+                        </p>
+                    </div>
                     <p>
                         For <b>supervised matchers</b>, pick a training set,
                         select hyperparameters on the corresponding validation
@@ -2124,26 +2398,36 @@ pairs = pd.read_json(
                 <div class="content is-size-6">
                     <p>
                         Billiger.de Products extends product matching evaluation
-                        beyond English with a large German benchmark and
-                        an aligned English translation spanning thirteen product
-                        categories. The 27 variants of the benchmark enable to control the training set size, the
-                        share of corner cases, and fraction of unseen products in the test set. 
+                        beyond English with a large German benchmark and an
+                        aligned English translation spanning thirteen product
+                        categories. The 27 variants of the benchmark enable to
+                        control the training set size, the share of corner
+                        cases, and fraction of unseen products in the test set.
                     </p>
                     <p>
-                        The validation of the benchmark showed that both the benchmark variant
-                        and the product category influence the results. Supervised matchers
-                        generally benefit from the larger training sets and score
-                        lower as the share of corner-cases or the amount of unseen entities in the test set increases. Tools and
-                        electronics are among the easiest product categories,
-                        whereas for clothing and furniture matchers generally achieve lower
-                        scores. 
+                        The validation of the benchmark showed that both the
+                        benchmark variant and the product category influence the
+                        results. Supervised matchers generally benefit from the
+                        larger training sets and score lower as the share of
+                        corner-cases or the amount of unseen entities in the
+                        test set increases. Tools and electronics are among the
+                        easiest product categories, whereas for clothing and
+                        furniture matchers generally achieve lower scores.
                     </p>
-					<p>
-                        The comparison of the performance of the matchers on billiger.de Products (English) to the performance of the same matchers on WDC Products showed that billiger.de products is more difficult than WDC products. This feature might make the English version of billiger.de Products an interesting afternative to WDC Products for matchers that have saturated WDC Products.
+                    <p>
+                        The comparison of the performance of the matchers on
+                        billiger.de Products (English) to the performance of the
+                        same matchers on WDC Products showed that billiger.de
+                        products is more difficult than WDC products. This
+                        feature might make the English version of billiger.de
+                        Products an interesting afternative to WDC Products for
+                        matchers that have saturated WDC Products.
                     </p>
-					<p>
-						We hope that the benchmark will prove useful for the evaluation of entity matching methods within German, English, and cross-lingual use cases.
-					</p>
+                    <p>
+                        We hope that the benchmark will prove useful for the
+                        evaluation of entity matching methods within German,
+                        English, and cross-lingual use cases.
+                    </p>
                     <p>
                         Questions and feedback are welcome. Please contact
                         <a
@@ -2163,9 +2447,9 @@ pairs = pd.read_json(
                 <div class="content is-size-6">
                     <!-- TODO: add BibTeX once the paper is published -->
                     <p>
-                        A paper describing the benchmark will be published on Arxiv in August 2026.
-                        Citation information will be added here as soon as it is
-                        available.
+                        A paper describing the benchmark will be published on
+                        Arxiv in August 2026. Citation information will be added
+                        here as soon as it is available.
                     </p>
                 </div>
             </div>

@@ -1,5 +1,0 @@
-1 to 0: 989
-1 to -1: 252
-0 to 1: 92
-0 to -1: 15
-Total changed labels: 1348

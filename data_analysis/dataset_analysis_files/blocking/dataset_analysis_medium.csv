@@ -1,6 +1,0 @@
-File Name,Positive Pairs,Negative Pairs,Record pairs,Amount of brand,Amount of name,Amount of description,Amount of price,Amount of different products,Amount of unique Words:,Total_products
-valid.csv,500.0,4000.0,4500.0,8526,9000,8968,9000,500,20644,
-tableA.csv,,,,4932,5119,5107,5119,750,51927,5119.0
-tableB.csv,,,,188758,200001,199461,199973,138835,896868,200001.0
-test.csv,371.0,4099.0,4470.0,8744,8940,8929,8940,500,19926,
-train.csv,2398.0,2602.0,5000.0,9620,10000,9975,10000,499,39621,

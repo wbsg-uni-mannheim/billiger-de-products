@@ -9,7 +9,7 @@ for seed in range(3):
         for difficulty in difficulties: 
             for unseen in unseens: 
                 file_name = "final_%s_%s%s_lr=5e-06_id=%d_batch=16_lm=roberta_english.txt" % (size, difficulty, unseen, seed)
-                file_path = "src/models/hiergat/output_en/%s" % file_name
+                file_path = "results/generated/hiergat/en/%s" % file_name
                 print(file_path)
                 if os.path.isfile(file_path):
                     print("File %s already exists, skipping..." % file_path)
@@ -23,7 +23,7 @@ for seed in range(3):
                         --n_epochs 50 \
                         --finetuning \
                         --split \
+                        --output_dir results/generated/hiergat/en \
                         --lm roberta""" % (size, difficulty, unseen, seed)
                 print(cmd)
                 os.system(cmd)
-               

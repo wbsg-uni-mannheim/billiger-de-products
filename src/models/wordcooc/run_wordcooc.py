@@ -1,35 +1,29 @@
-import pandas as pd
-import numpy as np
-np.random.seed(42)
-import random
-random.seed(42)
-
-import scipy
-
-import os
-import time
 import glob
 import json
+import os
+import random
+import time
 
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import BernoulliNB
+import numpy as np
+import pandas as pd
+import scipy
+import xgboost as xgb
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+from sklearn.model_selection import PredefinedSplit, RandomizedSearchCV
+from sklearn.naive_bayes import BernoulliNB
 from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import RandomizedSearchCV
-from sklearn.model_selection import PredefinedSplit
 
-from sklearn.metrics import classification_report
+np.random.seed(42)
+random.seed(42)
 
-import xgboost as xgb
-
-from joblib import dump, load
-
-from pdb import set_trace
+RESULT_ROOT = 'results/generated/wordcooc/de'
 
 classifiers = {'NaiveBayes':  {'clf':BernoulliNB(),
                             'params':{}},
-                   'XGBoost': {'clf':xgb.XGBClassifier(random_state=42, n_jobs=4, tree_method='hist',device='cuda'),
+                   'XGBoost': {'clf':xgb.XGBClassifier(random_state=42, n_jobs=4, tree_method='hist'),
                            'params':{"learning_rate": [0.1, 0.01, 0.001],
                            "gamma" : [0.01, 0.1, 0.3, 0.5, 1, 1.5, 2],
                            "max_depth": [2, 4, 7, 10],
@@ -66,19 +60,15 @@ def run_wordcooc(train_set, valid_set, test_set, feature_combinations, classifie
                  write_test_set_for_inspection=False):
     train_path = os.path.dirname(train_set)
     train_file = os.path.basename(train_set)
-    test_path = os.path.dirname(test_set)
     test_file = os.path.basename(test_set)
     report_train_name = train_file.replace('.pkl.gz', '')
     report_test_name = test_file.replace('.pkl.gz', '')
 
-    os.makedirs(os.path.dirname(f'model_output/reports/wordcooc_adjusted/{experiment_name}/'),
-                exist_ok=True)
-
-    os.makedirs(os.path.dirname(f'model_output/models/wordcooc_adjusted/{experiment_name}/'),
-                exist_ok=True)
+    report_dir = os.path.join(RESULT_ROOT, experiment_name)
+    os.makedirs(report_dir, exist_ok=True)
 
 
-    with open(f'model_output/reports/wordcooc_adjusted/{experiment_name}/{report_train_name}_{report_test_name}.csv',
+    with open(f'{report_dir}/{report_train_name}_{report_test_name}.csv',
               "w") as f:
         f.write(
             'feature#####model#####mean_train_score#####std_train_score#####mean_valid_score#####std_valid_score#####precision_test#####recall_test#####f1_test#####best_params#####train_time#####prediction_time#####feature_importance#####experiment_name#####train_set#####test_set\n')
@@ -102,10 +92,10 @@ def run_wordcooc(train_set, valid_set, test_set, feature_combinations, classifie
             train_ind = []
             val_ind = []
 
-            for i in range(len(train_only_df) - 1):
+            for i in range(len(train_only_df)):
                 train_ind.append(-1)
 
-            for i in range(len(val_df) - 1):
+            for i in range(len(val_df)):
                 val_ind.append(0)
 
             ps = PredefinedSplit(test_fold=np.concatenate((train_ind, val_ind)))
@@ -210,9 +200,7 @@ def run_wordcooc(train_set, valid_set, test_set, feature_combinations, classifie
                     test_inspection_df['Class Prob'] = proba_gs
                     test_inspection_df.to_pickle((out_path + file_name).replace('preprocessed_', ''), compression='gzip')
 
-                dump(model, f'model_output/models/wordcooc_adjusted/{experiment_name}/{report_train_name}_{report_test_name}_{k}_{feature_combination}_{run}.joblib')
-
-                with open(f'model_output/reports/wordcooc_adjusted/{experiment_name}/{report_train_name}_{report_test_name}.csv', "a") as f:
+                with open(f'{report_dir}/{report_train_name}_{report_test_name}.csv', "a") as f:
                     f.write(feature_combination + '#####' + k + '#####' + str(
                         scores['mean_train_score']) + '#####' + str(scores['std_train_score'])
                             + '#####' + str(scores['mean_test_score']) + '#####' + str(
@@ -223,10 +211,17 @@ def run_wordcooc(train_set, valid_set, test_set, feature_combinations, classifie
                                             0:100]) + '#####' + experiment_name + '#####' + report_train_name + '#####' + report_test_name + '\n')
 
 if __name__ == '__main__':
-    
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--language', choices=('de', 'en'), required=True)
+    args = parser.parse_args()
+
     experiment_name = 'learning-curve'
-    
-    for file in glob.glob('data/processed/wordcooc/learning-curve/*'):
+    processed_root = 'data/processed' if args.language == 'de' else 'data/processed_en'
+    RESULT_ROOT = f'results/generated/wordcooc/{args.language}'
+
+    for file in glob.glob(f'{processed_root}/wordcooc/learning-curve/*'):
         if 'products' not in file:
             continue
             feature_combinations = ['name', 'brand+name', 'brand+name+desc']
@@ -238,18 +233,18 @@ if __name__ == '__main__':
             test_cat = '_'.join(os.path.basename(file).split('_')[:2])
             test = os.path.basename(file)
             test = test.replace('.pkl.gz', '_{}_gs.pkl.gz'.format(test_cat))
-            test = 'data/processed/wordcooc/learning-curve_adjusted/{}'.format(test)
+            test = f'{processed_root}/wordcooc/learning-curve/{{}}'.format(test)
             
             print("File: ", file, "Valid: ", valid, "Test: ", test, " First Run starting")
             run_wordcooc(file, valid, test, feature_combinations, classifiers, experiment_name,
-                         write_test_set_for_inspection=True)
+                         write_test_set_for_inspection=False)
 
             test = test.replace('000un_gs', '050un_gs')
             print("Second Run starting")
             run_wordcooc(file, valid, test, feature_combinations, classifiers, experiment_name,
-                         write_test_set_for_inspection=True)
+                         write_test_set_for_inspection=False)
             
             test = test.replace('050un_gs', '100un_gs')
             print("Third Run starting")
             run_wordcooc(file, valid, test, feature_combinations, classifiers, experiment_name,
-                         write_test_set_for_inspection=True)
+                         write_test_set_for_inspection=False)
