@@ -1,0 +1,22 @@
+[
+    {
+        "job_name": "GPT4omini_Entity_Match",
+        "runtime_sec": 654.083,
+        "max_memory_mb": 204.789,
+        "energy_kwh": 0.009848,
+        "emissions_kg": 0.003752,
+        "energy_cost_eur": 0.003,
+        "gpt_cost_eur": 0.3061,
+        "total_cost_eur": 0.309
+    },
+    {
+        "job_name": "GPT4omini_Entity_Match",
+        "runtime_sec": 2875.585,
+        "max_memory_mb": 213.406,
+        "energy_kwh": 0.043279,
+        "emissions_kg": 0.016487,
+        "energy_cost_eur": 0.013,
+        "gpt_cost_eur": 0.3061,
+        "total_cost_eur": 0.3191
+    }
+]

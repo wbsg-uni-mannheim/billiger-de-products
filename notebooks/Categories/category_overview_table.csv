@@ -1,0 +1,564 @@
+Train/Valid/Test,Corner Cases,Unseen,Category,Total,Percentage
+Test,20,0,Auto & Motorrad,468,0.05225547
+Test,20,0,"Bücher, Filme & Musik",66,0.00736936
+Test,20,0,Bürobedarf,86,0.0096025
+Test,20,0,Elektronik & Computer,1908,0.21304154
+Test,20,0,Gesundheit & Pflege,236,0.02635105
+Test,20,0,Haustier & Tierbedarf,22,0.00245645
+Test,20,0,Kleidung & Accessoires,2002,0.22353729
+Test,20,0,Kosmetik & Drogerie,319,0.03561858
+Test,20,0,Lebensmittel & Getränke,120,0.01339884
+Test,20,0,Möbel & Wohnen,1707,0.19059848
+Test,20,0,Spielzeug & Baby,439,0.04901742
+Test,20,0,Sport & Freizeit,579,0.0646494
+Test,20,0,Werkzeug & Baumarkt,1004,0.11210362
+Test,20,50,Auto & Motorrad,409,0.04590348
+Test,20,50,"Bücher, Filme & Musik",6,0.0006734
+Test,20,50,Bürobedarf,54,0.00606061
+Test,20,50,Elektronik & Computer,1088,0.12210999
+Test,20,50,Gesundheit & Pflege,198,0.02222222
+Test,20,50,Haustier & Tierbedarf,31,0.00347924
+Test,20,50,Kleidung & Accessoires,2988,0.33535354
+Test,20,50,Kosmetik & Drogerie,414,0.04646465
+Test,20,50,Lebensmittel & Getränke,66,0.00740741
+Test,20,50,Möbel & Wohnen,2061,0.23131313
+Test,20,50,Spielzeug & Baby,367,0.04118967
+Test,20,50,Sport & Freizeit,452,0.05072952
+Test,20,50,Werkzeug & Baumarkt,776,0.08709315
+Test,20,100,Auto & Motorrad,363,0.04070419
+Test,20,100,"Bücher, Filme & Musik",37,0.00414891
+Test,20,100,Bürobedarf,74,0.00829782
+Test,20,100,Elektronik & Computer,783,0.08779996
+Test,20,100,Gesundheit & Pflege,133,0.01491366
+Test,20,100,Haustier & Tierbedarf,16,0.00179412
+Test,20,100,Kleidung & Accessoires,3075,0.34480825
+Test,20,100,Kosmetik & Drogerie,433,0.04855349
+Test,20,100,Lebensmittel & Getränke,37,0.00414891
+Test,20,100,Möbel & Wohnen,2526,0.28324736
+Test,20,100,Spielzeug & Baby,495,0.05550572
+Test,20,100,Sport & Freizeit,565,0.06335501
+Test,20,100,Werkzeug & Baumarkt,381,0.04272258
+Test,50,0,Auto & Motorrad,548,0.06129754
+Test,50,0,"Bücher, Filme & Musik",85,0.00950783
+Test,50,0,Bürobedarf,40,0.00447427
+Test,50,0,Elektronik & Computer,1630,0.18232662
+Test,50,0,Gesundheit & Pflege,147,0.01644295
+Test,50,0,Haustier & Tierbedarf,13,0.00145414
+Test,50,0,Kleidung & Accessoires,2070,0.23154362
+Test,50,0,Kosmetik & Drogerie,292,0.03266219
+Test,50,0,Lebensmittel & Getränke,72,0.00805369
+Test,50,0,Möbel & Wohnen,2089,0.2336689
+Test,50,0,Spielzeug & Baby,529,0.05917226
+Test,50,0,Sport & Freizeit,489,0.05469799
+Test,50,0,Werkzeug & Baumarkt,936,0.10469799
+Test,50,50,Auto & Motorrad,448,0.05015674
+Test,50,50,"Bücher, Filme & Musik",88,0.00985222
+Test,50,50,Bürobedarf,100,0.0111957
+Test,50,50,Elektronik & Computer,1019,0.11408419
+Test,50,50,Gesundheit & Pflege,312,0.03493059
+Test,50,50,Kleidung & Accessoires,2649,0.29657412
+Test,50,50,Kosmetik & Drogerie,369,0.04131214
+Test,50,50,Lebensmittel & Getränke,12,0.00134348
+Test,50,50,Möbel & Wohnen,2268,0.2539185
+Test,50,50,Spielzeug & Baby,524,0.05866547
+Test,50,50,Sport & Freizeit,480,0.05373936
+Test,50,50,Werkzeug & Baumarkt,663,0.0742275
+Test,50,100,Auto & Motorrad,257,0.02868944
+Test,50,100,"Bücher, Filme & Musik",21,0.00234427
+Test,50,100,Bürobedarf,60,0.00669792
+Test,50,100,Elektronik & Computer,680,0.0759098
+Test,50,100,Gesundheit & Pflege,260,0.02902434
+Test,50,100,Kleidung & Accessoires,3035,0.3388033
+Test,50,100,Kosmetik & Drogerie,603,0.06731413
+Test,50,100,Lebensmittel & Getränke,22,0.00245591
+Test,50,100,Möbel & Wohnen,2566,0.28644787
+Test,50,100,Spielzeug & Baby,381,0.04253182
+Test,50,100,Sport & Freizeit,612,0.06831882
+Test,50,100,Werkzeug & Baumarkt,461,0.05146238
+Test,80,0,Auto & Motorrad,472,0.05274922
+Test,80,0,"Bücher, Filme & Musik",86,0.00961109
+Test,80,0,Bürobedarf,40,0.00447027
+Test,80,0,Elektronik & Computer,1475,0.16484131
+Test,80,0,Gesundheit & Pflege,186,0.02078677
+Test,80,0,Kleidung & Accessoires,1977,0.22094323
+Test,80,0,Kosmetik & Drogerie,266,0.02972731
+Test,80,0,Lebensmittel & Getränke,71,0.00793473
+Test,80,0,Möbel & Wohnen,2255,0.25201162
+Test,80,0,Spielzeug & Baby,580,0.06481895
+Test,80,0,Sport & Freizeit,594,0.06638355
+Test,80,0,Werkzeug & Baumarkt,946,0.10572195
+Test,80,50,Auto & Motorrad,284,0.03176734
+Test,80,50,"Bücher, Filme & Musik",21,0.00234899
+Test,80,50,Bürobedarf,104,0.01163311
+Test,80,50,Elektronik & Computer,867,0.09697987
+Test,80,50,Gesundheit & Pflege,174,0.01946309
+Test,80,50,Haustier & Tierbedarf,6,0.00067114
+Test,80,50,Kleidung & Accessoires,2599,0.29071588
+Test,80,50,Kosmetik & Drogerie,286,0.03199105
+Test,80,50,Lebensmittel & Getränke,75,0.00838926
+Test,80,50,Möbel & Wohnen,2788,0.31185682
+Test,80,50,Spielzeug & Baby,339,0.03791946
+Test,80,50,Sport & Freizeit,766,0.08568233
+Test,80,50,Werkzeug & Baumarkt,631,0.07058166
+Test,80,100,Auto & Motorrad,233,0.02610352
+Test,80,100,"Bücher, Filme & Musik",5,0.00056016
+Test,80,100,Bürobedarf,35,0.00392113
+Test,80,100,Elektronik & Computer,468,0.0524311
+Test,80,100,Gesundheit & Pflege,317,0.03551423
+Test,80,100,Kleidung & Accessoires,2694,0.30181492
+Test,80,100,Kosmetik & Drogerie,618,0.06923594
+Test,80,100,Lebensmittel & Getränke,32,0.00358503
+Test,80,100,Möbel & Wohnen,2979,0.33374412
+Test,80,100,Spielzeug & Baby,305,0.03416984
+Test,80,100,Sport & Freizeit,537,0.06016133
+Test,80,100,Werkzeug & Baumarkt,703,0.07875868
+Train,20,0,Auto & Motorrad,3865,0.07054722
+Train,20,0,Auto & Motorrad,688,0.05733333
+Train,20,0,Auto & Motorrad,295,0.059
+Train,20,0,"Bücher, Filme & Musik",146,0.00266491
+Train,20,0,"Bücher, Filme & Musik",48,0.004
+Train,20,0,"Bücher, Filme & Musik",26,0.0052
+Train,20,0,Bürobedarf,733,0.01337933
+Train,20,0,Bürobedarf,90,0.0075
+Train,20,0,Bürobedarf,49,0.0098
+Train,20,0,Elektronik & Computer,15067,0.27501551
+Train,20,0,Elektronik & Computer,2504,0.20866667
+Train,20,0,Elektronik & Computer,1072,0.2144
+Train,20,0,Gesundheit & Pflege,1351,0.02465958
+Train,20,0,Gesundheit & Pflege,314,0.02616667
+Train,20,0,Gesundheit & Pflege,138,0.0276
+Train,20,0,Haustier & Tierbedarf,269,0.00491001
+Train,20,0,Haustier & Tierbedarf,56,0.00466667
+Train,20,0,Haustier & Tierbedarf,16,0.0032
+Train,20,0,Kleidung & Accessoires,8424,0.15376191
+Train,20,0,Kleidung & Accessoires,2705,0.22541667
+Train,20,0,Kleidung & Accessoires,1137,0.2274
+Train,20,0,Kosmetik & Drogerie,2087,0.03809367
+Train,20,0,Kosmetik & Drogerie,499,0.04158333
+Train,20,0,Kosmetik & Drogerie,222,0.0444
+Train,20,0,Lebensmittel & Getränke,746,0.01361662
+Train,20,0,Lebensmittel & Getränke,160,0.01333333
+Train,20,0,Lebensmittel & Getränke,83,0.0166
+Train,20,0,Möbel & Wohnen,8747,0.15965758
+Train,20,0,Möbel & Wohnen,2159,0.17991667
+Train,20,0,Möbel & Wohnen,881,0.1762
+Train,20,0,Spielzeug & Baby,2541,0.04638046
+Train,20,0,Spielzeug & Baby,575,0.04791667
+Train,20,0,Spielzeug & Baby,210,0.042
+Train,20,0,Sport & Freizeit,3281,0.05988756
+Train,20,0,Sport & Freizeit,806,0.06716667
+Train,20,0,Sport & Freizeit,295,0.059
+Train,20,0,Werkzeug & Baumarkt,7529,0.13742562
+Train,20,0,Werkzeug & Baumarkt,1396,0.11633333
+Train,20,0,Werkzeug & Baumarkt,576,0.1152
+Train,50,0,Auto & Motorrad,650,0.05416667
+Train,50,0,Auto & Motorrad,3462,0.0633509
+Train,50,0,Auto & Motorrad,264,0.0528
+Train,50,0,"Bücher, Filme & Musik",86,0.00716667
+Train,50,0,"Bücher, Filme & Musik",256,0.00468453
+Train,50,0,"Bücher, Filme & Musik",34,0.0068
+Train,50,0,Bürobedarf,103,0.00858333
+Train,50,0,Bürobedarf,572,0.01046699
+Train,50,0,Bürobedarf,43,0.0086
+Train,50,0,Elektronik & Computer,1998,0.1665
+Train,50,0,Elektronik & Computer,12536,0.2293954
+Train,50,0,Elektronik & Computer,874,0.1748
+Train,50,0,Gesundheit & Pflege,250,0.02083333
+Train,50,0,Gesundheit & Pflege,915,0.01674352
+Train,50,0,Gesundheit & Pflege,104,0.0208
+Train,50,0,Haustier & Tierbedarf,24,0.002
+Train,50,0,Haustier & Tierbedarf,57,0.00104304
+Train,50,0,Haustier & Tierbedarf,15,0.003
+Train,50,0,Kleidung & Accessoires,2840,0.23666667
+Train,50,0,Kleidung & Accessoires,9240,0.16908213
+Train,50,0,Kleidung & Accessoires,1156,0.2312
+Train,50,0,Kosmetik & Drogerie,384,0.032
+Train,50,0,Kosmetik & Drogerie,1521,0.02783267
+Train,50,0,Kosmetik & Drogerie,161,0.0322
+Train,50,0,Lebensmittel & Getränke,76,0.00633333
+Train,50,0,Lebensmittel & Getränke,400,0.00731957
+Train,50,0,Lebensmittel & Getränke,38,0.0076
+Train,50,0,Möbel & Wohnen,2761,0.23008333
+Train,50,0,Möbel & Wohnen,11389,0.20840653
+Train,50,0,Möbel & Wohnen,1125,0.225
+Train,50,0,Spielzeug & Baby,810,0.0675
+Train,50,0,Spielzeug & Baby,4021,0.07358
+Train,50,0,Spielzeug & Baby,346,0.0692
+Train,50,0,Sport & Freizeit,712,0.05933333
+Train,50,0,Sport & Freizeit,3027,0.05539087
+Train,50,0,Sport & Freizeit,303,0.0606
+Train,50,0,Werkzeug & Baumarkt,1306,0.10883333
+Train,50,0,Werkzeug & Baumarkt,7252,0.13270385
+Train,50,0,Werkzeug & Baumarkt,537,0.1074
+Train,80,0,Auto & Motorrad,3072,0.05712586
+Train,80,0,Auto & Motorrad,209,0.0418
+Train,80,0,Auto & Motorrad,479,0.03991667
+Train,80,0,"Bücher, Filme & Musik",236,0.00438857
+Train,80,0,"Bücher, Filme & Musik",25,0.005
+Train,80,0,"Bücher, Filme & Musik",63,0.00525
+Train,80,0,Bürobedarf,495,0.00920485
+Train,80,0,Bürobedarf,43,0.0086
+Train,80,0,Bürobedarf,99,0.00825
+Train,80,0,Elektronik & Computer,11819,0.21978206
+Train,80,0,Elektronik & Computer,873,0.1746
+Train,80,0,Elektronik & Computer,2077,0.17308333
+Train,80,0,Gesundheit & Pflege,1066,0.01982297
+Train,80,0,Gesundheit & Pflege,120,0.024
+Train,80,0,Gesundheit & Pflege,240,0.02
+Train,80,0,Haustier & Tierbedarf,40,0.00074383
+Train,80,0,Haustier & Tierbedarf,4,0.0008
+Train,80,0,Haustier & Tierbedarf,5,0.00041667
+Train,80,0,Kleidung & Accessoires,9221,0.17147054
+Train,80,0,Kleidung & Accessoires,1189,0.2378
+Train,80,0,Kleidung & Accessoires,2837,0.23641667
+Train,80,0,Kosmetik & Drogerie,1197,0.022259
+Train,80,0,Kosmetik & Drogerie,130,0.026
+Train,80,0,Kosmetik & Drogerie,334,0.02783333
+Train,80,0,Lebensmittel & Getränke,653,0.01214296
+Train,80,0,Lebensmittel & Getränke,33,0.0066
+Train,80,0,Lebensmittel & Getränke,75,0.00625
+Train,80,0,Möbel & Wohnen,12150,0.22593722
+Train,80,0,Möbel & Wohnen,1244,0.2488
+Train,80,0,Möbel & Wohnen,3014,0.25116667
+Train,80,0,Spielzeug & Baby,3778,0.07025439
+Train,80,0,Spielzeug & Baby,364,0.0728
+Train,80,0,Spielzeug & Baby,853,0.07108333
+Train,80,0,Sport & Freizeit,3773,0.07016141
+Train,80,0,Sport & Freizeit,314,0.0628
+Train,80,0,Sport & Freizeit,812,0.06766667
+Train,80,0,Werkzeug & Baumarkt,6276,0.11670634
+Train,80,0,Werkzeug & Baumarkt,452,0.0904
+Train,80,0,Werkzeug & Baumarkt,1112,0.09266667
+Valid,20,0,Auto & Motorrad,277,0.0554
+Valid,20,0,Auto & Motorrad,383,0.05471429
+Valid,20,0,Auto & Motorrad,469,0.05211111
+Valid,20,0,"Bücher, Filme & Musik",23,0.0046
+Valid,20,0,"Bücher, Filme & Musik",40,0.00571429
+Valid,20,0,"Bücher, Filme & Musik",55,0.00611111
+Valid,20,0,Bürobedarf,30,0.006
+Valid,20,0,Bürobedarf,48,0.00685714
+Valid,20,0,Bürobedarf,59,0.00655556
+Valid,20,0,Elektronik & Computer,1039,0.2078
+Valid,20,0,Elektronik & Computer,1461,0.20871429
+Valid,20,0,Elektronik & Computer,1846,0.20511111
+Valid,20,0,Gesundheit & Pflege,119,0.0238
+Valid,20,0,Gesundheit & Pflege,146,0.02085714
+Valid,20,0,Gesundheit & Pflege,198,0.022
+Valid,20,0,Haustier & Tierbedarf,19,0.0038
+Valid,20,0,Haustier & Tierbedarf,24,0.00342857
+Valid,20,0,Haustier & Tierbedarf,32,0.00355556
+Valid,20,0,Kleidung & Accessoires,1086,0.2172
+Valid,20,0,Kleidung & Accessoires,1571,0.22442857
+Valid,20,0,Kleidung & Accessoires,1973,0.21922222
+Valid,20,0,Kosmetik & Drogerie,210,0.042
+Valid,20,0,Kosmetik & Drogerie,291,0.04157143
+Valid,20,0,Kosmetik & Drogerie,383,0.04255556
+Valid,20,0,Lebensmittel & Getränke,89,0.0178
+Valid,20,0,Lebensmittel & Getränke,102,0.01457143
+Valid,20,0,Lebensmittel & Getränke,148,0.01644444
+Valid,20,0,Möbel & Wohnen,949,0.1898
+Valid,20,0,Möbel & Wohnen,1273,0.18185714
+Valid,20,0,Möbel & Wohnen,1691,0.18788889
+Valid,20,0,Spielzeug & Baby,242,0.0484
+Valid,20,0,Spielzeug & Baby,347,0.04957143
+Valid,20,0,Spielzeug & Baby,425,0.04722222
+Valid,20,0,Sport & Freizeit,341,0.0682
+Valid,20,0,Sport & Freizeit,457,0.06528571
+Valid,20,0,Sport & Freizeit,616,0.06844444
+Valid,20,0,Werkzeug & Baumarkt,576,0.1152
+Valid,20,0,Werkzeug & Baumarkt,857,0.12242857
+Valid,20,0,Werkzeug & Baumarkt,1105,0.12277778
+Valid,20,50,Auto & Motorrad,457,0.05077778
+Valid,20,50,Auto & Motorrad,256,0.0512
+Valid,20,50,Auto & Motorrad,361,0.05157143
+Valid,20,50,Bürobedarf,104,0.01155556
+Valid,20,50,Bürobedarf,76,0.0152
+Valid,20,50,Bürobedarf,87,0.01242857
+Valid,20,50,Elektronik & Computer,1236,0.13733333
+Valid,20,50,Elektronik & Computer,732,0.1464
+Valid,20,50,Elektronik & Computer,976,0.13942857
+Valid,20,50,Gesundheit & Pflege,177,0.01966667
+Valid,20,50,Gesundheit & Pflege,94,0.0188
+Valid,20,50,Gesundheit & Pflege,130,0.01857143
+Valid,20,50,Haustier & Tierbedarf,43,0.00477778
+Valid,20,50,Haustier & Tierbedarf,28,0.0056
+Valid,20,50,Haustier & Tierbedarf,35,0.005
+Valid,20,50,Kleidung & Accessoires,3125,0.34722222
+Valid,20,50,Kleidung & Accessoires,1712,0.3424
+Valid,20,50,Kleidung & Accessoires,2430,0.34714286
+Valid,20,50,Kosmetik & Drogerie,302,0.03355556
+Valid,20,50,Kosmetik & Drogerie,173,0.0346
+Valid,20,50,Kosmetik & Drogerie,255,0.03642857
+Valid,20,50,Lebensmittel & Getränke,58,0.00644444
+Valid,20,50,Lebensmittel & Getränke,36,0.0072
+Valid,20,50,Lebensmittel & Getränke,51,0.00728571
+Valid,20,50,Möbel & Wohnen,1739,0.19322222
+Valid,20,50,Möbel & Wohnen,940,0.188
+Valid,20,50,Möbel & Wohnen,1346,0.19228571
+Valid,20,50,Spielzeug & Baby,292,0.03244444
+Valid,20,50,Spielzeug & Baby,156,0.0312
+Valid,20,50,Spielzeug & Baby,218,0.03114286
+Valid,20,50,Sport & Freizeit,505,0.05611111
+Valid,20,50,Sport & Freizeit,274,0.0548
+Valid,20,50,Sport & Freizeit,376,0.05371429
+Valid,20,50,Werkzeug & Baumarkt,962,0.10688889
+Valid,20,50,Werkzeug & Baumarkt,523,0.1046
+Valid,20,50,Werkzeug & Baumarkt,735,0.105
+Valid,20,100,Auto & Motorrad,361,0.05157143
+Valid,20,100,Auto & Motorrad,256,0.0512
+Valid,20,100,Auto & Motorrad,457,0.05077778
+Valid,20,100,Bürobedarf,87,0.01242857
+Valid,20,100,Bürobedarf,76,0.0152
+Valid,20,100,Bürobedarf,104,0.01155556
+Valid,20,100,Elektronik & Computer,976,0.13942857
+Valid,20,100,Elektronik & Computer,732,0.1464
+Valid,20,100,Elektronik & Computer,1236,0.13733333
+Valid,20,100,Gesundheit & Pflege,130,0.01857143
+Valid,20,100,Gesundheit & Pflege,94,0.0188
+Valid,20,100,Gesundheit & Pflege,177,0.01966667
+Valid,20,100,Haustier & Tierbedarf,35,0.005
+Valid,20,100,Haustier & Tierbedarf,28,0.0056
+Valid,20,100,Haustier & Tierbedarf,43,0.00477778
+Valid,20,100,Kleidung & Accessoires,2430,0.34714286
+Valid,20,100,Kleidung & Accessoires,1712,0.3424
+Valid,20,100,Kleidung & Accessoires,3125,0.34722222
+Valid,20,100,Kosmetik & Drogerie,255,0.03642857
+Valid,20,100,Kosmetik & Drogerie,173,0.0346
+Valid,20,100,Kosmetik & Drogerie,302,0.03355556
+Valid,20,100,Lebensmittel & Getränke,51,0.00728571
+Valid,20,100,Lebensmittel & Getränke,36,0.0072
+Valid,20,100,Lebensmittel & Getränke,58,0.00644444
+Valid,20,100,Möbel & Wohnen,1346,0.19228571
+Valid,20,100,Möbel & Wohnen,940,0.188
+Valid,20,100,Möbel & Wohnen,1739,0.19322222
+Valid,20,100,Spielzeug & Baby,218,0.03114286
+Valid,20,100,Spielzeug & Baby,156,0.0312
+Valid,20,100,Spielzeug & Baby,292,0.03244444
+Valid,20,100,Sport & Freizeit,376,0.05371429
+Valid,20,100,Sport & Freizeit,274,0.0548
+Valid,20,100,Sport & Freizeit,505,0.05611111
+Valid,20,100,Werkzeug & Baumarkt,735,0.105
+Valid,20,100,Werkzeug & Baumarkt,523,0.1046
+Valid,20,100,Werkzeug & Baumarkt,962,0.10688889
+Valid,50,0,Auto & Motorrad,407,0.05814286
+Valid,50,0,Auto & Motorrad,299,0.0598
+Valid,50,0,Auto & Motorrad,522,0.058
+Valid,50,0,"Bücher, Filme & Musik",59,0.00842857
+Valid,50,0,"Bücher, Filme & Musik",46,0.0092
+Valid,50,0,"Bücher, Filme & Musik",80,0.00888889
+Valid,50,0,Bürobedarf,77,0.011
+Valid,50,0,Bürobedarf,72,0.0144
+Valid,50,0,Bürobedarf,113,0.01255556
+Valid,50,0,Elektronik & Computer,1258,0.17971429
+Valid,50,0,Elektronik & Computer,927,0.1854
+Valid,50,0,Elektronik & Computer,1642,0.18244444
+Valid,50,0,Gesundheit & Pflege,86,0.01228571
+Valid,50,0,Gesundheit & Pflege,58,0.0116
+Valid,50,0,Gesundheit & Pflege,102,0.01133333
+Valid,50,0,Kleidung & Accessoires,1647,0.23528571
+Valid,50,0,Kleidung & Accessoires,1160,0.232
+Valid,50,0,Kleidung & Accessoires,2107,0.23411111
+Valid,50,0,Kosmetik & Drogerie,242,0.03457143
+Valid,50,0,Kosmetik & Drogerie,170,0.034
+Valid,50,0,Kosmetik & Drogerie,285,0.03166667
+Valid,50,0,Lebensmittel & Getränke,37,0.00528571
+Valid,50,0,Lebensmittel & Getränke,31,0.0062
+Valid,50,0,Lebensmittel & Getränke,44,0.00488889
+Valid,50,0,Möbel & Wohnen,1710,0.24428571
+Valid,50,0,Möbel & Wohnen,1184,0.2368
+Valid,50,0,Möbel & Wohnen,2230,0.24777778
+Valid,50,0,Spielzeug & Baby,409,0.05842857
+Valid,50,0,Spielzeug & Baby,289,0.0578
+Valid,50,0,Spielzeug & Baby,514,0.05711111
+Valid,50,0,Sport & Freizeit,356,0.05085714
+Valid,50,0,Sport & Freizeit,250,0.05
+Valid,50,0,Sport & Freizeit,459,0.051
+Valid,50,0,Werkzeug & Baumarkt,712,0.10171429
+Valid,50,0,Werkzeug & Baumarkt,514,0.1028
+Valid,50,0,Werkzeug & Baumarkt,902,0.10022222
+Valid,50,50,Auto & Motorrad,395,0.04388889
+Valid,50,50,Auto & Motorrad,297,0.04242857
+Valid,50,50,Auto & Motorrad,218,0.0436
+Valid,50,50,"Bücher, Filme & Musik",153,0.017
+Valid,50,50,"Bücher, Filme & Musik",108,0.01542857
+Valid,50,50,"Bücher, Filme & Musik",89,0.0178
+Valid,50,50,Bürobedarf,200,0.02222222
+Valid,50,50,Bürobedarf,149,0.02128571
+Valid,50,50,Bürobedarf,105,0.021
+Valid,50,50,Elektronik & Computer,1319,0.14655556
+Valid,50,50,Elektronik & Computer,1043,0.149
+Valid,50,50,Elektronik & Computer,773,0.1546
+Valid,50,50,Gesundheit & Pflege,59,0.00655556
+Valid,50,50,Gesundheit & Pflege,44,0.00628571
+Valid,50,50,Gesundheit & Pflege,38,0.0076
+Valid,50,50,Kleidung & Accessoires,2601,0.289
+Valid,50,50,Kleidung & Accessoires,2016,0.288
+Valid,50,50,Kleidung & Accessoires,1420,0.284
+Valid,50,50,Kosmetik & Drogerie,361,0.04011111
+Valid,50,50,Kosmetik & Drogerie,282,0.04028571
+Valid,50,50,Kosmetik & Drogerie,204,0.0408
+Valid,50,50,Lebensmittel & Getränke,48,0.00533333
+Valid,50,50,Lebensmittel & Getränke,29,0.00414286
+Valid,50,50,Lebensmittel & Getränke,22,0.0044
+Valid,50,50,Möbel & Wohnen,2195,0.24388889
+Valid,50,50,Möbel & Wohnen,1749,0.24985714
+Valid,50,50,Möbel & Wohnen,1209,0.2418
+Valid,50,50,Spielzeug & Baby,561,0.06233333
+Valid,50,50,Spielzeug & Baby,439,0.06271429
+Valid,50,50,Spielzeug & Baby,324,0.0648
+Valid,50,50,Sport & Freizeit,536,0.05955556
+Valid,50,50,Sport & Freizeit,407,0.05814286
+Valid,50,50,Sport & Freizeit,281,0.0562
+Valid,50,50,Werkzeug & Baumarkt,572,0.06355556
+Valid,50,50,Werkzeug & Baumarkt,437,0.06242857
+Valid,50,50,Werkzeug & Baumarkt,317,0.0634
+Valid,50,100,Auto & Motorrad,297,0.04242857
+Valid,50,100,Auto & Motorrad,395,0.04388889
+Valid,50,100,Auto & Motorrad,218,0.0436
+Valid,50,100,"Bücher, Filme & Musik",108,0.01542857
+Valid,50,100,"Bücher, Filme & Musik",153,0.017
+Valid,50,100,"Bücher, Filme & Musik",89,0.0178
+Valid,50,100,Bürobedarf,149,0.02128571
+Valid,50,100,Bürobedarf,200,0.02222222
+Valid,50,100,Bürobedarf,105,0.021
+Valid,50,100,Elektronik & Computer,1043,0.149
+Valid,50,100,Elektronik & Computer,1319,0.14655556
+Valid,50,100,Elektronik & Computer,773,0.1546
+Valid,50,100,Gesundheit & Pflege,44,0.00628571
+Valid,50,100,Gesundheit & Pflege,59,0.00655556
+Valid,50,100,Gesundheit & Pflege,38,0.0076
+Valid,50,100,Kleidung & Accessoires,2016,0.288
+Valid,50,100,Kleidung & Accessoires,2601,0.289
+Valid,50,100,Kleidung & Accessoires,1420,0.284
+Valid,50,100,Kosmetik & Drogerie,282,0.04028571
+Valid,50,100,Kosmetik & Drogerie,361,0.04011111
+Valid,50,100,Kosmetik & Drogerie,204,0.0408
+Valid,50,100,Lebensmittel & Getränke,29,0.00414286
+Valid,50,100,Lebensmittel & Getränke,48,0.00533333
+Valid,50,100,Lebensmittel & Getränke,22,0.0044
+Valid,50,100,Möbel & Wohnen,1749,0.24985714
+Valid,50,100,Möbel & Wohnen,2195,0.24388889
+Valid,50,100,Möbel & Wohnen,1209,0.2418
+Valid,50,100,Spielzeug & Baby,439,0.06271429
+Valid,50,100,Spielzeug & Baby,561,0.06233333
+Valid,50,100,Spielzeug & Baby,324,0.0648
+Valid,50,100,Sport & Freizeit,407,0.05814286
+Valid,50,100,Sport & Freizeit,536,0.05955556
+Valid,50,100,Sport & Freizeit,281,0.0562
+Valid,50,100,Werkzeug & Baumarkt,437,0.06242857
+Valid,50,100,Werkzeug & Baumarkt,572,0.06355556
+Valid,50,100,Werkzeug & Baumarkt,317,0.0634
+Valid,80,0,Auto & Motorrad,336,0.048
+Valid,80,0,Auto & Motorrad,436,0.04844444
+Valid,80,0,Auto & Motorrad,247,0.0494
+Valid,80,0,"Bücher, Filme & Musik",83,0.01185714
+Valid,80,0,"Bücher, Filme & Musik",105,0.01166667
+Valid,80,0,"Bücher, Filme & Musik",57,0.0114
+Valid,80,0,Bürobedarf,43,0.00614286
+Valid,80,0,Bürobedarf,58,0.00644444
+Valid,80,0,Bürobedarf,34,0.0068
+Valid,80,0,Elektronik & Computer,1121,0.16014286
+Valid,80,0,Elektronik & Computer,1421,0.15788889
+Valid,80,0,Elektronik & Computer,788,0.1576
+Valid,80,0,Gesundheit & Pflege,117,0.01671429
+Valid,80,0,Gesundheit & Pflege,177,0.01966667
+Valid,80,0,Gesundheit & Pflege,95,0.019
+Valid,80,0,Kleidung & Accessoires,1604,0.22914286
+Valid,80,0,Kleidung & Accessoires,2006,0.22288889
+Valid,80,0,Kleidung & Accessoires,1107,0.2214
+Valid,80,0,Kosmetik & Drogerie,214,0.03057143
+Valid,80,0,Kosmetik & Drogerie,268,0.02977778
+Valid,80,0,Kosmetik & Drogerie,161,0.0322
+Valid,80,0,Lebensmittel & Getränke,84,0.012
+Valid,80,0,Lebensmittel & Getränke,113,0.01255556
+Valid,80,0,Lebensmittel & Getränke,65,0.013
+Valid,80,0,Möbel & Wohnen,1734,0.24771429
+Valid,80,0,Möbel & Wohnen,2244,0.24933333
+Valid,80,0,Möbel & Wohnen,1246,0.2492
+Valid,80,0,Spielzeug & Baby,442,0.06314286
+Valid,80,0,Spielzeug & Baby,577,0.06411111
+Valid,80,0,Spielzeug & Baby,313,0.0626
+Valid,80,0,Sport & Freizeit,551,0.07871429
+Valid,80,0,Sport & Freizeit,719,0.07988889
+Valid,80,0,Sport & Freizeit,401,0.0802
+Valid,80,0,Werkzeug & Baumarkt,671,0.09585714
+Valid,80,0,Werkzeug & Baumarkt,876,0.09733333
+Valid,80,0,Werkzeug & Baumarkt,486,0.0972
+Valid,80,50,Auto & Motorrad,210,0.02333333
+Valid,80,50,Auto & Motorrad,173,0.02471429
+Valid,80,50,Auto & Motorrad,117,0.0234
+Valid,80,50,"Bücher, Filme & Musik",84,0.00933333
+Valid,80,50,"Bücher, Filme & Musik",62,0.00885714
+Valid,80,50,"Bücher, Filme & Musik",47,0.0094
+Valid,80,50,Bürobedarf,26,0.00288889
+Valid,80,50,Bürobedarf,19,0.00271429
+Valid,80,50,Bürobedarf,17,0.0034
+Valid,80,50,Elektronik & Computer,1047,0.11633333
+Valid,80,50,Elektronik & Computer,842,0.12028571
+Valid,80,50,Elektronik & Computer,606,0.1212
+Valid,80,50,Gesundheit & Pflege,111,0.01233333
+Valid,80,50,Gesundheit & Pflege,86,0.01228571
+Valid,80,50,Gesundheit & Pflege,58,0.0116
+Valid,80,50,Haustier & Tierbedarf,56,0.00622222
+Valid,80,50,Haustier & Tierbedarf,37,0.00528571
+Valid,80,50,Haustier & Tierbedarf,27,0.0054
+Valid,80,50,Kleidung & Accessoires,1901,0.21122222
+Valid,80,50,Kleidung & Accessoires,1476,0.21085714
+Valid,80,50,Kleidung & Accessoires,1074,0.2148
+Valid,80,50,Kosmetik & Drogerie,247,0.02744444
+Valid,80,50,Kosmetik & Drogerie,190,0.02714286
+Valid,80,50,Kosmetik & Drogerie,140,0.028
+Valid,80,50,Lebensmittel & Getränke,98,0.01088889
+Valid,80,50,Lebensmittel & Getränke,76,0.01085714
+Valid,80,50,Lebensmittel & Getränke,54,0.0108
+Valid,80,50,Möbel & Wohnen,3076,0.34177778
+Valid,80,50,Möbel & Wohnen,2378,0.33971429
+Valid,80,50,Möbel & Wohnen,1697,0.3394
+Valid,80,50,Spielzeug & Baby,658,0.07311111
+Valid,80,50,Spielzeug & Baby,523,0.07471429
+Valid,80,50,Spielzeug & Baby,364,0.0728
+Valid,80,50,Sport & Freizeit,711,0.079
+Valid,80,50,Sport & Freizeit,559,0.07985714
+Valid,80,50,Sport & Freizeit,376,0.0752
+Valid,80,50,Werkzeug & Baumarkt,775,0.08611111
+Valid,80,50,Werkzeug & Baumarkt,579,0.08271429
+Valid,80,50,Werkzeug & Baumarkt,423,0.0846
+Valid,80,100,Auto & Motorrad,173,0.02471429
+Valid,80,100,Auto & Motorrad,117,0.0234
+Valid,80,100,Auto & Motorrad,210,0.02333333
+Valid,80,100,"Bücher, Filme & Musik",62,0.00885714
+Valid,80,100,"Bücher, Filme & Musik",47,0.0094
+Valid,80,100,"Bücher, Filme & Musik",84,0.00933333
+Valid,80,100,Bürobedarf,19,0.00271429
+Valid,80,100,Bürobedarf,17,0.0034
+Valid,80,100,Bürobedarf,26,0.00288889
+Valid,80,100,Elektronik & Computer,842,0.12028571
+Valid,80,100,Elektronik & Computer,606,0.1212
+Valid,80,100,Elektronik & Computer,1047,0.11633333
+Valid,80,100,Gesundheit & Pflege,86,0.01228571
+Valid,80,100,Gesundheit & Pflege,58,0.0116
+Valid,80,100,Gesundheit & Pflege,111,0.01233333
+Valid,80,100,Haustier & Tierbedarf,37,0.00528571
+Valid,80,100,Haustier & Tierbedarf,27,0.0054
+Valid,80,100,Haustier & Tierbedarf,56,0.00622222
+Valid,80,100,Kleidung & Accessoires,1476,0.21085714
+Valid,80,100,Kleidung & Accessoires,1074,0.2148
+Valid,80,100,Kleidung & Accessoires,1901,0.21122222
+Valid,80,100,Kosmetik & Drogerie,190,0.02714286
+Valid,80,100,Kosmetik & Drogerie,140,0.028
+Valid,80,100,Kosmetik & Drogerie,247,0.02744444
+Valid,80,100,Lebensmittel & Getränke,76,0.01085714
+Valid,80,100,Lebensmittel & Getränke,54,0.0108
+Valid,80,100,Lebensmittel & Getränke,98,0.01088889
+Valid,80,100,Möbel & Wohnen,2378,0.33971429
+Valid,80,100,Möbel & Wohnen,1697,0.3394
+Valid,80,100,Möbel & Wohnen,3076,0.34177778
+Valid,80,100,Spielzeug & Baby,523,0.07471429
+Valid,80,100,Spielzeug & Baby,364,0.0728
+Valid,80,100,Spielzeug & Baby,658,0.07311111
+Valid,80,100,Sport & Freizeit,559,0.07985714
+Valid,80,100,Sport & Freizeit,376,0.0752
+Valid,80,100,Sport & Freizeit,711,0.079
+Valid,80,100,Werkzeug & Baumarkt,579,0.08271429
+Valid,80,100,Werkzeug & Baumarkt,423,0.0846
+Valid,80,100,Werkzeug & Baumarkt,775,0.08611111

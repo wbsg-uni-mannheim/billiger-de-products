@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "final_large_20cc80rnd000un_lm=roberta_da=del_dk=None_su=False_size=None_id=1_english",
+        "runtime_sec": 30964.347,
+        "max_memory_mb": 21121.967,
+        "energy_kwh": 2.747897,
+        "emissions_kg": 1.046811,
+        "energy_cost_eur": 0.8244
+    }
+]

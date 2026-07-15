@@ -1,0 +1,524 @@
+gs_file,split,category,count,missing_in_train_valid
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Kleidung & Accessoires,3392,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Möbel & Wohnen,2429,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Elektronik & Computer,768,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Spielzeug & Baby,517,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Kosmetik & Drogerie,415,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Sport & Freizeit,384,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Auto & Motorrad,351,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Werkzeug & Baumarkt,349,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Gesundheit & Pflege,159,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Bürobedarf,109,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Lebensmittel & Getränke,77,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,"Bücher, Filme & Musik",34,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,test,Haustier & Tierbedarf,16,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Kleidung & Accessoires,1129,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Elektronik & Computer,1024,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Möbel & Wohnen,881,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Werkzeug & Baumarkt,583,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Auto & Motorrad,294,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Spielzeug & Baby,287,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Kosmetik & Drogerie,286,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Sport & Freizeit,262,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Lebensmittel & Getränke,82,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Gesundheit & Pflege,79,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Bürobedarf,58,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,Haustier & Tierbedarf,20,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_small,"Bücher, Filme & Musik",15,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Kleidung & Accessoires,2734,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Elektronik & Computer,2423,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Möbel & Wohnen,2131,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Werkzeug & Baumarkt,1417,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Auto & Motorrad,718,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Spielzeug & Baby,708,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Sport & Freizeit,665,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Kosmetik & Drogerie,651,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Lebensmittel & Getränke,186,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Gesundheit & Pflege,166,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Bürobedarf,120,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,"Bücher, Filme & Musik",44,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_medium,Haustier & Tierbedarf,37,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Elektronik & Computer,14748,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Möbel & Wohnen,8494,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Kleidung & Accessoires,8122,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Werkzeug & Baumarkt,7750,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Auto & Motorrad,3867,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Spielzeug & Baby,3066,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Sport & Freizeit,3019,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Kosmetik & Drogerie,2976,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Lebensmittel & Getränke,1002,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Gesundheit & Pflege,700,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Bürobedarf,671,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,Haustier & Tierbedarf,299,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,train_large,"Bücher, Filme & Musik",72,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Kleidung & Accessoires,1736,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Möbel & Wohnen,1042,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Elektronik & Computer,628,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Werkzeug & Baumarkt,504,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Auto & Motorrad,269,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Kosmetik & Drogerie,251,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Sport & Freizeit,231,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Spielzeug & Baby,164,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Bürobedarf,86,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Gesundheit & Pflege,33,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Lebensmittel & Getränke,30,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,Haustier & Tierbedarf,19,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_small,"Bücher, Filme & Musik",7,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Kleidung & Accessoires,2461,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Möbel & Wohnen,1474,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Elektronik & Computer,856,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Werkzeug & Baumarkt,734,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Auto & Motorrad,385,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Kosmetik & Drogerie,344,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Sport & Freizeit,309,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Spielzeug & Baby,215,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Bürobedarf,103,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Gesundheit & Pflege,48,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Lebensmittel & Getränke,41,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,Haustier & Tierbedarf,19,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_medium,"Bücher, Filme & Musik",11,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Kleidung & Accessoires,3178,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Möbel & Wohnen,1877,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Elektronik & Computer,1104,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Werkzeug & Baumarkt,953,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Auto & Motorrad,482,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Kosmetik & Drogerie,438,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Sport & Freizeit,419,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Spielzeug & Baby,284,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Bürobedarf,122,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Gesundheit & Pflege,55,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Lebensmittel & Getränke,46,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,Haustier & Tierbedarf,26,False
+preprocessed_products20cc80rnd100un_gs.pkl.gz,valid_large,"Bücher, Filme & Musik",16,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Möbel & Wohnen,2962,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Kleidung & Accessoires,2857,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Werkzeug & Baumarkt,687,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Sport & Freizeit,609,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Kosmetik & Drogerie,542,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Elektronik & Computer,401,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Gesundheit & Pflege,319,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Spielzeug & Baby,302,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Auto & Motorrad,238,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Bürobedarf,70,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,test,Lebensmittel & Getränke,13,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Möbel & Wohnen,1272,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Kleidung & Accessoires,1118,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Elektronik & Computer,835,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Werkzeug & Baumarkt,490,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Sport & Freizeit,375,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Spielzeug & Baby,371,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Auto & Motorrad,202,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Kosmetik & Drogerie,145,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Gesundheit & Pflege,83,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Lebensmittel & Getränke,47,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,Bürobedarf,37,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_small,"Bücher, Filme & Musik",25,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Möbel & Wohnen,3029,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Kleidung & Accessoires,2726,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Elektronik & Computer,1988,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Werkzeug & Baumarkt,1164,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Sport & Freizeit,900,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Spielzeug & Baby,859,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Auto & Motorrad,526,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Kosmetik & Drogerie,342,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Gesundheit & Pflege,196,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Lebensmittel & Getränke,113,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,Bürobedarf,93,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_medium,"Bücher, Filme & Musik",64,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Möbel & Wohnen,12537,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Elektronik & Computer,11170,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Kleidung & Accessoires,8704,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Werkzeug & Baumarkt,6412,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Sport & Freizeit,4833,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Spielzeug & Baby,3908,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Auto & Motorrad,2517,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Kosmetik & Drogerie,1249,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Gesundheit & Pflege,1006,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Lebensmittel & Getränke,713,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,Bürobedarf,451,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,train_large,"Bücher, Filme & Musik",276,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Möbel & Wohnen,1768,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Kleidung & Accessoires,1045,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Elektronik & Computer,552,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Werkzeug & Baumarkt,427,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Sport & Freizeit,369,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Spielzeug & Baby,330,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Kosmetik & Drogerie,181,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Auto & Motorrad,141,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Lebensmittel & Getränke,45,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Gesundheit & Pflege,43,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Bürobedarf,37,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,Haustier & Tierbedarf,31,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_small,"Bücher, Filme & Musik",31,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Möbel & Wohnen,2469,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Kleidung & Accessoires,1438,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Elektronik & Computer,773,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Werkzeug & Baumarkt,584,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Sport & Freizeit,553,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Spielzeug & Baby,480,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Kosmetik & Drogerie,254,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Auto & Motorrad,201,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Lebensmittel & Getränke,56,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Gesundheit & Pflege,53,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Haustier & Tierbedarf,52,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,Bürobedarf,49,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_medium,"Bücher, Filme & Musik",38,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Möbel & Wohnen,3182,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Kleidung & Accessoires,1826,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Elektronik & Computer,974,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Werkzeug & Baumarkt,807,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Sport & Freizeit,721,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Spielzeug & Baby,584,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Kosmetik & Drogerie,320,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Auto & Motorrad,248,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Gesundheit & Pflege,83,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Lebensmittel & Getränke,78,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Bürobedarf,64,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,Haustier & Tierbedarf,63,False
+preprocessed_products80cc20rnd100un_gs.pkl.gz,valid_large,"Bücher, Filme & Musik",50,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Möbel & Wohnen,2794,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Kleidung & Accessoires,2639,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Elektronik & Computer,870,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Sport & Freizeit,801,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Werkzeug & Baumarkt,689,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Spielzeug & Baby,380,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Auto & Motorrad,287,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Kosmetik & Drogerie,268,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Gesundheit & Pflege,140,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Bürobedarf,82,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,Lebensmittel & Getränke,39,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,test,"Bücher, Filme & Musik",11,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Möbel & Wohnen,1272,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Kleidung & Accessoires,1118,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Elektronik & Computer,835,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Werkzeug & Baumarkt,490,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Sport & Freizeit,375,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Spielzeug & Baby,371,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Auto & Motorrad,202,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Kosmetik & Drogerie,145,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Gesundheit & Pflege,83,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Lebensmittel & Getränke,47,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,Bürobedarf,37,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_small,"Bücher, Filme & Musik",25,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Möbel & Wohnen,3029,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Kleidung & Accessoires,2726,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Elektronik & Computer,1988,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Werkzeug & Baumarkt,1164,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Sport & Freizeit,900,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Spielzeug & Baby,859,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Auto & Motorrad,526,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Kosmetik & Drogerie,342,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Gesundheit & Pflege,196,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Lebensmittel & Getränke,113,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,Bürobedarf,93,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_medium,"Bücher, Filme & Musik",64,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Möbel & Wohnen,12537,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Elektronik & Computer,11170,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Kleidung & Accessoires,8704,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Werkzeug & Baumarkt,6412,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Sport & Freizeit,4833,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Spielzeug & Baby,3908,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Auto & Motorrad,2517,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Kosmetik & Drogerie,1249,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Gesundheit & Pflege,1006,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Lebensmittel & Getränke,713,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,Bürobedarf,451,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,train_large,"Bücher, Filme & Musik",276,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Möbel & Wohnen,1768,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Kleidung & Accessoires,1045,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Elektronik & Computer,552,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Werkzeug & Baumarkt,427,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Sport & Freizeit,369,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Spielzeug & Baby,330,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Kosmetik & Drogerie,181,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Auto & Motorrad,141,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Lebensmittel & Getränke,45,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Gesundheit & Pflege,43,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Bürobedarf,37,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,Haustier & Tierbedarf,31,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_small,"Bücher, Filme & Musik",31,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Möbel & Wohnen,2469,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Kleidung & Accessoires,1438,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Elektronik & Computer,773,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Werkzeug & Baumarkt,584,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Sport & Freizeit,553,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Spielzeug & Baby,480,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Kosmetik & Drogerie,254,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Auto & Motorrad,201,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Lebensmittel & Getränke,56,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Gesundheit & Pflege,53,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Haustier & Tierbedarf,52,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,Bürobedarf,49,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_medium,"Bücher, Filme & Musik",38,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Möbel & Wohnen,3182,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Kleidung & Accessoires,1826,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Elektronik & Computer,974,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Werkzeug & Baumarkt,807,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Sport & Freizeit,721,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Spielzeug & Baby,584,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Kosmetik & Drogerie,320,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Auto & Motorrad,248,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Gesundheit & Pflege,83,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Lebensmittel & Getränke,78,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Bürobedarf,64,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,Haustier & Tierbedarf,63,False
+preprocessed_products80cc20rnd050un_gs.pkl.gz,valid_large,"Bücher, Filme & Musik",50,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Kleidung & Accessoires,2674,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Möbel & Wohnen,2175,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Elektronik & Computer,1002,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Werkzeug & Baumarkt,749,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Sport & Freizeit,602,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Spielzeug & Baby,550,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Auto & Motorrad,414,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Kosmetik & Drogerie,380,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Gesundheit & Pflege,248,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Bürobedarf,91,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,"Bücher, Filme & Musik",70,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,test,Lebensmittel & Getränke,45,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Kleidung & Accessoires,1135,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Möbel & Wohnen,1124,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Elektronik & Computer,922,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Werkzeug & Baumarkt,562,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Spielzeug & Baby,352,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Sport & Freizeit,279,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Auto & Motorrad,277,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Kosmetik & Drogerie,178,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Gesundheit & Pflege,58,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Lebensmittel & Getränke,48,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,Bürobedarf,33,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_small,"Bücher, Filme & Musik",32,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Möbel & Wohnen,2753,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Kleidung & Accessoires,2745,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Elektronik & Computer,2172,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Werkzeug & Baumarkt,1338,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Spielzeug & Baby,827,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Auto & Motorrad,662,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Sport & Freizeit,652,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Kosmetik & Drogerie,442,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Gesundheit & Pflege,124,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Lebensmittel & Getränke,108,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,"Bücher, Filme & Musik",89,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_medium,Bürobedarf,88,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Elektronik & Computer,12862,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Möbel & Wohnen,11060,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Kleidung & Accessoires,8733,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Werkzeug & Baumarkt,7665,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Spielzeug & Baby,4098,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Sport & Freizeit,3312,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Auto & Motorrad,3294,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Kosmetik & Drogerie,1683,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Lebensmittel & Getränke,667,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Gesundheit & Pflege,554,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,Bürobedarf,417,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,train_large,"Bücher, Filme & Musik",303,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Kleidung & Accessoires,1340,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Möbel & Wohnen,1220,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Elektronik & Computer,783,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Spielzeug & Baby,375,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Werkzeug & Baumarkt,319,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Sport & Freizeit,286,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Kosmetik & Drogerie,232,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Auto & Motorrad,202,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Bürobedarf,113,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,"Bücher, Filme & Musik",65,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Gesundheit & Pflege,47,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_small,Lebensmittel & Getränke,18,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Kleidung & Accessoires,1915,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Möbel & Wohnen,1690,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Elektronik & Computer,1111,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Spielzeug & Baby,498,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Werkzeug & Baumarkt,464,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Sport & Freizeit,412,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Kosmetik & Drogerie,309,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Auto & Motorrad,274,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Bürobedarf,156,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,"Bücher, Filme & Musik",78,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Gesundheit & Pflege,65,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_medium,Lebensmittel & Getränke,28,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Kleidung & Accessoires,2490,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Möbel & Wohnen,2176,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Elektronik & Computer,1394,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Spielzeug & Baby,664,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Werkzeug & Baumarkt,576,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Sport & Freizeit,516,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Kosmetik & Drogerie,392,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Auto & Motorrad,363,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Bürobedarf,216,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,"Bücher, Filme & Musik",102,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Gesundheit & Pflege,79,False
+preprocessed_products50cc50rnd050un_gs.pkl.gz,valid_large,Lebensmittel & Getränke,32,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Kleidung & Accessoires,3149,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Möbel & Wohnen,2100,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Elektronik & Computer,941,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Werkzeug & Baumarkt,771,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Kosmetik & Drogerie,484,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Auto & Motorrad,425,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Spielzeug & Baby,409,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Sport & Freizeit,315,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Gesundheit & Pflege,151,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Lebensmittel & Getränke,101,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Bürobedarf,89,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,"Bücher, Filme & Musik",34,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,test,Haustier & Tierbedarf,31,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Kleidung & Accessoires,1129,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Elektronik & Computer,1024,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Möbel & Wohnen,881,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Werkzeug & Baumarkt,583,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Auto & Motorrad,294,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Spielzeug & Baby,287,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Kosmetik & Drogerie,286,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Sport & Freizeit,262,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Lebensmittel & Getränke,82,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Gesundheit & Pflege,79,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Bürobedarf,58,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,Haustier & Tierbedarf,20,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_small,"Bücher, Filme & Musik",15,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Kleidung & Accessoires,2734,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Elektronik & Computer,2423,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Möbel & Wohnen,2131,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Werkzeug & Baumarkt,1417,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Auto & Motorrad,718,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Spielzeug & Baby,708,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Sport & Freizeit,665,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Kosmetik & Drogerie,651,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Lebensmittel & Getränke,186,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Gesundheit & Pflege,166,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Bürobedarf,120,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,"Bücher, Filme & Musik",44,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_medium,Haustier & Tierbedarf,37,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Elektronik & Computer,14748,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Möbel & Wohnen,8494,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Kleidung & Accessoires,8122,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Werkzeug & Baumarkt,7750,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Auto & Motorrad,3867,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Spielzeug & Baby,3066,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Sport & Freizeit,3019,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Kosmetik & Drogerie,2976,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Lebensmittel & Getränke,1002,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Gesundheit & Pflege,700,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Bürobedarf,671,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,Haustier & Tierbedarf,299,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,train_large,"Bücher, Filme & Musik",72,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Kleidung & Accessoires,1736,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Möbel & Wohnen,1042,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Elektronik & Computer,628,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Werkzeug & Baumarkt,504,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Auto & Motorrad,269,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Kosmetik & Drogerie,251,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Sport & Freizeit,231,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Spielzeug & Baby,164,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Bürobedarf,86,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Gesundheit & Pflege,33,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Lebensmittel & Getränke,30,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,Haustier & Tierbedarf,19,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_small,"Bücher, Filme & Musik",7,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Kleidung & Accessoires,2461,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Möbel & Wohnen,1474,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Elektronik & Computer,856,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Werkzeug & Baumarkt,734,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Auto & Motorrad,385,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Kosmetik & Drogerie,344,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Sport & Freizeit,309,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Spielzeug & Baby,215,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Bürobedarf,103,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Gesundheit & Pflege,48,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Lebensmittel & Getränke,41,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,Haustier & Tierbedarf,19,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_medium,"Bücher, Filme & Musik",11,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Kleidung & Accessoires,3178,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Möbel & Wohnen,1877,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Elektronik & Computer,1104,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Werkzeug & Baumarkt,953,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Auto & Motorrad,482,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Kosmetik & Drogerie,438,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Sport & Freizeit,419,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Spielzeug & Baby,284,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Bürobedarf,122,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Gesundheit & Pflege,55,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Lebensmittel & Getränke,46,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,Haustier & Tierbedarf,26,False
+preprocessed_products20cc80rnd050un_gs.pkl.gz,valid_large,"Bücher, Filme & Musik",16,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Kleidung & Accessoires,3270,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Möbel & Wohnen,2580,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Elektronik & Computer,629,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Kosmetik & Drogerie,513,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Sport & Freizeit,500,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Werkzeug & Baumarkt,487,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Spielzeug & Baby,404,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Auto & Motorrad,260,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Gesundheit & Pflege,237,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Bürobedarf,74,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,Lebensmittel & Getränke,30,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,test,"Bücher, Filme & Musik",16,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Kleidung & Accessoires,1135,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Möbel & Wohnen,1124,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Elektronik & Computer,922,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Werkzeug & Baumarkt,562,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Spielzeug & Baby,352,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Sport & Freizeit,279,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Auto & Motorrad,277,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Kosmetik & Drogerie,178,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Gesundheit & Pflege,58,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Lebensmittel & Getränke,48,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,Bürobedarf,33,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_small,"Bücher, Filme & Musik",32,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Möbel & Wohnen,2753,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Kleidung & Accessoires,2745,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Elektronik & Computer,2172,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Werkzeug & Baumarkt,1338,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Spielzeug & Baby,827,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Auto & Motorrad,662,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Sport & Freizeit,652,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Kosmetik & Drogerie,442,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Gesundheit & Pflege,124,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Lebensmittel & Getränke,108,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,"Bücher, Filme & Musik",89,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_medium,Bürobedarf,88,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Elektronik & Computer,12862,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Möbel & Wohnen,11060,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Kleidung & Accessoires,8733,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Werkzeug & Baumarkt,7665,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Spielzeug & Baby,4098,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Sport & Freizeit,3312,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Auto & Motorrad,3294,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Kosmetik & Drogerie,1683,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Lebensmittel & Getränke,667,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Gesundheit & Pflege,554,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,Bürobedarf,417,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,train_large,"Bücher, Filme & Musik",303,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Kleidung & Accessoires,1340,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Möbel & Wohnen,1220,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Elektronik & Computer,783,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Spielzeug & Baby,375,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Werkzeug & Baumarkt,319,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Sport & Freizeit,286,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Kosmetik & Drogerie,232,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Auto & Motorrad,202,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Bürobedarf,113,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,"Bücher, Filme & Musik",65,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Gesundheit & Pflege,47,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_small,Lebensmittel & Getränke,18,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Kleidung & Accessoires,1915,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Möbel & Wohnen,1690,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Elektronik & Computer,1111,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Spielzeug & Baby,498,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Werkzeug & Baumarkt,464,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Sport & Freizeit,412,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Kosmetik & Drogerie,309,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Auto & Motorrad,274,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Bürobedarf,156,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,"Bücher, Filme & Musik",78,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Gesundheit & Pflege,65,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_medium,Lebensmittel & Getränke,28,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Kleidung & Accessoires,2490,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Möbel & Wohnen,2176,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Elektronik & Computer,1394,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Spielzeug & Baby,664,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Werkzeug & Baumarkt,576,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Sport & Freizeit,516,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Kosmetik & Drogerie,392,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Auto & Motorrad,363,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Bürobedarf,216,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,"Bücher, Filme & Musik",102,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Gesundheit & Pflege,79,False
+preprocessed_products50cc50rnd100un_gs.pkl.gz,valid_large,Lebensmittel & Getränke,32,False

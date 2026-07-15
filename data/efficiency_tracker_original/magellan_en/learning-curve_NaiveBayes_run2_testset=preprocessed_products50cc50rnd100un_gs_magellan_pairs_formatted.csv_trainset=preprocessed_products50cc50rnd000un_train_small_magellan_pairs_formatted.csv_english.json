@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "learning-curve_NaiveBayes_run2_testset=preprocessed_products50cc50rnd100un_gs_magellan_pairs_formatted.csv_trainset=preprocessed_products50cc50rnd000un_train_small_magellan_pairs_formatted.csv_english",
+        "runtime_sec": 1.239,
+        "max_memory_mb": 505.961,
+        "energy_kwh": 2.8e-05,
+        "emissions_kg": 1.1e-05,
+        "energy_cost_eur": 0.0
+    }
+]

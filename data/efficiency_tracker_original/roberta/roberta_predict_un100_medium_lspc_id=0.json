@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "roberta_predict_un100_medium_lspc_id=0",
+        "runtime_sec": 17.968,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.000679,
+        "emissions_kg": 0.000259,
+        "energy_cost_eur": 0.0002
+    }
+]

@@ -1,0 +1,74 @@
+[
+    {
+        "job_name": "roberta_predict_000un_small_lspc_id=0",
+        "runtime_sec": 10.655,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.000624,
+        "emissions_kg": 0.000238,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_000un_small_lspc_id=0",
+        "runtime_sec": 9.028,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.000723,
+        "emissions_kg": 0.000275,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_000un_small_lspc_id=0",
+        "runtime_sec": 8.818,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.000692,
+        "emissions_kg": 0.000264,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_000un_small_lspc_id=0",
+        "runtime_sec": 8.857,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.000665,
+        "emissions_kg": 0.000253,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_000un_small_lspc_id=0",
+        "runtime_sec": 9.157,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.00067,
+        "emissions_kg": 0.000255,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_000un_small_lspc_id=0",
+        "runtime_sec": 24.545,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.001149,
+        "emissions_kg": 0.000438,
+        "energy_cost_eur": 0.0003
+    },
+    {
+        "job_name": "roberta_predict_000un_small_lspc_id=0",
+        "runtime_sec": 23.35,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.000983,
+        "emissions_kg": 0.000374,
+        "energy_cost_eur": 0.0003
+    },
+    {
+        "job_name": "roberta_predict_000un_small_lspc_id=0",
+        "runtime_sec": 15.547,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.000707,
+        "emissions_kg": 0.000269,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_000un_small_lspc_id=0",
+        "runtime_sec": 15.265,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.000697,
+        "emissions_kg": 0.000266,
+        "energy_cost_eur": 0.0002
+    }
+]

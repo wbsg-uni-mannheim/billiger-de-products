@@ -1,0 +1,35 @@
+name: blocking_env2
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+
+  # PyTorch + CUDA runtime inside conda
+  - pytorch
+  - pytorch-cuda=12.1
+
+  # FAISS GPU (CUDA 12.1)
+  - faiss-gpu
+
+  # Scientific Python stack
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - mkl
+
+  - pip
+  - pip:
+      - transformers
+      - sentence-transformers
+      - accelerate
+      - spacy
+      - langchain
+      - openai
+      - sentencepiece
+      - elasticsearch
+prefix: /home/kelagin/miniconda/envs/blocking_env2
