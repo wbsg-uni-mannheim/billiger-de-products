@@ -7,9 +7,9 @@
     ],
     "trainset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_train_small.txt",
     "validset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_valid_small.txt",
-    "testset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_gs_adjusted_adjusted.txt",
-    "testset050": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd050un_gs_adjusted_adjusted.txt",
-    "testset100": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd100un_gs_adjusted_adjusted.txt"
+        "testset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_gs.txt",
+        "testset050": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd050un_gs.txt",
+        "testset100": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd100un_gs.txt"
   },
   {
     "name": "final_small_50cc50rnd000un",
@@ -19,9 +19,9 @@
     ],
     "trainset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_train_small.txt",
     "validset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_valid_small.txt",
-    "testset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_gs_adjusted_adjusted.txt",
-    "testset050": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd050un_gs_adjusted_adjusted.txt",
-    "testset100": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd100un_gs_adjusted_adjusted.txt"
+    "testset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_gs.txt",
+    "testset050": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd050un_gs.txt",
+    "testset100": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd100un_gs.txt"
   },
   {
     "name": "final_small_20cc80rnd000un",
@@ -31,9 +31,9 @@
     ],
     "trainset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_train_small.txt",
     "validset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_valid_small.txt",
-    "testset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_gs_adjusted_adjusted.txt",
-    "testset050": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd050un_gs_adjusted_adjusted.txt",
-    "testset100": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd100un_gs_adjusted_adjusted.txt"
+    "testset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_gs.txt",
+    "testset050": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd050un_gs.txt",
+    "testset100": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd100un_gs.txt"
   },
   {
     "name": "final_medium_80cc20rnd000un",
@@ -43,9 +43,9 @@
     ],
     "trainset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_train_medium.txt",
     "validset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_valid_medium.txt",
-    "testset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_gs_adjusted_adjusted.txt",
-    "testset050": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd050un_gs_adjusted_adjusted.txt",
-    "testset100": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd100un_gs_adjusted_adjusted.txt"
+    "testset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_gs.txt",
+    "testset050": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd050un_gs.txt",
+    "testset100": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd100un_gs.txt"
   },
   {
     "name": "final_medium_50cc50rnd000un",
@@ -55,9 +55,9 @@
     ],
     "trainset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_train_medium.txt",
     "validset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_valid_medium.txt",
-    "testset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_gs_adjusted_adjusted.txt",
-    "testset050": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd050un_gs_adjusted_adjusted.txt",
-    "testset100": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd100un_gs_adjusted_adjusted.txt"
+    "testset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_gs.txt",
+    "testset050": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd050un_gs.txt",
+    "testset100": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd100un_gs.txt"
   },
 
   {
@@ -68,9 +68,9 @@
     ],
     "trainset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_train_medium.txt",
     "validset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_valid_medium.txt",
-    "testset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_gs_adjusted_adjusted.txt",
-    "testset050": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd050un_gs_adjusted_adjusted.txt",
-    "testset100": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd100un_gs_adjusted_adjusted.txt"
+    "testset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_gs.txt",
+    "testset050": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd050un_gs.txt",
+    "testset100": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd100un_gs.txt"
   },
   {
     "name": "final_large_80cc20rnd000un",
@@ -80,9 +80,9 @@
     ],
     "trainset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_train_large.txt",
     "validset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_valid_large.txt",
-    "testset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_gs_adjusted_adjusted.txt",
-    "testset050": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd050un_gs_adjusted_adjusted.txt",
-    "testset100": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd100un_gs_adjusted_adjusted.txt"
+    "testset": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd000un_gs.txt",
+    "testset050": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd050un_gs.txt",
+    "testset100": "data/processed/ditto/data/final_output/preprocessed_products80cc20rnd100un_gs.txt"
   },
   {
     "name": "final_large_50cc50rnd000un",
@@ -92,9 +92,9 @@
     ],
     "trainset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_train_large.txt",
     "validset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_valid_large.txt",
-    "testset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_gs_adjusted_adjusted.txt",
-    "testset050": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd050un_gs_adjusted_adjusted.txt",
-    "testset100": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd100un_gs_adjusted_adjusted.txt"
+    "testset": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd000un_gs.txt",
+    "testset050": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd050un_gs.txt",
+    "testset100": "data/processed/ditto/data/final_output/preprocessed_products50cc50rnd100un_gs.txt"
   },
   {
     "name": "final_large_20cc80rnd000un",
@@ -104,7 +104,7 @@
     ],
     "trainset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_train_large.txt",
     "validset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_valid_large.txt",
-    "testset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_gs_adjusted_adjusted.txt",
-    "testset050": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd050un_gs_adjusted_adjusted.txt",
-    "testset100": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd100un_gs_adjusted_adjusted.txt"
+    "testset": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd000un_gs.txt",
+    "testset050": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd050un_gs.txt",
+    "testset100": "data/processed/ditto/data/final_output/preprocessed_products20cc80rnd100un_gs.txt"
   }]

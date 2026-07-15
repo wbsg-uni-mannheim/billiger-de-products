@@ -1,33 +1,25 @@
-import pandas as pd
-import numpy as np
-np.random.seed(42)
-import random
-random.seed(42)
-
-import os
-import time
 import glob
-    
+import os
+import random
+import time
+
+import numpy as np
+import pandas as pd
 import py_entitymatching as em
-
-
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import GaussianNB
+import xgboost as xgb
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+from sklearn.model_selection import PredefinedSplit, RandomizedSearchCV
+from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import RandomizedSearchCV
-from sklearn.model_selection import PredefinedSplit
 
-from sklearn.metrics import classification_report
+np.random.seed(42)
+random.seed(42)
 
-import xgboost as xgb
+RESULT_ROOT = 'results/generated/magellan/de'
 
-from joblib import dump, load
-
-from codecarbon import OfflineEmissionsTracker
-import json
-import pandas as pd
 
 
 classifiers = {'NaiveBayes':  {'clf':GaussianNB(),
@@ -65,63 +57,6 @@ classifiers = {'NaiveBayes':  {'clf':GaussianNB(),
                         'class_weight':[None, 'balanced']}},
                    }
 
-def run_with_tracking(job_name, func, *args, electricity_price_eur_per_kwh=0.30, **kwargs):
-
-    os.makedirs("data/efficiency_tracker", exist_ok=True)
-    json_path=f"data/efficiency_tracker/{job_name}.json"
-    csv_path = f"data/efficiency_tracker/{job_name}.csv"
-
-    tracker = OfflineEmissionsTracker(
-        country_iso_code="DEU",
-        output_file = csv_path
-    )
-    print(f"Started tracking for job: {job_name}")
-    tracker.start()
-    start_time = time.time()
-
-    mem_usage = memory_usage((func, args, kwargs)) # type: ignore
-    max_memory_mb = max(mem_usage)
-
-    tracker.stop()
-    end_time = time.time()
-    runtime_sec = end_time - start_time
-
-    # Calculate energy and costs
-    emission_df = pd.read_csv(csv_path)
-    energy_kwh = emission_df["energy_consumed"].iloc[-1]
-    emissions_kg = emission_df["emissions"].iloc[-1]
-
-    energy_cost_eur = energy_kwh * electricity_price_eur_per_kwh
-
-    # Log result
-    record = {
-        "job_name": job_name,
-        "runtime_sec": round(runtime_sec, 3),
-        "max_memory_mb": round(max_memory_mb, 3),
-        "energy_kwh": round(energy_kwh, 6),
-        "emissions_kg": round(emissions_kg, 6),
-        "energy_cost_eur": round(energy_cost_eur, 4)
-    }
-
-    # Append or create JSON file
-    if os.path.exists(json_path):
-        try:
-            with open(json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except json.JSONDecodeError:
-            data = []
-    else:
-        data = []
-
-    data.append(record)
-
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
-
-    print(f"Runtime: {runtime_sec:.2f}s | Max Memory: {max_memory_mb:.2f} MB")
-    print(f"Energy: {energy_kwh:.6f} kWh | CO₂: {emissions_kg:.6f} kg | Energy Costs: {energy_cost_eur:.4f} €")
-    print(f"Results appended to: {json_path}")
-
 def run_magellan(train_set, valid_set, test_set, feature_combinations, classifiers, experiment_name,
                  write_test_set_for_inspection=False):
     train_path = os.path.dirname(train_set)
@@ -137,13 +72,10 @@ def run_magellan(train_set, valid_set, test_set, feature_combinations, classifie
     test_set_left = test_file.replace('pairs', 'left')
     test_set_right = test_file.replace('pairs', 'right')
 
-    os.makedirs(os.path.dirname(f'src/models/magellan/model_output/{experiment_name}/'),
-                exist_ok=True)
+    report_dir = os.path.join(RESULT_ROOT, experiment_name)
+    os.makedirs(report_dir, exist_ok=True)
 
-    os.makedirs(os.path.dirname(f'src/models/magellan/model_output/{experiment_name}/'),
-                exist_ok=True)
-
-    with open(f'src/models/magellan/model_output/{experiment_name}/{report_train_name}_{report_test_name}.csv',
+    with open(f'{report_dir}/{report_train_name}_{report_test_name}.csv',
               "w") as f:
         f.write(
             'feature#####model#####mean_train_score#####std_train_score#####mean_valid_score#####std_valid_score#####precision_test#####recall_test#####f1_test#####best_params#####train_time#####prediction_time#####feature_importance#####experiment_name#####train_set#####test_set\n')
@@ -259,10 +191,10 @@ def run_magellan(train_set, valid_set, test_set, feature_combinations, classifie
             train_ind = []
             val_ind = []
 
-            for i in range(len(train_only_df) - 1):
+            for i in range(len(train_only_df)):
                 train_ind.append(-1)
 
-            for i in range(len(val_df) - 1):
+            for i in range(len(val_df)):
                 val_ind.append(0)
 
             ps = PredefinedSplit(test_fold=np.concatenate((train_ind, val_ind)))
@@ -277,7 +209,7 @@ def run_magellan(train_set, valid_set, test_set, feature_combinations, classifie
 
                 # add pos_neg ratio to XGBoost params
                 if k == 'XGBoost':
-                    v['params']['scale_pos_weight']: [1, pos_neg]
+                    v['params']['scale_pos_weight'] = [1, pos_neg]
 
                 model = RandomizedSearchCV(cv=ps, estimator=classifier, param_distributions=v['params'],
                                            random_state=run, n_jobs=4, scoring='f1', n_iter=500, pre_dispatch=8,
@@ -371,9 +303,7 @@ def run_magellan(train_set, valid_set, test_set, feature_combinations, classifie
                     test_inspection_df['Class Prob'] = proba_gs
                     test_inspection_df.to_pickle(out_path + file_name, compression='gzip')
 
-                dump(model, f'src/models/magellan/model_output/{experiment_name}/{report_train_name}_{report_test_name}_{k}_{feature_report}_{run}.joblib')
-
-                with open(f'src/models/magellan/model_output/{experiment_name}/{report_train_name}_{report_test_name}.csv', "a") as f:
+                with open(f'{report_dir}/{report_train_name}_{report_test_name}.csv', "a") as f:
                     f.write(feature_report + '#####' + k + '#####' + str(
                         scores['mean_train_score']) + '#####' + str(scores['std_train_score'])
                             + '#####' + str(scores['mean_test_score']) + '#####' + str(
@@ -383,53 +313,18 @@ def run_magellan(train_set, valid_set, test_set, feature_combinations, classifie
                             + '#####' + str(word_importance[
                                             0:100]) + '#####' + experiment_name + '#####' + report_train_name + '#####' + report_test_name + '\n')
 
-def run_magellan_job():
-    
-    experiment_name = 'learning-curve'
-    
-    for file in glob.glob('data/processed/magellan/learning-curve/formatted/*'):
-        if 'products' not in file:
-            continue
-            feature_combinations = [['name'], ['brand', 'name'], ['brand', 'name', 'desc']]
-        else:
-            feature_combinations = [['brand', 'name', 'desc', 'price']]
-        if 'train_' in file and 'pairs' in file and 'metadata' not in file:
-            valid = file.replace('train_', 'valid_')
-    
-            test_cat = '_'.join(os.path.basename(file).split('_')[:2])
-            test = 'data/processed/magellan/learning-curve/formatted/{}_gs_magellan_pairs_formatted.csv'.format(
-                test_cat)
-    
-            run_with_tracking(
-                f"magellan_{experiment_name}",
-                run_magellan,
-                file, valid, test, feature_combinations, classifiers, experiment_name,
-                write_test_set_for_inspection=True
-            )
-
-            test = test.replace('000un', '050un')
-
-            run_with_tracking(
-                f"magellan_{experiment_name}",
-                run_magellan,
-                file, valid, test, feature_combinations, classifiers, experiment_name,
-                write_test_set_for_inspection=True
-            )
-
-            test = test.replace('050un', '100un')
-
-            run_with_tracking(
-                f"magellan_{experiment_name}",
-                run_magellan,
-                file, valid, test, feature_combinations, classifiers, experiment_name,
-                write_test_set_for_inspection=True
-            )
-
 if __name__ == '__main__':
-    
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--language', choices=('de', 'en'), required=True)
+    args = parser.parse_args()
+
     experiment_name = 'learning-curve'
-    
-    for file in glob.glob('data/processed/magellan/learning-curve/formatted/*'):
+    processed_root = 'data/processed' if args.language == 'de' else 'data/processed_en'
+    RESULT_ROOT = f'results/generated/magellan/{args.language}'
+
+    for file in glob.glob(f'{processed_root}/magellan/learning-curve/formatted/*'):
         if 'products' not in file:
             continue
             feature_combinations = [['name'], ['brand', 'name'], ['brand', 'name', 'desc']]
@@ -439,18 +334,18 @@ if __name__ == '__main__':
             valid = file.replace('train_', 'valid_')
     
             test_cat = '_'.join(os.path.basename(file).split('_')[:2])
-            test = 'data/processed/magellan/learning-curve/formatted/{}_gs_magellan_pairs_formatted.csv'.format(
+            test = f'{processed_root}/magellan/learning-curve/formatted/{{}}_gs_magellan_pairs_formatted.csv'.format(
                 test_cat)
     
             run_magellan(file, valid, test, feature_combinations, classifiers, experiment_name,
-                         write_test_set_for_inspection=True)
+                         write_test_set_for_inspection=False)
 
             test = test.replace('000un', '050un')
 
             run_magellan(file, valid, test, feature_combinations, classifiers, experiment_name,
-                         write_test_set_for_inspection=True)
+                         write_test_set_for_inspection=False)
 
             test = test.replace('050un', '100un')
 
             run_magellan(file, valid, test, feature_combinations, classifiers, experiment_name,
-                         write_test_set_for_inspection=True)
+                         write_test_set_for_inspection=False)

@@ -334,7 +334,6 @@ dependencies:
       - accelerate==1.11.0
       - backports-tarfile==1.2.0
       - click==8.2.1
-      - codecarbon==3.0.8
       - contourpy==1.3.2
       - country-converter==1.3.2
       - cryptography==46.0.3
@@ -404,7 +403,6 @@ dependencies:
       - pyparsing==3.2.5
       - questionary==2.1.1
       - rapidfuzz==3.14.3
-      - ray==2.51.1
       - readme-renderer==44.0
       - requests-toolbelt==1.0.0
       - rfc3986==2.0.0

@@ -132,7 +132,7 @@ class ContrastiveSelfSupervisedPretrainModel(nn.Module):
 
             for num in range(self.num_augments-1):
                 output_right = self.encoder(input_ids, attention_mask)
-                output_right = mean_pooling(output_right, attention).unsqueeze(1)
+                output_right = mean_pooling(output_right, attention_mask).unsqueeze(1)
                 additional_outputs.append(output_right)
         else:
             output_left = self.encoder(input_ids, attention_mask)['pooler_output'].unsqueeze(1)

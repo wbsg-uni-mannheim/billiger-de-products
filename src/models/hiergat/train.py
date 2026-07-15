@@ -22,79 +22,6 @@ import time
 import sys
 import random
 
-from codecarbon import OfflineEmissionsTracker
-import time, os, json, pandas as pd
-
-def creat_pred_csv(path_predictions, best_test_preds):
-    os.makedirs(os.path.dirname(path_predictions), exist_ok=True)
-    with open(path_predictions, "w") as f:
-        f.write("label,prediction\n")
-        for i in range(len(best_test_preds['labels'])):
-            f.write(
-                f"{best_test_preds['labels'][i]},"
-                f"{best_test_preds['preds'][i]}\n"
-            )
-
-def run_with_tracking(job_name, func, *args,
-                      electricity_price_eur_per_kwh=0.30,
-                      **kwargs):
-
-    os.makedirs("data/efficiency_tracker/hiergat", exist_ok=True)
-    json_path = f"data/efficiency_tracker/hiergat/{job_name}.json"
-    csv_path = f"data/efficiency_tracker/hiergat/{job_name}.csv"
-
-    tracker = OfflineEmissionsTracker(
-        country_iso_code="DEU",
-        output_file=csv_path
-    )
-    # ---- GPU MEMORY RESET (BEFORE TRAINING) ----
-    if torch.cuda.is_available():
-        torch.cuda.reset_peak_memory_stats()
-    
-    start_time = time.time()
-    tracker.start()
-
-    func(*args, **kwargs)
-
-    tracker.stop()
-    runtime_sec = time.time() - start_time
-
-    # ---- PEAK GPU MEMORY (AFTER TRAINING) ----
-    if torch.cuda.is_available():
-        max_memory_mb = torch.cuda.max_memory_allocated() / 1024**2
-    else:
-        max_memory_mb = None
-
-    emission_df = pd.read_csv(csv_path)
-    energy_kwh = emission_df["energy_consumed"].iloc[-1]
-    emissions_kg = emission_df["emissions"].iloc[-1]
-    energy_cost_eur = energy_kwh * electricity_price_eur_per_kwh
-
-    record = {
-        "job_name": job_name,
-        "runtime_sec": round(runtime_sec, 3),
-        "max_memory_mb": None if max_memory_mb is None else round(max_memory_mb, 3),
-        "energy_kwh": round(energy_kwh, 6),
-        "emissions_kg": round(emissions_kg, 6),
-        "energy_cost_eur": round(energy_cost_eur, 4),
-    }
-
-    data = []
-    if os.path.exists(json_path):
-        with open(json_path) as f:
-            data = json.load(f)
-
-    data.append(record)
-
-    with open(json_path, "w") as f:
-        json.dump(data, f, indent=4)
-
-    mem_str = "CPU" if max_memory_mb is None else f"{max_memory_mb:.2f} MB"
-    print(f"Runtime: {runtime_sec:.2f}s | Max Memory: {mem_str} MB")
-    print(f"Energy: {energy_kwh:.6f} kWh | CO₂: {emissions_kg:.6f} kg | Total Cost: {energy_cost_eur:.4f} €")
-    print(f"Results appended to: {json_path}")
-
-
 def train(model, train_set, optimizer, scheduler=None, batch_size=32):
     iterator = data.DataLoader(dataset=train_set, batch_size=batch_size,
                                shuffle=True, num_workers=1, collate_fn=Dataset.pad)
@@ -193,26 +120,14 @@ def initialize_and_train(trainset, validset, testset, testset050, testset100, at
                 best_test_f1_100 = test_f1_100
                 best_test_preds_100 = test_preds_100
             if (epoch == args.n_epochs):
-                path = os.getcwd()
-                path = path + '/src/models/hiergat/output/' + str(run_tag) + '.txt'
-                os.makedirs(os.path.dirname(path), exist_ok=True)
-
-                dict = {'best_test_f1': best_test_f1,
-                        'best_test_f1_050': best_test_f1_050,
-                        'best_test_f1_100': best_test_f1_100}
-
-                with open(path, "a+") as f:
-                    f.write(repr(dict) + '\n')
-  
-                path_predictions = "src/models/hiergat/output/prediction/" + str(run_tag) + '_predictions.csv'
-                os.makedirs(os.path.dirname(path_predictions), exist_ok=True)
-                creat_pred_csv(path_predictions, best_test_preds)
-                path_predictions_050 = "src/models/hiergat/output/prediction/" + str(run_tag) + '_predictions_050.csv'
-                os.makedirs(os.path.dirname(path_predictions_050), exist_ok=True)
-                creat_pred_csv(path_predictions_050, best_test_preds_050)
-                path_predictions_100 = "src/models/hiergat/output/prediction/" + str(run_tag) + '_predictions_100.csv'
-                os.makedirs(os.path.dirname(path_predictions_100), exist_ok=True)
-                creat_pred_csv(path_predictions_100, best_test_preds_100)
+                os.makedirs(args.output_dir, exist_ok=True)
+                result = {
+                    'best_test_f1': best_test_f1,
+                    'best_test_f1_050': best_test_f1_050,
+                    'best_test_f1_100': best_test_f1_100,
+                }
+                with open(os.path.join(args.output_dir, f'{run_tag}.txt'), "w") as f:
+                    f.write(repr(result) + '\n')
 
             print("current_best_test_f1: " + str(best_test_f1) + ", current_best_test_f1_050: " + str(best_test_f1_050) + ", current_best_test_f1_100: " + str(best_test_f1_100))
 
@@ -243,6 +158,7 @@ if __name__ == "__main__":
     parser.add_argument("--save_model", dest="save_model", action="store_true")
     parser.add_argument("--logdir", type=str, default="src/models/hiergat/checkpoints/")
     parser.add_argument("--lm_path", type=str, default=None)
+    parser.add_argument("--output_dir", default="results/generated/hiergat/de")
     parser.add_argument("--split", dest="split", action="store_true")
     parser.add_argument("--lm", type=str, default='bert')
 
@@ -274,11 +190,7 @@ if __name__ == "__main__":
     test_dataset050 = Dataset(testset050, category, lm=args.lm, lm_path=args.lm_path, split=args.split)
     test_dataset100 = Dataset(testset100, category, lm=args.lm, lm_path=args.lm_path, split=args.split)
 
-    job_name = f"{args.task}_seed{args.run_id}"
-
-    run_with_tracking(
-        job_name=job_name,
-        func=initialize_and_train,
+    initialize_and_train(
         trainset=train_dataset,
         validset=valid_dataset,
         testset=test_dataset,
@@ -286,5 +198,5 @@ if __name__ == "__main__":
         testset100=test_dataset100,
         attr_num=train_dataset.get_attr_num(),
         args=args,
-        run_tag=run_tag
+        run_tag=run_tag,
     )

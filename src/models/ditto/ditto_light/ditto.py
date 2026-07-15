@@ -296,19 +296,13 @@ def train(trainset, validset, testset, testset050, testset100, run_tag, hp, path
         writer.add_scalars(run_tag, scalars, epoch)
 
         if (epoch == hp.n_epochs):
-            path = "src/models/ditto/output/" + str(run_tag) + '.txt'
-            dict = {'best_f1': best_test_f1,
-                    'best_f1_050': best_test_f1_050,
-                    'best_f1_100': best_test_f1_100}
-
-            with open(path, "a+") as f:
-                f.write(repr(dict) + '\n')
-
-            path_predictions = "src/models/ditto/output/prediction/" + str(run_tag) + '_predictions.csv'
-            creat_pred_csv(path_predictions, best_test_preds)
-            path_predictions_050 = "src/models/ditto/output/prediction/" + str(run_tag) + '_predictions_050.csv'
-            creat_pred_csv(path_predictions_050, best_test_preds_050)
-            path_predictions_100 = "src/models/ditto/output/prediction/" + str(run_tag) + '_predictions_100.csv'
-            creat_pred_csv(path_predictions_100, best_test_preds_100)
+            os.makedirs(path, exist_ok=True)
+            result = {
+                'best_f1': best_test_f1,
+                'best_f1_050': best_test_f1_050,
+                'best_f1_100': best_test_f1_100,
+            }
+            with open(os.path.join(path, f'{run_tag}.txt'), "w") as f:
+                f.write(repr(result) + '\n')
             
     writer.close()

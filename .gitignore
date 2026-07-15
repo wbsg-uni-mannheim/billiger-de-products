@@ -232,3 +232,11 @@ env.elasticsearch
 .env.*
 BTW-German-WDC-working-title-/
 WRITING_GUIDELINES.md
+
+# Locally generated benchmark inputs and results
+data/processed/
+data/processed_en/
+data/batch_inputs/
+data/batch_results/
+results/generated/
+slurm-*.out

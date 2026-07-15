@@ -3,17 +3,17 @@ import os
 
 #sizes = ['small', 'medium', 'large'] 
 #difficulties = ['20cc80rnd', '50cc50rnd', '80cc20rnd'] 
-sizes = ["large"]
-difficulties = ["80cc20rnd"]
+sizes = ['small', 'medium', 'large']
+difficulties = ['20cc80rnd', '50cc50rnd', '80cc20rnd']
 unseens = ['000un'] 
 #Adjust train_ditto_english.py to train_ditto for german dataset
-for seed in [3,4]:
+for seed in range(3):
     for size in sizes: 
         for difficulty in difficulties: 
             for unseen in unseens:
                 #check if file exists witin src/models/ditto/output_en where size, difficulty, unsee and seed are in the file name
-                file_name = "final_%s_%s%s_lm=roberta_da=del_dk=None_su=False_size=None_id=%d_adjusted_testset.txt" % (size, difficulty, unseen, seed)
-                file_path = "src/models/ditto/output/%s" % file_name
+                file_name = "final_%s_%s%s_lm=roberta_da=del_dk=None_su=False_id=%d_adjusted_testset.txt" % (size, difficulty, unseen, seed)
+                file_path = "results/generated/ditto/de/%s" % file_name
                 print(file_path)
                 if os.path.isfile(file_path):
                     print("File %s already exists, skipping..." % file_path)

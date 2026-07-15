@@ -16,7 +16,6 @@ from dataclasses import dataclass, field
 from typing import Optional
 import json
 
-import time
 import math
 
 from copy import deepcopy
@@ -62,9 +61,6 @@ class ModelArguments:
 
     model_pretrained_checkpoint: Optional[str] = field(
         default=None, metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
-    )
-    do_param_opt: Optional[bool] = field(
-        default=False, metadata={"help": "If aou want to do hyperparamter optimization"}
     )
     frozen: Optional[str] = field(
         default='frozen', metadata={"help": "If encoder params should be frozen, options: frozen, unfrozen"}
@@ -282,70 +278,6 @@ def main():
     # Early stopping callback
     callback = EarlyStoppingCallback(early_stopping_patience=10)
 
-    if training_args.do_train and model_args.do_param_opt:
-
-        from ray import tune
-        def my_hp_space(trial):
-            return {
-                "learning_rate": tune.loguniform(5e-5, 5e-3),
-                "warmup_ratio": tune.choice([0.05, 0.075, 0.10]),
-                "max_grad_norm": tune.choice([0.0, 1.0]),
-                "weight_decay": tune.loguniform(0.001, 0.1),
-                "seed": tune.randint(1, 50)
-            }
-
-        def my_objective(metrics):
-            return metrics['eval_f1']
-
-        trainer = Trainer(
-        model_init=model_init,
-        args=training_args,
-        train_dataset=train_dataset if training_args.do_train else None,
-        eval_dataset=validation_dataset if training_args.do_eval else None,
-        data_collator=data_collator,
-        compute_metrics=compute_metrics_bce,
-        callbacks=[callback]
-        )
-        trainer.args.save_total_limit = 1
-
-        def hp_name(trial):
-            namer = TrialShortNamer()
-            namer.set_defaults('hp', {'learning_rate': 1e-4, 'warmup_ratio': 0.0, 'max_grad_norm': 1.0, 'weight_decay': 0.01, 'seed':1})
-            return namer.shortname(trial)
-
-        # asha_scheduler = tune.schedulers.ASHAScheduler(
-        #     time_attr='epoch',
-        #     metric='eval_f1',
-        #     mode='max',
-        #     max_t=trainer.args.num_train_epochs,
-        #     grace_period=15
-        #     )
-        initial_configs = [
-            {
-                "learning_rate": 1e-3,
-                "warmup_ratio": 0.05,
-                "max_grad_norm": 1.0,
-                "weight_decay": 0.01,
-                "seed": 42
-            },
-            {
-                "learning_rate": 1e-4,
-                "warmup_ratio": 0.05,
-                "max_grad_norm": 1.0,
-                "weight_decay": 0.01,
-                "seed": 42
-            }
-            ]
-                
-        from ray.tune.suggest.hebo import HEBOSearch
-        hebo = HEBOSearch(metric="eval_f1", mode="max", points_to_evaluate=initial_configs, random_state_seed=42)
-
-        best_run = trainer.hyperparameter_search(n_trials=24, direction="maximize", hp_space=my_hp_space, compute_objective=my_objective, backend='ray', 
-        resources_per_trial={'cpu':4,'gpu':1}, local_dir=f'{training_args.output_dir}ray_results/', hp_name=hp_name, search_alg=hebo)
-        
-        with open(f'{training_args.output_dir}best_params.json', 'w') as f:
-            json.dump(best_run, f)
-
     output_dir = deepcopy(training_args.output_dir)
     for run in range(3):
         init_args = {}
@@ -353,9 +285,6 @@ def main():
         training_args.save_total_limit = 1
         training_args.seed = run
         training_args.output_dir = f'{output_dir}{run}'
-        # if model_args.do_param_opt:
-        #     init_args = {k:v for k, v in best_run.hyperparameters.items() if k in MODEL_PARAMS}
-
 
         # Detecting last checkpoint.
         last_checkpoint = None
@@ -385,18 +314,11 @@ def main():
         
         # Training
         if training_args.do_train:
-            if model_args.do_param_opt:
-                for n, v in best_run.hyperparameters.items():
-                    setattr(trainer.args, n, v)
-                    # if n not in MODEL_PARAMS:
-                    #     setattr(trainer.args, n, v)
-
             checkpoint = None
             if training_args.resume_from_checkpoint is not None:
                 checkpoint = training_args.resume_from_checkpoint
             elif last_checkpoint is not None:
                 checkpoint = last_checkpoint
-            time.sleep(30)
             train_result = trainer.train(resume_from_checkpoint=checkpoint)
             trainer.save_model()  # Saves the tokenizer too for easy upload
 
@@ -465,86 +387,5 @@ def main():
                 trainer.save_metrics(f"predict_un100", metrics)
     return results
 
-from codecarbon import OfflineEmissionsTracker
-import time
-import os
-import json
-import pandas as pd
-def run_with_tracking(job_name, func, *args, gpt_usage=False, electricity_price_eur_per_kwh=0.30, **kwargs):
-
-    os.makedirs("data/efficiency_tracker", exist_ok=True)
-    json_path = f"data/efficiency_tracker/{job_name}.json"
-    csv_path = f"data/efficiency_tracker/{job_name}.csv"
-
-    tracker = OfflineEmissionsTracker(
-        country_iso_code="DEU",
-        output_file=csv_path
-    )
-    # ---- GPU MEMORY RESET (BEFORE TRAINING) ----
-    if torch.cuda.is_available():
-        torch.cuda.reset_peak_memory_stats()
-
-    start_time = time.time()
-    tracker.start()
-
-
-    func(*args, **kwargs)  
-
-    tracker.stop()
-    end_time = time.time()
-    runtime_sec = time.time() - start_time
-
-    # ---- PEAK GPU MEMORY (AFTER TRAINING) ----
-    if torch.cuda.is_available():
-        max_memory_mb = torch.cuda.max_memory_allocated() / 1024**2
-    else:
-        max_memory_mb = None
-
-    # Calculate energy and costs
-    emission_df = pd.read_csv(csv_path)
-    energy_kwh = emission_df["energy_consumed"].iloc[-1]
-    emissions_kg = emission_df["emissions"].iloc[-1]
-    energy_cost_eur = energy_kwh * electricity_price_eur_per_kwh
-
-    if not gpt_usage:
-        gpt_cost = 0
-    else:
-        cost = pd.read_csv("dataset_quality_test.csv")
-        gpt_cost = cost["Costs"].sum()
-
-    total_cost_eur = energy_cost_eur + gpt_cost
-
-    # Log result
-    record = {
-        "job_name": job_name,
-        "runtime_sec": round(runtime_sec, 3),
-        "max_memory_mb": None if max_memory_mb is None else round(max_memory_mb, 3),
-        "energy_kwh": round(energy_kwh, 6),
-        "emissions_kg": round(emissions_kg, 6),
-        "energy_cost_eur": round(energy_cost_eur, 4),
-        "total_cost_eur": round(total_cost_eur, 4),
-    }
-
-    # Append or create JSON file
-    if os.path.exists(json_path):
-        try:
-            with open(json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except json.JSONDecodeError:
-            data = []
-    else:
-        data = []
-
-    data.append(record)
-
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
-
-    mem_str = "CPU" if max_memory_mb is None else f"{max_memory_mb:.2f} MB"
-    print(f"Runtime: {runtime_sec:.2f}s | Max Memory: {mem_str} MB")
-    print(f"Energy: {energy_kwh:.6f} kWh | CO₂: {emissions_kg:.6f} kg | Total Cost: {total_cost_eur:.4f} €")
-    print(f"Results appended to: {json_path}")
-
-
 if __name__ == "__main__":
-    run_with_tracking("R-SupCon_baseline", main)
+    main()

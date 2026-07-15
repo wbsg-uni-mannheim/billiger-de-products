@@ -11,7 +11,7 @@ for seed in range(3):
             for unseen in unseens:
                 #check if file exists witin src/models/ditto/output_en where size, difficulty, unsee and seed are in the file name
                 file_name = "final_%s_%s%s_lm=roberta_da=del_dk=None_su=False_size=None_id=%d_english.txt" % (size, difficulty, unseen, seed)
-                file_path = "src/models/ditto/output_en/%s" % file_name
+                file_path = "results/generated/ditto/en/%s" % file_name
                 print(file_path)
                 if os.path.isfile(file_path):
                     print("File %s already exists, skipping..." % file_path)

@@ -4,12 +4,11 @@ import time
 import gzip
 import os
 import argparse
-import resource
 import re
 from sklearn.metrics import f1_score
-from codecarbon import OfflineEmissionsTracker
-import os; API_key = os.environ.get("OPENAI_API_KEY")  # set OPENAI_API_KEY env var (see REPRODUCTION.md)
 from openai import OpenAI
+
+API_key = os.environ.get("OPENAI_API_KEY")
 
 INVALID_UNICODE_RE = re.compile(r'\\u(?![0-9a-fA-F]{4})')
 # =========================
@@ -53,7 +52,7 @@ def process_record(record):
 # ==================================
 
 def build_batch_file(cc, un, batch_path):
-    src = f"data/derived_en/gold-standards_adjusted/products{cc}rnd{un}un_gs.json.gz" #Adjusted Be Aware Here english dataset
+    src = f"data/solute_en/gold-standards_adjusted/products{cc}rnd{un}un_gs.json.gz" #Adjusted Be Aware Here english dataset
     os.makedirs(os.path.dirname(batch_path), exist_ok=True)
 
     sidecar = {}
@@ -193,11 +192,6 @@ def parse_results(result_path):
             resp = obj["response"]["body"]
 
             answer = resp["choices"][0]["message"]["content"]
-            usage = resp.get("usage", {})
-
-            input_tokens = usage.get("prompt_tokens", 0)
-            output_tokens = usage.get("completion_tokens", 0)
-
             if "yes" in answer.strip().lower() or answer.strip().lower() in ("yes", "true", "1"):
                 answer_int = 1
             elif "no" in answer.strip().lower() or answer.strip().lower() in ("no", "false", "0"):
@@ -207,11 +201,6 @@ def parse_results(result_path):
 
             match = int(answer_int == meta["label"])
 
-            gpt_costs = float(
-                (input_tokens / 1_000_000) * GPT_INPUT_COST +
-                (output_tokens / 1_000_000) * GPT_OUTPUT_COST
-            )
-
             rows.append({
                 "Entity1": meta["entity_1"],
                 "Entity2": meta["entity_2"],
@@ -220,7 +209,6 @@ def parse_results(result_path):
                 "Answer_binary": answer_int,
                 "Label": meta["label"],
                 "Match": match,
-                "Costs": gpt_costs,
                 "Hard_Negative": meta["is_hard_negative"]
             })
 
@@ -232,7 +220,7 @@ def parse_results(result_path):
 # =========================
 
 def print_f1(cc, un, additional_naming=""):
-    df = pd.read_csv(f"src/models/gpt/reports_en/{args.gptmodel}/csv_results/products_{cc}_{un}un_batched_english_{additional_naming}.csv")
+    df = pd.read_csv(f"results/generated/gpt/en/{args.gptmodel}/csv_results/products_{cc}_{un}un_batched_english_{additional_naming}.csv")
     if (df["Answer_binary"] == -1).sum() > 0:
         print("Found -1 values in Answer_binary column")
         df = df[df["Answer_binary"] != -1]
@@ -242,88 +230,37 @@ def print_f1(cc, un, additional_naming=""):
     count_non_match = (df["Match"] == 0).sum()
     print("Wrongly matched by GPT: ", count_non_match)
     
-    os.makedirs(f"src/models/gpt/reports_en/{args.gptmodel}/f1", exist_ok=True)
-    with open(f"src/models/gpt/reports_en/{args.gptmodel}/f1/f1_score_{cc}_{un}un_english_{additional_naming}.txt", "w", encoding="utf-8") as f:
+    os.makedirs(f"results/generated/gpt/en/{args.gptmodel}/f1", exist_ok=True)
+    with open(f"results/generated/gpt/en/{args.gptmodel}/f1/f1_score_{cc}_{un}un_english_{additional_naming}.txt", "w", encoding="utf-8") as f:
         f.write(f"F1 Score: {f1}\n")
         f.write(f"Wrongly matched by GPT: {count_non_match}\n")
 
     return f1
 
 
-def run_with_tracking(additional_naming=""):
-    os.makedirs(f"data/efficiency_tracker/gpt_en/{args.gptmodel}", exist_ok=True)
+def run_benchmark(additional_naming=""):
 
-    csv_file = f"data/efficiency_tracker/gpt_en/{args.gptmodel}/{args.gptmodel}_cc{args.cc}_un{args.un}_batched_english_{additional_naming}.csv"
-    job_name = f"{args.gptmodel}_cc{args.cc}_un{args.un}_batched_english_{additional_naming}"
-    json_path = f"data/efficiency_tracker/gpt_en/{args.gptmodel}/efficiency_{args.cc}_{args.un}un_batched_english_{additional_naming}.json"
 
-    tracker = OfflineEmissionsTracker(
-        country_iso_code="DEU",
-        output_file=csv_file
-    )
     os.makedirs(f"data/batch_inputs/gpt_en/{args.gptmodel}", exist_ok=True)
     batch_path = f"data/batch_inputs/gpt_en/{args.gptmodel}/{args.gptmodel}_{args.cc}_{args.un}_batched_english_{additional_naming}.jsonl"
     result_path = f"data/batch_results/gpt_en/{args.gptmodel}/{args.gptmodel}_{args.cc}_{args.un}_batched_english_{additional_naming}.jsonl"
     os.makedirs(f"data/batch_results/gpt_en/{args.gptmodel}", exist_ok=True)
 
-    start = time.time()
-    tracker.start()
     
     build_batch_file(args.cc, args.un, batch_path)
     batch_id = submit_batch(batch_path)
     batch = wait_for_batch(batch_id)
     download_results(batch, result_path)
     
-    tracker.stop()
-    end = time.time()
 
     df = parse_results(result_path)
 
-    os.makedirs(f"src/models/gpt/reports_en/{args.gptmodel}/csv_results", exist_ok=True)
-    out_csv = f"src/models/gpt/reports_en/{args.gptmodel}/csv_results/products_{args.cc}_{args.un}un_batched_english_{additional_naming}.csv"
+    os.makedirs(f"results/generated/gpt/en/{args.gptmodel}/csv_results", exist_ok=True)
+    out_csv = f"results/generated/gpt/en/{args.gptmodel}/csv_results/products_{args.cc}_{args.un}un_batched_english_{additional_naming}.csv"
     df.to_csv(out_csv, index=False)
 
-    f1 = print_f1(args.cc, args.un, additional_naming)
+    print_f1(args.cc, args.un, additional_naming)
 
-    peak_ram_mb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
-    runtime = end - start
-
-    # Calculate energy and costs
-    emission_df = pd.read_csv(csv_file)
-    energy_kwh = emission_df["energy_consumed"].iloc[-1]
-    emissions_kg = emission_df["emissions"].iloc[-1]
-    cost = pd.read_csv(out_csv)
-    gpt_cost = cost["Costs"].sum()
-
-    # Log result
-    record = {
-        "job_name": job_name,
-        "runtime_sec": round(runtime, 3),
-        "max_memory_mb": round(peak_ram_mb, 3), #peak_cpu_memory_mb
-        "energy_kwh": round(energy_kwh, 6),
-        "emissions_kg": round(emissions_kg, 6),
-        "gpt_cost_eur": round(gpt_cost, 4),
-        "f1_score": f1
-    }
-
-    # Append or create JSON file
-    if os.path.exists(json_path):
-        try:
-            with open(json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except json.JSONDecodeError:
-            data = []
-    else:
-        data = []
-
-    data.append(record)
-
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
-
-    print("Runtime:", round(runtime, 2), "s")
-    print("Peak RAM:", round(peak_ram_mb, 2), "MB")
-    print("F1:", f1)
 
     
 
@@ -336,24 +273,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--cc", required=True)
     parser.add_argument("--un", required=True)
-    parser.add_argument("--gptmodel", required=True)
+    parser.add_argument("--gptmodel", choices=("gpt-5.2",), default="gpt-5.2")
     args = parser.parse_args()
 
-    if args.gptmodel == "gpt-4o":
-        GPT_INPUT_COST = 0.075
-        GPT_OUTPUT_COST = 0.30
-    elif args.gptmodel == "gpt-5-mini":
-        GPT_INPUT_COST = 0.125
-        GPT_OUTPUT_COST = 1.00
-    elif args.gptmodel == "gpt-5.2":
-        # prices per 1M tokens
-        GPT_INPUT_COST = 0.875
-        GPT_OUTPUT_COST = 7.00
-    else:
-        raise ValueError("Unknown model for pricing")
-
     # cc und un aus den Argumenten verwenden
-    run_with_tracking("hard_prompt")
+    run_benchmark("hard_prompt")
 # Run as:
 # source .venv/bin/activate
 # python src/models/gpt/gpt_batch_english_new_prompt.py --cc="20cc80" --un="100" --gptmodel="gpt-5.2"
