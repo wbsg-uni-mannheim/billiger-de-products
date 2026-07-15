@@ -1,0 +1,14 @@
+{
+  "dataset": "combined_20cc80",
+  "usage": {
+    "input_tokens": 833804,
+    "output_tokens": 3596142,
+    "total_tokens": 4429946,
+    "items": 3528
+  },
+  "costs_usd": {
+    "input_cost_usd": 0.108395,
+    "output_cost_usd": 3.775949,
+    "total_cost_usd": 3.884344
+  }
+}

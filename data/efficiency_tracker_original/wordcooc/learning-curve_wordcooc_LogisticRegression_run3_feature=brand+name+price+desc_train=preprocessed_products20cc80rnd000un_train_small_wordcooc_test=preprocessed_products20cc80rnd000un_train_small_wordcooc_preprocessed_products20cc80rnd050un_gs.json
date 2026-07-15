@@ -1,0 +1,26 @@
+[
+    {
+        "job_name": "learning-curve_wordcooc_LogisticRegression_run3_feature=brand+name+price+desc_train=preprocessed_products20cc80rnd000un_train_small_wordcooc_test=preprocessed_products20cc80rnd000un_train_small_wordcooc_preprocessed_products20cc80rnd050un_gs",
+        "runtime_sec": 6.062,
+        "max_memory_mb": 683.293,
+        "energy_kwh": 9.1e-05,
+        "emissions_kg": 3.5e-05,
+        "energy_cost_eur": 0.0
+    },
+    {
+        "job_name": "learning-curve_wordcooc_LogisticRegression_run3_feature=brand+name+price+desc_train=preprocessed_products20cc80rnd000un_train_small_wordcooc_test=preprocessed_products20cc80rnd000un_train_small_wordcooc_preprocessed_products20cc80rnd050un_gs",
+        "runtime_sec": 2.267,
+        "max_memory_mb": 678.871,
+        "energy_kwh": 3.8e-05,
+        "emissions_kg": 1.5e-05,
+        "energy_cost_eur": 0.0
+    },
+    {
+        "job_name": "learning-curve_wordcooc_LogisticRegression_run3_feature=brand+name+price+desc_train=preprocessed_products20cc80rnd000un_train_small_wordcooc_test=preprocessed_products20cc80rnd000un_train_small_wordcooc_preprocessed_products20cc80rnd050un_gs",
+        "runtime_sec": 2.728,
+        "max_memory_mb": 657.758,
+        "energy_kwh": 8.3e-05,
+        "emissions_kg": 3.2e-05,
+        "energy_cost_eur": 0.0
+    }
+]

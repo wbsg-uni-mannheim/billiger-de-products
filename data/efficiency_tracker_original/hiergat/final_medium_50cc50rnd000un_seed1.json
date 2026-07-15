@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "final_medium_50cc50rnd000un_seed1",
+        "runtime_sec": 40106.497,
+        "max_memory_mb": 11402.701,
+        "energy_kwh": 3.661038,
+        "emissions_kg": 1.394672,
+        "energy_cost_eur": 1.0983
+    }
+]

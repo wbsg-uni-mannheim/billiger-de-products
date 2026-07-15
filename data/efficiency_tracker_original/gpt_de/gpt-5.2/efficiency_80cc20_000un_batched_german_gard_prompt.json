@@ -1,0 +1,11 @@
+[
+    {
+        "job_name": "gpt-5.2_cc80cc20_un000_batched_german_gard_prompt",
+        "runtime_sec": 674.856,
+        "max_memory_mb": 223.812,
+        "energy_kwh": 0.011777,
+        "emissions_kg": 0.004487,
+        "gpt_cost_eur": 2.6581,
+        "f1_score": 0.7932203389830509
+    }
+]

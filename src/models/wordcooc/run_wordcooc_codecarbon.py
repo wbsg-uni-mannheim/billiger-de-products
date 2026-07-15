@@ -1,0 +1,411 @@
+import pandas as pd
+import numpy as np
+np.random.seed(42)
+import random
+random.seed(42)
+
+import scipy
+
+import os
+import time
+import glob
+import json
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import BernoulliNB
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import LinearSVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import PredefinedSplit
+
+from sklearn.metrics import classification_report
+
+import xgboost as xgb
+
+from joblib import dump, load
+
+from pdb import set_trace
+
+from codecarbon import OfflineEmissionsTracker
+import resource
+
+def run_with_tracking(job_name, func, *args, electricity_price_eur_per_kwh=0.30, **kwargs):
+
+    os.makedirs("data/efficiency_tracker/wordcooc", exist_ok=True)
+    json_path = f"data/efficiency_tracker/wordcooc/{job_name}.json"
+    csv_path = f"data/efficiency_tracker/wordcooc/{job_name}.csv"
+
+    tracker = OfflineEmissionsTracker(
+        country_iso_code="DEU",
+        output_file=csv_path
+    )
+    print(f"Started tracking for job: {job_name}")
+    start_time = time.time()
+    tracker.start()
+
+    # Run the actual training/eval function
+    func(*args, **kwargs)
+
+    tracker.stop()
+    runtime_sec = time.time() - start_time
+
+    # Peak RAM usage (MB)
+    peak_ram_mb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+
+    # Read CodeCarbon CSV and compute energy metrics
+    emission_df = pd.read_csv(csv_path)
+    energy_kwh = emission_df["energy_consumed"].iloc[-1]
+    emissions_kg = emission_df["emissions"].iloc[-1]
+
+    energy_cost_eur = energy_kwh * electricity_price_eur_per_kwh
+
+    record = {
+        "job_name": job_name,
+        "runtime_sec": round(runtime_sec, 3),
+        "max_memory_mb": round(peak_ram_mb, 3),
+        "energy_kwh": round(energy_kwh, 6),
+        "emissions_kg": round(emissions_kg, 6),
+        "energy_cost_eur": round(energy_cost_eur, 4)
+    }
+
+    if os.path.exists(json_path):
+        try:
+            with open(json_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except json.JSONDecodeError:
+            data = []
+    else:
+        data = []
+
+    data.append(record)
+
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4, ensure_ascii=False)
+
+    print(f"Runtime: {runtime_sec:.2f}s | Max Memory: {peak_ram_mb:.2f} MB")
+    print(f"Energy: {energy_kwh:.6f} kWh | CO₂: {emissions_kg:.6f} kg | Energy Costs: {energy_cost_eur:.4f} €")
+    print(f"Results appended to: {json_path}")
+
+def train_single_model_wordcooc(
+    k, v, run, ps, train_df, gs_df, pos_neg, feature_combination,
+    experiment_name, report_train_name, report_test_name,
+    write_test_set_for_inspection, train_only_df, words,
+    train_set, test_set
+):
+    # Base classifier
+    classifier = v['clf']
+    if 'random_state' in classifier.get_params().keys():
+        classifier = classifier.set_params(**{'random_state': run})
+
+    # add pos_neg ratio to XGBoost params
+    if k == 'XGBoost':
+        v['params']['scale_pos_weight'] = [1, pos_neg]
+
+    # Hyperparameter search
+    model = RandomizedSearchCV(
+        cv=ps,
+        estimator=classifier,
+        param_distributions=v['params'],
+        random_state=run,
+        n_jobs=4,
+        scoring='f1',
+        n_iter=500,
+        pre_dispatch=8,
+        return_train_score=True
+    )
+
+    # Features/labels for CV
+    feats_train = scipy.sparse.vstack(train_df[feature_combination + '_wordcooc'])
+    labels_train = train_df['label']
+    feats_gs = scipy.sparse.vstack(gs_df[feature_combination + '_wordcooc'])
+    labels_gs = gs_df['label']
+
+    model.fit(feats_train, labels_train)
+
+    parameters = model.best_params_
+
+    score_names = ['mean_train_score', 'std_train_score', 'mean_test_score', 'std_test_score']
+    scores = {}
+    score_string = ''
+    for name in score_names:
+        scores[name] = model.cv_results_[name][model.best_index_]
+        score_string = score_string + name + ': ' + str(scores[name]) + ' '
+
+    # Feature importance
+    if k == 'LogisticRegression' or k == 'LinearSVC':
+        most_important_features = model.best_estimator_.coef_
+        word_importance = zip(words[feature_combination], most_important_features[0].tolist())
+        word_importance = sorted(word_importance, key=lambda importance: importance[1], reverse=True)
+    elif k == 'RandomForest' or k == 'DecisionTree':
+        most_important_features = model.best_estimator_.feature_importances_
+        word_importance = zip(words[feature_combination], most_important_features.tolist())
+        word_importance = sorted(word_importance, key=lambda importance: importance[1], reverse=True)
+    elif k == 'NaiveBayes':
+        word_importance = ''
+    elif k == 'XGBoost':
+        most_important_features = model.best_estimator_.feature_importances_
+        word_importance = zip(words[feature_combination], most_important_features.tolist())
+        word_importance = sorted(word_importance, key=lambda importance: importance[1], reverse=True)
+    else:
+        word_importance = ''
+
+    # Rebuild best learner with best params
+    if k == 'LogisticRegression':
+        learner = LogisticRegression(random_state=run, solver='liblinear', **parameters)
+    elif k == 'NaiveBayes':
+        learner = BernoulliNB()
+    elif k == 'DecisionTree':
+        learner = DecisionTreeClassifier(random_state=run, **parameters)
+    elif k == 'LinearSVC':
+        learner = LinearSVC(random_state=run, dual=False, **parameters)
+    elif k == 'RandomForest':
+        learner = RandomForestClassifier(random_state=run, n_jobs=4, **parameters)
+    elif k == 'XGBoost':
+        learner = xgb.XGBClassifier(
+            random_state=run,
+            n_jobs=4,
+            tree_method='hist',
+            device='cuda',
+            **parameters
+        )
+    else:
+        print('Learner is not a valid option')
+        return
+
+    model = learner
+
+    # Retrain on train_only_df (no validation)
+    feats_train = scipy.sparse.vstack(train_only_df[feature_combination + '_wordcooc'])
+    labels_train = train_only_df['label']
+
+    start = time.time()
+    model.fit(feats_train, labels_train)
+    end = time.time()
+    train_time = end - start
+
+    # Predict on gs set
+    start = time.time()
+    preds_gs = model.predict(feats_gs)
+    end = time.time()
+    pred_time = end - start
+    # ---------- CONFIDENCE ----------
+    if hasattr(model, "predict_proba"):
+        conf = model.predict_proba(feats_gs)[:, 1]   # probability of class 1
+    elif hasattr(model, "decision_function"):
+        # convert distance to pseudo-probability
+        dist = model.decision_function(feats_gs)
+        conf = 1 / (1 + np.exp(-dist))              # sigmoid
+    else:
+        conf = np.ones(len(preds_gs)) * np.nan      # fallback
+    results_out = f"src/models/wordcooc/model_output_adjusted_ts/predictions/wordcooc{experiment_name}/"
+    os.makedirs(results_out, exist_ok=True)
+
+    results_file = (
+        f"{results_out}"
+        f"{report_train_name}_{report_test_name}_{k}_{run}.csv"
+    )
+
+    # Build dataframe (pair_id exists in your GS df)
+    results_df = pd.DataFrame({
+        "pair_id": gs_df["pair_id"].values,
+        "true_label": labels_gs.values,
+        "pred_label": preds_gs,
+        "confidence": conf
+    })
+
+    results_df.to_csv(results_file, index=False)
+
+    print(f"Saved predictions to {results_file}")
+   
+    gs_report = classification_report(labels_gs, preds_gs, output_dict=True)
+
+    # Optionally store predictions for inspection
+    if write_test_set_for_inspection:
+        out_path = f'data/processed/inspection/wordcooc/{experiment_name}/'
+        os.makedirs(os.path.dirname(out_path), exist_ok=True)
+
+        file_name = '_'.join(
+            [os.path.basename(train_set), os.path.basename(test_set), k, feature_combination]
+        )
+        file_name = file_name.replace('.csv', '')
+        file_name += f'_{run}.pkl.gz'
+
+        test_inspection_df = gs_df.copy()
+        if k == 'LinearSVC':
+            proba_gs = model.decision_function(feats_gs).tolist()
+        else:
+            proba_gs = model.predict_proba(feats_gs).tolist()
+        test_inspection_df['pred'] = preds_gs
+        test_inspection_df['Class Prob'] = proba_gs
+        test_inspection_df.to_pickle(
+            (out_path + file_name).replace('preprocessed_', ''),
+            compression='gzip'
+        )
+
+    # Save model
+    dump(model,
+         f'src/models/wordcooc/model_output_adjusted_ts/models/wordcooc_adjusted/{experiment_name}/'
+         f'{report_train_name}_{report_test_name}_{k}_{feature_combination}_{run}.joblib')
+
+    # Append report line (same format as before)
+    with open(
+        f'src/models/wordcooc/model_output_adjusted_ts/reports/wordcooc_adjusted/{experiment_name}/'
+        f'{report_train_name}_{report_test_name}.csv',
+        "a"
+    ) as f:
+        f.write(
+            feature_combination + '#####' + k + '#####' +
+            str(scores['mean_train_score']) + '#####' +
+            str(scores['std_train_score']) + '#####' +
+            str(scores['mean_test_score']) + '#####' +
+            str(scores['std_test_score']) + '#####' +
+            str(gs_report['1']['precision']) + '#####' +
+            str(gs_report['1']['recall']) + '#####' +
+            str(gs_report['1']['f1-score']) + '#####' +
+            str(parameters) + '#####' +
+            str(train_time) + '#####' +
+            str(pred_time) + '#####' +
+            str(word_importance[0:100]) + '#####' +
+            experiment_name + '#####' +
+            report_train_name + '#####' +
+            report_test_name + '\n'
+        )
+
+classifiers = {'NaiveBayes':  {'clf':BernoulliNB(),
+                            'params':{}},
+                   'XGBoost': {'clf':xgb.XGBClassifier(random_state=42, n_jobs=4, tree_method='hist',device='cuda'),
+                           'params':{"learning_rate": [0.1, 0.01, 0.001],
+                           "gamma" : [0.01, 0.1, 0.3, 0.5, 1, 1.5, 2],
+                           "max_depth": [2, 4, 7, 10],
+                           "colsample_bytree": [0.3, 0.6, 0.8, 1.0],
+                           "subsample": [0.2, 0.4, 0.5, 0.6, 0.7],
+                           "reg_alpha": [0, 0.5, 1],
+                           "reg_lambda": [1, 1.5, 2, 3, 4.5],
+                           "min_child_weight": [1, 3, 5, 7],
+                           "n_estimators": [100]}},
+                   'RandomForest':  {'clf':RandomForestClassifier(random_state=42, n_jobs=4),
+                                'params':{'n_estimators': [100],
+                                 'max_features': ['sqrt', 'log2', None],
+                                 'max_depth': [2,4,7,10],
+                                 'min_samples_split': [2, 5, 10, 20],
+                                 'min_samples_leaf': [1, 2, 4, 8],
+                                 'class_weight':[None, 'balanced_subsample']
+                                 }},
+                   'DecisionTree':  {'clf':DecisionTreeClassifier(random_state=42),
+                                'params':{'max_features': ['sqrt', 'log2', None],
+                                 'max_depth': [2,4,7,10],
+                                 'min_samples_split': [2, 5, 10, 20],
+                                 'min_samples_leaf': [1, 2, 4, 8],
+                                 'class_weight':[None, 'balanced']
+                                 }},
+                   'LinearSVC':  {'clf':LinearSVC(random_state=42, dual=False),
+                      'params':{'C': [0.0001 ,0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                      'class_weight':[None, 'balanced']}},
+                   'LogisticRegression': {'clf':LogisticRegression(random_state=42, solver='liblinear'),
+                        'params':{'C': [0.0001 ,0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                        'class_weight':[None, 'balanced']}},
+                   }
+
+def run_wordcooc(train_set, valid_set, test_set, feature_combinations, classifiers, experiment_name,
+                 write_test_set_for_inspection=False):
+    train_path = os.path.dirname(train_set)
+    train_file = os.path.basename(train_set)
+    test_path = os.path.dirname(test_set)
+    test_file = os.path.basename(test_set)
+    report_train_name = train_file.replace('.pkl.gz', '')
+    report_test_name = test_file.replace('.pkl.gz', '')
+
+    os.makedirs(os.path.dirname(f'src/models/wordcooc/model_output_adjusted_ts/reports/wordcooc_adjusted/{experiment_name}/'),
+                exist_ok=True)
+
+    os.makedirs(os.path.dirname(f'src/models/wordcooc/model_output_adjusted_ts/models/wordcooc_adjusted/{experiment_name}/'),
+                exist_ok=True)
+
+
+    with open(f'src/models/wordcooc/model_output_adjusted_ts/reports/wordcooc_adjusted/{experiment_name}/{report_train_name}_{report_test_name}.csv',
+              "w") as f:
+        f.write(
+            'feature#####model#####mean_train_score#####std_train_score#####mean_valid_score#####std_valid_score#####precision_test#####recall_test#####f1_test#####best_params#####train_time#####prediction_time#####feature_importance#####experiment_name#####train_set#####test_set\n')
+    for run in range(1, 4):
+        for feature_combination in feature_combinations:
+            train_original_df = pd.read_pickle(train_set, compression='gzip')
+            gs_df = pd.read_pickle(test_set, compression='gzip')
+
+            feature_file_name = train_file.replace('.pkl.gz', '_words.json')
+
+            with open(train_path + '/feature-names/' + feature_file_name) as json_data:
+                words = json.load(json_data)
+
+            validation_ids_df = pd.read_pickle(valid_set, compression='gzip')
+            val_df = train_original_df[train_original_df['pair_id'].isin(validation_ids_df['pair_id'].values)]
+            train_only_df = train_original_df[~train_original_df['pair_id'].isin(validation_ids_df['pair_id'].values)]
+            train_only_df = train_only_df.sample(frac=1, random_state=42)
+            pos_neg = train_original_df['label'].value_counts()
+            pos_neg = round(pos_neg[0] / pos_neg[1])
+
+            train_ind = []
+            val_ind = []
+
+            for i in range(len(train_only_df) - 1):
+                train_ind.append(-1)
+
+            for i in range(len(val_df) - 1):
+                val_ind.append(0)
+
+            ps = PredefinedSplit(test_fold=np.concatenate((train_ind, val_ind)))
+
+            train_df = pd.concat([train_only_df, val_df])
+
+            for k, v in classifiers.items():
+                job_name = (
+                    f"adjusted_wordcooc_{k}" # {experiment_name}
+                    f"_run{run}_feature={feature_combination}"
+                    f"_train={report_train_name}_test={report_test_name}"
+                )
+
+                run_with_tracking(
+                    job_name,
+                    train_single_model_wordcooc,
+                    k, v, run, ps, train_df, gs_df, pos_neg,
+                    feature_combination=feature_combination,
+                    experiment_name=experiment_name,
+                    report_train_name=report_train_name,
+                    report_test_name=report_test_name,
+                    write_test_set_for_inspection=write_test_set_for_inspection,
+                    train_only_df=train_only_df,
+                    words=words,
+                    train_set=train_set,
+                    test_set=test_set
+                )
+if __name__ == '__main__':
+    
+    experiment_name = 'learning-curve_adjusted'
+    
+    for file in glob.glob('data/processed/wordcooc/learning-curve/*'):
+        if 'products' not in file:
+            continue
+            feature_combinations = ['name', 'brand+name', 'brand+name+desc']
+        else:
+            feature_combinations = ['brand+name+price+desc']
+        if 'train_' in file and '_gs' not in file:
+            valid = file.replace('train_', 'valid_')
+    
+            test_cat = '_'.join(os.path.basename(file).split('_')[:2])
+            test = os.path.basename(file)
+            test = test.replace('.pkl.gz', '_{}_gs.pkl.gz'.format(test_cat))
+            test = 'data/processed/wordcooc/learning-curve_adjusted/{}'.format(test)
+            
+            print("File: ", file, "Valid: ", valid, "Test: ", test, " First Run starting")
+            run_wordcooc(file, valid, test, feature_combinations, classifiers, experiment_name,
+                         write_test_set_for_inspection=True)
+
+            test = test.replace('000un_gs', '050un_gs')
+            print("Second Run starting")
+            run_wordcooc(file, valid, test, feature_combinations, classifiers, experiment_name,
+                         write_test_set_for_inspection=True)
+            
+            test = test.replace('050un_gs', '100un_gs')
+            print("Third Run starting")
+            run_wordcooc(file, valid, test, feature_combinations, classifiers, experiment_name,
+                         write_test_set_for_inspection=True)

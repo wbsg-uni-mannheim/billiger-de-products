@@ -1,0 +1,9 @@
+File Name,Positive Pairs,Negative Pairs,Recor pairs,Amount of brand,Amount of name,Amount of description,Amount of price,Amount of different products,Amount of unique Words:
+products80cc20rnd000un_train_medium.json.gz,1500,4500,6000,11655,12000,11993,12000,500,25235
+products50cc50rnd000un_train_large.json.gz,13196,14128,27324,52896,54648,54633,54648,500,45779
+products50cc50rnd000un_train_small.json.gz,500,2000,2500,4800,5000,4997,5000,500,20807
+products20cc80rnd000un_train_medium.json.gz,1500,4500,6000,11624,12000,12000,12000,500,27969
+products20cc80rnd000un_train_small.json.gz,500,2000,2500,4830,5000,5000,5000,500,21203
+products80cc20rnd000un_train_small.json.gz,500,2000,2500,4853,5000,4995,5000,500,19462
+products80cc20rnd000un_train_large.json.gz,12896,13992,26888,52101,53776,53769,53776,500,41731
+products50cc50rnd000un_train_medium.json.gz,1500,4500,6000,11521,12000,11995,12000,500,26828

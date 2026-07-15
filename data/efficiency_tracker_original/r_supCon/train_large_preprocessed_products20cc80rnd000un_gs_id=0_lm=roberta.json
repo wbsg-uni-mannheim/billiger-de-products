@@ -1,0 +1,18 @@
+[
+    {
+        "job_name": "train_large_preprocessed_products20cc80rnd000un_gs_id=0_lm=roberta",
+        "runtime_sec": 1408.563,
+        "max_memory_mb": 2659.743,
+        "energy_kwh": 0.08989,
+        "emissions_kg": 0.034244,
+        "energy_cost_eur": 0.027
+    },
+    {
+        "job_name": "train_large_preprocessed_products20cc80rnd000un_gs_id=0_lm=roberta",
+        "runtime_sec": 2589.999,
+        "max_memory_mb": 2650.994,
+        "energy_kwh": 0.1992,
+        "emissions_kg": 0.075885,
+        "energy_cost_eur": 0.0598
+    }
+]

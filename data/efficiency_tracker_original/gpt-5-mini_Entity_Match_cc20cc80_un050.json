@@ -1,0 +1,13 @@
+[
+    {
+        "job_name": "gpt-5-mini_Entity_Match_cc20cc80_un050",
+        "runtime_sec": 13775.275,
+        "max_memory_mb": 193.953,
+        "energy_kwh": 0.559797,
+        "emissions_kg": 0.213255,
+        "energy_cost_eur": 0.1679,
+        "gpt_cost_eur": 1188.8428,
+        "total_cost_eur": 1189.0107,
+        "f1_score": 0.8302658486707567
+    }
+]

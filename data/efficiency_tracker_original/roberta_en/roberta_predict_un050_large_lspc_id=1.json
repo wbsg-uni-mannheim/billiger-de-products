@@ -1,0 +1,50 @@
+[
+    {
+        "job_name": "roberta_predict_050un_large_lspc_id=1",
+        "runtime_sec": 10.467,
+        "max_memory_mb": 1671.586,
+        "energy_kwh": 0.000612,
+        "emissions_kg": 0.000233,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_050un_large_lspc_id=1",
+        "runtime_sec": 8.756,
+        "max_memory_mb": 1671.586,
+        "energy_kwh": 0.000704,
+        "emissions_kg": 0.000268,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_050un_large_lspc_id=1",
+        "runtime_sec": 8.691,
+        "max_memory_mb": 1671.586,
+        "energy_kwh": 0.000687,
+        "emissions_kg": 0.000262,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_050un_large_lspc_id=1",
+        "runtime_sec": 8.743,
+        "max_memory_mb": 1671.586,
+        "energy_kwh": 0.00065,
+        "emissions_kg": 0.000248,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_050un_large_lspc_id=1",
+        "runtime_sec": 8.686,
+        "max_memory_mb": 1671.586,
+        "energy_kwh": 0.00066,
+        "emissions_kg": 0.000251,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_050un_large_lspc_id=1",
+        "runtime_sec": 8.492,
+        "max_memory_mb": 1672.306,
+        "energy_kwh": 0.000643,
+        "emissions_kg": 0.000245,
+        "energy_cost_eur": 0.0002
+    }
+]

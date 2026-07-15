@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "learning-curve_wordcooc_NaiveBayes_run1_feature=brand+name+price+desc_train=preprocessed_products80cc20rnd000un_train_large_wordcooc_test=preprocessed_products80cc20rnd000un_train_large_wordcooc_preprocessed_products80cc20rnd100un_gs",
+        "runtime_sec": 2.824,
+        "max_memory_mb": 1405.844,
+        "energy_kwh": 4.7e-05,
+        "emissions_kg": 1.8e-05,
+        "energy_cost_eur": 0.0
+    }
+]

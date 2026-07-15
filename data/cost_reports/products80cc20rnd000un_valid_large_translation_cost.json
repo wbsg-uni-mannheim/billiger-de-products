@@ -1,0 +1,14 @@
+{
+  "dataset": "products80cc20rnd000un_valid_large",
+  "usage": {
+    "input_tokens": 233650,
+    "output_tokens": 1042718,
+    "total_tokens": 1276368,
+    "items": 1000
+  },
+  "costs_usd": {
+    "input_cost_usd": 0.030374,
+    "output_cost_usd": 1.094854,
+    "total_cost_usd": 1.125228
+  }
+}

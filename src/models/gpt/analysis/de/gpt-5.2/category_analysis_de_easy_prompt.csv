@@ -1,0 +1,673 @@
+category_pair,f1,total_count,cc,un
+Kleidung & Accessoires | Kleidung & Accessoires,0.6941176470588235,561,50cc50,000un
+Möbel & Wohnen | Möbel & Wohnen,0.7769784172661871,532,50cc50,000un
+Elektronik & Computer | Elektronik & Computer,0.90625,361,50cc50,000un
+Elektronik & Computer | Möbel & Wohnen,0.8780487804878049,287,50cc50,000un
+Kleidung & Accessoires | Möbel & Wohnen,0.6666666666666666,273,50cc50,000un
+Elektronik & Computer | Kleidung & Accessoires,0.3333333333333333,220,50cc50,000un
+Werkzeug & Baumarkt | Werkzeug & Baumarkt,0.9333333333333333,195,50cc50,000un
+Möbel & Wohnen | Werkzeug & Baumarkt,0.8235294117647058,179,50cc50,000un
+Auto & Motorrad | Auto & Motorrad,0.7272727272727273,145,50cc50,000un
+Kleidung & Accessoires | Sport & Freizeit,0.625,137,50cc50,000un
+Kleidung & Accessoires | Werkzeug & Baumarkt,0.6666666666666666,116,50cc50,000un
+Spielzeug & Baby | Spielzeug & Baby,0.8846153846153846,115,50cc50,000un
+Elektronik & Computer | Werkzeug & Baumarkt,0.6666666666666666,105,50cc50,000un
+Elektronik & Computer | Sport & Freizeit,0.5,91,50cc50,000un
+Möbel & Wohnen | Spielzeug & Baby,1.0,67,50cc50,000un
+Elektronik & Computer | Spielzeug & Baby,0.0,65,50cc50,000un
+Auto & Motorrad | Kleidung & Accessoires,1.0,58,50cc50,000un
+Möbel & Wohnen | Sport & Freizeit,0.6666666666666666,56,50cc50,000un
+Kleidung & Accessoires | Spielzeug & Baby,0.0,53,50cc50,000un
+Auto & Motorrad | Elektronik & Computer,1.0,52,50cc50,000un
+Kosmetik & Drogerie | Möbel & Wohnen,0.0,51,50cc50,000un
+Auto & Motorrad | Möbel & Wohnen,0.0,48,50cc50,000un
+Sport & Freizeit | Sport & Freizeit,0.7619047619047619,45,50cc50,000un
+Auto & Motorrad | Sport & Freizeit,0.0,45,50cc50,000un
+Kleidung & Accessoires | Kosmetik & Drogerie,1.0,43,50cc50,000un
+Kosmetik & Drogerie | Kosmetik & Drogerie,0.7619047619047619,42,50cc50,000un
+Gesundheit & Pflege | Möbel & Wohnen,1.0,36,50cc50,000un
+Elektronik & Computer | Kosmetik & Drogerie,0.0,34,50cc50,000un
+Kosmetik & Drogerie | Werkzeug & Baumarkt,1.0,30,50cc50,000un
+Auto & Motorrad | Werkzeug & Baumarkt,0.0,29,50cc50,000un
+"Bücher, Filme & Musik | Spielzeug & Baby",1.0,28,50cc50,000un
+Spielzeug & Baby | Werkzeug & Baumarkt,0.0,28,50cc50,000un
+Elektronik & Computer | Gesundheit & Pflege,1.0,27,50cc50,000un
+Sport & Freizeit | Werkzeug & Baumarkt,0.0,25,50cc50,000un
+Gesundheit & Pflege | Kosmetik & Drogerie,1.0,18,50cc50,000un
+Spielzeug & Baby | Sport & Freizeit,0.0,18,50cc50,000un
+Gesundheit & Pflege | Kleidung & Accessoires,1.0,16,50cc50,000un
+Elektronik & Computer | Lebensmittel & Getränke,1.0,14,50cc50,000un
+Auto & Motorrad | Spielzeug & Baby,0.0,13,50cc50,000un
+Kleidung & Accessoires | Lebensmittel & Getränke,0.0,13,50cc50,000un
+"Bücher, Filme & Musik | Kleidung & Accessoires",0.0,12,50cc50,000un
+Lebensmittel & Getränke | Möbel & Wohnen,1.0,12,50cc50,000un
+Gesundheit & Pflege | Gesundheit & Pflege,1.0,11,50cc50,000un
+Lebensmittel & Getränke | Werkzeug & Baumarkt,0.0,11,50cc50,000un
+Kosmetik & Drogerie | Sport & Freizeit,0.0,10,50cc50,000un
+Gesundheit & Pflege | Werkzeug & Baumarkt,0.0,10,50cc50,000un
+Kosmetik & Drogerie | Spielzeug & Baby,0.0,8,50cc50,000un
+Gesundheit & Pflege | Sport & Freizeit,1.0,8,50cc50,000un
+"Bücher, Filme & Musik | Möbel & Wohnen",0.0,8,50cc50,000un
+Bürobedarf | Möbel & Wohnen,0.0,7,50cc50,000un
+Bürobedarf | Elektronik & Computer,1.0,7,50cc50,000un
+"Bücher, Filme & Musik | Werkzeug & Baumarkt",0.0,7,50cc50,000un
+Lebensmittel & Getränke | Sport & Freizeit,1.0,6,50cc50,000un
+Auto & Motorrad | Kosmetik & Drogerie,0.0,6,50cc50,000un
+Bürobedarf | Kleidung & Accessoires,0.0,6,50cc50,000un
+Haustier & Tierbedarf | Spielzeug & Baby,0.8,6,50cc50,000un
+"Bücher, Filme & Musik | Elektronik & Computer",0.0,6,50cc50,000un
+Bürobedarf | Spielzeug & Baby,1.0,6,50cc50,000un
+Kosmetik & Drogerie | Lebensmittel & Getränke,0.0,5,50cc50,000un
+Auto & Motorrad | Gesundheit & Pflege,0.0,5,50cc50,000un
+"Bücher, Filme & Musik | Bürobedarf",1.0,5,50cc50,000un
+"Bücher, Filme & Musik | Bücher, Filme & Musik",1.0,5,50cc50,000un
+Lebensmittel & Getränke | Spielzeug & Baby,0.0,4,50cc50,000un
+Bürobedarf | Werkzeug & Baumarkt,0.0,3,50cc50,000un
+Haustier & Tierbedarf | Werkzeug & Baumarkt,0.0,3,50cc50,000un
+Lebensmittel & Getränke | Lebensmittel & Getränke,1.0,3,50cc50,000un
+"Bücher, Filme & Musik | Sport & Freizeit",0.0,3,50cc50,000un
+Gesundheit & Pflege | Spielzeug & Baby,0.0,3,50cc50,000un
+"Bücher, Filme & Musik | Haustier & Tierbedarf",0.0,2,50cc50,000un
+Bürobedarf | Kosmetik & Drogerie,0.0,2,50cc50,000un
+"Bücher, Filme & Musik | Gesundheit & Pflege",0.0,2,50cc50,000un
+Bürobedarf | Bürobedarf,0.0,2,50cc50,000un
+Haustier & Tierbedarf | Kleidung & Accessoires,0.0,1,50cc50,000un
+"Auto & Motorrad | Bücher, Filme & Musik",0.0,1,50cc50,000un
+"Bücher, Filme & Musik | Kosmetik & Drogerie",0.0,1,50cc50,000un
+Haustier & Tierbedarf | Möbel & Wohnen,0.0,1,50cc50,000un
+Auto & Motorrad | Lebensmittel & Getränke,0.0,1,50cc50,000un
+Kleidung & Accessoires | Kleidung & Accessoires,0.5897435897435898,800,50cc50,050un
+Möbel & Wohnen | Möbel & Wohnen,0.6282722513089005,644,50cc50,050un
+Kleidung & Accessoires | Möbel & Wohnen,0.6666666666666666,293,50cc50,050un
+Elektronik & Computer | Kleidung & Accessoires,0.42105263157894735,210,50cc50,050un
+Elektronik & Computer | Elektronik & Computer,0.8461538461538461,198,50cc50,050un
+Elektronik & Computer | Möbel & Wohnen,0.8387096774193549,184,50cc50,050un
+Möbel & Wohnen | Werkzeug & Baumarkt,0.9523809523809523,174,50cc50,050un
+Kleidung & Accessoires | Sport & Freizeit,0.6111111111111112,165,50cc50,050un
+Auto & Motorrad | Auto & Motorrad,0.8235294117647058,126,50cc50,050un
+Spielzeug & Baby | Spielzeug & Baby,0.9777777777777777,113,50cc50,050un
+Werkzeug & Baumarkt | Werkzeug & Baumarkt,0.8627450980392157,109,50cc50,050un
+Kleidung & Accessoires | Werkzeug & Baumarkt,0.0,90,50cc50,050un
+Kleidung & Accessoires | Spielzeug & Baby,1.0,86,50cc50,050un
+Möbel & Wohnen | Sport & Freizeit,0.6666666666666666,72,50cc50,050un
+Möbel & Wohnen | Spielzeug & Baby,0.0,68,50cc50,050un
+Sport & Freizeit | Sport & Freizeit,0.7692307692307693,66,50cc50,050un
+Kosmetik & Drogerie | Kosmetik & Drogerie,0.8695652173913043,59,50cc50,050un
+Elektronik & Computer | Werkzeug & Baumarkt,0.6666666666666666,58,50cc50,050un
+Kleidung & Accessoires | Kosmetik & Drogerie,1.0,58,50cc50,050un
+Kosmetik & Drogerie | Möbel & Wohnen,1.0,56,50cc50,050un
+Gesundheit & Pflege | Kleidung & Accessoires,0.0,55,50cc50,050un
+Auto & Motorrad | Kleidung & Accessoires,0.0,53,50cc50,050un
+Gesundheit & Pflege | Möbel & Wohnen,1.0,51,50cc50,050un
+Gesundheit & Pflege | Kosmetik & Drogerie,0.8235294117647058,45,50cc50,050un
+Auto & Motorrad | Möbel & Wohnen,0.0,40,50cc50,050un
+Elektronik & Computer | Sport & Freizeit,0.5,37,50cc50,050un
+"Bücher, Filme & Musik | Spielzeug & Baby",0.9090909090909091,35,50cc50,050un
+Gesundheit & Pflege | Gesundheit & Pflege,0.8888888888888888,35,50cc50,050un
+Elektronik & Computer | Spielzeug & Baby,1.0,32,50cc50,050un
+Bürobedarf | Möbel & Wohnen,0.0,27,50cc50,050un
+Spielzeug & Baby | Werkzeug & Baumarkt,1.0,26,50cc50,050un
+Kosmetik & Drogerie | Werkzeug & Baumarkt,0.0,26,50cc50,050un
+Gesundheit & Pflege | Werkzeug & Baumarkt,1.0,25,50cc50,050un
+Elektronik & Computer | Gesundheit & Pflege,1.0,25,50cc50,050un
+Bürobedarf | Kleidung & Accessoires,0.0,24,50cc50,050un
+Auto & Motorrad | Sport & Freizeit,1.0,23,50cc50,050un
+Elektronik & Computer | Kosmetik & Drogerie,0.0,23,50cc50,050un
+Auto & Motorrad | Elektronik & Computer,0.0,22,50cc50,050un
+Bürobedarf | Elektronik & Computer,0.8,21,50cc50,050un
+Auto & Motorrad | Werkzeug & Baumarkt,1.0,18,50cc50,050un
+Kosmetik & Drogerie | Spielzeug & Baby,0.0,16,50cc50,050un
+Sport & Freizeit | Werkzeug & Baumarkt,0.0,16,50cc50,050un
+Auto & Motorrad | Kosmetik & Drogerie,0.0,15,50cc50,050un
+Gesundheit & Pflege | Sport & Freizeit,0.0,14,50cc50,050un
+Gesundheit & Pflege | Spielzeug & Baby,1.0,14,50cc50,050un
+"Bücher, Filme & Musik | Kleidung & Accessoires",1.0,12,50cc50,050un
+"Bücher, Filme & Musik | Möbel & Wohnen",1.0,12,50cc50,050un
+Auto & Motorrad | Spielzeug & Baby,1.0,11,50cc50,050un
+"Bücher, Filme & Musik | Elektronik & Computer",0.0,10,50cc50,050un
+Spielzeug & Baby | Sport & Freizeit,0.0,9,50cc50,050un
+Kosmetik & Drogerie | Sport & Freizeit,0.0,8,50cc50,050un
+Auto & Motorrad | Gesundheit & Pflege,0.0,7,50cc50,050un
+Bürobedarf | Werkzeug & Baumarkt,0.0,7,50cc50,050un
+Bürobedarf | Bürobedarf,1.0,5,50cc50,050un
+"Bücher, Filme & Musik | Werkzeug & Baumarkt",0.0,5,50cc50,050un
+Auto & Motorrad | Bürobedarf,0.0,4,50cc50,050un
+"Bücher, Filme & Musik | Gesundheit & Pflege",1.0,3,50cc50,050un
+"Auto & Motorrad | Bücher, Filme & Musik",0.0,3,50cc50,050un
+Lebensmittel & Getränke | Möbel & Wohnen,0.0,3,50cc50,050un
+Bürobedarf | Kosmetik & Drogerie,0.0,3,50cc50,050un
+Kleidung & Accessoires | Lebensmittel & Getränke,0.0,3,50cc50,050un
+"Bücher, Filme & Musik | Sport & Freizeit",0.0,2,50cc50,050un
+"Bücher, Filme & Musik | Bücher, Filme & Musik",1.0,2,50cc50,050un
+Gesundheit & Pflege | Lebensmittel & Getränke,0.0,2,50cc50,050un
+Bürobedarf | Sport & Freizeit,0.0,2,50cc50,050un
+Lebensmittel & Getränke | Lebensmittel & Getränke,1.0,1,50cc50,050un
+Bürobedarf | Spielzeug & Baby,1.0,1,50cc50,050un
+Elektronik & Computer | Lebensmittel & Getränke,0.0,1,50cc50,050un
+"Bücher, Filme & Musik | Lebensmittel & Getränke",0.0,1,50cc50,050un
+Bürobedarf | Gesundheit & Pflege,0.0,1,50cc50,050un
+"Bücher, Filme & Musik | Kosmetik & Drogerie",0.0,1,50cc50,050un
+Kleidung & Accessoires | Kleidung & Accessoires,0.7872340425531915,919,20cc80,100un
+Möbel & Wohnen | Möbel & Wohnen,0.6890756302521008,709,20cc80,100un
+Kleidung & Accessoires | Möbel & Wohnen,0.8571428571428571,429,20cc80,100un
+Kleidung & Accessoires | Sport & Freizeit,0.6666666666666666,206,20cc80,100un
+Elektronik & Computer | Möbel & Wohnen,0.967741935483871,194,20cc80,100un
+Elektronik & Computer | Kleidung & Accessoires,0.8,176,20cc80,100un
+Möbel & Wohnen | Werkzeug & Baumarkt,0.8,108,20cc80,100un
+Elektronik & Computer | Elektronik & Computer,0.9375,102,20cc80,100un
+Kleidung & Accessoires | Spielzeug & Baby,1.0,97,20cc80,100un
+Spielzeug & Baby | Spielzeug & Baby,0.9545454545454546,97,20cc80,100un
+Möbel & Wohnen | Spielzeug & Baby,0.7142857142857143,97,20cc80,100un
+Kleidung & Accessoires | Kosmetik & Drogerie,1.0,93,20cc80,100un
+Sport & Freizeit | Sport & Freizeit,0.9285714285714286,89,20cc80,100un
+Möbel & Wohnen | Sport & Freizeit,1.0,87,20cc80,100un
+Auto & Motorrad | Kleidung & Accessoires,0.0,83,20cc80,100un
+Kleidung & Accessoires | Werkzeug & Baumarkt,1.0,80,20cc80,100un
+Auto & Motorrad | Auto & Motorrad,0.8666666666666667,79,20cc80,100un
+Kosmetik & Drogerie | Möbel & Wohnen,1.0,75,20cc80,100un
+Kosmetik & Drogerie | Kosmetik & Drogerie,1.0,72,20cc80,100un
+Elektronik & Computer | Werkzeug & Baumarkt,1.0,55,20cc80,100un
+Auto & Motorrad | Möbel & Wohnen,0.0,46,20cc80,100un
+Elektronik & Computer | Spielzeug & Baby,1.0,38,20cc80,100un
+Elektronik & Computer | Kosmetik & Drogerie,1.0,37,20cc80,100un
+Gesundheit & Pflege | Möbel & Wohnen,1.0,29,20cc80,100un
+Gesundheit & Pflege | Kleidung & Accessoires,0.0,29,20cc80,100un
+Werkzeug & Baumarkt | Werkzeug & Baumarkt,0.896551724137931,27,20cc80,100un
+Spielzeug & Baby | Werkzeug & Baumarkt,0.0,23,20cc80,100un
+Kosmetik & Drogerie | Werkzeug & Baumarkt,1.0,21,20cc80,100un
+Elektronik & Computer | Gesundheit & Pflege,0.0,20,20cc80,100un
+Elektronik & Computer | Sport & Freizeit,0.0,20,20cc80,100un
+Auto & Motorrad | Elektronik & Computer,0.0,19,20cc80,100un
+Gesundheit & Pflege | Kosmetik & Drogerie,0.8333333333333334,19,20cc80,100un
+Bürobedarf | Kleidung & Accessoires,0.0,18,20cc80,100un
+Kosmetik & Drogerie | Sport & Freizeit,0.0,16,20cc80,100un
+Sport & Freizeit | Werkzeug & Baumarkt,0.0,15,20cc80,100un
+Auto & Motorrad | Sport & Freizeit,0.0,14,20cc80,100un
+Auto & Motorrad | Spielzeug & Baby,0.0,13,20cc80,100un
+Bürobedarf | Möbel & Wohnen,0.0,13,20cc80,100un
+Lebensmittel & Getränke | Möbel & Wohnen,0.0,12,20cc80,100un
+Bürobedarf | Elektronik & Computer,1.0,12,20cc80,100un
+"Bücher, Filme & Musik | Möbel & Wohnen",1.0,12,20cc80,100un
+Spielzeug & Baby | Sport & Freizeit,1.0,12,20cc80,100un
+Kleidung & Accessoires | Lebensmittel & Getränke,0.0,11,20cc80,100un
+"Bücher, Filme & Musik | Kleidung & Accessoires",1.0,10,20cc80,100un
+Auto & Motorrad | Werkzeug & Baumarkt,0.0,10,20cc80,100un
+Kosmetik & Drogerie | Spielzeug & Baby,0.0,10,20cc80,100un
+Gesundheit & Pflege | Werkzeug & Baumarkt,0.0,8,20cc80,100un
+Gesundheit & Pflege | Sport & Freizeit,0.0,8,20cc80,100un
+Bürobedarf | Kosmetik & Drogerie,0.0,8,20cc80,100un
+Auto & Motorrad | Kosmetik & Drogerie,0.0,7,20cc80,100un
+Haustier & Tierbedarf | Möbel & Wohnen,0.0,6,20cc80,100un
+Gesundheit & Pflege | Gesundheit & Pflege,1.0,6,20cc80,100un
+Elektronik & Computer | Lebensmittel & Getränke,1.0,5,20cc80,100un
+Bürobedarf | Sport & Freizeit,0.0,5,20cc80,100un
+Auto & Motorrad | Gesundheit & Pflege,0.0,5,20cc80,100un
+Haustier & Tierbedarf | Kleidung & Accessoires,0.0,5,20cc80,100un
+Bürobedarf | Werkzeug & Baumarkt,0.0,5,20cc80,100un
+Bürobedarf | Spielzeug & Baby,1.0,3,20cc80,100un
+Bürobedarf | Bürobedarf,1.0,3,20cc80,100un
+Auto & Motorrad | Bürobedarf,0.0,3,20cc80,100un
+"Bücher, Filme & Musik | Spielzeug & Baby",0.0,3,20cc80,100un
+"Bücher, Filme & Musik | Elektronik & Computer",0.0,3,20cc80,100un
+Auto & Motorrad | Lebensmittel & Getränke,0.0,2,20cc80,100un
+Kosmetik & Drogerie | Lebensmittel & Getränke,1.0,2,20cc80,100un
+Gesundheit & Pflege | Spielzeug & Baby,0.0,2,20cc80,100un
+"Bücher, Filme & Musik | Sport & Freizeit",0.0,2,20cc80,100un
+Haustier & Tierbedarf | Spielzeug & Baby,0.0,2,20cc80,100un
+Lebensmittel & Getränke | Sport & Freizeit,0.0,2,20cc80,100un
+"Auto & Motorrad | Bücher, Filme & Musik",0.0,2,20cc80,100un
+Auto & Motorrad | Haustier & Tierbedarf,0.0,1,20cc80,100un
+"Bücher, Filme & Musik | Werkzeug & Baumarkt",0.0,1,20cc80,100un
+"Bücher, Filme & Musik | Gesundheit & Pflege",0.0,1,20cc80,100un
+Lebensmittel & Getränke | Spielzeug & Baby,0.0,1,20cc80,100un
+"Bücher, Filme & Musik | Lebensmittel & Getränke",1.0,1,20cc80,100un
+"Bücher, Filme & Musik | Bürobedarf",0.0,1,20cc80,100un
+Lebensmittel & Getränke | Werkzeug & Baumarkt,0.0,1,20cc80,100un
+"Bücher, Filme & Musik | Kosmetik & Drogerie",0.0,1,20cc80,100un
+Haustier & Tierbedarf | Haustier & Tierbedarf,0.0,1,20cc80,100un
+Möbel & Wohnen | Möbel & Wohnen,0.6709677419354839,634,80cc20,000un
+Kleidung & Accessoires | Kleidung & Accessoires,0.576271186440678,562,80cc20,000un
+Elektronik & Computer | Elektronik & Computer,0.8817204301075269,333,80cc20,000un
+Elektronik & Computer | Möbel & Wohnen,0.8837209302325582,305,80cc20,000un
+Kleidung & Accessoires | Möbel & Wohnen,1.0,227,80cc20,000un
+Werkzeug & Baumarkt | Werkzeug & Baumarkt,0.9142857142857143,224,80cc20,000un
+Elektronik & Computer | Kleidung & Accessoires,0.47619047619047616,189,80cc20,000un
+Möbel & Wohnen | Werkzeug & Baumarkt,0.8695652173913043,165,80cc20,000un
+Kleidung & Accessoires | Sport & Freizeit,0.4166666666666667,144,80cc20,000un
+Spielzeug & Baby | Spielzeug & Baby,0.896551724137931,139,80cc20,000un
+Kleidung & Accessoires | Werkzeug & Baumarkt,0.5,116,80cc20,000un
+Sport & Freizeit | Sport & Freizeit,0.75,94,80cc20,000un
+Auto & Motorrad | Auto & Motorrad,0.9333333333333333,88,80cc20,000un
+Elektronik & Computer | Werkzeug & Baumarkt,0.5,87,80cc20,000un
+Auto & Motorrad | Sport & Freizeit,0.5,79,80cc20,000un
+Möbel & Wohnen | Sport & Freizeit,0.0,70,80cc20,000un
+Elektronik & Computer | Spielzeug & Baby,1.0,61,80cc20,000un
+Auto & Motorrad | Kleidung & Accessoires,0.0,59,80cc20,000un
+Möbel & Wohnen | Spielzeug & Baby,0.0,59,80cc20,000un
+Kleidung & Accessoires | Spielzeug & Baby,0.0,55,80cc20,000un
+Auto & Motorrad | Möbel & Wohnen,0.0,51,80cc20,000un
+Elektronik & Computer | Sport & Freizeit,0.0,50,80cc20,000un
+Kosmetik & Drogerie | Kosmetik & Drogerie,0.375,48,80cc20,000un
+Kosmetik & Drogerie | Möbel & Wohnen,0.0,40,80cc20,000un
+Auto & Motorrad | Elektronik & Computer,0.6666666666666666,39,80cc20,000un
+Gesundheit & Pflege | Kosmetik & Drogerie,0.75,35,80cc20,000un
+"Bücher, Filme & Musik | Spielzeug & Baby",0.875,34,80cc20,000un
+Gesundheit & Pflege | Möbel & Wohnen,0.8,33,80cc20,000un
+Elektronik & Computer | Kosmetik & Drogerie,0.0,32,80cc20,000un
+Spielzeug & Baby | Werkzeug & Baumarkt,0.0,31,80cc20,000un
+Auto & Motorrad | Werkzeug & Baumarkt,1.0,27,80cc20,000un
+Sport & Freizeit | Werkzeug & Baumarkt,0.0,25,80cc20,000un
+Auto & Motorrad | Spielzeug & Baby,1.0,25,80cc20,000un
+Gesundheit & Pflege | Kleidung & Accessoires,0.0,21,80cc20,000un
+Gesundheit & Pflege | Gesundheit & Pflege,1.0,21,80cc20,000un
+Kleidung & Accessoires | Kosmetik & Drogerie,1.0,21,80cc20,000un
+Elektronik & Computer | Lebensmittel & Getränke,0.75,20,80cc20,000un
+Spielzeug & Baby | Sport & Freizeit,0.0,20,80cc20,000un
+Kosmetik & Drogerie | Werkzeug & Baumarkt,0.0,18,80cc20,000un
+Lebensmittel & Getränke | Möbel & Wohnen,0.0,18,80cc20,000un
+Elektronik & Computer | Gesundheit & Pflege,0.0,18,80cc20,000un
+Gesundheit & Pflege | Werkzeug & Baumarkt,0.0,16,80cc20,000un
+Bürobedarf | Möbel & Wohnen,0.0,14,80cc20,000un
+"Bücher, Filme & Musik | Kleidung & Accessoires",0.0,12,80cc20,000un
+"Bücher, Filme & Musik | Bücher, Filme & Musik",1.0,9,80cc20,000un
+Gesundheit & Pflege | Spielzeug & Baby,0.0,7,80cc20,000un
+Auto & Motorrad | Kosmetik & Drogerie,0.0,7,80cc20,000un
+Gesundheit & Pflege | Lebensmittel & Getränke,0.0,6,80cc20,000un
+Kosmetik & Drogerie | Sport & Freizeit,0.0,6,80cc20,000un
+"Bücher, Filme & Musik | Werkzeug & Baumarkt",0.0,6,80cc20,000un
+Kleidung & Accessoires | Lebensmittel & Getränke,0.0,6,80cc20,000un
+"Bücher, Filme & Musik | Elektronik & Computer",0.0,5,80cc20,000un
+Gesundheit & Pflege | Sport & Freizeit,0.0,5,80cc20,000un
+Bürobedarf | Werkzeug & Baumarkt,1.0,5,80cc20,000un
+"Bücher, Filme & Musik | Möbel & Wohnen",0.0,5,80cc20,000un
+Lebensmittel & Getränke | Lebensmittel & Getränke,0.6666666666666666,5,80cc20,000un
+Kosmetik & Drogerie | Spielzeug & Baby,0.0,4,80cc20,000un
+Bürobedarf | Spielzeug & Baby,1.0,4,80cc20,000un
+Kosmetik & Drogerie | Lebensmittel & Getränke,1.0,4,80cc20,000un
+"Bücher, Filme & Musik | Sport & Freizeit",0.0,4,80cc20,000un
+Bürobedarf | Kosmetik & Drogerie,0.0,3,80cc20,000un
+Auto & Motorrad | Bürobedarf,0.0,3,80cc20,000un
+Auto & Motorrad | Gesundheit & Pflege,0.0,3,80cc20,000un
+Bürobedarf | Kleidung & Accessoires,0.0,3,80cc20,000un
+Bürobedarf | Elektronik & Computer,0.0,3,80cc20,000un
+Bürobedarf | Bürobedarf,1.0,2,80cc20,000un
+Lebensmittel & Getränke | Werkzeug & Baumarkt,0.0,2,80cc20,000un
+"Auto & Motorrad | Bücher, Filme & Musik",0.0,2,80cc20,000un
+Lebensmittel & Getränke | Sport & Freizeit,0.0,2,80cc20,000un
+Lebensmittel & Getränke | Spielzeug & Baby,0.0,2,80cc20,000un
+Auto & Motorrad | Lebensmittel & Getränke,0.0,1,80cc20,000un
+Bürobedarf | Sport & Freizeit,0.0,1,80cc20,000un
+Kleidung & Accessoires | Kleidung & Accessoires,0.6896551724137931,958,50cc50,100un
+Möbel & Wohnen | Möbel & Wohnen,0.6329113924050633,806,50cc50,100un
+Kleidung & Accessoires | Möbel & Wohnen,0.8,367,50cc50,100un
+Kleidung & Accessoires | Sport & Freizeit,0.7222222222222222,215,50cc50,100un
+Elektronik & Computer | Kleidung & Accessoires,0.5882352941176471,169,50cc50,100un
+Elektronik & Computer | Möbel & Wohnen,0.8421052631578947,147,50cc50,100un
+Kosmetik & Drogerie | Kosmetik & Drogerie,0.8936170212765957,146,50cc50,100un
+Möbel & Wohnen | Werkzeug & Baumarkt,0.9285714285714286,141,50cc50,100un
+Sport & Freizeit | Sport & Freizeit,0.75,95,50cc50,100un
+Elektronik & Computer | Elektronik & Computer,0.9387755102040817,95,50cc50,100un
+Kleidung & Accessoires | Kosmetik & Drogerie,0.6666666666666666,94,50cc50,100un
+Spielzeug & Baby | Spielzeug & Baby,0.9696969696969697,80,50cc50,100un
+Kleidung & Accessoires | Werkzeug & Baumarkt,1.0,75,50cc50,100un
+Werkzeug & Baumarkt | Werkzeug & Baumarkt,0.8,71,50cc50,100un
+Kleidung & Accessoires | Spielzeug & Baby,1.0,70,50cc50,100un
+Kosmetik & Drogerie | Möbel & Wohnen,1.0,69,50cc50,100un
+Möbel & Wohnen | Sport & Freizeit,1.0,69,50cc50,100un
+Möbel & Wohnen | Spielzeug & Baby,1.0,65,50cc50,100un
+Gesundheit & Pflege | Kleidung & Accessoires,0.6666666666666666,57,50cc50,100un
+Auto & Motorrad | Auto & Motorrad,0.8421052631578947,57,50cc50,100un
+Auto & Motorrad | Kleidung & Accessoires,0.0,52,50cc50,100un
+Gesundheit & Pflege | Möbel & Wohnen,1.0,40,50cc50,100un
+Gesundheit & Pflege | Gesundheit & Pflege,0.8571428571428571,38,50cc50,100un
+Elektronik & Computer | Kosmetik & Drogerie,0.0,36,50cc50,100un
+Elektronik & Computer | Werkzeug & Baumarkt,0.8,34,50cc50,100un
+Elektronik & Computer | Sport & Freizeit,0.0,34,50cc50,100un
+Auto & Motorrad | Möbel & Wohnen,0.0,33,50cc50,100un
+Gesundheit & Pflege | Kosmetik & Drogerie,0.875,31,50cc50,100un
+Elektronik & Computer | Spielzeug & Baby,0.0,30,50cc50,100un
+Kosmetik & Drogerie | Sport & Freizeit,1.0,27,50cc50,100un
+Kosmetik & Drogerie | Werkzeug & Baumarkt,0.0,22,50cc50,100un
+Sport & Freizeit | Werkzeug & Baumarkt,0.0,20,50cc50,100un
+Spielzeug & Baby | Sport & Freizeit,0.6666666666666666,19,50cc50,100un
+Elektronik & Computer | Gesundheit & Pflege,0.0,15,50cc50,100un
+Gesundheit & Pflege | Sport & Freizeit,0.0,14,50cc50,100un
+Kosmetik & Drogerie | Spielzeug & Baby,0.0,13,50cc50,100un
+Auto & Motorrad | Sport & Freizeit,1.0,13,50cc50,100un
+Bürobedarf | Kleidung & Accessoires,0.0,13,50cc50,100un
+Bürobedarf | Möbel & Wohnen,0.6666666666666666,12,50cc50,100un
+Bürobedarf | Elektronik & Computer,1.0,11,50cc50,100un
+Auto & Motorrad | Kosmetik & Drogerie,0.0,11,50cc50,100un
+Auto & Motorrad | Elektronik & Computer,0.0,9,50cc50,100un
+Gesundheit & Pflege | Werkzeug & Baumarkt,0.0,8,50cc50,100un
+Spielzeug & Baby | Werkzeug & Baumarkt,0.0,8,50cc50,100un
+Auto & Motorrad | Spielzeug & Baby,0.0,7,50cc50,100un
+Auto & Motorrad | Gesundheit & Pflege,0.0,7,50cc50,100un
+Auto & Motorrad | Werkzeug & Baumarkt,0.0,7,50cc50,100un
+Lebensmittel & Getränke | Möbel & Wohnen,1.0,6,50cc50,100un
+"Bücher, Filme & Musik | Kleidung & Accessoires",1.0,6,50cc50,100un
+Gesundheit & Pflege | Spielzeug & Baby,0.0,6,50cc50,100un
+Bürobedarf | Sport & Freizeit,0.0,6,50cc50,100un
+Bürobedarf | Kosmetik & Drogerie,0.0,5,50cc50,100un
+"Bücher, Filme & Musik | Möbel & Wohnen",0.0,5,50cc50,100un
+Lebensmittel & Getränke | Sport & Freizeit,0.0,5,50cc50,100un
+Bürobedarf | Gesundheit & Pflege,0.0,3,50cc50,100un
+Bürobedarf | Werkzeug & Baumarkt,0.0,3,50cc50,100un
+Kosmetik & Drogerie | Lebensmittel & Getränke,1.0,3,50cc50,100un
+Elektronik & Computer | Lebensmittel & Getränke,0.0,3,50cc50,100un
+"Bücher, Filme & Musik | Elektronik & Computer",0.0,2,50cc50,100un
+Auto & Motorrad | Bürobedarf,0.0,2,50cc50,100un
+"Bücher, Filme & Musik | Gesundheit & Pflege",0.0,2,50cc50,100un
+Bürobedarf | Lebensmittel & Getränke,0.0,1,50cc50,100un
+"Bücher, Filme & Musik | Bücher, Filme & Musik",1.0,1,50cc50,100un
+Gesundheit & Pflege | Lebensmittel & Getränke,0.0,1,50cc50,100un
+Lebensmittel & Getränke | Spielzeug & Baby,0.0,1,50cc50,100un
+Auto & Motorrad | Lebensmittel & Getränke,0.0,1,50cc50,100un
+"Auto & Motorrad | Bücher, Filme & Musik",0.0,1,50cc50,100un
+Bürobedarf | Spielzeug & Baby,1.0,1,50cc50,100un
+"Bücher, Filme & Musik | Bürobedarf",0.0,1,50cc50,100un
+"Bücher, Filme & Musik | Spielzeug & Baby",0.0,1,50cc50,100un
+"Bücher, Filme & Musik | Werkzeug & Baumarkt",0.0,1,50cc50,100un
+Bürobedarf | Bürobedarf,1.0,1,50cc50,100un
+Kleidung & Accessoires | Lebensmittel & Getränke,0.0,1,50cc50,100un
+Möbel & Wohnen | Möbel & Wohnen,0.6884057971014492,1014,80cc20,100un
+Kleidung & Accessoires | Kleidung & Accessoires,0.5259259259259259,844,80cc20,100un
+Kleidung & Accessoires | Möbel & Wohnen,0.5,382,80cc20,100un
+Kleidung & Accessoires | Sport & Freizeit,0.5957446808510638,177,80cc20,100un
+Werkzeug & Baumarkt | Werkzeug & Baumarkt,0.8947368421052632,170,80cc20,100un
+Möbel & Wohnen | Werkzeug & Baumarkt,0.9411764705882353,155,80cc20,100un
+Kosmetik & Drogerie | Kosmetik & Drogerie,0.7307692307692307,151,80cc20,100un
+Elektronik & Computer | Möbel & Wohnen,0.75,114,80cc20,100un
+Elektronik & Computer | Kleidung & Accessoires,0.5263157894736842,105,80cc20,100un
+Kosmetik & Drogerie | Möbel & Wohnen,1.0,101,80cc20,100un
+Kleidung & Accessoires | Kosmetik & Drogerie,0.0,96,80cc20,100un
+Sport & Freizeit | Sport & Freizeit,0.4864864864864865,91,80cc20,100un
+Kleidung & Accessoires | Werkzeug & Baumarkt,0.0,84,80cc20,100un
+Spielzeug & Baby | Spielzeug & Baby,0.9285714285714286,73,80cc20,100un
+Möbel & Wohnen | Sport & Freizeit,0.0,62,80cc20,100un
+Elektronik & Computer | Elektronik & Computer,0.8181818181818182,60,80cc20,100un
+Kleidung & Accessoires | Spielzeug & Baby,0.6666666666666666,60,80cc20,100un
+Gesundheit & Pflege | Gesundheit & Pflege,0.9473684210526315,56,80cc20,100un
+Auto & Motorrad | Auto & Motorrad,0.8,53,80cc20,100un
+Gesundheit & Pflege | Kleidung & Accessoires,0.8,52,80cc20,100un
+Gesundheit & Pflege | Möbel & Wohnen,0.0,51,80cc20,100un
+Möbel & Wohnen | Spielzeug & Baby,0.8571428571428571,42,80cc20,100un
+Gesundheit & Pflege | Kosmetik & Drogerie,0.8333333333333334,41,80cc20,100un
+Auto & Motorrad | Kleidung & Accessoires,0.0,39,80cc20,100un
+Elektronik & Computer | Sport & Freizeit,0.8333333333333334,37,80cc20,100un
+Elektronik & Computer | Werkzeug & Baumarkt,0.6666666666666666,31,80cc20,100un
+Kosmetik & Drogerie | Werkzeug & Baumarkt,0.0,27,80cc20,100un
+Auto & Motorrad | Möbel & Wohnen,0.0,25,80cc20,100un
+Sport & Freizeit | Werkzeug & Baumarkt,0.0,23,80cc20,100un
+Gesundheit & Pflege | Werkzeug & Baumarkt,0.0,20,80cc20,100un
+Elektronik & Computer | Kosmetik & Drogerie,0.0,20,80cc20,100un
+Auto & Motorrad | Sport & Freizeit,0.5,17,80cc20,100un
+Auto & Motorrad | Elektronik & Computer,0.4,14,80cc20,100un
+Spielzeug & Baby | Werkzeug & Baumarkt,0.0,12,80cc20,100un
+Elektronik & Computer | Spielzeug & Baby,0.0,12,80cc20,100un
+Spielzeug & Baby | Sport & Freizeit,0.0,12,80cc20,100un
+Gesundheit & Pflege | Sport & Freizeit,0.0,11,80cc20,100un
+Bürobedarf | Möbel & Wohnen,1.0,10,80cc20,100un
+Auto & Motorrad | Kosmetik & Drogerie,0.0,10,80cc20,100un
+Elektronik & Computer | Gesundheit & Pflege,0.0,9,80cc20,100un
+Kosmetik & Drogerie | Sport & Freizeit,1.0,9,80cc20,100un
+Auto & Motorrad | Gesundheit & Pflege,0.0,8,80cc20,100un
+Kosmetik & Drogerie | Spielzeug & Baby,0.0,8,80cc20,100un
+Lebensmittel & Getränke | Möbel & Wohnen,1.0,8,80cc20,100un
+Lebensmittel & Getränke | Sport & Freizeit,0.0,7,80cc20,100un
+Auto & Motorrad | Werkzeug & Baumarkt,0.0,7,80cc20,100un
+Bürobedarf | Kleidung & Accessoires,0.0,6,80cc20,100un
+Bürobedarf | Elektronik & Computer,0.6666666666666666,6,80cc20,100un
+Gesundheit & Pflege | Spielzeug & Baby,0.0,6,80cc20,100un
+Gesundheit & Pflege | Lebensmittel & Getränke,0.0,5,80cc20,100un
+Auto & Motorrad | Spielzeug & Baby,0.0,5,80cc20,100un
+"Bücher, Filme & Musik | Kleidung & Accessoires",1.0,3,80cc20,100un
+Bürobedarf | Werkzeug & Baumarkt,0.0,3,80cc20,100un
+Lebensmittel & Getränke | Lebensmittel & Getränke,0.0,3,80cc20,100un
+Kleidung & Accessoires | Lebensmittel & Getränke,0.0,2,80cc20,100un
+Bürobedarf | Kosmetik & Drogerie,0.0,2,80cc20,100un
+Auto & Motorrad | Bürobedarf,0.0,2,80cc20,100un
+Bürobedarf | Bürobedarf,1.0,2,80cc20,100un
+Kosmetik & Drogerie | Lebensmittel & Getränke,0.0,2,80cc20,100un
+"Bücher, Filme & Musik | Möbel & Wohnen",0.0,1,80cc20,100un
+Bürobedarf | Spielzeug & Baby,0.0,1,80cc20,100un
+Bürobedarf | Gesundheit & Pflege,0.0,1,80cc20,100un
+"Bücher, Filme & Musik | Gesundheit & Pflege",0.0,1,80cc20,100un
+Lebensmittel & Getränke | Werkzeug & Baumarkt,0.0,1,80cc20,100un
+Lebensmittel & Getränke | Spielzeug & Baby,0.0,1,80cc20,100un
+Möbel & Wohnen | Möbel & Wohnen,0.7280701754385965,847,80cc20,050un
+Kleidung & Accessoires | Kleidung & Accessoires,0.4808362369337979,828,80cc20,050un
+Kleidung & Accessoires | Möbel & Wohnen,0.2857142857142857,350,80cc20,050un
+Elektronik & Computer | Möbel & Wohnen,0.8163265306122449,241,80cc20,050un
+Kleidung & Accessoires | Sport & Freizeit,0.6190476190476191,192,80cc20,050un
+Möbel & Wohnen | Werkzeug & Baumarkt,0.88,160,80cc20,050un
+Sport & Freizeit | Sport & Freizeit,0.6222222222222222,153,80cc20,050un
+Elektronik & Computer | Elektronik & Computer,0.8125,144,80cc20,050un
+Werkzeug & Baumarkt | Werkzeug & Baumarkt,0.9767441860465116,137,80cc20,050un
+Elektronik & Computer | Kleidung & Accessoires,0.8,125,80cc20,050un
+Möbel & Wohnen | Sport & Freizeit,1.0,106,80cc20,050un
+Spielzeug & Baby | Spielzeug & Baby,0.8571428571428571,73,80cc20,050un
+Kleidung & Accessoires | Werkzeug & Baumarkt,0.0,70,80cc20,050un
+Elektronik & Computer | Sport & Freizeit,0.7142857142857143,62,80cc20,050un
+Kosmetik & Drogerie | Kosmetik & Drogerie,0.6666666666666666,60,80cc20,050un
+Kleidung & Accessoires | Spielzeug & Baby,0.0,58,80cc20,050un
+Möbel & Wohnen | Spielzeug & Baby,0.8888888888888888,58,80cc20,050un
+Auto & Motorrad | Auto & Motorrad,0.8,55,80cc20,050un
+Kosmetik & Drogerie | Möbel & Wohnen,1.0,48,80cc20,050un
+Auto & Motorrad | Kleidung & Accessoires,0.0,47,80cc20,050un
+Elektronik & Computer | Werkzeug & Baumarkt,0.0,46,80cc20,050un
+Kleidung & Accessoires | Kosmetik & Drogerie,0.0,46,80cc20,050un
+Auto & Motorrad | Möbel & Wohnen,0.0,44,80cc20,050un
+Auto & Motorrad | Sport & Freizeit,0.6666666666666666,38,80cc20,050un
+Gesundheit & Pflege | Möbel & Wohnen,1.0,34,80cc20,050un
+Bürobedarf | Möbel & Wohnen,1.0,32,80cc20,050un
+Gesundheit & Pflege | Kleidung & Accessoires,1.0,31,80cc20,050un
+Auto & Motorrad | Elektronik & Computer,0.4,23,80cc20,050un
+Gesundheit & Pflege | Kosmetik & Drogerie,0.75,22,80cc20,050un
+Sport & Freizeit | Werkzeug & Baumarkt,0.0,22,80cc20,050un
+Elektronik & Computer | Spielzeug & Baby,0.0,21,80cc20,050un
+Bürobedarf | Werkzeug & Baumarkt,0.5,20,80cc20,050un
+Elektronik & Computer | Kosmetik & Drogerie,0.0,18,80cc20,050un
+Elektronik & Computer | Gesundheit & Pflege,0.0,18,80cc20,050un
+Gesundheit & Pflege | Gesundheit & Pflege,1.0,17,80cc20,050un
+Elektronik & Computer | Lebensmittel & Getränke,0.8,14,80cc20,050un
+Lebensmittel & Getränke | Möbel & Wohnen,1.0,14,80cc20,050un
+Bürobedarf | Kleidung & Accessoires,1.0,14,80cc20,050un
+Spielzeug & Baby | Sport & Freizeit,0.0,13,80cc20,050un
+Gesundheit & Pflege | Werkzeug & Baumarkt,0.0,12,80cc20,050un
+Kosmetik & Drogerie | Werkzeug & Baumarkt,0.0,10,80cc20,050un
+Spielzeug & Baby | Werkzeug & Baumarkt,0.0,10,80cc20,050un
+Bürobedarf | Elektronik & Computer,1.0,9,80cc20,050un
+Lebensmittel & Getränke | Sport & Freizeit,0.0,9,80cc20,050un
+Bürobedarf | Bürobedarf,0.6666666666666666,9,80cc20,050un
+Kosmetik & Drogerie | Sport & Freizeit,1.0,8,80cc20,050un
+"Bücher, Filme & Musik | Spielzeug & Baby",0.6666666666666666,8,80cc20,050un
+Kleidung & Accessoires | Lebensmittel & Getränke,0.0,7,80cc20,050un
+Gesundheit & Pflege | Spielzeug & Baby,1.0,7,80cc20,050un
+Lebensmittel & Getränke | Lebensmittel & Getränke,0.0,7,80cc20,050un
+Kosmetik & Drogerie | Spielzeug & Baby,0.0,6,80cc20,050un
+Auto & Motorrad | Spielzeug & Baby,0.0,6,80cc20,050un
+"Bücher, Filme & Musik | Möbel & Wohnen",1.0,6,80cc20,050un
+Gesundheit & Pflege | Sport & Freizeit,0.0,5,80cc20,050un
+Auto & Motorrad | Gesundheit & Pflege,0.0,4,80cc20,050un
+Auto & Motorrad | Werkzeug & Baumarkt,0.0,4,80cc20,050un
+Gesundheit & Pflege | Lebensmittel & Getränke,0.0,4,80cc20,050un
+Auto & Motorrad | Kosmetik & Drogerie,0.0,3,80cc20,050un
+"Bücher, Filme & Musik | Kleidung & Accessoires",0.0,3,80cc20,050un
+Auto & Motorrad | Lebensmittel & Getränke,0.0,3,80cc20,050un
+Lebensmittel & Getränke | Werkzeug & Baumarkt,0.0,3,80cc20,050un
+Lebensmittel & Getränke | Spielzeug & Baby,0.0,3,80cc20,050un
+Auto & Motorrad | Bürobedarf,0.0,2,80cc20,050un
+Bürobedarf | Sport & Freizeit,0.0,2,80cc20,050un
+Kosmetik & Drogerie | Lebensmittel & Getränke,0.0,2,80cc20,050un
+Bürobedarf | Lebensmittel & Getränke,0.0,2,80cc20,050un
+Bürobedarf | Kosmetik & Drogerie,0.0,2,80cc20,050un
+Bürobedarf | Spielzeug & Baby,0.0,2,80cc20,050un
+Haustier & Tierbedarf | Sport & Freizeit,0.0,2,80cc20,050un
+"Bücher, Filme & Musik | Elektronik & Computer",0.0,2,80cc20,050un
+Gesundheit & Pflege | Haustier & Tierbedarf,1.0,2,80cc20,050un
+Bürobedarf | Gesundheit & Pflege,0.0,1,80cc20,050un
+Haustier & Tierbedarf | Spielzeug & Baby,0.0,1,80cc20,050un
+"Bücher, Filme & Musik | Kosmetik & Drogerie",0.0,1,80cc20,050un
+"Bücher, Filme & Musik | Sport & Freizeit",0.0,1,80cc20,050un
+Haustier & Tierbedarf | Möbel & Wohnen,0.0,1,80cc20,050un
+Kleidung & Accessoires | Kleidung & Accessoires,0.672,524,20cc80,000un
+Elektronik & Computer | Elektronik & Computer,0.8652482269503546,424,20cc80,000un
+Möbel & Wohnen | Möbel & Wohnen,0.8925619834710744,349,20cc80,000un
+Elektronik & Computer | Möbel & Wohnen,0.9166666666666666,314,20cc80,000un
+Elektronik & Computer | Kleidung & Accessoires,0.4,251,20cc80,000un
+Werkzeug & Baumarkt | Werkzeug & Baumarkt,0.9285714285714286,218,20cc80,000un
+Kleidung & Accessoires | Möbel & Wohnen,0.6666666666666666,194,20cc80,000un
+Möbel & Wohnen | Werkzeug & Baumarkt,0.9166666666666666,162,20cc80,000un
+Kleidung & Accessoires | Sport & Freizeit,0.64,143,20cc80,000un
+Elektronik & Computer | Werkzeug & Baumarkt,0.8,139,20cc80,000un
+Kleidung & Accessoires | Werkzeug & Baumarkt,1.0,123,20cc80,000un
+Auto & Motorrad | Auto & Motorrad,0.8181818181818182,107,20cc80,000un
+Spielzeug & Baby | Spielzeug & Baby,0.926829268292683,89,20cc80,000un
+Möbel & Wohnen | Sport & Freizeit,1.0,83,20cc80,000un
+Elektronik & Computer | Sport & Freizeit,1.0,81,20cc80,000un
+Sport & Freizeit | Sport & Freizeit,0.96,79,20cc80,000un
+Kosmetik & Drogerie | Möbel & Wohnen,1.0,63,20cc80,000un
+Auto & Motorrad | Elektronik & Computer,1.0,62,20cc80,000un
+Elektronik & Computer | Kosmetik & Drogerie,0.0,59,20cc80,000un
+Auto & Motorrad | Kleidung & Accessoires,1.0,59,20cc80,000un
+Elektronik & Computer | Spielzeug & Baby,1.0,58,20cc80,000un
+Gesundheit & Pflege | Möbel & Wohnen,1.0,57,20cc80,000un
+Kleidung & Accessoires | Spielzeug & Baby,0.0,57,20cc80,000un
+Möbel & Wohnen | Spielzeug & Baby,1.0,51,20cc80,000un
+Kleidung & Accessoires | Kosmetik & Drogerie,0.0,49,20cc80,000un
+Auto & Motorrad | Möbel & Wohnen,0.0,48,20cc80,000un
+Elektronik & Computer | Gesundheit & Pflege,1.0,40,20cc80,000un
+Sport & Freizeit | Werkzeug & Baumarkt,1.0,39,20cc80,000un
+Auto & Motorrad | Sport & Freizeit,1.0,32,20cc80,000un
+Gesundheit & Pflege | Kosmetik & Drogerie,1.0,31,20cc80,000un
+Gesundheit & Pflege | Kleidung & Accessoires,1.0,29,20cc80,000un
+Kosmetik & Drogerie | Kosmetik & Drogerie,0.9473684210526315,29,20cc80,000un
+Auto & Motorrad | Werkzeug & Baumarkt,0.0,27,20cc80,000un
+Elektronik & Computer | Lebensmittel & Getränke,1.0,26,20cc80,000un
+Bürobedarf | Elektronik & Computer,1.0,25,20cc80,000un
+"Bücher, Filme & Musik | Spielzeug & Baby",0.4444444444444444,24,20cc80,000un
+Spielzeug & Baby | Werkzeug & Baumarkt,0.0,23,20cc80,000un
+Kleidung & Accessoires | Lebensmittel & Getränke,0.0,22,20cc80,000un
+Kosmetik & Drogerie | Werkzeug & Baumarkt,0.0,21,20cc80,000un
+Bürobedarf | Kleidung & Accessoires,0.0,18,20cc80,000un
+Lebensmittel & Getränke | Möbel & Wohnen,0.0,16,20cc80,000un
+Gesundheit & Pflege | Gesundheit & Pflege,1.0,15,20cc80,000un
+Lebensmittel & Getränke | Lebensmittel & Getränke,0.9090909090909091,14,20cc80,000un
+Spielzeug & Baby | Sport & Freizeit,0.0,12,20cc80,000un
+Gesundheit & Pflege | Werkzeug & Baumarkt,0.0,12,20cc80,000un
+Gesundheit & Pflege | Sport & Freizeit,0.0,12,20cc80,000un
+Auto & Motorrad | Kosmetik & Drogerie,0.0,11,20cc80,000un
+Gesundheit & Pflege | Spielzeug & Baby,0.0,10,20cc80,000un
+Bürobedarf | Möbel & Wohnen,0.0,9,20cc80,000un
+Auto & Motorrad | Spielzeug & Baby,0.0,9,20cc80,000un
+Kosmetik & Drogerie | Sport & Freizeit,0.0,9,20cc80,000un
+Bürobedarf | Bürobedarf,1.0,9,20cc80,000un
+Kosmetik & Drogerie | Spielzeug & Baby,0.0,8,20cc80,000un
+Lebensmittel & Getränke | Werkzeug & Baumarkt,0.0,7,20cc80,000un
+"Bücher, Filme & Musik | Möbel & Wohnen",0.0,7,20cc80,000un
+Gesundheit & Pflege | Lebensmittel & Getränke,1.0,7,20cc80,000un
+"Bücher, Filme & Musik | Bücher, Filme & Musik",0.8,7,20cc80,000un
+Kosmetik & Drogerie | Lebensmittel & Getränke,1.0,6,20cc80,000un
+Bürobedarf | Werkzeug & Baumarkt,0.0,6,20cc80,000un
+"Bücher, Filme & Musik | Kleidung & Accessoires",0.0,6,20cc80,000un
+Haustier & Tierbedarf | Möbel & Wohnen,0.0,5,20cc80,000un
+Haustier & Tierbedarf | Werkzeug & Baumarkt,0.0,5,20cc80,000un
+Bürobedarf | Sport & Freizeit,0.0,4,20cc80,000un
+Haustier & Tierbedarf | Spielzeug & Baby,0.0,4,20cc80,000un
+"Bücher, Filme & Musik | Werkzeug & Baumarkt",0.0,4,20cc80,000un
+Lebensmittel & Getränke | Spielzeug & Baby,0.0,4,20cc80,000un
+Lebensmittel & Getränke | Sport & Freizeit,0.0,4,20cc80,000un
+"Bücher, Filme & Musik | Elektronik & Computer",0.0,4,20cc80,000un
+"Bücher, Filme & Musik | Gesundheit & Pflege",0.0,3,20cc80,000un
+Auto & Motorrad | Gesundheit & Pflege,0.0,3,20cc80,000un
+Haustier & Tierbedarf | Kleidung & Accessoires,0.0,3,20cc80,000un
+"Bücher, Filme & Musik | Sport & Freizeit",0.0,2,20cc80,000un
+Bürobedarf | Kosmetik & Drogerie,0.0,2,20cc80,000un
+Auto & Motorrad | Bürobedarf,0.0,2,20cc80,000un
+Elektronik & Computer | Haustier & Tierbedarf,0.0,1,20cc80,000un
+Gesundheit & Pflege | Haustier & Tierbedarf,1.0,1,20cc80,000un
+"Auto & Motorrad | Bücher, Filme & Musik",0.0,1,20cc80,000un
+"Bücher, Filme & Musik | Kosmetik & Drogerie",0.0,1,20cc80,000un
+Haustier & Tierbedarf | Haustier & Tierbedarf,0.0,1,20cc80,000un
+Bürobedarf | Gesundheit & Pflege,0.0,1,20cc80,000un
+Bürobedarf | Spielzeug & Baby,0.0,1,20cc80,000un
+Haustier & Tierbedarf | Kosmetik & Drogerie,0.0,1,20cc80,000un
+Kleidung & Accessoires | Kleidung & Accessoires,0.7319587628865979,893,20cc80,050un
+Möbel & Wohnen | Möbel & Wohnen,0.7590361445783133,529,20cc80,050un
+Kleidung & Accessoires | Möbel & Wohnen,0.75,339,20cc80,050un
+Elektronik & Computer | Kleidung & Accessoires,0.8571428571428571,240,20cc80,050un
+Elektronik & Computer | Möbel & Wohnen,1.0,207,20cc80,050un
+Elektronik & Computer | Elektronik & Computer,0.9302325581395349,191,20cc80,050un
+Kleidung & Accessoires | Sport & Freizeit,0.5333333333333333,184,20cc80,050un
+Werkzeug & Baumarkt | Werkzeug & Baumarkt,0.8928571428571429,161,20cc80,050un
+Möbel & Wohnen | Werkzeug & Baumarkt,0.5333333333333333,137,20cc80,050un
+Kleidung & Accessoires | Werkzeug & Baumarkt,1.0,126,20cc80,050un
+Auto & Motorrad | Auto & Motorrad,0.8695652173913043,108,20cc80,050un
+Kleidung & Accessoires | Kosmetik & Drogerie,1.0,101,20cc80,050un
+Möbel & Wohnen | Spielzeug & Baby,0.875,81,20cc80,050un
+Elektronik & Computer | Werkzeug & Baumarkt,1.0,77,20cc80,050un
+Kleidung & Accessoires | Spielzeug & Baby,0.0,72,20cc80,050un
+Auto & Motorrad | Kleidung & Accessoires,0.0,71,20cc80,050un
+Möbel & Wohnen | Sport & Freizeit,1.0,68,20cc80,050un
+Kosmetik & Drogerie | Kosmetik & Drogerie,0.9333333333333333,66,20cc80,050un
+Spielzeug & Baby | Spielzeug & Baby,0.9090909090909091,62,20cc80,050un
+Kosmetik & Drogerie | Möbel & Wohnen,1.0,59,20cc80,050un
+Gesundheit & Pflege | Möbel & Wohnen,1.0,44,20cc80,050un
+Auto & Motorrad | Möbel & Wohnen,1.0,39,20cc80,050un
+Sport & Freizeit | Sport & Freizeit,0.9230769230769231,39,20cc80,050un
+Elektronik & Computer | Spielzeug & Baby,0.0,38,20cc80,050un
+Elektronik & Computer | Sport & Freizeit,1.0,38,20cc80,050un
+Elektronik & Computer | Kosmetik & Drogerie,0.6666666666666666,36,20cc80,050un
+Gesundheit & Pflege | Kleidung & Accessoires,0.0,32,20cc80,050un
+Gesundheit & Pflege | Kosmetik & Drogerie,1.0,31,20cc80,050un
+Auto & Motorrad | Elektronik & Computer,0.0,29,20cc80,050un
+Sport & Freizeit | Werkzeug & Baumarkt,1.0,25,20cc80,050un
+Kosmetik & Drogerie | Werkzeug & Baumarkt,1.0,22,20cc80,050un
+Gesundheit & Pflege | Werkzeug & Baumarkt,0.0,19,20cc80,050un
+Spielzeug & Baby | Werkzeug & Baumarkt,0.0,19,20cc80,050un
+Auto & Motorrad | Werkzeug & Baumarkt,0.0,17,20cc80,050un
+Auto & Motorrad | Sport & Freizeit,0.6666666666666666,17,20cc80,050un
+Gesundheit & Pflege | Gesundheit & Pflege,1.0,16,20cc80,050un
+Kleidung & Accessoires | Lebensmittel & Getränke,0.0,15,20cc80,050un
+Bürobedarf | Kleidung & Accessoires,1.0,15,20cc80,050un
+Kosmetik & Drogerie | Sport & Freizeit,0.0,14,20cc80,050un
+Lebensmittel & Getränke | Möbel & Wohnen,1.0,14,20cc80,050un
+Elektronik & Computer | Gesundheit & Pflege,0.0,13,20cc80,050un
+Bürobedarf | Elektronik & Computer,1.0,12,20cc80,050un
+Gesundheit & Pflege | Sport & Freizeit,0.0,11,20cc80,050un
+Spielzeug & Baby | Sport & Freizeit,1.0,10,20cc80,050un
+Kosmetik & Drogerie | Spielzeug & Baby,0.0,8,20cc80,050un
+Elektronik & Computer | Lebensmittel & Getränke,1.0,7,20cc80,050un
+Bürobedarf | Möbel & Wohnen,0.0,7,20cc80,050un
+Elektronik & Computer | Haustier & Tierbedarf,0.0,7,20cc80,050un
+Haustier & Tierbedarf | Möbel & Wohnen,0.0,7,20cc80,050un
+Lebensmittel & Getränke | Werkzeug & Baumarkt,0.0,6,20cc80,050un
+Auto & Motorrad | Gesundheit & Pflege,0.0,5,20cc80,050un
+Gesundheit & Pflege | Lebensmittel & Getränke,1.0,5,20cc80,050un
+Haustier & Tierbedarf | Kleidung & Accessoires,0.0,5,20cc80,050un
+Gesundheit & Pflege | Spielzeug & Baby,0.0,4,20cc80,050un
+Bürobedarf | Kosmetik & Drogerie,0.0,4,20cc80,050un
+Lebensmittel & Getränke | Spielzeug & Baby,0.0,4,20cc80,050un
+Auto & Motorrad | Haustier & Tierbedarf,0.0,4,20cc80,050un
+Bürobedarf | Werkzeug & Baumarkt,0.0,4,20cc80,050un
+Auto & Motorrad | Kosmetik & Drogerie,0.0,4,20cc80,050un
+Lebensmittel & Getränke | Lebensmittel & Getränke,1.0,3,20cc80,050un
+Auto & Motorrad | Spielzeug & Baby,0.0,3,20cc80,050un
+Kosmetik & Drogerie | Lebensmittel & Getränke,1.0,3,20cc80,050un
+Bürobedarf | Sport & Freizeit,0.0,3,20cc80,050un
+Lebensmittel & Getränke | Sport & Freizeit,0.0,3,20cc80,050un
+"Bücher, Filme & Musik | Spielzeug & Baby",0.0,2,20cc80,050un
+Auto & Motorrad | Bürobedarf,0.0,2,20cc80,050un
+Haustier & Tierbedarf | Werkzeug & Baumarkt,0.0,2,20cc80,050un
+Bürobedarf | Spielzeug & Baby,1.0,2,20cc80,050un
+"Bücher, Filme & Musik | Elektronik & Computer",0.0,2,20cc80,050un
+Auto & Motorrad | Lebensmittel & Getränke,0.0,2,20cc80,050un
+Haustier & Tierbedarf | Haustier & Tierbedarf,0.6666666666666666,2,20cc80,050un
+Bürobedarf | Lebensmittel & Getränke,0.0,1,20cc80,050un
+Bürobedarf | Gesundheit & Pflege,0.0,1,20cc80,050un
+Haustier & Tierbedarf | Sport & Freizeit,0.0,1,20cc80,050un
+"Bücher, Filme & Musik | Möbel & Wohnen",1.0,1,20cc80,050un
+Gesundheit & Pflege | Haustier & Tierbedarf,0.0,1,20cc80,050un
+"Bücher, Filme & Musik | Bürobedarf",0.0,1,20cc80,050un
+Bürobedarf | Bürobedarf,0.0,1,20cc80,050un

@@ -1,0 +1,18 @@
+[
+    {
+        "job_name": "learning-curve_adjusted_testset_NaiveBayes_run3_testset=preprocessed_products20cc80rnd100un_gs_magellan_pairs_formatted.csv_trainset=preprocessed_products20cc80rnd000un_train_large_magellan_pairs_formatted.csv",
+        "runtime_sec": 1.66,
+        "max_memory_mb": 503.887,
+        "energy_kwh": 1.5e-05,
+        "emissions_kg": 6e-06,
+        "energy_cost_eur": 0.0
+    },
+    {
+        "job_name": "learning-curve_adjusted_testset_NaiveBayes_run3_testset=preprocessed_products20cc80rnd100un_gs_magellan_pairs_formatted.csv_trainset=preprocessed_products20cc80rnd000un_train_large_magellan_pairs_formatted.csv",
+        "runtime_sec": 1.675,
+        "max_memory_mb": 513.668,
+        "energy_kwh": 1.5e-05,
+        "emissions_kg": 6e-06,
+        "energy_cost_eur": 0.0
+    }
+]

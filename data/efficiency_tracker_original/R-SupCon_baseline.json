@@ -1,0 +1,182 @@
+[
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 3569.486,
+        "max_memory_mb": 3444.246,
+        "energy_kwh": 0.285172,
+        "emissions_kg": 0.108636,
+        "energy_cost_eur": 0.0856,
+        "total_cost_eur": 0.0856
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 28.601,
+        "max_memory_mb": 1765.395,
+        "energy_kwh": 0.000847,
+        "emissions_kg": 0.000323,
+        "energy_cost_eur": 0.0003,
+        "total_cost_eur": 0.0003
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 6060.963,
+        "max_memory_mb": 3503.695,
+        "energy_kwh": 0.366478,
+        "emissions_kg": 0.13961,
+        "energy_cost_eur": 0.1099,
+        "total_cost_eur": 0.1099
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 1752.58,
+        "max_memory_mb": 2717.363,
+        "energy_kwh": 0.148875,
+        "emissions_kg": 0.056714,
+        "energy_cost_eur": 0.0447,
+        "total_cost_eur": 0.0447
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 3488.333,
+        "max_memory_mb": 3278.445,
+        "energy_kwh": 0.297753,
+        "emissions_kg": 0.113429,
+        "energy_cost_eur": 0.0893,
+        "total_cost_eur": 0.0893
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 4183.757,
+        "max_memory_mb": 2429.398,
+        "energy_kwh": 0.387492,
+        "emissions_kg": 0.147615,
+        "energy_cost_eur": 0.1162,
+        "total_cost_eur": 0.1162
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 3505.139,
+        "max_memory_mb": 3399.418,
+        "energy_kwh": 0.29504,
+        "emissions_kg": 0.112396,
+        "energy_cost_eur": 0.0885,
+        "total_cost_eur": 0.0885
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 2492.349,
+        "max_memory_mb": 3206.059,
+        "energy_kwh": 0.16061,
+        "emissions_kg": 0.061184,
+        "energy_cost_eur": 0.0482,
+        "total_cost_eur": 0.0482
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 4866.296,
+        "max_memory_mb": 2936.195,
+        "energy_kwh": 0.449344,
+        "emissions_kg": 0.171178,
+        "energy_cost_eur": 0.1348,
+        "total_cost_eur": 0.1348
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 5267.505,
+        "max_memory_mb": 3724.465,
+        "energy_kwh": 0.345292,
+        "emissions_kg": 0.131539,
+        "energy_cost_eur": 0.1036,
+        "total_cost_eur": 0.1036
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 5217.437,
+        "max_memory_mb": 3826.453,
+        "energy_kwh": 0.295987,
+        "emissions_kg": 0.112756,
+        "energy_cost_eur": 0.0888,
+        "total_cost_eur": 0.0888
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 5097.421,
+        "max_memory_mb": 2773.426,
+        "energy_kwh": 0.430545,
+        "emissions_kg": 0.164016,
+        "energy_cost_eur": 0.1292,
+        "total_cost_eur": 0.1292
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 3786.693,
+        "max_memory_mb": 3587.305,
+        "energy_kwh": 0.296475,
+        "emissions_kg": 0.112942,
+        "energy_cost_eur": 0.0889,
+        "total_cost_eur": 0.0889
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 3566.101,
+        "max_memory_mb": 3534.234,
+        "energy_kwh": 0.299708,
+        "emissions_kg": 0.114174,
+        "energy_cost_eur": 0.0899,
+        "total_cost_eur": 0.0899
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 1564.768,
+        "max_memory_mb": 3532.199,
+        "energy_kwh": 0.096427,
+        "emissions_kg": 0.036734,
+        "energy_cost_eur": 0.0289,
+        "total_cost_eur": 0.0289
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 2257.549,
+        "max_memory_mb": 1981.25,
+        "energy_kwh": 0.162793,
+        "emissions_kg": 0.062016,
+        "energy_cost_eur": 0.0488,
+        "total_cost_eur": 0.0488
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 3785.17,
+        "max_memory_mb": 3520.516,
+        "energy_kwh": 0.295458,
+        "emissions_kg": 0.112555,
+        "energy_cost_eur": 0.0886,
+        "total_cost_eur": 0.0886
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 4746.967,
+        "max_memory_mb": 3065.27,
+        "energy_kwh": 0.407406,
+        "emissions_kg": 0.155201,
+        "energy_cost_eur": 0.1222,
+        "total_cost_eur": 0.1222
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 2245.545,
+        "max_memory_mb": 2771.746,
+        "energy_kwh": 0.174696,
+        "emissions_kg": 0.06655,
+        "energy_cost_eur": 0.0524,
+        "total_cost_eur": 0.0524
+    },
+    {
+        "job_name": "R-SupCon_baseline",
+        "runtime_sec": 3605.92,
+        "max_memory_mb": 3213.789,
+        "energy_kwh": 0.20686,
+        "emissions_kg": 0.078803,
+        "energy_cost_eur": 0.0621,
+        "total_cost_eur": 0.0621
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "final_small_20cc80rnd000un_seed0",
+        "runtime_sec": 41198.308,
+        "max_memory_mb": 11402.701,
+        "energy_kwh": 3.350367,
+        "emissions_kg": 1.276322,
+        "energy_cost_eur": 1.0051
+    }
+]

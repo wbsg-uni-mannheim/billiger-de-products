@@ -1,0 +1,10 @@
+File Name,Positive Pairs,Negative Pairs,Recor pairs,Amount of brand,Amount of name,Amount of description,Amount of price,Amount of different products,Amount of unique Words:
+products20cc80rnd000un_gs.json.gz,500,4000,4500,8776,9000,9000,9000,500,23390
+products20cc80rnd050un_gs.json.gz,500,4000,4500,8796,9000,9000,9000,500,20795
+products20cc80rnd100un_gs.json.gz,500,4000,4500,8864,9000,9000,9000,500,19856
+products50cc50rnd000un_gs.json.gz,500,4000,4500,8627,9000,9000,9000,500,22636
+products80cc20rnd050un_gs.json.gz,500,4000,4500,8845,9000,9000,9000,500,19604
+products50cc50rnd050un_gs.json.gz,500,4000,4500,8655,9000,9000,9000,500,21074
+products50cc50rnd100un_gs.json.gz,500,4000,4500,8864,9000,9000,9000,500,20101
+products80cc20rnd100un_gs.json.gz,500,4000,4500,8893,9000,9000,9000,500,17652
+products80cc20rnd000un_gs.json.gz,500,4000,4500,8650,9000,9000,9000,500,20314

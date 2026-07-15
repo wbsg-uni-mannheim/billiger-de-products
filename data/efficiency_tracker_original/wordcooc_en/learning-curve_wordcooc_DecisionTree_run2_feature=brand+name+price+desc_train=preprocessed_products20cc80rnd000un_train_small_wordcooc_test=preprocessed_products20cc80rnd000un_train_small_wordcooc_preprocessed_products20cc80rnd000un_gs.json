@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "learning-curve_wordcooc_DecisionTree_run2_feature=brand+name+price+desc_train=preprocessed_products20cc80rnd000un_train_small_wordcooc_test=preprocessed_products20cc80rnd000un_train_small_wordcooc_preprocessed_products20cc80rnd000un_gs",
+        "runtime_sec": 3.012,
+        "max_memory_mb": 621.754,
+        "energy_kwh": 5.2e-05,
+        "emissions_kg": 2e-05,
+        "energy_cost_eur": 0.0
+    }
+]

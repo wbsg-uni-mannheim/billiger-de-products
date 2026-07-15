@@ -1,0 +1,4 @@
+File: small
+Total tokens: 961397
+Unique tokens (Vocabulary size): 55773
+
