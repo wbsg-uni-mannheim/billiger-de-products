@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "adjusted_wordcooc_XGBoost_run3_feature=brand+name+price+desc_train=preprocessed_products20cc80rnd000un_train_large_wordcooc_test=preprocessed_products20cc80rnd000un_train_large_wordcooc_preprocessed_products20cc80rnd100un_gs",
+        "runtime_sec": 115.577,
+        "max_memory_mb": 1273.301,
+        "energy_kwh": 0.006869,
+        "emissions_kg": 0.002617,
+        "energy_cost_eur": 0.0021
+    }
+]

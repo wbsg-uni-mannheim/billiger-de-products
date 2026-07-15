@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "learning-curve_DecisionTree_run3_testset=preprocessed_products50cc50rnd050un_gs_magellan_pairs_formatted.csv_trainset=preprocessed_products50cc50rnd000un_train_large_magellan_pairs_formatted.csv_english",
+        "runtime_sec": 6.55,
+        "max_memory_mb": 489.527,
+        "energy_kwh": 0.000242,
+        "emissions_kg": 9.2e-05,
+        "energy_cost_eur": 0.0001
+    }
+]

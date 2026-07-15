@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "learning-curve_adjusted_LinearSVC_run2_testset=preprocessed_products50cc50rnd050un_gs_magellan_pairs_formatted.csv_trainset=preprocessed_products50cc50rnd000un_train_medium_magellan_pairs_formatted.csv",
+        "runtime_sec": 2.185,
+        "max_memory_mb": 708.68,
+        "energy_kwh": 2.3e-05,
+        "emissions_kg": 9e-06,
+        "energy_cost_eur": 0.0
+    }
+]

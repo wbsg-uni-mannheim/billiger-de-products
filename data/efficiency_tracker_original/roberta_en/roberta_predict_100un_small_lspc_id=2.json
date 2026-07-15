@@ -1,0 +1,26 @@
+[
+    {
+        "job_name": "roberta_predict_100un_small_lspc_id=2",
+        "runtime_sec": 21.124,
+        "max_memory_mb": 1670.869,
+        "energy_kwh": 0.000936,
+        "emissions_kg": 0.000357,
+        "energy_cost_eur": 0.0003
+    },
+    {
+        "job_name": "roberta_predict_100un_small_lspc_id=2",
+        "runtime_sec": 14.989,
+        "max_memory_mb": 1670.869,
+        "energy_kwh": 0.000695,
+        "emissions_kg": 0.000265,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_100un_small_lspc_id=2",
+        "runtime_sec": 15.07,
+        "max_memory_mb": 1670.869,
+        "energy_kwh": 0.000696,
+        "emissions_kg": 0.000265,
+        "energy_cost_eur": 0.0002
+    }
+]

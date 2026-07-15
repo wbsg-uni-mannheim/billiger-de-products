@@ -216,5 +216,19 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Benchmark reproduction: never commit secrets or large model artifacts ---
+secret_config.py
+*.safetensors
+*.pt
+*.pth
+*.joblib
+*.npy
+*.faiss
+*.index
+events.out.tfevents*
+env.elasticsearch
+*.elasticsearch
+.env.*
 BTW-German-WDC-working-title-/
 WRITING_GUIDELINES.md

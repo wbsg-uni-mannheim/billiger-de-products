@@ -1,0 +1,14 @@
+{
+  "dataset": "combined_50cc50",
+  "usage": {
+    "input_tokens": 245772,
+    "output_tokens": 1603895,
+    "total_tokens": 1849667,
+    "items": 1910
+  },
+  "costs_usd": {
+    "input_cost_usd": 0.03195,
+    "output_cost_usd": 1.68409,
+    "total_cost_usd": 1.71604
+  }
+}

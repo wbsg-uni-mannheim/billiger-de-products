@@ -1,0 +1,11 @@
+[
+    {
+        "job_name": "gpt-5.2_cc20cc80_un050_batched_german_easy_prompt",
+        "runtime_sec": 6339.27,
+        "max_memory_mb": 203.574,
+        "energy_kwh": 0.125035,
+        "emissions_kg": 0.047632,
+        "gpt_cost_eur": 1.7317,
+        "f1_score": 0.8180677540777918
+    }
+]

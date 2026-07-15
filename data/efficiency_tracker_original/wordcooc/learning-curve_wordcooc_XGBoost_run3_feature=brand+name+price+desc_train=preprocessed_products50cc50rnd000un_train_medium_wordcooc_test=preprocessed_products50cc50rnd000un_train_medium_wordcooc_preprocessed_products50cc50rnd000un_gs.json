@@ -1,0 +1,26 @@
+[
+    {
+        "job_name": "learning-curve_wordcooc_XGBoost_run3_feature=brand+name+price+desc_train=preprocessed_products50cc50rnd000un_train_medium_wordcooc_test=preprocessed_products50cc50rnd000un_train_medium_wordcooc_preprocessed_products50cc50rnd000un_gs",
+        "runtime_sec": 150.941,
+        "max_memory_mb": 805.906,
+        "energy_kwh": 0.006239,
+        "emissions_kg": 0.002377,
+        "energy_cost_eur": 0.0019
+    },
+    {
+        "job_name": "learning-curve_wordcooc_XGBoost_run3_feature=brand+name+price+desc_train=preprocessed_products50cc50rnd000un_train_medium_wordcooc_test=preprocessed_products50cc50rnd000un_train_medium_wordcooc_preprocessed_products50cc50rnd000un_gs",
+        "runtime_sec": 204.51,
+        "max_memory_mb": 801.91,
+        "energy_kwh": 0.010586,
+        "emissions_kg": 0.004033,
+        "energy_cost_eur": 0.0032
+    },
+    {
+        "job_name": "learning-curve_wordcooc_XGBoost_run3_feature=brand+name+price+desc_train=preprocessed_products50cc50rnd000un_train_medium_wordcooc_test=preprocessed_products50cc50rnd000un_train_medium_wordcooc_preprocessed_products50cc50rnd000un_gs",
+        "runtime_sec": 222.974,
+        "max_memory_mb": 795.312,
+        "energy_kwh": 0.010405,
+        "emissions_kg": 0.003964,
+        "energy_cost_eur": 0.0031
+    }
+]

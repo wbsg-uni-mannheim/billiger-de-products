@@ -1,0 +1,18 @@
+[
+    {
+        "job_name": "roberta_predict_un050_small_lspc_id=0",
+        "runtime_sec": 19.989,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.000759,
+        "emissions_kg": 0.000289,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "roberta_predict_un050_small_lspc_id=0",
+        "runtime_sec": 17.772,
+        "max_memory_mb": 1682.228,
+        "energy_kwh": 0.000673,
+        "emissions_kg": 0.000256,
+        "energy_cost_eur": 0.0002
+    }
+]

@@ -1,0 +1,18 @@
+[
+    {
+        "job_name": "learning-curve_adjusted_XGBoost_run2_testset=preprocessed_products50cc50rnd050un_gs_magellan_pairs_formatted.csv_trainset=preprocessed_products50cc50rnd000un_train_small_magellan_pairs_formatted.csv",
+        "runtime_sec": 16.666,
+        "max_memory_mb": 574.52,
+        "energy_kwh": 0.000211,
+        "emissions_kg": 8e-05,
+        "energy_cost_eur": 0.0001
+    },
+    {
+        "job_name": "learning-curve_adjusted_XGBoost_run2_testset=preprocessed_products50cc50rnd050un_gs_magellan_pairs_formatted.csv_trainset=preprocessed_products50cc50rnd000un_train_small_magellan_pairs_formatted.csv",
+        "runtime_sec": 18.423,
+        "max_memory_mb": 573.207,
+        "energy_kwh": 0.000263,
+        "emissions_kg": 0.0001,
+        "energy_cost_eur": 0.0001
+    }
+]

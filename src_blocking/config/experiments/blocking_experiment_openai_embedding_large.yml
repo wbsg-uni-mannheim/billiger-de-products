@@ -1,0 +1,29 @@
+general:
+  k: [150, 200]
+  k_range: null
+  save_results_with_evidences: False
+  experiment-type: 'retrieval'
+  clusters: False
+
+query-tables:
+  dataset: 'large'
+  gt-table: null
+  path-to-query-table: null
+  context-attributes: ['brand', 'name', 'desc','price']
+  target-attributes: null # only for augmentation needed
+
+pipelines:
+  retrieval-strategies:
+
+    - name: 'query_by_faiss'
+      embedding_dir: 'data/blocking_benchmark_final/embeddings/openai/large'
+      faiss_index: 'data/blocking_benchmark_final/faiss/large/tableB.index'
+
+  similarity-re-ranking-strategies:
+    - name: 'Dummy Similarity Reranker'
+
+  source-re-ranking-strategies:
+    - name: null
+
+  voting-strategies:
+    - name: simple

@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "adjusted_wordcooc_DecisionTree_run2_feature=brand+name+price+desc_train=preprocessed_products20cc80rnd000un_train_large_wordcooc_test=preprocessed_products20cc80rnd000un_train_large_wordcooc_preprocessed_products20cc80rnd100un_gs",
+        "runtime_sec": 9.307,
+        "max_memory_mb": 1273.301,
+        "energy_kwh": 0.000478,
+        "emissions_kg": 0.000182,
+        "energy_cost_eur": 0.0001
+    }
+]
