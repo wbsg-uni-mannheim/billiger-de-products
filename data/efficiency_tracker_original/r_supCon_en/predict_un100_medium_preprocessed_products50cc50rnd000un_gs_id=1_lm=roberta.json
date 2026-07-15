@@ -1,0 +1,18 @@
+[
+    {
+        "job_name": "predict_un100_medium_preprocessed_products50cc50rnd000un_gs_id=1_lm=roberta",
+        "runtime_sec": 17.32,
+        "max_memory_mb": 1734.45,
+        "energy_kwh": 0.000669,
+        "emissions_kg": 0.000255,
+        "energy_cost_eur": 0.0002
+    },
+    {
+        "job_name": "predict_un100_medium_preprocessed_products50cc50rnd000un_gs_id=1_lm=roberta",
+        "runtime_sec": 10.684,
+        "max_memory_mb": 1250.46,
+        "energy_kwh": 0.000926,
+        "emissions_kg": 0.000353,
+        "energy_cost_eur": 0.0003
+    }
+]

@@ -1,0 +1,44 @@
+name: ditto_env_gpu
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - setuptools
+  - wheel
+
+  # Latest PyTorch + CUDA runtime
+  - pytorch=2.4.*
+  - pytorch-cuda=12.4
+  - torchvision
+  - torchaudio
+
+  # NLP + ML deps
+  - transformers>=4.44
+  - scikit-learn
+  - numpy
+  - pandas
+  - tqdm
+  - nltk
+  - spacy
+  - tensorboardx
+  - scipy
+
+  # Utilities
+  - jsonlines
+  - sentencepiece
+  - ipython
+  - jupyterlab
+
+  - pip:
+      - datasets
+      - evaluate
+      - accelerate
+      - spacy-transformers
+      - torchinfo
+
+prefix: /work/kelagin/Entity-Matching-Pipeline-for-German-Product-Data---Master-Thesis/envs/ditto_env_gpu

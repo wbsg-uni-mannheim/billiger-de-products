@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "adjusted_wordcooc_NaiveBayes_run3_feature=brand+name+price+desc_train=preprocessed_products20cc80rnd000un_train_small_wordcooc_test=preprocessed_products20cc80rnd000un_train_small_wordcooc_preprocessed_products20cc80rnd050un_gs",
+        "runtime_sec": 2.197,
+        "max_memory_mb": 457.016,
+        "energy_kwh": 9.4e-05,
+        "emissions_kg": 3.6e-05,
+        "energy_cost_eur": 0.0
+    }
+]

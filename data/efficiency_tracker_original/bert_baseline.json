@@ -1,0 +1,110 @@
+[
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 17863.656,
+        "max_memory_mb": 2472.902,
+        "energy_kwh": 1.370011,
+        "emissions_kg": 0.521906,
+        "energy_cost_eur": 0.411,
+        "total_cost_eur": 0.411
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 5585.514,
+        "max_memory_mb": 3145.402,
+        "energy_kwh": 0.261747,
+        "emissions_kg": 0.099713,
+        "energy_cost_eur": 0.0785,
+        "total_cost_eur": 0.0785
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 33590.357,
+        "max_memory_mb": 3028.68,
+        "energy_kwh": 1.557059,
+        "emissions_kg": 0.593161,
+        "energy_cost_eur": 0.4671,
+        "total_cost_eur": 0.4671
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 1942.552,
+        "max_memory_mb": 3048.922,
+        "energy_kwh": 0.141704,
+        "emissions_kg": 0.053982,
+        "energy_cost_eur": 0.0425,
+        "total_cost_eur": 0.0425
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 16159.303,
+        "max_memory_mb": 2615.699,
+        "energy_kwh": 1.211755,
+        "emissions_kg": 0.461618,
+        "energy_cost_eur": 0.3635,
+        "total_cost_eur": 0.3635
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 3475.501,
+        "max_memory_mb": 3198.227,
+        "energy_kwh": 0.156672,
+        "emissions_kg": 0.059684,
+        "energy_cost_eur": 0.047,
+        "total_cost_eur": 0.047
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 7067.027,
+        "max_memory_mb": 3270.066,
+        "energy_kwh": 0.316446,
+        "emissions_kg": 0.12055,
+        "energy_cost_eur": 0.0949,
+        "total_cost_eur": 0.0949
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 40043.706,
+        "max_memory_mb": 3042.25,
+        "energy_kwh": 3.147626,
+        "emissions_kg": 1.199088,
+        "energy_cost_eur": 0.9443,
+        "total_cost_eur": 0.9443
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 64738.688,
+        "max_memory_mb": 2904.312,
+        "energy_kwh": 5.235873,
+        "emissions_kg": 1.994606,
+        "energy_cost_eur": 1.5708,
+        "total_cost_eur": 1.5708
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 28107.424,
+        "max_memory_mb": 2706.781,
+        "energy_kwh": 2.562527,
+        "emissions_kg": 0.976195,
+        "energy_cost_eur": 0.7688,
+        "total_cost_eur": 0.7688
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 64927.554,
+        "max_memory_mb": 2841.773,
+        "energy_kwh": 5.636591,
+        "emissions_kg": 2.147259,
+        "energy_cost_eur": 1.691,
+        "total_cost_eur": 1.691
+    },
+    {
+        "job_name": "bert_baseline",
+        "runtime_sec": 101800.937,
+        "max_memory_mb": 2613.469,
+        "energy_kwh": 6.974677,
+        "emissions_kg": 2.657003,
+        "energy_cost_eur": 2.0924,
+        "total_cost_eur": 2.0924
+    }
+]

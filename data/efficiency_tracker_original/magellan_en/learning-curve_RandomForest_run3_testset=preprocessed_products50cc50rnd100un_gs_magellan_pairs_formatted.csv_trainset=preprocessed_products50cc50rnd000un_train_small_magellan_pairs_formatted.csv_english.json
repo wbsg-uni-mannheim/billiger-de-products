@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "learning-curve_RandomForest_run3_testset=preprocessed_products50cc50rnd100un_gs_magellan_pairs_formatted.csv_trainset=preprocessed_products50cc50rnd000un_train_small_magellan_pairs_formatted.csv_english",
+        "runtime_sec": 18.117,
+        "max_memory_mb": 505.961,
+        "energy_kwh": 0.000737,
+        "emissions_kg": 0.000281,
+        "energy_cost_eur": 0.0002
+    }
+]

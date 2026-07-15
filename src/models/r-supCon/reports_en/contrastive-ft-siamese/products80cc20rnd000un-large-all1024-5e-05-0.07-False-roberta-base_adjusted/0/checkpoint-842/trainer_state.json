@@ -1,0 +1,73 @@
+{
+  "best_metric": 0.07918895035982132,
+  "best_model_checkpoint": "src/models/r-supCon/reports_en_/contrastive-ft-siamese/products80cc20rnd000un-large-all1024-5e-05-0.07-False-roberta-base_adjusted/0/checkpoint-842",
+  "epoch": 2.0,
+  "eval_steps": 500,
+  "global_step": 842,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 1.0,
+      "eval_accuracy": 0.9564444444444444,
+      "eval_f1": 0.8355704697986577,
+      "eval_loss": 0.14996755123138428,
+      "eval_precision": 0.7196531791907514,
+      "eval_recall": 0.996,
+      "eval_runtime": 11.0543,
+      "eval_samples_per_second": 407.082,
+      "eval_steps_per_second": 50.931,
+      "step": 421
+    },
+    {
+      "epoch": 1.187648456057007,
+      "grad_norm": 4.6577911376953125,
+      "learning_rate": 2.3599240265906934e-05,
+      "loss": 0.4791,
+      "step": 500
+    },
+    {
+      "epoch": 2.0,
+      "eval_accuracy": 0.9742222222222222,
+      "eval_f1": 0.8943533697632058,
+      "eval_loss": 0.07918895035982132,
+      "eval_precision": 0.8210702341137124,
+      "eval_recall": 0.982,
+      "eval_runtime": 11.0652,
+      "eval_samples_per_second": 406.68,
+      "eval_steps_per_second": 50.88,
+      "step": 842
+    }
+  ],
+  "logging_steps": 500,
+  "max_steps": 21050,
+  "num_input_tokens_seen": 0,
+  "num_train_epochs": 50,
+  "save_steps": 500,
+  "stateful_callbacks": {
+    "EarlyStoppingCallback": {
+      "args": {
+        "early_stopping_patience": 10,
+        "early_stopping_threshold": 0.0
+      },
+      "attributes": {
+        "early_stopping_patience_counter": 0
+      }
+    },
+    "TrainerControl": {
+      "args": {
+        "should_epoch_stop": false,
+        "should_evaluate": false,
+        "should_log": false,
+        "should_save": true,
+        "should_training_stop": false
+      },
+      "attributes": {}
+    }
+  },
+  "total_flos": 0.0,
+  "train_batch_size": 64,
+  "trial_name": null,
+  "trial_params": null
+}

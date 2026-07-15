@@ -1,0 +1,18 @@
+[
+    {
+        "job_name": "learning-curve_wordcooc_RandomForest_run1_feature=brand+name+price+desc_train=preprocessed_products20cc80rnd000un_train_medium_wordcooc_test=preprocessed_products20cc80rnd000un_train_medium_wordcooc_preprocessed_products20cc80rnd000un_gs",
+        "runtime_sec": 162.912,
+        "max_memory_mb": 1520.602,
+        "energy_kwh": 0.00285,
+        "emissions_kg": 0.001086,
+        "energy_cost_eur": 0.0009
+    },
+    {
+        "job_name": "learning-curve_wordcooc_RandomForest_run1_feature=brand+name+price+desc_train=preprocessed_products20cc80rnd000un_train_medium_wordcooc_test=preprocessed_products20cc80rnd000un_train_medium_wordcooc_preprocessed_products20cc80rnd000un_gs",
+        "runtime_sec": 78.469,
+        "max_memory_mb": 1456.219,
+        "energy_kwh": 0.003047,
+        "emissions_kg": 0.001161,
+        "energy_cost_eur": 0.0009
+    }
+]

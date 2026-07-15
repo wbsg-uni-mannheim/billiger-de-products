@@ -1,0 +1,14 @@
+{
+  "dataset": "combined__gold-standards_adjusted",
+  "usage": {
+    "input_tokens": 1424315,
+    "output_tokens": 2411650,
+    "total_tokens": 3835965,
+    "items": 6132
+  },
+  "costs_usd": {
+    "input_cost_usd": 0.185161,
+    "output_cost_usd": 2.532233,
+    "total_cost_usd": 2.717393
+  }
+}

@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "learning-curve_XGBoost_run1_testset=preprocessed_products80cc20rnd050un_gs_magellan_pairs_formatted.csv_trainset=preprocessed_products80cc20rnd000un_train_small_magellan_pairs_formatted.csv_english",
+        "runtime_sec": 6.667,
+        "max_memory_mb": 633.191,
+        "energy_kwh": 0.000259,
+        "emissions_kg": 9.9e-05,
+        "energy_cost_eur": 0.0001
+    }
+]

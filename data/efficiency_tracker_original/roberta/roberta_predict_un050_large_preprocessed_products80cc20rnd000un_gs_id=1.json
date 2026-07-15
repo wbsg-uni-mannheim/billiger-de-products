@@ -1,0 +1,10 @@
+[
+    {
+        "job_name": "roberta_predict_un050_large_preprocessed_products80cc20rnd000un_gs_id=1",
+        "runtime_sec": 19.31,
+        "max_memory_mb": 1671.728,
+        "energy_kwh": 0.000824,
+        "emissions_kg": 0.000314,
+        "energy_cost_eur": 0.0002
+    }
+]
