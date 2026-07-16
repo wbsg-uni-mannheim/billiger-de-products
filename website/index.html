@@ -271,7 +271,6 @@
                         <a class="navbar-item" href="#language">Translation</a>
                         <a class="navbar-item" href="#usage">How to Use</a>
                         <a class="navbar-item" href="#downloads">Downloads</a>
-                        <a class="navbar-item" href="#citation">Citation</a>
                     </div>
                 </div>
             </div>
@@ -353,29 +352,9 @@
             <div class="container is-max-desktop">
                 <h2 class="title is-3 has-text-centered">Abstract</h2>
                 <div class="content is-size-6">
-                    <p>
-                        <b>Billiger.de Products</b> is a entity matching
-                        benchmark which requires systems to match German product
-                        offers, or alternatively English translations of the
-                        same offers. The benchmark consists of 13,730 product
-                        offers describing 2,168 distinct products. The product
-                        offers originate from the German price comparison
-                        platform
-                        <a href="https://www.billiger.de">billiger.de</a>. The
-                        benchmark follows the multi-dimensional design of the
-                        <a
-                            href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
-                            >WDC Products</a
-                        >
-                        benchmark and varies the size of the training set, the
-                        fraction of difficult to match corner cases, and the
-                        amount of products unseen during training.
-                        Machine-translated English versions of all training,
-                        validation, and test sets are provided, enabling the
-                        fine-grained assessment of the impact of the language on
-                        entity matching performance. We validate the benchmark
-                        using six supervised matchers as well as GPT-5.2 in a
-                        zero-shot setting.
+					<p>
+                        <b>Billiger.de Products</b> is an entity matching benchmark requiring matchers to identify product offers that refer to the same real-world product.
+						It contains 13,730 offers describing 2,168 distinct products, collected from the German price-comparison platform <a href="https://www.billiger.de">billiger.de</a>. The benchmark provides both the original German offers and machine-translated English versions of all training, validation, and test sets, enabling controlled analyses of how language affects entity matching performance. Following the multidimensional design of the <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/">WDC Products</a> benchmark, Billiger.de Products provides dataset variants that systematically vary the size of the training set, the proportion of difficult-to-match corner cases, and the proportion of products that are not observed during training. These variants support fine-grained evaluations of data efficiency, robustness to challenging examples, and generalization to previously unseen products. We validate the benchmark using six supervised entity matching methods and GPT-5.2 in a zero-shot setting.
                     </p>
                 </div>
             </div>
@@ -387,56 +366,33 @@
                 <h2 class="title is-3 has-text-centered">Introduction</h2>
                 <div class="content is-size-6">
                     <p>
-                        Entity matching is the task of deciding whether two
-                        records refer to the same real-world entity, for example
-                        whether two product offers refer to the same product.
-                        The benchmarks that are used to evaluate entity matching
-                        systems, such as
-                        <a
-                            href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md"
-                            >Abt-Buy</a
-                        >,
-                        <a
-                            href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md"
-                            >Amazon-Google</a
-                        >, or
+						Entity matching is the task of determining whether two records refer to the same real-world entity—for example, whether two product offers describe the same product. Widely used entity matching benchmarks, such as <a href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md">Abt-Buy</a>, <a href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md">Amazon-Google</a>, or 
                         <a
                             href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
                             >WDC Products</a
-                        >, are all single-language: each of them only contains
-                        records in one language, almost always English. But
-                        entity matching is also required by applications
-                        processing non-english data. For instance, a shopper in
-                        Europe who is looking for the cheapest offer for a
-                        product does not care whether that offer is published on
-                        a German, French, or Italian shop, and a price
-                        comparison portal that wants to answer such queries has
-                        to match offers across languages. Benchmarks for
-                        evaluating matchers under these conditions barely exist.
+                        >, are monolingual: each contains records in only one language, typically English. However, many real-world applications must process and integrate data in multiple languages. For example, a European shopper searching for the lowest price of a product may not care whether the corresponding offer is published by a German, French, or Italian online retailer. A price-comparison platform serving such users must therefore be able to match product offers both within and across languages. Despite the practical importance of this setting, benchmarks for systematically evaluating entity matching systems on multilingual and cross-lingual data remain scarce.		  
                     </p>
                     <p>
-                        <b>Billiger.de Products</b> is a step in this direction.
-                        The benchmark uses product data from the German price
-                        comparison platform
+                        Billiger.de Products is a step in this direction.
+                        The benchmark uses product data from the German price comparison platform
                         <a href="https://www.billiger.de">billiger.de</a>
-                        and is, to the best of our knowledge, the largest entity
-                        matching benchmark for German-language product data. In
-                        addition to the German original, we provide a
-                        machine-translated English version of every record.
-                        Splits, labels, and identifiers are identical in both
-                        versions, so the benchmark can be used as a German
-                        benchmark, as an English benchmark, or as a pair of
-                        parallel benchmarks for measuring how the language
-                        affects matching performance. Since every German record
-                        can also be paired with the English translation of its
+                        and is, to the best of our
+                        knowledge, the largest entity matching benchmark for
+                        German-language product data. In addition to the
+                        German original, we provide a machine-translated English
+                        version of every record. Splits, labels, and identifiers
+                        are identical in both versions, so the benchmark can be
+                        used as a German benchmark, as an English benchmark, or
+                        as a pair of parallel benchmarks for measuring how the
+                        language affects matching performance. Since every German record can
+                        also be paired with the English translation of its
                         counterpart, the benchmark is also a starting point for
                         cross-lingual matching experiments.
                     </p>
                     <p>
-                        The benchmark follows the multi-dimensional design of
-                        WDC Products and controls task difficulty along three
+                        The benchmark follows the multi-dimensional design of <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/">WDC Products</a> and controls task difficulty along three
                         dimensions: the size of the training set, the fraction
-                        of hard corner cases, and the fraction of entities
+                        of hard-to-match corner cases, and the fraction of entities
                         unseen during training. The sections below describe the
                         benchmark in detail and report baseline results for six
                         supervised matchers and for GPT-5.2 in a zero-shot
@@ -452,31 +408,24 @@
                 <h2 class="title is-3 has-text-centered">The Benchmark</h2>
                 <div class="content is-size-6">
                     <p>
-                        The benchmark use product offers originating from the
-                        German price comparison portal
-                        <a href="https://www.billiger.de/">billiger.de</a>. The
-                        benchmark consists of
+                        The benchmark use product offers originating from the German price comparison portal <a href="https://www.billiger.de/">billiger.de</a>.  The benchmark consists of
                         <b>13,730 product offers</b> describing
-                        <b>2,168 distinct products</b>. Every offer carries the
-                        attributes <span class="mono">name</span>,
+                        <b>2,168 distinct products</b>.
+                        Every offer carries the attributes
+                        <span class="mono">name</span>,
                         <span class="mono">description</span>,
                         <span class="mono">brand</span>, and
-                        <span class="mono">price</span>, with the attributes
-                        name and price having a value density of 100%, while
-                        brand and description have a density above 99&nbsp;% .
-                        Identifiers such as EAN or manufacturer part numbers are
-                        deleted from the offers so that matchers need to rely on
-                        the textual description of a product rather than
-                        identifier lookup.
+                        <span class="mono">price</span>, with the attributes name and price
+                        having a value density of 100%, while brand and description have a density above 99&nbsp;%
+                        . Identifiers such as EAN or manufacturer part
+                        numbers are deleted from the offers so that matchers need to
+                        rely on the textual description of a product rather
+                        than identifier lookup.
                     </p>
                     <p>
-                        Following the design of
-                        <a
-                            href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
-                            >WDC Products</a
-                        >, task difficulty is controlled along three dimensions,
-                        resulting in 9 training sets, 27 validation sets, and 9
-                        test sets per language:
+                        Following the design of <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/">WDC Products</a>, task difficulty is controlled
+                        along three dimensions, resulting in 9 training sets, 27
+                        validation sets, and 9 test sets per language:
                     </p>
                 </div>
                 <div class="content is-size-6">
@@ -497,8 +446,8 @@
                         <li>
                             <b>Unseen entities:</b> in the Seen, Half-Seen, and
                             Unseen test sets, 0&nbsp;%, 50&nbsp;%, or 100&nbsp;%
-                            of the evaluated products do not occur in the
-                            training data.
+                            of the to-be-matched products do not occur in the
+                            training data. The Half-Seen and Unseen test sets evaluate the ability of a matcher to generalize to new and thus unseen products.
                         </li>
                         <li>
                             <b>Two languages:</b> every record exists in the
@@ -509,7 +458,7 @@
                             translation process.
                         </li>
                     </ul>
-                </div>
+                </div>                
                 <h3 class="title is-5">Product Categories</h3>
                 <div class="content is-size-6">
                     <p>
