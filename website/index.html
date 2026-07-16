@@ -2219,23 +2219,22 @@ python src/processing/prepare_magellan.py</pre
                     </p>
                     <div class="notification is-info is-light">
                         <p>
-                            <b>Recommended default:</b> If only one benchmark
-                            configuration is evaluated, we recommend
-                            <span class="mono">80cc20rnd000un</span>: 80&nbsp;%
-                            corner cases and a fully seen test set. Use
+                            <b>Recommended default:</b> If you only want to report results for a single variant of billiger.de Products, we recommend
+                            <span class="mono">80cc20rnd050un</span>: 80&nbsp;%
+                            corner cases and a half seen test set. Use
                             <span class="mono"
-                                >products80cc20rnd000un_gs.json.gz</span
+                                >products80cc20rnd050un_gs.json.gz</span
                             >
                             and, for supervised matchers, the corresponding
-                            training and validation files. Always state the
+                            training and validation files. Please always state the
                             language and training-set size.
                         </p>
                         <p>
                             Report the result as:
                             <i
                                 >Billiger.de Products (German or English),
-                                80&nbsp;% corner cases, seen (<span class="mono"
-                                    >000un</span
+                                80&nbsp;% corner cases, half-seen (<span class="mono"
+                                    >050un</span
                                 >), [training size], F1 = X (mean &plusmn;
                                 standard deviation over seeds 0, 1, and 2).</i
                             >
