@@ -431,11 +431,14 @@
                 <div class="content is-size-6">
                     <ul>
                         <li>
-                            <b>Training set size:</b> small (2,500 pairs),
-                            medium (6,000 pairs), and large (26,888&ndash;27,393
-                            pairs) training sets. The smaller sets are subsets
-                            of the larger ones, and all three are built from the
-                            same 500 product groups.
+                            <b>Training set size:</b> before leakage cleaning,
+                            the small, medium, and large training sets contained
+                            2,500, 6,000, and 26,888&ndash;27,393 pairs. The
+                            released sets now contain 2,461&ndash;2,475,
+                            5,897&ndash;5,913, and 26,571&ndash;27,112 pairs,
+                            respectively. The smaller sets are subsets of the
+                            larger ones, and all three are built from the same
+                            500 product groups.
                         </li>
                         <li>
                             <b>Corner cases:</b> groups of four highly similar
@@ -615,7 +618,7 @@
                         grows with the training set size.
                     </p>
                     <p>
-                        The test sets contain roughly 4,470 pairs each with a
+                        The test sets contain roughly 4,440 pairs each with a
                         class imbalance of 1:10 to 1:12 between matches and
                         non-matches. All nine test sets went through a two-round
                         manual verification process involving two human
@@ -629,27 +632,20 @@
                     </p>
                 </div>
                 <div class="columns">
-                    <div class="column is-7">
-                        <h3 class="title is-5">Training and Validation Sets</h3>
+                    <div class="column is-6">
+                        <h3 class="title is-5">Training Sets</h3>
                         <div class="table-container">
                             <table
                                 class="table is-narrow is-fullwidth is-striped has-text-right"
                             >
                                 <thead>
                                     <tr>
-                                        <th class="has-text-left" rowspan="2">
+                                        <th class="has-text-left">
                                             Corner cases
                                         </th>
-                                        <th class="has-text-left" rowspan="2">
+                                        <th class="has-text-left">
                                             Size
                                         </th>
-                                        <th colspan="3">Training</th>
-                                        <th colspan="3">Validation</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Pos.</th>
-                                        <th>Neg.</th>
-                                        <th>Total</th>
                                         <th>Pos.</th>
                                         <th>Neg.</th>
                                         <th>Total</th>
@@ -661,102 +657,74 @@
                                             20&nbsp;%
                                         </td>
                                         <td class="has-text-left">Small</td>
-                                        <td>500</td>
-                                        <td>2,000</td>
-                                        <td>2,500</td>
-                                        <td>500</td>
-                                        <td>2,000</td>
-                                        <td>2,500</td>
+                                        <td>485</td>
+                                        <td>1,979</td>
+                                        <td>2,464</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Medium</td>
-                                        <td>1,500</td>
-                                        <td>4,500</td>
-                                        <td>6,000</td>
-                                        <td>500</td>
-                                        <td>3,000</td>
-                                        <td>3,500</td>
+                                        <td>1,457</td>
+                                        <td>4,456</td>
+                                        <td>5,913</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Large</td>
-                                        <td>13,273</td>
-                                        <td>14,120</td>
-                                        <td>27,393</td>
-                                        <td>500</td>
-                                        <td>4,000</td>
-                                        <td>4,500</td>
+                                        <td>13,100</td>
+                                        <td>14,012</td>
+                                        <td>27,112</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left" rowspan="3">
                                             50&nbsp;%
                                         </td>
                                         <td class="has-text-left">Small</td>
-                                        <td>500</td>
-                                        <td>2,000</td>
-                                        <td>2,500</td>
-                                        <td>500</td>
-                                        <td>2,000</td>
-                                        <td>2,500</td>
+                                        <td>482</td>
+                                        <td>1,979</td>
+                                        <td>2,461</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Medium</td>
-                                        <td>1,500</td>
-                                        <td>4,500</td>
-                                        <td>6,000</td>
-                                        <td>500</td>
-                                        <td>3,000</td>
-                                        <td>3,500</td>
+                                        <td>1,464</td>
+                                        <td>4,441</td>
+                                        <td>5,905</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Large</td>
-                                        <td>13,196</td>
-                                        <td>14,128</td>
-                                        <td>27,324</td>
-                                        <td>500</td>
-                                        <td>4,000</td>
-                                        <td>4,500</td>
+                                        <td>13,024</td>
+                                        <td>14,000</td>
+                                        <td>27,024</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left" rowspan="3">
                                             80&nbsp;%
                                         </td>
                                         <td class="has-text-left">Small</td>
-                                        <td>500</td>
-                                        <td>2,000</td>
-                                        <td>2,500</td>
-                                        <td>500</td>
-                                        <td>2,000</td>
-                                        <td>2,500</td>
+                                        <td>492</td>
+                                        <td>1,983</td>
+                                        <td>2,475</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Medium</td>
-                                        <td>1,500</td>
-                                        <td>4,500</td>
-                                        <td>6,000</td>
-                                        <td>500</td>
-                                        <td>3,000</td>
-                                        <td>3,500</td>
+                                        <td>1,462</td>
+                                        <td>4,435</td>
+                                        <td>5,897</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Large</td>
-                                        <td>12,896</td>
-                                        <td>13,992</td>
-                                        <td>26,888</td>
-                                        <td>500</td>
-                                        <td>4,000</td>
-                                        <td>4,500</td>
+                                        <td>12,747</td>
+                                        <td>13,824</td>
+                                        <td>26,571</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <p class="footer-note">
                             All 9 training sets (3 corner-case ratios &times; 3
-                            sizes). Validation counts depend only on the size,
-                            resulting in 27 validation sets per language (3
-                            ratios &times; 3 sizes &times; 3 unseen levels).
+                            sizes). Counts are identical for the German and the
+                            English version.
                         </p>
                     </div>
-                    <div class="column is-5">
+                    <div class="column is-6">
                         <h3 class="title is-5">Test Sets</h3>
                         <div class="table-container">
                             <table
@@ -779,69 +747,69 @@
                                             20&nbsp;%
                                         </td>
                                         <td class="has-text-left">0&nbsp;%</td>
-                                        <td>408</td>
-                                        <td>4,070</td>
-                                        <td>4,478</td>
+                                        <td>407</td>
+                                        <td>4,047</td>
+                                        <td>4,454</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">50&nbsp;%</td>
-                                        <td>355</td>
-                                        <td>4,100</td>
-                                        <td>4,455</td>
+                                        <td>352</td>
+                                        <td>4,077</td>
+                                        <td>4,429</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">
                                             100&nbsp;%
                                         </td>
-                                        <td>366</td>
-                                        <td>4,093</td>
-                                        <td>4,459</td>
+                                        <td>360</td>
+                                        <td>4,089</td>
+                                        <td>4,449</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left" rowspan="3">
                                             50&nbsp;%
                                         </td>
                                         <td class="has-text-left">0&nbsp;%</td>
-                                        <td>366</td>
-                                        <td>4,104</td>
-                                        <td>4,470</td>
+                                        <td>364</td>
+                                        <td>4,063</td>
+                                        <td>4,427</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">50&nbsp;%</td>
-                                        <td>355</td>
-                                        <td>4,111</td>
-                                        <td>4,466</td>
+                                        <td>346</td>
+                                        <td>4,072</td>
+                                        <td>4,418</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">
                                             100&nbsp;%
                                         </td>
-                                        <td>382</td>
-                                        <td>4,097</td>
-                                        <td>4,479</td>
+                                        <td>369</td>
+                                        <td>4,089</td>
+                                        <td>4,458</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left" rowspan="3">
                                             80&nbsp;%
                                         </td>
                                         <td class="has-text-left">0&nbsp;%</td>
-                                        <td>346</td>
-                                        <td>4,128</td>
-                                        <td>4,474</td>
+                                        <td>342</td>
+                                        <td>4,098</td>
+                                        <td>4,440</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">50&nbsp;%</td>
-                                        <td>371</td>
-                                        <td>4,099</td>
-                                        <td>4,470</td>
+                                        <td>361</td>
+                                        <td>4,076</td>
+                                        <td>4,437</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">
                                             100&nbsp;%
                                         </td>
-                                        <td>356</td>
-                                        <td>4,107</td>
-                                        <td>4,463</td>
+                                        <td>348</td>
+                                        <td>4,099</td>
+                                        <td>4,447</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -854,6 +822,132 @@
                         </p>
                     </div>
                 </div>
+                <h3 class="title is-5">Validation Sets</h3>
+                <div class="table-container">
+                    <table
+                        class="table is-narrow is-fullwidth is-striped has-text-right"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="has-text-left" rowspan="2">
+                                    Corner cases
+                                </th>
+                                <th class="has-text-left" rowspan="2">Size</th>
+                                <th colspan="3">100% seen</th>
+                                <th colspan="3">50% seen</th>
+                            </tr>
+                            <tr>
+                                <th>Pos.</th>
+                                <th>Neg.</th>
+                                <th>Total</th>
+                                <th>Pos.</th>
+                                <th>Neg.</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    20&nbsp;%
+                                </td>
+                                <td class="has-text-left">Small</td>
+                                <td>491</td>
+                                <td>1,993</td>
+                                <td>2,484</td>
+                                <td>490</td>
+                                <td>1,984</td>
+                                <td>2,474</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Medium</td>
+                                <td>491</td>
+                                <td>2,989</td>
+                                <td>3,480</td>
+                                <td>490</td>
+                                <td>2,979</td>
+                                <td>3,469</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Large</td>
+                                <td>491</td>
+                                <td>3,984</td>
+                                <td>4,475</td>
+                                <td>490</td>
+                                <td>3,972</td>
+                                <td>4,462</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    50&nbsp;%
+                                </td>
+                                <td class="has-text-left">Small</td>
+                                <td>479</td>
+                                <td>1,986</td>
+                                <td>2,465</td>
+                                <td>487</td>
+                                <td>1,978</td>
+                                <td>2,465</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Medium</td>
+                                <td>479</td>
+                                <td>2,977</td>
+                                <td>3,456</td>
+                                <td>487</td>
+                                <td>2,966</td>
+                                <td>3,453</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Large</td>
+                                <td>479</td>
+                                <td>3,971</td>
+                                <td>4,450</td>
+                                <td>487</td>
+                                <td>3,963</td>
+                                <td>4,450</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">
+                                    80&nbsp;%
+                                </td>
+                                <td class="has-text-left">Small</td>
+                                <td>485</td>
+                                <td>1,985</td>
+                                <td>2,470</td>
+                                <td>490</td>
+                                <td>1,976</td>
+                                <td>2,466</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Medium</td>
+                                <td>485</td>
+                                <td>2,970</td>
+                                <td>3,455</td>
+                                <td>490</td>
+                                <td>2,958</td>
+                                <td>3,448</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Large</td>
+                                <td>485</td>
+                                <td>3,967</td>
+                                <td>4,452</td>
+                                <td>490</td>
+                                <td>3,946</td>
+                                <td>4,436</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="footer-note">
+                    The <span class="mono">000un</span> validation sets are
+                    100% seen. The original <span class="mono">050un</span> and
+                    <span class="mono">100un</span> validation files are
+                    retained and use the same 50%-seen pairs. The
+                    <span class="mono">100un</span> test sets remain separate
+                    and contain 100% unseen products. All 27 named validation
+                    files remain part of each language release.
+                </p>
             </div>
         </section>
 
@@ -2163,17 +2257,20 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         hard-negative indicator. The file name encodes the
                         configuration:
                         <span class="mono"
-                            >products80cc20rnd050un_train_large.json.gz</span
+                            >products80cc20rnd000un_train_large.json.gz</span
                         >
                         denotes 80&nbsp;% corner cases, 20&nbsp;% random pairs,
-                        50&nbsp;% unseen entities, large training split. The
-                        files can be read directly with pandas:
+                        and the large training split. Training files always use
+                        <span class="mono">000un</span>; the unseen-product
+                        share is defined by validation and test products
+                        relative to the training data. The files can be read
+                        directly with pandas:
                     </p>
                     <pre class="bibtex">
 import pandas as pd
 
 pairs = pd.read_json(
-    "products80cc20rnd050un_train_large.json.gz",
+    "products80cc20rnd000un_train_large.json.gz",
     compression="gzip",
     lines=True,
 )</pre

@@ -1,0 +1,58 @@
+{
+  "family_overlaps": {
+    "20cc80rnd": {
+      "train_test": 0,
+      "train_validation": 0,
+      "validation_test": 0
+    },
+    "50cc50rnd": {
+      "train_test": 0,
+      "train_validation": 0,
+      "validation_test": 0
+    },
+    "80cc20rnd": {
+      "train_test": 0,
+      "train_validation": 0,
+      "validation_test": 0
+    }
+  },
+  "files_checked": 45,
+  "internal_pair_id_uniqueness": true,
+  "internal_pair_uniqueness": true,
+  "label_conflicts": 0,
+  "label_conflicts_removed": 202,
+  "language_alignment": true,
+  "rows_deleted": {
+    "de": 2605,
+    "en": 2605
+  },
+  "seen_product_shares": {
+    "20cc80rnd_000un_large_validation": 1.0,
+    "20cc80rnd_000un_medium_validation": 1.0,
+    "20cc80rnd_000un_small_validation": 1.0,
+    "20cc80rnd_050un_large_validation": 0.5,
+    "20cc80rnd_050un_medium_validation": 0.5,
+    "20cc80rnd_050un_small_validation": 0.5,
+    "20cc80rnd_100un_large_validation": 0.5,
+    "20cc80rnd_100un_medium_validation": 0.5,
+    "20cc80rnd_100un_small_validation": 0.5,
+    "50cc50rnd_000un_large_validation": 1.0,
+    "50cc50rnd_000un_medium_validation": 1.0,
+    "50cc50rnd_000un_small_validation": 1.0,
+    "50cc50rnd_050un_large_validation": 0.5,
+    "50cc50rnd_050un_medium_validation": 0.5,
+    "50cc50rnd_050un_small_validation": 0.5,
+    "50cc50rnd_100un_large_validation": 0.5,
+    "50cc50rnd_100un_medium_validation": 0.5,
+    "50cc50rnd_100un_small_validation": 0.5,
+    "80cc20rnd_000un_large_validation": 1.0,
+    "80cc20rnd_000un_medium_validation": 1.0,
+    "80cc20rnd_000un_small_validation": 1.0,
+    "80cc20rnd_050un_large_validation": 0.5,
+    "80cc20rnd_050un_medium_validation": 0.5,
+    "80cc20rnd_050un_small_validation": 0.5,
+    "80cc20rnd_100un_large_validation": 0.5,
+    "80cc20rnd_100un_medium_validation": 0.5,
+    "80cc20rnd_100un_small_validation": 0.5
+  }
+}

@@ -34,8 +34,6 @@ def prepare_language(language):
         output_dir.mkdir(parents=True, exist_ok=True)
 
         for source in sorted((source_root / split).glob("products*.json.gz")):
-            if split == "validation-sets" and "rnd000un" not in source.name:
-                continue
             pairs = pd.read_json(source, lines=True, compression="gzip")
             for attribute, limit in TEXT_LIMITS.items():
                 for side in ("left", "right"):
