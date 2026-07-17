@@ -1,8 +1,9 @@
 import argparse
 import json
 import os
+from pathlib import Path
 
-from model.eval import eval_on_task
+from model.eval import eval_classifier, eval_on_task
 from model.dataset import Dataset, get_tokenizer
 from model.model import TranHGAT
 
@@ -51,7 +52,17 @@ def train(model, train_set, optimizer, scheduler=None, batch_size=32):
             del loss
 
 
-def initialize_and_train(trainset, validset, testset, testset050, testset100, attr_num, args, run_tag):
+def initialize_and_train(
+    trainset,
+    validset,
+    testset,
+    testset050,
+    testset100,
+    attr_num,
+    args,
+    run_tag,
+    extra_testsets=None,
+):
     padder = Dataset.pad
     valid_iter = data.DataLoader(dataset=validset, batch_size=args.batch_size,
                                  shuffle=False, num_workers=0, collate_fn=padder)
@@ -61,6 +72,16 @@ def initialize_and_train(trainset, validset, testset, testset050, testset100, at
                             shuffle=False, num_workers=0, collate_fn=padder)
     test_iter100 = data.DataLoader(dataset=testset100, batch_size=args.batch_size,
                             shuffle=False, num_workers=0, collate_fn=padder)
+    extra_test_iters = {
+        name: data.DataLoader(
+            dataset=dataset,
+            batch_size=args.batch_size,
+            shuffle=False,
+            num_workers=0,
+            collate_fn=padder,
+        )
+        for name, dataset in (extra_testsets or {}).items()
+    }
 
     # initialize model
     # set seeds
@@ -98,6 +119,10 @@ def initialize_and_train(trainset, validset, testset, testset050, testset100, at
     best_test_preds = None
     best_test_preds_050 = None
     best_test_preds_100 = None
+    best_extra_metrics = {
+        name: {"precision": 0.0, "recall": 0.0, "f1": 0.0}
+        for name in extra_test_iters
+    }
     while ((epoch <= args.n_epochs) and (no_improvement_count <= 10)):
         start = time.time()
         train(model, trainset, optimizer, scheduler=scheduler,
@@ -119,15 +144,13 @@ def initialize_and_train(trainset, validset, testset, testset050, testset100, at
                 best_test_preds_050 = test_preds_050
                 best_test_f1_100 = test_f1_100
                 best_test_preds_100 = test_preds_100
-            if (epoch == args.n_epochs):
-                os.makedirs(args.output_dir, exist_ok=True)
-                result = {
-                    'best_test_f1': best_test_f1,
-                    'best_test_f1_050': best_test_f1_050,
-                    'best_test_f1_100': best_test_f1_100,
-                }
-                with open(os.path.join(args.output_dir, f'{run_tag}.txt'), "w") as f:
-                    f.write(repr(result) + '\n')
+                for name, iterator in extra_test_iters.items():
+                    _, precision, recall, f1, _ = eval_classifier(model, iterator)
+                    best_extra_metrics[name] = {
+                        "precision": precision,
+                        "recall": recall,
+                        "f1": f1,
+                    }
 
             print("current_best_test_f1: " + str(best_test_f1) + ", current_best_test_f1_050: " + str(best_test_f1_050) + ", current_best_test_f1_100: " + str(best_test_f1_100))
 
@@ -143,6 +166,17 @@ def initialize_and_train(trainset, validset, testset, testset050, testset100, at
         else:
             no_improvement_count += 1
 
+    os.makedirs(args.output_dir, exist_ok=True)
+    result = {
+        'best_test_f1': best_test_f1,
+        'best_test_f1_050': best_test_f1_050,
+        'best_test_f1_100': best_test_f1_100,
+    }
+    for name, values in best_extra_metrics.items():
+        for metric, value in values.items():
+            result[f"best_test_{metric}_cross_{name}"] = value
+    with open(os.path.join(args.output_dir, f'{run_tag}.txt'), "w") as f:
+        f.write(repr(result) + '\n')
     writer.close()
 
 
@@ -161,6 +195,8 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", default="results/generated/hiergat/de")
     parser.add_argument("--split", dest="split", action="store_true")
     parser.add_argument("--lm", type=str, default='bert')
+    parser.add_argument("--cross_language_test_dir", type=str, default=None)
+    parser.add_argument("--validation_file", type=str, default=None)
 
     args = parser.parse_args()
 
@@ -177,11 +213,14 @@ if __name__ == "__main__":
     config = configs[task]
 
     trainset = config['trainset']
-    validset = config['validset']
+    validset = args.validation_file or config['validset']
     testset = config['testset']
     category = config['category']
     testset050 = config['testset050']
     testset100 = config['testset100']
+    if args.cross_language_test_dir:
+        testset = testset050
+        testset100 = testset050
 
     # load train/dev/test sets
     train_dataset = Dataset(trainset, category, lm=args.lm, lm_path=args.lm_path, max_len=args.max_len, split=args.split)
@@ -189,6 +228,21 @@ if __name__ == "__main__":
     test_dataset = Dataset(testset, category, lm=args.lm, lm_path=args.lm_path, split=args.split)
     test_dataset050 = Dataset(testset050, category, lm=args.lm, lm_path=args.lm_path, split=args.split)
     test_dataset100 = Dataset(testset100, category, lm=args.lm, lm_path=args.lm_path, split=args.split)
+    cross_language_datasets = {}
+    if args.cross_language_test_dir:
+        for path in sorted(Path(args.cross_language_test_dir).glob("*_gs_*.txt")):
+            variant = next(
+                name
+                for name in ("de_de", "de_en", "en_de", "en_en", "random")
+                if f"_{name}.txt" in path.name
+            )
+            cross_language_datasets[variant] = Dataset(
+                str(path),
+                category,
+                lm=args.lm,
+                lm_path=args.lm_path,
+                split=args.split,
+            )
 
     initialize_and_train(
         trainset=train_dataset,
@@ -199,4 +253,5 @@ if __name__ == "__main__":
         attr_num=train_dataset.get_attr_num(),
         args=args,
         run_tag=run_tag,
+        extra_testsets=cross_language_datasets,
     )

@@ -13,6 +13,7 @@ import logging
 import os
 import sys
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Optional
 import json
 
@@ -118,6 +119,10 @@ class DataTrainingArguments:
         metadata={
             "help": "An optional input test data file to evaluate the metrics (rouge) on " "(a jsonlines or csv file)."
         },
+    )
+    cross_language_test_dir: Optional[str] = field(
+        default=None,
+        metadata={"help": "Directory containing aligned cross-language pickle test sets."},
     )
     max_test_samples: Optional[int] = field(
         default=None,
@@ -257,6 +262,7 @@ def main():
     if data_args.test_file is not None:
         data_files["test"] = data_args.test_file
     raw_datasets = data_files
+    cross_language_datasets = {}
 
     # Load pretrained model and tokenizer
     #
@@ -293,6 +299,24 @@ def main():
         if data_args.dataset_name == 'lspc' and 'products' in raw_datasets["train"]:
                 unseen_set_one = BaselineClassificationDataset(raw_datasets["test"].replace('000un', '050un'), dataset_type='test', size=data_args.train_size, tokenizer=model_args.tokenizer, dataset=data_args.dataset_name, additional_data=data_args.additional_data, only_additional=data_args.only_additional, only_name=data_args.only_name)
                 unseen_set_two = BaselineClassificationDataset(raw_datasets["test"].replace('000un', '100un'), dataset_type='test', size=data_args.train_size, tokenizer=model_args.tokenizer, dataset=data_args.dataset_name, additional_data=data_args.additional_data, only_additional=data_args.only_additional, only_name=data_args.only_name)
+
+    if data_args.cross_language_test_dir:
+        for path in sorted(Path(data_args.cross_language_test_dir).glob("*.pkl.gz")):
+            variant = next(
+                name
+                for name in ("de_de", "de_en", "en_de", "en_en", "random")
+                if f"_{name}.pkl.gz" in path.name
+            )
+            cross_language_datasets[variant] = BaselineClassificationDataset(
+                str(path),
+                dataset_type="test",
+                size=data_args.train_size,
+                tokenizer=model_args.tokenizer,
+                dataset=data_args.dataset_name,
+                additional_data=data_args.additional_data,
+                only_additional=data_args.only_additional,
+                only_name=data_args.only_name,
+            )
     
     # Data collator
     data_collator = DataCollatorWithPadding(tokenizer=train_dataset.tokenizer, padding='longest', max_length=256)
@@ -413,6 +437,16 @@ def main():
 
                 trainer.log_metrics(f"predict_un100", metrics)
                 trainer.save_metrics(f"predict_un100", metrics)
+
+            for variant, dataset in cross_language_datasets.items():
+                predict_results = trainer.predict(
+                    dataset,
+                    metric_key_prefix=f"predict_cross_{variant}",
+                )
+                metrics = predict_results.metrics
+                metrics[f"predict_cross_{variant}_samples"] = len(dataset)
+                trainer.log_metrics(f"predict_cross_{variant}", metrics)
+                trainer.save_metrics(f"predict_cross_{variant}", metrics)
 
     return results
 

@@ -32,13 +32,15 @@ The source-of-truth files are already tracked:
 
 Each gzip-compressed JSONL row contains both records, `pair_id`, the binary `label`, and `is_hard_negative`. File names encode the corner-case ratio (`20cc80`, `50cc50`, or `80cc20`), unseen-product share (`000un`, `050un`, or `100un`), and the size (`small`, `medium`, or `large`) on training and validation files.
 
+The released files are pair-disjoint within each corner-case family under the priority `Test > Validation > Train`; offer pairs with conflicting labels were removed. The `000un` validation files contain 100% seen products. Both `050un` and `100un` experiments use a 50%-seen validation split; `100un` refers to the fully unseen test condition, not to model selection. The complete before/after audit is available in `reports/split_cleaning/`.
+
 ### Recommended set and citation of results
 
-If only one benchmark configuration is used, we recommend `80cc20rnd000un`: 80% corner cases and a fully seen test set. The German and English test files are `data/solute_de/gold-standards_adjusted/products80cc20rnd000un_gs.json.gz` and `data/solute_en/gold-standards_adjusted/products80cc20rnd000un_gs.json.gz`. For supervised matchers, use the corresponding `80cc20rnd000un` training and validation files and state the selected training size.
+If only one benchmark configuration is used, we recommend `80cc20rnd050un`: 80% corner cases and 50% seen products. The German and English test files are `data/solute_de/gold-standards_adjusted/products80cc20rnd050un_gs.json.gz` and `data/solute_en/gold-standards_adjusted/products80cc20rnd050un_gs.json.gz`. For supervised matchers, train on the corresponding German or English `80cc20rnd000un` training file and validate on the same language's `80cc20rnd050un` validation file. There is no separate `050un` training file: the unseen-product share is defined for validation and test products relative to the training data. State the selected training size.
 
 Report results with enough information to identify the exact experiment, for example:
 
-> Billiger.de Products (German), 80% corner cases, seen (`000un`), large training set, F1 = X (mean ± standard deviation over seeds 0, 1, and 2).
+> Billiger.de Products (German), 80% corner cases, 50% seen (`050un`), large training set, F1 = X (mean ± standard deviation over seeds 0, 1, and 2).
 
 The result citation should include the benchmark paper once available and this repository or the evaluated commit. For zero-shot methods, replace the training size and seeds with the model name, model version, and prompt variant.
 
@@ -101,7 +103,69 @@ bash slurm_runs/gpt_en.sh
 
 Both the simple and rule-guided prompts are run on all nine German and nine English test variants. Batch request/response files are stored below the ignored `data/batch_inputs/` and `data/batch_results/` directories; metrics go to `results/generated/gpt/`.
 
-## 5. Collect the metrics
+## 5. Cross-language experiment
+
+The cross-language experiment trains every supervised matcher on the German DE-DE `80cc20rnd000un` large training split and selects checkpoints or hyperparameters on the German DE-DE `80cc20rnd050un` large validation split. Training and validation use the same language combination but disjoint pairs, while the validation products remain exactly 50% seen. The selected model is evaluated on the 50% seen test configuration (`80cc20rnd050un`) in five language variants:
+
+| Variant | Left record | Right record |
+| --- | --- | --- |
+| `de_de` | German | German |
+| `de_en` | German | English |
+| `en_de` | English | German |
+| `en_en` | English | English |
+| `random` | German or English | German or English |
+
+`Random-Random` contains an approximately equal number of all four language combinations. Assignment is deterministic, stratified by label and hard-negative status, and generated with seed 42. Pair IDs, labels, identifiers, and the seen/unseen composition remain identical in every variant.
+
+Prepare the shared German inputs and the five aligned test sets:
+
+```bash
+sbatch slurm_runs/cross_language_prepare.sh
+```
+
+After the preparation job succeeds, submit the model jobs:
+
+```bash
+sbatch slurm_runs/cross_language_wordcooc.sh
+sbatch slurm_runs/cross_language_roberta.sh
+sbatch slurm_runs/cross_language_rsupcon.sh
+sbatch slurm_runs/cross_language_ditto.sh
+sbatch slurm_runs/cross_language_hiergat.sh
+sbatch slurm_runs/cross_language_gpt.sh
+```
+
+Magellan requires the `py-entitymatching` environment and has its own preparation step:
+
+```bash
+sbatch slurm_runs/cross_language_magellan.sh
+```
+
+The GPT job requires `OPENAI_API_KEY` in the submitted environment and incurs Batch API charges. Its German simple and rule-guided prompts are kept fixed across all five test variants so that prompt language does not change between conditions.
+
+The neural matchers run seeds 0, 1, and 2. Each seed trains once on DE-DE, uses only the DE-DE `050un` validation F1 for model selection, and evaluates that selected model on all five test variants. WordCooc and Magellan use the same DE-DE training/validation split and repeat their fixed training procedure for each test file. R-SupCon pre-training uses records from the German training split only; validation records are not included.
+
+After all jobs have completed, collect the results:
+
+```bash
+sbatch slurm_runs/cross_language_summarize.sh
+```
+
+This writes `results/generated/cross_language/metrics.csv` with model, classifier where applicable, seed, test variant, precision, recall, F1, and the source result file. Mean and standard deviation across seeds are written to `results/generated/cross_language/summary.csv`.
+
+The intended result table is:
+
+| Model | DE-DE | DE-EN | EN-DE | EN-EN | Random-Random |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| WordCooc |  |  |  |  |  |
+| Magellan |  |  |  |  |  |
+| RoBERTa |  |  |  |  |  |
+| R-SupCon |  |  |  |  |  |
+| HierGAT |  |  |  |  |  |
+| Ditto |  |  |  |  |  |
+| GPT-5.2 Simple |  |  |  |  |  |
+| GPT-5.2 Rule-Guided |  |  |  |  |  |
+
+## 6. Collect the benchmark metrics
 
 Create one machine-readable table from all generated scalar output files:
 

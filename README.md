@@ -22,7 +22,7 @@ See [REPRODUCTION.md](REPRODUCTION.md) for the complete experiment matrix, model
 
 ## Recommended configuration and result reporting
 
-For a single default evaluation, we recommend the highest corner-case setting with fully seen products: `80cc20rnd000un` (80% corner cases, 0% unseen products). Use `products80cc20rnd000un_gs.json.gz` as the test set. Supervised matchers should use the corresponding `80cc20rnd000un` training and validation files and explicitly state whether the `small`, `medium`, or `large` training split was used.
+For a single default evaluation, we recommend `80cc20rnd050un` (80% corner cases, 50% seen products). Use `products80cc20rnd050un_gs.json.gz` as the test set. Supervised matchers should train on the corresponding `80cc20rnd000un` training file, validate on `80cc20rnd050un`, and explicitly state whether the `small`, `medium`, or `large` training split was used.
 
 Report a result in the following form:
 

@@ -236,6 +236,7 @@ WRITING_GUIDELINES.md
 # Locally generated benchmark inputs and results
 data/processed/
 data/processed_en/
+data/processed_cross_language/
 data/batch_inputs/
 data/batch_results/
 results/generated/

@@ -180,7 +180,17 @@ def train_step(train_iter, model, optimizer, scheduler, hp):
         del loss
 
 
-def train(trainset, validset, testset, testset050, testset100, run_tag, hp, path):
+def train(
+    trainset,
+    validset,
+    testset,
+    testset050,
+    testset100,
+    run_tag,
+    hp,
+    path,
+    extra_testsets=None,
+):
     """Train and evaluate the model
 
     Args:
@@ -199,8 +209,8 @@ def train(trainset, validset, testset, testset050, testset100, run_tag, hp, path
     """run_tag = '%s_lm=%s_da=%s_dk=%s_su=%s_size=%s_id=%d_adjusted' % (hp.task, hp.lm, hp.da,
                 hp.dk, hp.summarize, str(hp.size), hp.run_id)
     run_tag = run_tag.replace('/', '_')"""
-    path = path + str(run_tag) + '.txt'
-    os.makedirs(os.path.dirname(path), exist_ok=True)
+    output_file = os.path.join(path, f"{run_tag}.txt")
+    os.makedirs(path, exist_ok=True)
 
     padder = trainset.pad
     # create the DataLoaders
@@ -229,6 +239,16 @@ def train(trainset, validset, testset, testset050, testset100, run_tag, hp, path
                                  shuffle=False,
                                  num_workers=0,
                                  collate_fn=padder)
+    extra_test_iters = {
+        name: data.DataLoader(
+            dataset=dataset,
+            batch_size=hp.batch_size * 16,
+            shuffle=False,
+            num_workers=0,
+            collate_fn=padder,
+        )
+        for name, dataset in (extra_testsets or {}).items()
+    }
     
     ys = [y for _,y in valid_iter.dataset]
     print("[DEV DEBUG] positives:", sum(ys), "/", len(ys))
@@ -253,6 +273,10 @@ def train(trainset, validset, testset, testset050, testset100, run_tag, hp, path
     writer = SummaryWriter(log_dir=hp.logdir)
 
     best_dev_f1 = best_test_f1 = best_test_f1_050 = best_test_f1_100 = 0.0
+    best_extra_metrics = {
+        name: {"precision": 0.0, "recall": 0.0, "f1": 0.0}
+        for name in extra_test_iters
+    }
     for epoch in range(1, hp.n_epochs+1):
         # train
         model.train()
@@ -273,6 +297,26 @@ def train(trainset, validset, testset, testset050, testset100, run_tag, hp, path
             best_test_f1_100 = test_f1_100
             best_test_preds_050 = test_preds_050
             best_test_preds_100 = test_preds_100
+            for name, iterator in extra_test_iters.items():
+                f1, predictions = evaluate(
+                    model,
+                    iterator,
+                    threshold=th,
+                    return_preds=True,
+                )
+                best_extra_metrics[name] = {
+                    "precision": metrics.precision_score(
+                        predictions["labels"],
+                        predictions["preds"],
+                        zero_division=0,
+                    ),
+                    "recall": metrics.recall_score(
+                        predictions["labels"],
+                        predictions["preds"],
+                        zero_division=0,
+                    ),
+                    "f1": f1,
+                }
             
             if hp.save_model:
                 # create the directory if not exist
@@ -295,14 +339,15 @@ def train(trainset, validset, testset, testset050, testset100, run_tag, hp, path
                    't_f1': test_f1}
         writer.add_scalars(run_tag, scalars, epoch)
 
-        if (epoch == hp.n_epochs):
-            os.makedirs(path, exist_ok=True)
-            result = {
-                'best_f1': best_test_f1,
-                'best_f1_050': best_test_f1_050,
-                'best_f1_100': best_test_f1_100,
-            }
-            with open(os.path.join(path, f'{run_tag}.txt'), "w") as f:
-                f.write(repr(result) + '\n')
-            
+    result = {
+        'best_f1': best_test_f1,
+        'best_f1_050': best_test_f1_050,
+        'best_f1_100': best_test_f1_100,
+    }
+    for name, values in best_extra_metrics.items():
+        for metric, value in values.items():
+            result[f"best_{metric}_cross_{name}"] = value
+    with open(output_file, "w") as f:
+        f.write(repr(result) + '\n')
+
     writer.close()

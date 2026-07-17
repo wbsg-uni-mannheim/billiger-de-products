@@ -2,6 +2,7 @@ import os
 import argparse
 import json
 import sys
+from pathlib import Path
 import torch
 import numpy as np
 import random
@@ -34,6 +35,9 @@ if __name__=="__main__":
     parser.add_argument("--dk", type=str, default=None)
     parser.add_argument("--summarize", dest="summarize", action="store_true")
     parser.add_argument("--size", type=int, default=None)
+    parser.add_argument("--cross_language_test_dir", type=str, default=None)
+    parser.add_argument("--output_dir", type=str, default="results/generated/ditto/de")
+    parser.add_argument("--validation_file", type=str, default=None)
 
     hp = parser.parse_args()
 
@@ -62,10 +66,13 @@ if __name__=="__main__":
         raise KeyboardInterrupt
 
     trainset = config['trainset']
-    validset = config['validset']
+    validset = hp.validation_file or config['validset']
     testset = config['testset']
     testset050 = config['testset050']
     testset100 = config['testset100']
+    if hp.cross_language_test_dir:
+        testset = testset050
+        testset100 = testset050
 
     # summarize the sequences up to the max sequence length
     if hp.summarize:
@@ -98,8 +105,16 @@ if __name__=="__main__":
     test_dataset = DittoDataset(testset, lm=hp.lm)
     test_dataset050 = DittoDataset(testset050, lm=hp.lm)
     test_dataset100 = DittoDataset(testset100, lm=hp.lm)
+    cross_language_datasets = {}
+    if hp.cross_language_test_dir:
+        for path in sorted(Path(hp.cross_language_test_dir).glob("*_gs_*.txt")):
+            variant = next(
+                name
+                for name in ("de_de", "de_en", "en_de", "en_en", "random")
+                if f"_{name}.txt" in path.name
+            )
+            cross_language_datasets[variant] = DittoDataset(str(path), lm=hp.lm)
 
-    path = "results/generated/ditto/de"
     train(
         trainset=train_dataset,
         validset=valid_dataset,
@@ -108,5 +123,6 @@ if __name__=="__main__":
         testset100=test_dataset100,
         run_tag=run_tag,
         hp=hp,
-        path=path,
+        path=hp.output_dir,
+        extra_testsets=cross_language_datasets,
     )
