@@ -11,13 +11,18 @@ from pathlib import Path
 from src.cross_language.common import VARIANTS
 
 
+MODEL_NAMES = ("wordcooc", "magellan", "roberta", "r-supcon", "ditto", "hiergat", "gpt")
+
+
 def model_from_path(path):
+    # Match the model directory exactly: Ditto/HierGAT result *files* contain
+    # "lm=roberta" in their name, which would otherwise be attributed to RoBERTa.
+    parts = {part.lower() for part in path.parts}
+    for model in MODEL_NAMES:
+        if model in parts:
+            return model
     text = path.as_posix().lower()
-    return next(
-        model
-        for model in ("wordcooc", "magellan", "roberta", "r-supcon", "ditto", "hiergat", "gpt")
-        if model in text
-    )
+    return next(model for model in MODEL_NAMES if model in text)
 
 
 def variant_from_text(text):
@@ -25,6 +30,12 @@ def variant_from_text(text):
 
 
 def rows_from_json(path):
+    # "all_results.json" is the Hugging Face aggregate and repeats every
+    # "predict_cross_<variant>_f1" key that already has its own result file,
+    # which would count each seed twice.
+    if path.name == "all_results.json":
+        return []
+
     values = json.loads(path.read_text(encoding="utf-8"))
     model = model_from_path(path)
     variant = variant_from_text(path.as_posix())

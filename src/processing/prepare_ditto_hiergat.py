@@ -44,7 +44,9 @@ def prepare_language(language):
             serialized = serialize_pairs(source)
             output_name = f"{source.name.removesuffix('.pkl.gz')}.txt"
             for output in outputs:
-                serialized.to_csv(output / output_name, index=False, header=False)
+                (output / output_name).write_text(
+                    "\n".join(serialized.astype(str)) + "\n", encoding="utf-8"
+                )
             written += 1
 
     print(f"Prepared {written} {language.upper()} Ditto/HierGAT files")
