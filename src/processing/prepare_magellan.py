@@ -45,26 +45,26 @@ def write_tables(pairs, output_dir, stem, validation_ids=None):
     pair_path = output_dir / f"{stem}pairs_formatted.csv"
     left.to_csv(left_path, index=False)
     right.to_csv(right_path, index=False)
-    left_meta = em.read_csv_metadata(left_path, key="mag_id")
-    right_meta = em.read_csv_metadata(right_path, key="mag_id")
-    em.to_csv_metadata(left_meta, left_path)
-    em.to_csv_metadata(right_meta, right_path)
+    left_meta = em.read_csv_metadata(str(left_path), key="mag_id")
+    right_meta = em.read_csv_metadata(str(right_path), key="mag_id")
+    em.to_csv_metadata(left_meta, str(left_path))
+    em.to_csv_metadata(right_meta, str(right_path))
 
     pairs.to_csv(pair_path, index=False)
     pair_meta = em.read_csv_metadata(
-        pair_path,
+        str(pair_path),
         key="_id",
         ltable=left_meta,
         rtable=right_meta,
         fk_ltable="ltable_mag_id",
         fk_rtable="rtable_mag_id",
     )
-    em.to_csv_metadata(pair_meta, pair_path)
+    em.to_csv_metadata(pair_meta, str(pair_path))
 
     if validation_ids is not None:
         is_validation = pair_meta["pair_id"].isin(validation_ids)
-        em.to_csv_metadata(pair_meta[~is_validation], output_dir / pair_path.name.replace("train", "trainonly"))
-        em.to_csv_metadata(pair_meta[is_validation], output_dir / pair_path.name.replace("train", "valid"))
+        em.to_csv_metadata(pair_meta[~is_validation], str(output_dir / pair_path.name.replace("train", "trainonly")))
+        em.to_csv_metadata(pair_meta[is_validation], str(output_dir / pair_path.name.replace("train", "valid")))
 
 
 def prepare_language(language):
