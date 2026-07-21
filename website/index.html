@@ -1555,16 +1555,20 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                     <h3 class="title is-5">Performance by Product Category</h3>
                     <p>
                         The difficulty of matching decisions depends on the
-                        product category. On the German benchmark, Tools &amp;
-                        DIY and Electronics &amp; Computers each rank among the
-                        easiest categories for six of the seven models below.
-                        Clothing &amp; Accessories appears among the most
-                        difficult categories for all seven models, and Furniture
-                        &amp; Living for four. Distinctive model numbers and
-                        technical specifications may contribute to the stronger
-                        results for tools and electronics, while vague
-                        descriptions of product variants may contribute to the
-                        lower results for the categories clothing and furniture.
+                        product category. To avoid selecting a different
+                        representative split for each model, the table now
+                        averages same-category F1 over all eligible German
+                        benchmark configurations. Electronics &amp; Computers
+                        ranks among the two easiest categories for all seven
+                        models. Clothing &amp; Accessories is the most difficult
+                        category for Magellan, RoBERTa, R-SupCon, and GPT-5.2
+                        and the second most difficult for HierGAT and Ditto.
+                        Furniture &amp; Living ranks among the two most difficult
+                        categories for five models. Distinctive model numbers
+                        and technical specifications may contribute to the
+                        stronger results for electronics, while variant-heavy,
+                        near-duplicate descriptions may contribute to the lower
+                        results for clothing and furniture.
                     </p>
                     <div class="table-container">
                         <table
@@ -1587,104 +1591,111 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                     <td class="has-text-left">
                                         Automotive &amp; Motorcycle
                                     </td>
-                                    <td>41.38</td>
-                                    <td>51.99</td>
-                                    <td>66.67</td>
-                                    <td>44.24</td>
-                                    <td>96.62</td>
-                                    <td>100.00</td>
-                                    <td>85.71</td>
+                                    <td>39.34</td>
+                                    <td>50.44</td>
+                                    <td>53.31</td>
+                                    <td>49.10</td>
+                                    <td>79.43</td>
+                                    <td>85.64</td>
+                                    <td>92.74</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Electronics &amp; Computers
                                     </td>
-                                    <td>73.17</td>
-                                    <td>61.33</td>
-                                    <td>91.43</td>
-                                    <td>82.63</td>
-                                    <td>97.02</td>
-                                    <td>94.88</td>
-                                    <td>91.18</td>
+                                    <td>54.20</td>
+                                    <td>57.83</td>
+                                    <td>71.53</td>
+                                    <td>67.49</td>
+                                    <td>78.06</td>
+                                    <td>85.05</td>
+                                    <td>89.73</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Clothing &amp; Accessories
                                     </td>
-                                    <td>58.48</td>
-                                    <td>39.46</td>
-                                    <td>62.10</td>
-                                    <td>63.04</td>
-                                    <td>77.06</td>
-                                    <td>77.82</td>
-                                    <td>75.41</td>
+                                    <td>39.43</td>
+                                    <td>34.02</td>
+                                    <td>46.10</td>
+                                    <td>43.73</td>
+                                    <td>54.41</td>
+                                    <td>61.76</td>
+                                    <td>71.33</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Cosmetics &amp; Drugstore
                                     </td>
-                                    <td>n/a</td>
-                                    <td>n/a</td>
-                                    <td>65.24</td>
-                                    <td>n/a</td>
-                                    <td>70.32</td>
-                                    <td>70.24</td>
-                                    <td>77.78</td>
+                                    <td>34.67</td>
+                                    <td>42.62</td>
+                                    <td>51.42</td>
+                                    <td>46.90</td>
+                                    <td>60.01</td>
+                                    <td>62.53</td>
+                                    <td>76.49</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Furniture &amp; Living
                                     </td>
-                                    <td>74.60</td>
-                                    <td>62.16</td>
-                                    <td>55.27</td>
-                                    <td>76.01</td>
-                                    <td>64.79</td>
-                                    <td>60.56</td>
-                                    <td>79.03</td>
+                                    <td>39.29</td>
+                                    <td>39.76</td>
+                                    <td>47.12</td>
+                                    <td>45.99</td>
+                                    <td>54.16</td>
+                                    <td>58.31</td>
+                                    <td>78.29</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Toys &amp; Baby
                                     </td>
-                                    <td>80.00</td>
-                                    <td>52.64</td>
-                                    <td>74.01</td>
-                                    <td>90.89</td>
-                                    <td>82.20</td>
-                                    <td>78.34</td>
-                                    <td>84.21</td>
+                                    <td>51.73</td>
+                                    <td>51.86</td>
+                                    <td>68.02</td>
+                                    <td>71.88</td>
+                                    <td>70.62</td>
+                                    <td>78.95</td>
+                                    <td>88.52</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Sports &amp; Leisure
                                     </td>
-                                    <td>80.00</td>
-                                    <td>47.90</td>
-                                    <td>n/a</td>
-                                    <td>85.24</td>
-                                    <td>n/a</td>
-                                    <td>n/a</td>
-                                    <td>76.19</td>
+                                    <td>38.37</td>
+                                    <td>43.52</td>
+                                    <td>51.42</td>
+                                    <td>51.45</td>
+                                    <td>61.08</td>
+                                    <td>67.77</td>
+                                    <td>87.59</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Tools &amp; DIY
                                     </td>
-                                    <td>80.85</td>
-                                    <td>67.61</td>
-                                    <td>92.33</td>
-                                    <td>82.45</td>
-                                    <td>94.95</td>
-                                    <td>96.39</td>
-                                    <td>85.71</td>
+                                    <td>55.31</td>
+                                    <td>54.23</td>
+                                    <td>62.23</td>
+                                    <td>61.74</td>
+                                    <td>69.85</td>
+                                    <td>73.88</td>
+                                    <td>85.98</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <p class="footer-note">
-                        Same-category F1 on the German benchmark for category
-                        pairs with at least 45 test pairs.
+                        Mean same-category F1 across all eligible German
+                        benchmark configurations. A category contributes only
+                        where its same-category pair has at least 45 test pairs.
+                        Supervised scores are averaged over available runs
+                        within each configuration; WordCooc and Magellan use the
+                        selected classifier for that configuration. GPT-5.2 uses
+                        the Rule-Guided prompt. Automotive, Electronics,
+                        Clothing, Furniture, and Toys cover all 9 test sets;
+                        Sports and Tools cover 8, and Cosmetics covers 7.
                     </p>
                 </div>
             </div>
