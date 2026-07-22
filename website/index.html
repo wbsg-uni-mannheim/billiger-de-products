@@ -268,7 +268,7 @@
                         <a class="navbar-item" href="#design">Benchmark</a>
                         <a class="navbar-item" href="#example">Examples</a>
                         <a class="navbar-item" href="#results">Results</a>
-                        <a class="navbar-item" href="#language">Translation</a>
+                        
                         <a class="navbar-item" href="#usage">How to Use</a>
                         <a class="navbar-item" href="#downloads">Downloads</a>
                     </div>
@@ -291,7 +291,11 @@
                                 >Aaron Steiner</a
                             ><sup>1</sup>,</span
                         >
-                        <span class="author-block">Ksenia Elagin,</span>
+                        <span class="author-block"
+                            ><a href="mailto:ksenia.elagin@gmail.com"
+                                >Ksenia Elagin</a
+                            >,</span
+                        >
                         <span class="author-block"
                             ><a
                                 href="https://www.uni-mannheim.de/dws/people/professors/dr-ralph-peeters/"
@@ -362,7 +366,7 @@
                 <div class="content is-size-6">
 					<p>
                         <b>Billiger.de Products</b> is an entity matching benchmark requiring matchers to identify product offers that refer to the same real-world product.
-						It contains 13,730 offers describing 2,168 distinct products, collected from the German price-comparison platform <a href="https://www.billiger.de">billiger.de</a>. The benchmark provides both the original German offers and machine-translated English versions of all training, validation, and test sets, enabling controlled analyses of how language affects entity matching performance. Following the multidimensional design of the <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/">WDC Products</a> benchmark, Billiger.de Products provides dataset variants that systematically vary the size of the training set, the proportion of difficult-to-match corner cases, and the proportion of products that are not observed during training. These variants support fine-grained evaluations of data efficiency, robustness to challenging examples, and generalization to previously unseen products. We validate the benchmark using six supervised entity matching methods and GPT-5.2 in a zero-shot setting.
+						It contains 13,730 offers describing 2,168 distinct products, collected from the German price-comparison platform <a href="https://www.billiger.de">billiger.de</a>. The benchmark provides both the original German offers and machine-translated English versions of all training, validation, and test sets, enabling controlled analyses of how language affects entity matching performance. Following the multidimensional design of the <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/">WDC Products</a> benchmark, Billiger.de Products provides dataset variants that systematically vary the size of the training set, the proportion of difficult-to-match corner cases, and the proportion of products that are not observed during training. These variants support fine-grained evaluations of data efficiency, robustness to challenging examples, and generalization to previously unseen products. We validate the benchmark using six supervised entity matching methods and GPT-5.2 in a zero-shot setting. 
                     </p>
                 </div>
             </div>
@@ -374,7 +378,7 @@
                 <h2 class="title is-3 has-text-centered">Introduction</h2>
                 <div class="content is-size-6">
                     <p>
-						Entity matching is the task of determining whether two records refer to the same real-world entity—for example, whether two product offers describe the same product. Widely used entity matching benchmarks, such as <a href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md">Abt-Buy</a>, <a href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md">Amazon-Google</a>, or 
+						Entity matching is the task of determining whether two records refer to the same real-world entity, for example whether two product offers describe the same product. Widely used entity matching benchmarks, such as <a href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md">Abt-Buy</a>, <a href="https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md">Amazon-Google</a>, or 
                         <a
                             href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/"
                             >WDC Products</a
@@ -404,7 +408,10 @@
                         unseen during training. The sections below describe the
                         benchmark in detail and report baseline results for six
                         supervised matchers and for GPT-5.2 in a zero-shot
-                        setting on both language versions.
+                        setting on both language versions, as well as a
+                        cross-language experiment that evaluates matchers
+                        trained on German pairs on mixed German-English record
+                        pairs.
                     </p>
                 </div>
             </div>
@@ -1699,10 +1706,10 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         benchmark configurations. A category contributes only
                         where its same-category pair has at least 45 test pairs.
                         Supervised scores are averaged over available runs
-                        within each configuration; WordCooc and Magellan use the
+                        within each configuration. WordCooc and Magellan use the
                         selected classifier for that configuration. GPT-5.2 uses
                         the Rule-Guided prompt. Automotive, Electronics,
-                        Clothing, Furniture, and Toys cover all 9 test sets;
+                        Clothing, Furniture, and Toys cover all 9 test sets.
                         Sports and Tools cover 8, and Cosmetics covers 7.
                     </p>
                 </div>
@@ -2173,8 +2180,179 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
             </div>
         </section>
 
+        <!-- CROSS-LANGUAGE -->
+        <section class="section" id="cross-language">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">
+                    Cross-Language Matching
+                </h2>
+                <div class="content is-size-6">
+                    <p>
+                        The comparison above changes the language of both
+                        records at once. In applications such as European price
+                        comparison, matchers also have to compare records across
+                        languages. This section evaluates this setting directly:
+                        all supervised matchers are trained on the German
+                        80&nbsp;% corner-case large training set (26,571 pairs)
+                        and selected on the corresponding German validation set
+                        (4,436 pairs). Each matcher is then evaluated on five
+                        variants of the 50&nbsp;% unseen test set (4,437 pairs
+                        each) in which only the language of the records changes.
+                        In DE-DE both records are German, in DE-EN and EN-DE one
+                        record is German and the other English, in EN-EN both
+                        records are English, and Random mixes the four
+                        combinations evenly (1,109 or 1,110 pairs each). Pair
+                        IDs, labels, and the seen/unseen composition are
+                        identical in all five variants, so the differences
+                        between the columns are attributable to the language
+                        combination alone.
+                    </p>
+                </div>
+                <div class="table-container">
+                    <table
+                        class="table is-narrow is-fullwidth is-striped has-text-right"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="has-text-left">Model</th>
+                                <th>DE-DE</th>
+                                <th>DE-EN</th>
+                                <th>EN-DE</th>
+                                <th>EN-EN</th>
+                                <th>Random</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="has-text-left">WordCooc</td>
+                                <td class="best">43.6</td>
+                                <td>36.8</td>
+                                <td>36.6</td>
+                                <td>28.2</td>
+                                <td>33.2</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Magellan</td>
+                                <td class="best">36.3</td>
+                                <td>33.9</td>
+                                <td>33.2</td>
+                                <td>35.6</td>
+                                <td>35.6</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">RoBERTa</td>
+                                <td class="best">63.4</td>
+                                <td>53.3</td>
+                                <td>54.5</td>
+                                <td>58.1</td>
+                                <td>56.7</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">R-SupCon</td>
+                                <td class="best">48.5</td>
+                                <td>47.0</td>
+                                <td>46.5</td>
+                                <td>42.3</td>
+                                <td>45.2</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">HierGAT</td>
+                                <td class="best">60.8</td>
+                                <td>49.3</td>
+                                <td>49.9</td>
+                                <td>57.6</td>
+                                <td>54.4</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Ditto</td>
+                                <td class="best">65.4</td>
+                                <td>55.3</td>
+                                <td>55.1</td>
+                                <td>62.4</td>
+                                <td>59.2</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">GPT-5.2 Simple</td>
+                                <td>70.5</td>
+                                <td>71.5</td>
+                                <td>70.8</td>
+                                <td class="best">72.9</td>
+                                <td>70.7</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">
+                                    GPT-5.2 Rule-Guided
+                                </td>
+                                <td>80.9</td>
+                                <td class="best">83.5</td>
+                                <td>81.7</td>
+                                <td>80.9</td>
+                                <td>82.6</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="footer-note">
+                    F1 on the match class per language variant, best value per
+                    row in bold. All supervised matchers were trained on German
+                    pairs only.
+                </p>
+                <div class="content is-size-6" style="margin-top: 1.4rem">
+                    <p>
+                        WordCooc and Magellan both lose performance once records
+                        leave the training language, but to a different degree.
+                        WordCooc drops from 43.6 F1 on DE-DE to 28.2 on EN-EN,
+                        since translation removes the exact token overlap it
+                        relies on. Magellan stays within 3.1 F1 of its DE-DE
+                        score across all variants, as its character-level
+                        similarity features depend less on the language. Both
+                        matchers operate between 28.2 and 43.6 F1 on this test
+                        set, so these differences carry limited practical
+                        weight. R-SupCon is stable across the four variants that
+                        still contain German records (45.2 to 48.5 F1) and only
+                        loses performance on the fully English variant (42.3),
+                        though again at a low absolute level.
+                    </p>
+                    <p>
+                        HierGAT reaches its best score on the German pairs it
+                        was trained on (60.8 F1), closely followed by the fully
+                        English variant (57.6), while both mixed variants drop
+                        to around 49 F1. RoBERTa and Ditto show the same
+                        ordering, and for all three models the Random variant,
+                        in which half of the pairs are same-language, lies in
+                        between. The models therefore do not fail on English
+                        data as such. As long as both records switch language
+                        together, the cues learned on German pairs, such as
+                        overlapping tokens between the two names and
+                        descriptions, stay intact, and the English pre-training
+                        of the underlying language models likely supports the
+                        transfer. In a mixed pair, the translation removes this
+                        surface overlap on one side only, and pairs that cross
+                        the language boundary never occur in the German training
+                        data. For a price comparison portal this distinction
+                        matters, because the cross-border case is exactly the
+                        mixed-language case. Translating one record into the
+                        language of the other before matching may recover much
+                        of the loss, although the experiment does not test this.
+                    </p>
+                    <p>
+                        GPT-5.2 delivers the best scores in every variant: 80.9
+                        to 83.5 F1 with the Rule-Guided prompt and 70.5 to 72.9
+                        with the Simple prompt. Taking run-to-run variation into
+                        account, the differences between the language
+                        combinations are minimal, so the results do not indicate
+                        a language effect for the zero-shot models. For
+                        applications that have to match offers across languages,
+                        and where the budget allows it, a zero-shot LLM is
+                        therefore the most reliable choice among the evaluated
+                        systems.
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- HOW TO USE -->
-        <section class="section" id="usage">
+        <section class="section" id="usage" style="background: #fafafa">
             <div class="container is-max-desktop">
                 <h2 class="title is-3 has-text-centered">
                     How to Use the Benchmark
@@ -2191,7 +2369,7 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         >
                         denotes 80&nbsp;% corner cases, 20&nbsp;% random pairs,
                         and the large training split. Training files always use
-                        <span class="mono">000un</span>; the unseen-product
+                        <span class="mono">000un</span>. The unseen-product
                         share is defined by validation and test products
                         relative to the training data. The files can be read
                         directly with pandas:
@@ -2298,18 +2476,20 @@ python src/processing/prepare_magellan.py</pre
         </section>
 
         <!-- DOWNLOADS -->
-        <section class="section" id="downloads" style="background: #fafafa">
+        <section class="section" id="downloads">
             <div class="container is-max-desktop">
                 <h2 class="title is-3 has-text-centered">Downloads</h2>
                 <div class="content is-size-6">
                     <p>
                         Both language versions are available as zip archives
                         containing all training, validation, and test sets
-                        described above.
+                        described above. The five aligned test set variants of
+                        the cross-language experiment are available as a
+                        separate archive.
                     </p>
                 </div>
                 <div class="columns">
-                    <div class="column is-half">
+                    <div class="column is-one-third">
                         <div class="dcard">
                             <div class="dh">
                                 <span class="icon has-text-info"
@@ -2335,7 +2515,7 @@ python src/processing/prepare_magellan.py</pre
                             </div>
                         </div>
                     </div>
-                    <div class="column is-half">
+                    <div class="column is-one-third">
                         <div class="dcard">
                             <div class="dh">
                                 <span class="icon has-text-info"
@@ -2362,12 +2542,46 @@ python src/processing/prepare_magellan.py</pre
                             </div>
                         </div>
                     </div>
+                    <div class="column is-one-third">
+                        <div class="dcard">
+                            <div class="dh">
+                                <span class="icon has-text-info"
+                                    ><i class="fas fa-globe"></i
+                                ></span>
+                                Cross-language test sets
+                            </div>
+                            <div class="db">
+                                <p>
+                                    The five aligned test set variants of the
+                                    cross-language experiment (DE-DE, DE-EN,
+                                    EN-DE, EN-EN, Random), 4,437 pairs each.
+                                </p>
+                                <a
+                                    class="button is-small is-dark is-rounded"
+                                    style="
+                                        height: auto;
+                                        white-space: normal;
+                                        text-align: left;
+                                    "
+                                    href="https://media.githubusercontent.com/media/wbsg-uni-mannheim/billiger-de-products/main/data/solute_cross_language.zip"
+                                    download="solute_cross_language.zip"
+                                >
+                                    <span class="icon"
+                                        ><i class="fas fa-download"></i
+                                    ></span>
+                                    <span
+                                        >Download solute_cross_language.zip</span
+                                    >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- CONCLUSION -->
-        <section class="section" id="conclusion">
+        <section class="section" id="conclusion" style="background: #fafafa">
             <div class="container is-max-desktop">
                 <h2 class="title is-3 has-text-centered">Conclusion</h2>
                 <div class="content is-size-6">
@@ -2375,9 +2589,9 @@ python src/processing/prepare_magellan.py</pre
                         Billiger.de Products extends product matching evaluation
                         beyond English with a large German benchmark and an
                         aligned English translation spanning thirteen product
-                        categories. The 27 variants of the benchmark enable to
-                        control the training set size, the share of corner
-                        cases, and fraction of unseen products in the test set.
+                        categories. The 27 variants of the benchmark vary the
+                        training set size, the share of corner cases, and the
+                        fraction of unseen products in the test set.
                     </p>
                     <p>
                         The validation of the benchmark showed that both the
@@ -2392,11 +2606,21 @@ python src/processing/prepare_magellan.py</pre
                     <p>
                         The comparison of the performance of the matchers on
                         billiger.de Products (English) to the performance of the
-                        same matchers on WDC Products showed that billiger.de
-                        products is more difficult than WDC products. This
-                        feature might make the English version of billiger.de
-                        Products an interesting afternative to WDC Products for
+                        same matchers on WDC Products showed that Billiger.de
+                        Products is more difficult than WDC Products. This
+                        feature might make the English version of Billiger.de
+                        Products an interesting alternative to WDC Products for
                         matchers that have saturated WDC Products.
+                    </p>
+                    <p>
+                        The cross-language experiment showed that supervised
+                        matchers trained on German pairs keep most of their
+                        performance when both records switch to English but lose
+                        about 10 F1 points on mixed German-English pairs.
+                        Zero-shot GPT-5.2 reaches the best scores on all
+                        language combinations and shows no language effect,
+                        which makes LLMs the most reliable choice for
+                        cross-language matching among the evaluated systems.
                     </p>
                     <p>
 						We hope that the benchmark will support the evaluation and development of entity matching methods for monolingual German and English settings, as well as for cross-lingual matching scenarios.
@@ -2414,14 +2638,14 @@ python src/processing/prepare_magellan.py</pre
         </section>
 
         <!-- CITATION -->
-        <section class="section" id="citation" style="background: #fafafa">
+        <section class="section" id="citation">
             <div class="container is-max-desktop">
                 <h2 class="title is-3 has-text-centered">Citation</h2>
                 <div class="content is-size-6">
                     <!-- TODO: add BibTeX once the paper is published -->
                     <p>
                         A paper describing the benchmark will be published on
-                        Arxiv in August 2026. Citation information will be added
+                        arXiv in August 2026. Citation information will be added
                         here as soon as it is available.
                     </p>
                 </div>
