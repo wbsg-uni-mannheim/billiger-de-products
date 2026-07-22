@@ -176,17 +176,26 @@ def main():
     parser.add_argument("--prompt", choices=("simple", "rule_guided"), required=True)
     parser.add_argument("--model", default="gpt-5.2")
     parser.add_argument("--prepare-only", action="store_true")
+    parser.add_argument(
+        "--run",
+        type=int,
+        default=1,
+        help="Repetition index. The requests are sampled with the API default "
+        "temperature, so repeated runs differ. Runs > 1 are written to separate "
+        "files so earlier runs are never overwritten.",
+    )
     args = parser.parse_args()
 
+    suffix = "" if args.run <= 1 else f"_run{args.run}"
     batch_dir = Path("data/batch_inputs/cross_language/gpt") / args.model / args.prompt
     result_dir = Path("data/batch_results/cross_language/gpt") / args.model / args.prompt
     output_dir = (
         Path("results/generated/cross_language/gpt")
         / args.model
         / args.prompt
-        / args.variant
+        / f"{args.variant}{suffix}"
     )
-    batch_path = batch_dir / f"{args.variant}.jsonl"
+    batch_path = batch_dir / f"{args.variant}{suffix}.jsonl"
     metadata_path = build_batch_file(
         args.variant,
         args.prompt,
@@ -201,7 +210,7 @@ def main():
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY is required unless --prepare-only is used")
-    result_path = result_dir / f"{args.variant}.jsonl"
+    result_path = result_dir / f"{args.variant}{suffix}.jsonl"
     run_batch(OpenAI(api_key=api_key), batch_path, result_path)
     collect_results(result_path, metadata_path, output_dir)
 
