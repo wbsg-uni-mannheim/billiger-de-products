@@ -135,6 +135,14 @@
                 border-radius: 3px;
                 padding: 0 2px;
             }
+            .hl-match {
+                background: #e4f7ea;
+                box-shadow: inset 0 -2px #48c78e;
+            }
+            .hl-conflict {
+                background: #ffebee;
+                box-shadow: inset 0 -2px #f14668;
+            }
 
             /* domain distribution bars */
             .dombar {
@@ -917,8 +925,8 @@
                                 <p class="record-attr">
                                     <span class="tagname">name</span> rauch
                                     Kleiderschrank »Rasa« beige
-                                    <span class="hl">168 cm</span> x 188 cm x 52
-                                    cm
+                                    <span class="hl hl-conflict">168 cm</span>
+                                    x 188 cm x 52 cm
                                 </p>
                                 <p class="record-attr">
                                     <span class="tagname">desc</span>
@@ -934,10 +942,11 @@
                                     Ausstattung &amp; Funktionen Anzahl
                                     Einlegeböden , 2, Anzahl Kleiderstangen , 1,
                                     Anzahl Schubladen groß , 4, Anzahl Türen ,
-                                    <span class="hl">4 St.</span>, Art Griffe ,
-                                    Griffleiste, Art Türen , Spiegeltüren
-                                    Drehtüren, Maßangaben Breite , <span
-                                        class="hl"
+                                    <span class="hl hl-conflict">4 St.</span>,
+                                    Art Griffe , Griffleiste, Art Türen ,
+                                    Spiegeltüren Drehtüren, Maßangaben Breite ,
+                                    <span
+                                        class="hl hl-conflict"
                                         >168 cm</span
                                     >, Tiefe , 52 cm, Höhe , 188 cm, Breite
                                     Schubladeninnenmaß , 78 cm, Tiefe
@@ -980,8 +989,8 @@
                                 <p class="record-attr">
                                     <span class="tagname">name</span> rauch
                                     Kleiderschrank »Rasa« beige
-                                    <span class="hl">85 cm</span> x 188 cm x 52
-                                    cm
+                                    <span class="hl hl-conflict">85 cm</span> x
+                                    188 cm x 52 cm
                                 </p>
                                 <p class="record-attr">
                                     <span class="tagname">desc</span>
@@ -998,9 +1007,10 @@
                                     Einlegeböden , 1, Anzahl Kleiderstangen , 1,
                                     Anzahl Schubladen , 2 St., Anzahl Schubladen
                                     groß , 2, Anzahl Türen ,
-                                    <span class="hl">2 St.</span>, Art Griffe ,
-                                    Griffleiste, Art Türen , Spiegeltüren,
-                                    Maßangaben Breite , <span class="hl"
+                                    <span class="hl hl-conflict">2 St.</span>,
+                                    Art Griffe , Griffleiste, Art Türen ,
+                                    Spiegeltüren, Maßangaben Breite , <span
+                                        class="hl hl-conflict"
                                         >85 cm</span
                                     >, Tiefe , 52 cm, Höhe , 188 cm, Breite
                                     Schubladeninnenmaß , 78 cm, Tiefe
@@ -1064,13 +1074,18 @@
                                 </p>
                                 <p class="record-attr">
                                     <span class="tagname">name</span> Delonghi
-                                    Ecam 650.55 Ms Primadonna Elite
-                                    Kaffeevollautomat
+                                    <span class="hl hl-match"
+                                        >Ecam 650.55 Ms</span
+                                    >
+                                    Primadonna Elite Kaffeevollautomat
                                 </p>
                                 <p class="record-attr">
                                     <span class="tagname">desc</span> "MENÜ Zum
                                     Shop Bewertungen Favorit Newsletter Close
-                                    Bild vergrößern DeLonghi ECAM 650.55 MS
+                                    Bild vergrößern DeLonghi <span
+                                        class="hl hl-match"
+                                        >ECAM 650.55 MS</span
+                                    >
                                     PrimaDonna Elite Kaffeevollautomat Kaffee-
                                     und Milchspezialitäten per einfachem
                                     Knopfdruck, einschließlich gleichzeitiger
@@ -1117,7 +1132,8 @@
                                 <p class="record-attr">
                                     <span class="tagname">name</span>
                                     Superautomatische Kaffeemaschine DeLonghi
-                                    ECAM65055MS 1450 W Grau 2 L
+                                    <span class="hl hl-match">ECAM65055MS</span>
+                                    1450 W Grau 2 L
                                 </p>
                                 <p class="record-attr">
                                     <span class="tagname">desc</span> Farbe:
@@ -1165,7 +1181,9 @@
                                 </p>
                                 <p class="record-attr">
                                     <span class="tagname">name</span> Metabo KGS
-                                    254 M Elektro-Kappsäge
+                                    254 M Elektro-<u class="hl hl-conflict"
+                                        >Kappsäge</u
+                                    >
                                 </p>
                                 <p class="record-attr">
                                     <span class="tagname">desc</span> Metabo
@@ -1198,7 +1216,11 @@
                                 </p>
                                 <p class="record-attr">
                                     <span class="tagname">name</span> Metabo KHE
-                                    3250 Elektro-Bohr-/Meißelhammer inkl. Koffer
+                                    3250
+                                    <u class="hl hl-conflict"
+                                        >Elektro-Bohr-/Meißelhammer</u
+                                    >
+                                    inkl. Koffer
                                 </p>
                                 <p class="record-attr">
                                     <span class="tagname">desc</span> Metabo
@@ -2338,13 +2360,13 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                 <td>&minus;6.8</td>
                                 <td>&minus;7.0</td>
                                 <td>&minus;15.4</td>
-                                <td>&minus;10.4</td>
+                                <td>&minus;10.5</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Magellan</td>
                                 <td>36.3</td>
-                                <td>&minus;2.4</td>
-                                <td>&minus;3.1</td>
+                                <td>&minus;2.5</td>
+                                <td>&minus;3.2</td>
                                 <td>&minus;0.7</td>
                                 <td>&minus;0.7</td>
                             </tr>
@@ -2360,7 +2382,7 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                 <td class="has-text-left">R-SupCon</td>
                                 <td>48.5</td>
                                 <td>&minus;1.5</td>
-                                <td>&minus;2.0</td>
+                                <td>&minus;1.9</td>
                                 <td>&minus;6.2</td>
                                 <td>&minus;3.3</td>
                             </tr>
@@ -2377,26 +2399,26 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                 <td>65.4</td>
                                 <td>&minus;10.1</td>
                                 <td>&minus;10.3</td>
-                                <td>&minus;3.0</td>
-                                <td>&minus;6.2</td>
+                                <td>&minus;2.9</td>
+                                <td>&minus;6.1</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">GPT-5.2 Simple</td>
-                                <td>70.5</td>
-                                <td>+1.0</td>
-                                <td>+0.3</td>
-                                <td>+2.4</td>
-                                <td>+0.2</td>
+                                <td>70.4</td>
+                                <td>+1.6</td>
+                                <td>+0.4</td>
+                                <td>+2.9</td>
+                                <td>+0.9</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">
                                     GPT-5.2 Rule-Guided
                                 </td>
-                                <td>80.9</td>
-                                <td>+2.6</td>
-                                <td>+0.8</td>
-                                <td>0.0</td>
-                                <td>+1.7</td>
+                                <td>81.6</td>
+                                <td>+1.1</td>
+                                <td>&minus;0.3</td>
+                                <td>+0.1</td>
+                                <td>+0.4</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2405,8 +2427,10 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                     F1 on the match class. The DE-DE column shows the absolute
                     F1, the other columns show the difference to DE-DE. Negative
                     values mean the matcher scores lower than on German-German
-                    pairs. All supervised matchers were trained on German pairs
-                    only.
+                    pairs. Differences are calculated from the unrounded mean
+                    F1 scores. All supervised matchers were trained on German
+                    pairs only. Scores are means across three seeds. GPT-5.2
+                    scores are means across three repeated zero-shot runs.
                 </p>
                 <div class="content is-size-6" style="margin-top: 1.4rem">
                     <p>
@@ -2450,11 +2474,14 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                     </p>
                     <p>
                         GPT-5.2 delivers the best scores in every variant and
-                        deviates from its DE-DE results of 80.9 F1 (Rule-Guided)
-                        and 70.5 F1 (Simple) by at most 2.6 F1 points, in most
-                        cases upward. Taking run-to-run variation into account, the differences between the language
-                        combinations are minimal, so the results do not indicate
-                        a language effect for the zero-shot models. For
+                        reaches 81.6 F1 with the Rule-Guided prompt and 70.4 F1
+                        with the Simple prompt on DE-DE. Across three repeated
+                        runs, the Rule-Guided scores differ by at most 1.1 F1
+                        points from DE-DE, which is within the observed
+                        repetition noise. The Simple prompt varies more, with
+                        EN-EN scoring 2.9 points above DE-DE, so a small language
+                        effect remains plausible there. Neither prompt shows a
+                        practically large penalty for mixed-language pairs. For
                         applications that have to match offers across languages,
                         and where the budget allows it, a zero-shot LLM is
                         therefore the most reliable choice among the evaluated
