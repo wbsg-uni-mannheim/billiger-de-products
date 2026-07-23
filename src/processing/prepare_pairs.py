@@ -21,7 +21,10 @@ TEXT_LIMITS = {"name": 50, "brand": 5, "desc": 100}
 def normalize_text(value, limit):
     if pd.isna(value):
         return np.nan
-    cleaned = html.unescape(utils.clean_string_2020(str(value)))
+    cleaned = utils.clean_string_2020(str(value))
+    if cleaned is None:
+        return np.nan
+    cleaned = html.unescape(cleaned)
     return " ".join(cleaned.split()[:limit])
 
 

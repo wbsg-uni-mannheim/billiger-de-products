@@ -156,7 +156,7 @@ def write_serialized_pairs(pairs, output):
     labels = pairs["label"].astype(int).astype(str)
     serialized = left + "\t" + right + "\t" + labels
     output.parent.mkdir(parents=True, exist_ok=True)
-    serialized.to_csv(output, index=False, header=False)
+    output.write_text("\n".join(serialized.astype(str)) + "\n", encoding="utf-8")
 
 
 def unordered_offer_pair_keys(pairs):
