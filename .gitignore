@@ -239,6 +239,5 @@ data/processed_en/
 data/processed_cross_language/
 data/batch_inputs/
 data/batch_results/
-results/generated/
 slurm-*.out
 slurm_runs/logs/

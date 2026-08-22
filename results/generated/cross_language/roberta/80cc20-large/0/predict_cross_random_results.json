@@ -1,0 +1,11 @@
+{
+    "predict_cross_random_accuracy": 0.9100743745774171,
+    "predict_cross_random_f1": 0.56957928802589,
+    "predict_cross_random_loss": 0.24432586133480072,
+    "predict_cross_random_precision": 0.4664310954063604,
+    "predict_cross_random_recall": 0.7313019390581718,
+    "predict_cross_random_runtime": 10.7058,
+    "predict_cross_random_samples": 4437,
+    "predict_cross_random_samples_per_second": 414.448,
+    "predict_cross_random_steps_per_second": 51.841
+}

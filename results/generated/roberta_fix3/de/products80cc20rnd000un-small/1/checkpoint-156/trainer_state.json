@@ -1,0 +1,66 @@
+{
+  "best_metric": 0.13011152416356878,
+  "best_model_checkpoint": "results/generated/roberta_fix3/de/products80cc20rnd000un-small/1/checkpoint-156",
+  "epoch": 2.0,
+  "eval_steps": 500,
+  "global_step": 156,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 1.0,
+      "eval_accuracy": 0.8036437246963563,
+      "eval_f1": 0.0,
+      "eval_loss": 0.45365139842033386,
+      "eval_precision": 0.0,
+      "eval_recall": 0.0,
+      "eval_runtime": 5.7796,
+      "eval_samples_per_second": 427.364,
+      "eval_steps_per_second": 53.464,
+      "step": 78
+    },
+    {
+      "epoch": 2.0,
+      "eval_accuracy": 0.8105263157894737,
+      "eval_f1": 0.13011152416356878,
+      "eval_loss": 0.39102837443351746,
+      "eval_precision": 0.660377358490566,
+      "eval_recall": 0.07216494845360824,
+      "eval_runtime": 5.7788,
+      "eval_samples_per_second": 427.421,
+      "eval_steps_per_second": 53.471,
+      "step": 156
+    }
+  ],
+  "logging_steps": 500,
+  "max_steps": 3900,
+  "num_input_tokens_seen": 0,
+  "num_train_epochs": 50,
+  "save_steps": 500,
+  "stateful_callbacks": {
+    "EarlyStoppingCallback": {
+      "args": {
+        "early_stopping_patience": 25,
+        "early_stopping_threshold": 0.0
+      },
+      "attributes": {
+        "early_stopping_patience_counter": 15
+      }
+    },
+    "TrainerControl": {
+      "args": {
+        "should_epoch_stop": false,
+        "should_evaluate": false,
+        "should_log": false,
+        "should_save": true,
+        "should_training_stop": false
+      },
+      "attributes": {}
+    }
+  },
+  "total_flos": 651199862016000.0,
+  "train_batch_size": 32,
+  "trial_name": null,
+  "trial_params": null
+}

@@ -1,0 +1,102 @@
+{
+  "best_metric": 0.5800256081946222,
+  "best_model_checkpoint": "results/generated/roberta_fix2/de/products80cc20rnd000un-small/1/checkpoint-390",
+  "epoch": 5.0,
+  "eval_steps": 500,
+  "global_step": 390,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 1.0,
+      "eval_accuracy": 0.8036437246963563,
+      "eval_f1": 0.0,
+      "eval_loss": 0.47557181119918823,
+      "eval_precision": 0.0,
+      "eval_recall": 0.0,
+      "eval_runtime": 5.8165,
+      "eval_samples_per_second": 424.652,
+      "eval_steps_per_second": 53.124,
+      "step": 78
+    },
+    {
+      "epoch": 2.0,
+      "eval_accuracy": 0.8036437246963563,
+      "eval_f1": 0.004106776180698152,
+      "eval_loss": 0.519649088382721,
+      "eval_precision": 0.5,
+      "eval_recall": 0.002061855670103093,
+      "eval_runtime": 5.8054,
+      "eval_samples_per_second": 425.466,
+      "eval_steps_per_second": 53.226,
+      "step": 156
+    },
+    {
+      "epoch": 3.0,
+      "eval_accuracy": 0.8036437246963563,
+      "eval_f1": 0.0,
+      "eval_loss": 0.4863661825656891,
+      "eval_precision": 0.0,
+      "eval_recall": 0.0,
+      "eval_runtime": 5.8054,
+      "eval_samples_per_second": 425.468,
+      "eval_steps_per_second": 53.227,
+      "step": 234
+    },
+    {
+      "epoch": 4.0,
+      "eval_accuracy": 0.8036437246963563,
+      "eval_f1": 0.0,
+      "eval_loss": 0.3640492856502533,
+      "eval_precision": 0.0,
+      "eval_recall": 0.0,
+      "eval_runtime": 5.8003,
+      "eval_samples_per_second": 425.843,
+      "eval_steps_per_second": 53.273,
+      "step": 312
+    },
+    {
+      "epoch": 5.0,
+      "eval_accuracy": 0.734412955465587,
+      "eval_f1": 0.5800256081946222,
+      "eval_loss": 0.35155606269836426,
+      "eval_precision": 0.4206128133704735,
+      "eval_recall": 0.934020618556701,
+      "eval_runtime": 5.8118,
+      "eval_samples_per_second": 424.997,
+      "eval_steps_per_second": 53.168,
+      "step": 390
+    }
+  ],
+  "logging_steps": 500,
+  "max_steps": 3900,
+  "num_input_tokens_seen": 0,
+  "num_train_epochs": 50,
+  "save_steps": 500,
+  "stateful_callbacks": {
+    "EarlyStoppingCallback": {
+      "args": {
+        "early_stopping_patience": 25,
+        "early_stopping_threshold": 0.0
+      },
+      "attributes": {
+        "early_stopping_patience_counter": 26
+      }
+    },
+    "TrainerControl": {
+      "args": {
+        "should_epoch_stop": false,
+        "should_evaluate": false,
+        "should_log": false,
+        "should_save": true,
+        "should_training_stop": false
+      },
+      "attributes": {}
+    }
+  },
+  "total_flos": 1627999655040000.0,
+  "train_batch_size": 32,
+  "trial_name": null,
+  "trial_params": null
+}

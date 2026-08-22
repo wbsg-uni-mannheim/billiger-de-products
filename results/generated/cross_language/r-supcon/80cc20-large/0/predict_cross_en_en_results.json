@@ -1,0 +1,11 @@
+{
+    "predict_cross_en_en_accuracy": 0.7924273157538878,
+    "predict_cross_en_en_f1": 0.4232936756418284,
+    "predict_cross_en_en_loss": 0.8931183815002441,
+    "predict_cross_en_en_precision": 0.27346278317152106,
+    "predict_cross_en_en_recall": 0.9362880886426593,
+    "predict_cross_en_en_runtime": 11.7357,
+    "predict_cross_en_en_samples": 4437,
+    "predict_cross_en_en_samples_per_second": 378.077,
+    "predict_cross_en_en_steps_per_second": 47.292
+}
