@@ -1,0 +1,11 @@
+{
+    "predict_samples_un100": 4447,
+    "predict_un100_accuracy": 0.836294130874747,
+    "predict_un100_f1": 0.4583333333333333,
+    "predict_un100_loss": 0.9874277710914612,
+    "predict_un100_precision": 0.3092369477911647,
+    "predict_un100_recall": 0.8850574712643678,
+    "predict_un100_runtime": 10.4444,
+    "predict_un100_samples_per_second": 425.779,
+    "predict_un100_steps_per_second": 53.234
+}

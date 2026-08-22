@@ -241,3 +241,12 @@ data/batch_inputs/
 data/batch_results/
 slurm-*.out
 slurm_runs/logs/
+
+# RoBERTa batch-32 full-grid reruns: keep metrics and per-pair predictions,
+# never the checkpoints, tensorboard logs or serialised training args.
+results/generated/roberta_bs32_full/**/checkpoint-*/
+results/generated/roberta_bs32_full/**/tblogs_*/
+results/generated/roberta_bs32_full/**/runs/
+results/generated/roberta_bs32_full/**/model.safetensors
+results/generated/roberta_bs32_full/**/training_args.bin
+results/generated/roberta_bs32_full/**/config.json
