@@ -176,6 +176,34 @@ class CustomTrainer(Trainer):
         return (loss, outputs) if return_outputs else loss
 
 
+def save_per_pair_predictions(dataset, predict_results, output_path, source_file):
+    """Write pair_id, label, probability and prediction for one predict pass.
+
+    Without this only aggregate metrics survive, and no per-category analysis of the
+    run is possible afterwards. `_prepare_data` drops pair_id from the dataset, so it
+    is read back from the source file; row order is preserved, which the asserts check.
+    """
+    logits = np.asarray(predict_results.predictions)
+    probs = torch.softmax(torch.tensor(logits), dim=1)[:, 1].numpy()
+    preds = np.argmax(logits, axis=1)
+
+    source = pd.read_pickle(source_file, compression="gzip")
+    assert len(source) == len(dataset.data), (len(source), len(dataset.data))
+    assert (np.asarray(source["label"]) == np.asarray(dataset.data["label"])).all()
+
+    labels = (np.asarray(predict_results.label_ids).astype(int)
+              if predict_results.label_ids is not None
+              else np.asarray(dataset.data["label"]).astype(int))
+
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
+    pd.DataFrame({
+        "pair_id": source["pair_id"].astype(str).tolist(),
+        "label": labels,
+        "probability": probs,
+        "prediction": preds,
+    }).to_csv(output_path, index=False)
+
+
 def main():
 
     def get_posneg(train_dataset):
@@ -322,14 +350,27 @@ def main():
     data_collator = DataCollatorWithPadding(tokenizer=train_dataset.tokenizer, padding='longest', max_length=256)
 
     # Early stopping callback
-    callback = EarlyStoppingCallback(early_stopping_patience=10)
+    # Patience defaults to 10 (the shipped setting). Because F1=0.0 counts as the
+    # initial 'best', the counter starts at epoch 1 and kills runs that need more
+    # than ~11 epochs to emit their first true positive. Override to raise it.
+    callback = EarlyStoppingCallback(
+        early_stopping_patience=int(os.environ.get('EARLY_STOPPING_PATIENCE', 10)))
 
     output_dir = deepcopy(training_args.output_dir)
-    for run in range(3):
+    # Seeds default to 0,1,2 (the shipped runs). Set RERUN_SEEDS to a comma
+    # separated list to reproduce or replace individual seeds, e.g. RERUN_SEEDS=3.
+    _rerun_seeds = os.environ.get("RERUN_SEEDS")
+    _seeds = [int(s) for s in _rerun_seeds.split(",")] if _rerun_seeds else list(range(3))
+    for run in _seeds:
         init_args = {}
 
         training_args.save_total_limit = 1
         training_args.seed = run
+        # Re-seed per run: set_seed() is otherwise called only once, before this
+        # loop, so the classifier head init of run k depended on how much
+        # randomness runs 0..k-1 had consumed. That made runs order-dependent
+        # and "seed N" irreproducible in isolation.
+        set_seed(run)
         training_args.output_dir = f'{output_dir}{run}'
 
         # Detecting last checkpoint.
@@ -418,6 +459,8 @@ def main():
 
             trainer.log_metrics(f"predict", metrics)
             trainer.save_metrics(f"predict", metrics)
+            save_per_pair_predictions(test_dataset, predict_results,
+                                      os.path.join(training_args.output_dir, "baseline_predictions.csv"), raw_datasets["test"])
 
             if 'products' in raw_datasets["train"]:
                 predict_results = trainer.predict(unseen_set_one, metric_key_prefix="predict_un050")
@@ -428,6 +471,8 @@ def main():
 
                 trainer.log_metrics(f"predict_un050", metrics)
                 trainer.save_metrics(f"predict_un050", metrics)
+                save_per_pair_predictions(unseen_set_one, predict_results,
+                                          os.path.join(training_args.output_dir, "baseline_predictions_un050.csv"), raw_datasets["test"].replace("000un", "050un"))
 
                 predict_results = trainer.predict(unseen_set_two, metric_key_prefix="predict_un100")
 
@@ -437,6 +482,8 @@ def main():
 
                 trainer.log_metrics(f"predict_un100", metrics)
                 trainer.save_metrics(f"predict_un100", metrics)
+                save_per_pair_predictions(unseen_set_two, predict_results,
+                                          os.path.join(training_args.output_dir, "baseline_predictions_un100.csv"), raw_datasets["test"].replace("000un", "100un"))
 
             for variant, dataset in cross_language_datasets.items():
                 predict_results = trainer.predict(
