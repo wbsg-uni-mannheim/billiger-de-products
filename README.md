@@ -26,7 +26,7 @@ For a single default evaluation, we recommend `80cc20rnd050un` (80% corner cases
 
 Report a result in the following form:
 
-> Billiger.de Products (German or English), 80% corner cases, seen (`000un`), [training size], F1 = X (mean ± standard deviation over seeds 0, 1, and 2).
+> Billiger.de Products (German or English), 80% corner cases, half-seen (`050un`), [training size], F1 = X (mean ± standard deviation over seeds 0, 1, and 2).
 
 Also cite the benchmark paper when available and link to this repository or identify the evaluated repository commit. Zero-shot methods should omit the training size and state the model and prompt used.
 
