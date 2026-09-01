@@ -1,0 +1,10 @@
+{
+  "backbone": "roberta-base",
+  "batch_size": "16",
+  "model": "hiergat",
+  "seeds": "0,1,2",
+  "train_file": "data/processed/hiergat/data/final_output/preprocessed_products80cc20rnd000un_train_large.txt",
+  "validation_file": "data/processed/hiergat/data/final_output/preprocessed_products80cc20rnd000un_valid_large.txt",
+  "validation_rows": 4452,
+  "validation_sha256": "5e264fff84f07491670883c1e38ab47ad1d97d5e17818b9271142288debfcb11"
+}

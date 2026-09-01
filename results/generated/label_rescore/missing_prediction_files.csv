@@ -1,0 +1,12 @@
+model,language,cc,size,un,seed
+hiergat,de,50cc50rnd,large,000un,2
+hiergat,de,50cc50rnd,large,050un,2
+hiergat,de,50cc50rnd,large,100un,2
+hiergat,en,50cc50rnd,small,050un,0
+hiergat,en,50cc50rnd,small,100un,0
+ditto,de,80cc20rnd,large,000un,1
+ditto,de,80cc20rnd,large,000un,2
+ditto,de,80cc20rnd,large,050un,1
+ditto,de,80cc20rnd,large,050un,2
+ditto,de,80cc20rnd,large,100un,1
+ditto,de,80cc20rnd,large,100un,2

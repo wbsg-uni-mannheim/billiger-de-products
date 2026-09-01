@@ -1,0 +1,10 @@
+{
+  "backbone": "n/a (Magellan similarity features)",
+  "batch_size": "n/a",
+  "model": "magellan",
+  "seeds": "1,2,3",
+  "train_file": "data/processed/training-sets/preprocessed_products80cc20rnd000un_train_large.pkl.gz",
+  "validation_file": "data/processed/validation-sets/preprocessed_products80cc20rnd000un_valid_large.pkl.gz",
+  "validation_rows": 4452,
+  "validation_sha256": "83f0d76b5b0ef793b41a1fd488db236a54e764d14a520ed7bd0eab2ef5455866"
+}

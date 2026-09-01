@@ -1,0 +1,10 @@
+{
+  "backbone": "roberta-base",
+  "batch_size": "32",
+  "model": "roberta",
+  "seeds": "0,1,2",
+  "train_file": "data/processed/training-sets/preprocessed_products80cc20rnd000un_train_large.pkl.gz",
+  "validation_file": "data/processed/validation-sets/preprocessed_products80cc20rnd000un_valid_large.pkl.gz",
+  "validation_rows": 4452,
+  "validation_sha256": "83f0d76b5b0ef793b41a1fd488db236a54e764d14a520ed7bd0eab2ef5455866"
+}
