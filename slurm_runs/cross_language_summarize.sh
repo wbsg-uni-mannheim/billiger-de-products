@@ -12,4 +12,6 @@ set -euo pipefail
 # not point into the repository; SLURM_SUBMIT_DIR does.
 cd "${SLURM_SUBMIT_DIR:-$(dirname "${BASH_SOURCE[0]}")/..}"
 
+source slurm_runs/env.sh
+
 python -u -m src.summarize_cross_language_results

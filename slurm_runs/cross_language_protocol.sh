@@ -11,6 +11,8 @@
 #
 # All four neural matchers fine-tune roberta-base.
 
+source slurm_runs/env.sh
+
 SELECTION_VARIANT="products80cc20rnd000un"
 TRAIN_VARIANT="products80cc20rnd000un"
 TRAIN_SIZE="large"

@@ -11,6 +11,8 @@ set -euo pipefail
 # sbatch runs a copy of this file out of /var/spool/slurmd, so BASH_SOURCE does
 # not point into the repository; SLURM_SUBMIT_DIR does.
 cd "${SLURM_SUBMIT_DIR:-$(dirname "${BASH_SOURCE[0]}")/..}"
+# Magellan is the only matcher needing py_entitymatching.
+BILLIGER_ENV=/home/aasteine/miniconda3/envs/entitymatch
 source slurm_runs/cross_language_protocol.sh
 
 python -u -m src.processing.prepare_cross_language_magellan
