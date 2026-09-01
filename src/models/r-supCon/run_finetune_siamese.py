@@ -14,6 +14,9 @@ import os
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.abspath(_os.path.join(_os.path.dirname(__file__), '..', '..', '..')))
+from src.cross_language.predictions import write_per_pair_predictions
 from typing import Optional
 import json
 
@@ -241,6 +244,7 @@ def main():
         data_files["test"] = data_args.test_file
     raw_datasets = data_files
     cross_language_datasets = {}
+    cross_language_pair_sources = {}
 
     # Load pretrained model and tokenizer
     #
@@ -285,6 +289,7 @@ def main():
                 for name in ("de_de", "de_en", "en_de", "en_en", "random")
                 if f"_{name}.pkl.gz" in path.name
             )
+            cross_language_pair_sources[variant] = str(path)
             cross_language_datasets[variant] = ContrastiveClassificationDataset(
                 str(path),
                 dataset_type="test",
@@ -419,6 +424,17 @@ def main():
                 metrics[f"predict_cross_{variant}_samples"] = len(dataset)
                 trainer.log_metrics(f"predict_cross_{variant}", metrics)
                 trainer.save_metrics(f"predict_cross_{variant}", metrics)
+                # Per-pair layer so the cell can be rescored without retraining.
+                import numpy as _np, torch as _torch
+                _logits = _np.asarray(predict_results.predictions)
+                _probs = _torch.softmax(_torch.tensor(_logits), dim=1)[:, 1].numpy()
+                write_per_pair_predictions(
+                    _os.path.join(training_args.output_dir, f"predictions_cross_{variant}.csv"),
+                    cross_language_pair_sources[variant],
+                    _np.asarray(predict_results.label_ids).astype(int),
+                    _probs,
+                    _np.argmax(_logits, axis=1),
+                )
     return results
 
 if __name__ == "__main__":

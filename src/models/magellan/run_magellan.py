@@ -1,5 +1,8 @@
 import glob
 import os
+import sys as _sys
+_sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..')))
+from src.cross_language.predictions import write_per_pair_predictions
 import random
 import time
 
@@ -289,6 +292,16 @@ def run_magellan(train_set, valid_set, test_set, feature_combinations, classifie
 
                 start = time.time()
                 preds_gs = model.predict(feats_gs)
+                # Per-pair predictions keyed by pair_id for later rescoring.
+                try:
+                    _scores = model.predict_proba(feats_gs)[:, 1]
+                except Exception:
+                    _scores = None
+                _pred_dir = os.path.join(RESULT_ROOT, 'predictions')
+                _pred_name = (os.path.basename(test_set).replace('.csv', '')
+                              + f'_{k}_run{run}.csv')
+                write_per_pair_predictions(os.path.join(_pred_dir, _pred_name), test_set,
+                                           labels_gs, _scores, preds_gs)
 
                 end = time.time()
 

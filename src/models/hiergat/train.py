@@ -19,6 +19,9 @@ from torch.optim import AdamW
 from transformers import get_linear_schedule_with_warmup
 
 import time
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.abspath(_os.path.join(_os.path.dirname(__file__), '..', '..', '..')))
+from src.cross_language.predictions import write_per_pair_predictions
 
 import sys
 import random
@@ -62,6 +65,7 @@ def initialize_and_train(
     args,
     run_tag,
     extra_testsets=None,
+    extra_pair_sources=None,
 ):
     padder = Dataset.pad
     valid_iter = data.DataLoader(dataset=validset, batch_size=args.batch_size,
@@ -145,12 +149,25 @@ def initialize_and_train(
                 best_test_f1_100 = test_f1_100
                 best_test_preds_100 = test_preds_100
                 for name, iterator in extra_test_iters.items():
-                    _, precision, recall, f1, _ = eval_classifier(model, iterator)
+                    _, precision, recall, f1, _, preds = eval_classifier(
+                        model, iterator, return_preds=True
+                    )
                     best_extra_metrics[name] = {
                         "precision": precision,
                         "recall": recall,
                         "f1": f1,
                     }
+                    # Persist the per-pair layer so the cell can be rescored
+                    # against corrected labels without retraining.
+                    source = (extra_pair_sources or {}).get(name)
+                    if source:
+                        write_per_pair_predictions(
+                            _os.path.join(args.output_dir, f"{run_tag}_cross_{name}_predictions.csv"),
+                            source,
+                            preds["labels"],
+                            None,
+                            preds["preds"],
+                        )
 
             print("current_best_test_f1: " + str(best_test_f1) + ", current_best_test_f1_050: " + str(best_test_f1_050) + ", current_best_test_f1_100: " + str(best_test_f1_100))
 
@@ -232,6 +249,7 @@ if __name__ == "__main__":
     test_dataset050 = Dataset(testset050, category, lm=args.lm, lm_path=args.lm_path, split=args.split)
     test_dataset100 = Dataset(testset100, category, lm=args.lm, lm_path=args.lm_path, split=args.split)
     cross_language_datasets = {}
+    cross_language_pair_sources = {}
     if args.cross_language_test_dir:
         for path in sorted(Path(args.cross_language_test_dir).glob("*_gs_*.txt")):
             variant = next(
@@ -246,6 +264,16 @@ if __name__ == "__main__":
                 lm_path=args.lm_path,
                 split=args.split,
             )
+            # The serialized text has no pair_id; recover it from the pair file
+            # that produced it, in the same row order.
+            source = Path("data/processed_cross_language/gold-standards_adjusted") / (
+                f"preprocessed_{path.stem}.pkl.gz"
+            )
+            if not source.exists():
+                raise FileNotFoundError(
+                    f"No pair file with pair_id for cross-language variant {variant}: {source}"
+                )
+            cross_language_pair_sources[variant] = str(source)
 
     initialize_and_train(
         trainset=train_dataset,
@@ -257,4 +285,5 @@ if __name__ == "__main__":
         args=args,
         run_tag=run_tag,
         extra_testsets=cross_language_datasets,
+        extra_pair_sources=cross_language_pair_sources,
     )

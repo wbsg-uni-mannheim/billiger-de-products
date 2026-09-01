@@ -291,6 +291,7 @@ def main():
         data_files["test"] = data_args.test_file
     raw_datasets = data_files
     cross_language_datasets = {}
+    cross_language_pair_sources = {}
 
     # Load pretrained model and tokenizer
     #
@@ -335,6 +336,7 @@ def main():
                 for name in ("de_de", "de_en", "en_de", "en_en", "random")
                 if f"_{name}.pkl.gz" in path.name
             )
+            cross_language_pair_sources[variant] = str(path)
             cross_language_datasets[variant] = BaselineClassificationDataset(
                 str(path),
                 dataset_type="test",
@@ -494,6 +496,14 @@ def main():
                 metrics[f"predict_cross_{variant}_samples"] = len(dataset)
                 trainer.log_metrics(f"predict_cross_{variant}", metrics)
                 trainer.save_metrics(f"predict_cross_{variant}", metrics)
+                # Per-pair layer for the cross-language variants; the main test
+                # conditions already write theirs above.
+                save_per_pair_predictions(
+                    dataset,
+                    predict_results,
+                    os.path.join(training_args.output_dir, f"predictions_cross_{variant}.csv"),
+                    cross_language_pair_sources[variant],
+                )
 
     return results
 

@@ -10,6 +10,9 @@ import sklearn.metrics as metrics
 import argparse
 
 from .dataset import DittoDataset
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.abspath(_os.path.join(_os.path.dirname(__file__), '..', '..', '..', '..')))
+from src.cross_language.predictions import write_per_pair_predictions
 from torch.utils import data
 from transformers import AutoModel, AdamW, get_linear_schedule_with_warmup
 from tensorboardX import SummaryWriter
@@ -190,6 +193,7 @@ def train(
     hp,
     path,
     extra_testsets=None,
+    extra_pair_sources=None,
 ):
     """Train and evaluate the model
 
@@ -317,6 +321,17 @@ def train(
                     ),
                     "f1": f1,
                 }
+                # Aggregate F1 alone cannot be rescored if the labels turn out to
+                # be wrong, so persist the per-pair layer keyed by pair_id.
+                source = (extra_pair_sources or {}).get(name)
+                if source:
+                    write_per_pair_predictions(
+                        _os.path.join(hp.output_dir, f"{run_tag}_cross_{name}_predictions.csv"),
+                        source,
+                        predictions["labels"],
+                        predictions["probs"],
+                        predictions["preds"],
+                    )
             
             if hp.save_model:
                 # create the directory if not exist

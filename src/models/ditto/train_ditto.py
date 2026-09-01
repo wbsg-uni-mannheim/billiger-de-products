@@ -109,6 +109,7 @@ if __name__=="__main__":
     test_dataset050 = DittoDataset(testset050, lm=hp.lm)
     test_dataset100 = DittoDataset(testset100, lm=hp.lm)
     cross_language_datasets = {}
+    cross_language_pair_sources = {}
     if hp.cross_language_test_dir:
         for path in sorted(Path(hp.cross_language_test_dir).glob("*_gs_*.txt")):
             variant = next(
@@ -117,6 +118,17 @@ if __name__=="__main__":
                 if f"_{name}.txt" in path.name
             )
             cross_language_datasets[variant] = DittoDataset(str(path), lm=hp.lm)
+            # The serialized text carries no pair_id; recover it from the pair
+            # file that produced it so predictions can be rescored later.
+            source = Path("data/processed_cross_language/gold-standards_adjusted") / (
+                f"preprocessed_{path.stem}.pkl.gz"
+            )
+            if source.exists():
+                cross_language_pair_sources[variant] = str(source)
+            else:
+                raise FileNotFoundError(
+                    f"No pair file with pair_id for cross-language variant {variant}: {source}"
+                )
 
     train(
         trainset=train_dataset,
@@ -128,4 +140,5 @@ if __name__=="__main__":
         hp=hp,
         path=hp.output_dir,
         extra_testsets=cross_language_datasets,
+        extra_pair_sources=cross_language_pair_sources,
     )

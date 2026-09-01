@@ -1,6 +1,9 @@
 import glob
 import json
 import os
+import sys as _sys
+_sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..')))
+from src.cross_language.predictions import write_per_pair_predictions
 import random
 import time
 
@@ -193,6 +196,19 @@ def run_wordcooc(train_set, valid_set, test_set, feature_combinations, classifie
                 pred_time = end - start
 
                 gs_report = classification_report(labels_gs, preds_gs, output_dict=True)
+
+                # Per-pair predictions keyed by pair_id, so this cell can be
+                # rescored against corrected labels without refitting.
+                try:
+                    _scores = (model.decision_function(feats_gs) if k == 'LinearSVC'
+                               else model.predict_proba(feats_gs)[:, 1])
+                except Exception:
+                    _scores = None
+                _pred_dir = os.path.join(RESULT_ROOT, 'predictions')
+                _pred_name = (os.path.basename(test_set).replace('.pkl.gz', '')
+                              + f'_{k}_{feature_combination}_run{run}.csv')
+                write_per_pair_predictions(os.path.join(_pred_dir, _pred_name), test_set,
+                                           labels_gs, _scores, preds_gs)
 
                 if write_test_set_for_inspection:
 
