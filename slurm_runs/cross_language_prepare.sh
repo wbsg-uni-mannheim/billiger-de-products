@@ -8,7 +8,9 @@
 #SBATCH --error=slurm_runs/logs/cross_language_prepare_%j.err
 
 set -euo pipefail
-cd "$(dirname "${BASH_SOURCE[0]}")/.."
+# sbatch runs a copy of this file out of /var/spool/slurmd, so BASH_SOURCE does
+# not point into the repository; SLURM_SUBMIT_DIR does.
+cd "${SLURM_SUBMIT_DIR:-$(dirname "${BASH_SOURCE[0]}")/..}"
 
 python -u src/processing/prepare_pairs.py --language de
 python -u src/processing/prepare_ditto_hiergat.py --language de

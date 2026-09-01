@@ -17,6 +17,8 @@ from src.cross_language.common import (
     PAIR_DIR,
     RAW_DIR,
     RSUPCON_PRETRAIN_DIR,
+    SELECTION_SEEN_SHARE,
+    SELECTION_VARIANT,
     TRAIN_SIZE,
     TRAIN_VARIANT,
     VALIDATION_VARIANT,
@@ -24,6 +26,8 @@ from src.cross_language.common import (
     WORDCOOC_DIR,
     pair_path,
     raw_path,
+    selection_pair_path,
+    selection_serialized_path,
     serialized_path,
     validation_path,
 )
@@ -166,6 +170,57 @@ def unordered_offer_pair_keys(pairs):
     ]
 
 
+def prepare_selection_pairs():
+    """Load the split the cross-language jobs select checkpoints on.
+
+    This is the very same file the main benchmark grid validates on, so no copy
+    is written: the run scripts point --validation_file straight at
+    data/processed/.  The checks below only assert that the file has the
+    properties the protocol claims for it.
+    """
+    train = pd.read_pickle(
+        "data/processed/training-sets/"
+        f"preprocessed_{TRAIN_VARIANT}_train_{TRAIN_SIZE}.pkl.gz"
+    )
+    selection = pd.read_pickle(selection_pair_path())
+
+    train_pair_keys = set(unordered_offer_pair_keys(train))
+    overlap = train_pair_keys & set(unordered_offer_pair_keys(selection))
+    if overlap:
+        raise ValueError(
+            f"{selection_pair_path()} shares {len(overlap)} offer pairs with training"
+        )
+
+    train_products = set(train["product_id_left"]) | set(train["product_id_right"])
+    selection_products = (
+        set(selection["product_id_left"]) | set(selection["product_id_right"])
+    )
+    seen_share = len(train_products & selection_products) / len(selection_products)
+    if seen_share != SELECTION_SEEN_SHARE:
+        raise ValueError(
+            f"Selection seen-product share is {seen_share}, "
+            f"expected {SELECTION_SEEN_SHARE}"
+        )
+
+    for model in ("ditto", "hiergat"):
+        serialized = selection_serialized_path(model)
+        if not serialized.is_file():
+            raise ValueError(
+                f"{serialized} is missing; run prepare_ditto_hiergat.py first"
+            )
+        rows = sum(
+            1
+            for line in serialized.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        )
+        if rows != len(selection):
+            raise ValueError(
+                f"{serialized} has {rows} rows, expected {len(selection)}"
+            )
+
+    return train, selection
+
+
 def prepare_development_pairs():
     train = pd.read_pickle(
         "data/processed/training-sets/"
@@ -203,8 +258,11 @@ def prepare_development_pairs():
     return train, valid
 
 
-def prepare_wordcooc(train, valid, cross_pairs):
-    development = pd.concat([train, valid], ignore_index=True)
+def prepare_wordcooc(train, selection, cross_pairs):
+    """Fit the WordCooc vocabulary on exactly the German development set the
+    main benchmark run uses (training split + SELECTION_VARIANT validation
+    split), then project the five cross-language test sets onto it."""
+    development = pd.concat([train, selection], ignore_index=True)
     records = pd.concat(
         [
             development[["id_left"]]
@@ -225,7 +283,7 @@ def prepare_wordcooc(train, valid, cross_pairs):
         f"preprocessed_{TRAIN_VARIANT}_train_{TRAIN_SIZE}_wordcooc.pkl.gz"
     )
     valid_name = (
-        f"preprocessed_{VALIDATION_VARIANT}_valid_{TRAIN_SIZE}_wordcooc.pkl.gz"
+        f"preprocessed_{SELECTION_VARIANT}_valid_{TRAIN_SIZE}_wordcooc.pkl.gz"
     )
     development_features = add_features(development, vectorizer)
     development_features.to_pickle(
@@ -233,7 +291,7 @@ def prepare_wordcooc(train, valid, cross_pairs):
         compression="gzip",
     )
     development_features[
-        development_features["pair_id"].isin(valid["pair_id"])
+        development_features["pair_id"].isin(selection["pair_id"])
     ].to_pickle(
         WORDCOOC_DIR / valid_name,
         compression="gzip",
@@ -295,7 +353,8 @@ def main():
     args = parser.parse_args()
 
     aligned = read_aligned_pairs()
-    train, valid = prepare_development_pairs()
+    train, selection = prepare_selection_pairs()
+    _, valid = prepare_development_pairs()
     random_assignment = random_languages(aligned["de"], args.seed)
     cross_pairs = {}
 
@@ -332,7 +391,7 @@ def main():
         write_serialized_pairs(normalized, serialized_path(HIERGAT_DIR, variant))
 
     validate_outputs(cross_pairs)
-    prepare_wordcooc(train, valid, cross_pairs)
+    prepare_wordcooc(train, selection, cross_pairs)
     prepare_rsupcon_pretraining(train)
 
     counts = (
@@ -341,7 +400,11 @@ def main():
         .size()
     )
     print(f"Prepared {len(cross_pairs)} cross-language test sets with {len(aligned['de'])} pairs each")
-    print(f"Prepared {len(valid)} disjoint DE-DE validation pairs")
+    print(
+        f"Selection split {selection_pair_path()} "
+        f"({SELECTION_VARIANT}): {len(selection)} pairs"
+    )
+    print(f"Prepared {len(valid)} disjoint DE-DE {VALIDATION_VARIANT} validation pairs")
     print(counts.to_string())
 
 

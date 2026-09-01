@@ -28,7 +28,10 @@ if __name__=="__main__":
     parser.add_argument("--finetuning", dest="finetuning", action="store_true")
     parser.add_argument("--save_model", dest="save_model", action="store_true")
     parser.add_argument("--logdir", type=str, default="src/models/ditto/checkpoints/")
-    parser.add_argument("--lm", type=str, default='bert')
+    # roberta-base is the backbone for every reported Ditto/HierGAT number in
+    # both the main grid (all_runs*.py) and the cross-language runs; the old
+    # 'bert' default was never used and only made a silent mismatch possible.
+    parser.add_argument("--lm", type=str, default='roberta')
     parser.add_argument("--fp16", dest="fp16", action="store_true")
     parser.add_argument("--da", type=str, default=None)
     parser.add_argument("--alpha_aug", type=float, default=0.8)

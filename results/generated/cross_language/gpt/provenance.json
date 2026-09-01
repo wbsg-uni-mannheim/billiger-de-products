@@ -1,0 +1,10 @@
+{
+  "backbone": "gpt-5.2 (zero-shot)",
+  "batch_size": "n/a",
+  "model": "gpt",
+  "seeds": "3 repetitions, no training seed",
+  "train_file": "",
+  "validation_file": "",
+  "validation_rows": "",
+  "validation_sha256": ""
+}

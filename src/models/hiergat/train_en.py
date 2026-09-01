@@ -152,7 +152,10 @@ if __name__ == "__main__":
     parser.add_argument("--lm_path", type=str, default=None)
     parser.add_argument("--output_dir", default="results/generated/hiergat/en")
     parser.add_argument("--split", dest="split", action="store_true")
-    parser.add_argument("--lm", type=str, default='bert')
+    # roberta-base is the backbone for every reported Ditto/HierGAT number in
+    # both the main grid (all_runs*.py) and the cross-language runs; the old
+    # 'bert' default was never used and only made a silent mismatch possible.
+    parser.add_argument("--lm", type=str, default='roberta')
 
     args = parser.parse_args()
 

@@ -8,10 +8,45 @@ import re
 import statistics
 from pathlib import Path
 
+from src.cross_language import provenance
 from src.cross_language.common import VARIANTS
 
 
 MODEL_NAMES = ("wordcooc", "magellan", "roberta", "r-supcon", "ditto", "hiergat", "gpt")
+
+# Protocol identity carried through from provenance.json to metrics.csv and
+# summary.csv.  Table 3 and Table 6 disagreed because the two experiments
+# selected on different validation splits; keeping these next to every F1 makes
+# that visible in the output instead of leaving it to be reconstructed from the
+# job scripts.
+PROVENANCE_FIELDS = (
+    "backbone",
+    "validation_file",
+    "validation_rows",
+    "validation_sha256",
+)
+METRIC_FIELDS = (
+    "model",
+    "classifier",
+    "seed",
+    "variant",
+    "precision",
+    "recall",
+    "f1",
+) + PROVENANCE_FIELDS + ("source_file",)
+SUMMARY_FIELDS = (
+    "model",
+    "classifier",
+    "variant",
+    "runs",
+) + PROVENANCE_FIELDS + (
+    "precision_mean",
+    "precision_std",
+    "recall_mean",
+    "recall_std",
+    "f1_mean",
+    "f1_std",
+)
 
 
 def model_from_path(path):
@@ -135,20 +170,32 @@ def rows_from_table(path):
     return rows
 
 
+def annotate(rows, path, root):
+    """Attach the protocol identity recorded next to the result file."""
+    record = provenance.find(path, root) or {}
+    for row in rows:
+        for field in PROVENANCE_FIELDS:
+            row[field] = record.get(field, "")
+    return rows
+
+
 def collect(root):
     rows = []
     for path in sorted(root.rglob("*")):
-        if not path.is_file():
+        if not path.is_file() or path.name == provenance.FILE_NAME:
             continue
         try:
             if path.suffix == ".json":
-                rows.extend(rows_from_json(path))
+                found = rows_from_json(path)
             elif path.suffix == ".txt":
-                rows.extend(rows_from_text(path))
+                found = rows_from_text(path)
             elif path.suffix == ".csv":
-                rows.extend(rows_from_table(path))
+                found = rows_from_table(path)
+            else:
+                continue
         except (StopIteration, json.JSONDecodeError):
             continue
+        rows.extend(annotate(found, path, root))
     return [row for row in rows if row["variant"] in VARIANTS]
 
 
@@ -174,19 +221,7 @@ def main():
     rows = collect(args.input)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8", newline="") as output:
-        writer = csv.DictWriter(
-            output,
-            fieldnames=(
-                "model",
-                "classifier",
-                "seed",
-                "variant",
-                "precision",
-                "recall",
-                "f1",
-                "source_file",
-            ),
-        )
+        writer = csv.DictWriter(output, fieldnames=METRIC_FIELDS)
         writer.writeheader()
         writer.writerows(rows)
 
@@ -203,6 +238,11 @@ def main():
             "variant": variant,
             "runs": len(group),
         }
+        for field in PROVENANCE_FIELDS:
+            # A group that mixes protocols keeps every distinct value, joined by
+            # "|", so an aggregate over two different setups cannot look clean.
+            values = sorted({str(row.get(field, "")) for row in group})
+            summary[field] = "|".join(value for value in values if value)
         for metric in ("precision", "recall", "f1"):
             values = [
                 float(row[metric])
@@ -215,26 +255,34 @@ def main():
 
     args.summary_output.parent.mkdir(parents=True, exist_ok=True)
     with args.summary_output.open("w", encoding="utf-8", newline="") as output:
-        writer = csv.DictWriter(
-            output,
-            fieldnames=(
-                "model",
-                "classifier",
-                "variant",
-                "runs",
-                "precision_mean",
-                "precision_std",
-                "recall_mean",
-                "recall_std",
-                "f1_mean",
-                "f1_std",
-            ),
-        )
+        writer = csv.DictWriter(output, fieldnames=SUMMARY_FIELDS)
         writer.writeheader()
         writer.writerows(summary_rows)
 
     print(f"Wrote {len(rows)} cross-language metrics to {args.output}")
     print(f"Wrote {len(summary_rows)} summaries to {args.summary_output}")
+
+    for summary in summary_rows:
+        label = f"{summary['model']}/{summary['classifier'] or '-'}/{summary['variant']}"
+        if "|" in summary["validation_file"] or "|" in summary["backbone"]:
+            print(
+                f"WARNING {label}: aggregates more than one protocol "
+                f"(backbone={summary['backbone']}, "
+                f"validation_file={summary['validation_file']})"
+            )
+        if not summary["validation_file"]:
+            print(f"WARNING {label}: no provenance.json found for these results")
+
+    run_counts = {}
+    for summary in summary_rows:
+        key = (summary["model"], summary["classifier"])
+        run_counts.setdefault(key, {})[summary["variant"]] = summary["runs"]
+    for (model, classifier), counts in sorted(run_counts.items()):
+        if len(set(counts.values())) > 1:
+            print(
+                f"WARNING {model}/{classifier or '-'}: run counts differ across "
+                f"language variants: {counts}"
+            )
 
 
 if __name__ == "__main__":

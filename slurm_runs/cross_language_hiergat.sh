@@ -9,13 +9,25 @@
 #SBATCH --error=slurm_runs/logs/cross_hiergat_%j.err
 
 set -euo pipefail
-cd "$(dirname "${BASH_SOURCE[0]}")/.."
+# sbatch runs a copy of this file out of /var/spool/slurmd, so BASH_SOURCE does
+# not point into the repository; SLURM_SUBMIT_DIR does.
+cd "${SLURM_SUBMIT_DIR:-$(dirname "${BASH_SOURCE[0]}")/..}"
+source slurm_runs/cross_language_protocol.sh
 
-for seed in 0 1 2; do
+python -u -m src.cross_language.provenance \
+  --output-dir "results/generated/cross_language/hiergat" \
+  --model hiergat \
+  --backbone "$BACKBONE" \
+  --validation-file "$SELECTION_VALIDATION_HIERGAT" \
+  --train-file "data/processed/hiergat/data/final_output/preprocessed_${TRAIN_VARIANT}_train_${TRAIN_SIZE}.txt" \
+  --seeds "0,1,2" \
+  --batch-size "$HIERGAT_TRAIN_BATCH_SIZE"
+
+for seed in $SEEDS; do
   python -u src/models/hiergat/train.py \
     --task final_large_80cc20rnd000un \
     --run_id "$seed" \
-    --batch_size 16 \
+    --batch_size "$HIERGAT_TRAIN_BATCH_SIZE" \
     --max_len 256 \
     --lr 5e-6 \
     --n_epochs 50 \
@@ -23,6 +35,6 @@ for seed in 0 1 2; do
     --split \
     --output_dir "results/generated/cross_language/hiergat" \
     --lm roberta \
-    --validation_file "data/processed_cross_language/hiergat/data/final_output/preprocessed_products80cc20rnd050un_valid_large.txt" \
-    --cross_language_test_dir "data/processed_cross_language/hiergat/data/final_output"
+    --validation_file "$SELECTION_VALIDATION_HIERGAT" \
+    --cross_language_test_dir "$CROSS_TEST_HIERGAT_DIR"
 done

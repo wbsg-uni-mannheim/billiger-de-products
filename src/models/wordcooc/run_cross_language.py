@@ -2,9 +2,10 @@
 
 from src.cross_language.common import (
     BENCHMARK,
+    EXPERIMENT_NAME,
+    SELECTION_VARIANT,
     TRAIN_SIZE,
     TRAIN_VARIANT,
-    VALIDATION_VARIANT,
     VARIANTS,
     WORDCOOC_DIR,
 )
@@ -18,7 +19,7 @@ def main():
     )
     valid = (
         WORDCOOC_DIR
-        / f"preprocessed_{VALIDATION_VARIANT}_valid_{TRAIN_SIZE}_wordcooc.pkl.gz"
+        / f"preprocessed_{SELECTION_VARIANT}_valid_{TRAIN_SIZE}_wordcooc.pkl.gz"
     )
     benchmark.RESULT_ROOT = "results/generated/cross_language/wordcooc"
 
@@ -30,7 +31,7 @@ def main():
             str(test),
             ["brand+name+price+desc"],
             benchmark.classifiers,
-            "de_train_000un_valid_test_050un",
+            EXPERIMENT_NAME,
             write_test_set_for_inspection=False,
         )
 

@@ -1,9 +1,10 @@
 """Run the German-trained Magellan baseline on all cross-language test sets."""
 
 from src.cross_language.common import (
+    EXPERIMENT_NAME,
     MAGELLAN_DIR,
+    SELECTION_VARIANT,
     TRAIN_SIZE,
-    VALIDATION_VARIANT,
     VARIANTS,
 )
 from src.models.magellan import run_magellan as benchmark
@@ -12,12 +13,12 @@ from src.models.magellan import run_magellan as benchmark
 def main():
     train = (
         MAGELLAN_DIR
-        / f"preprocessed_{VALIDATION_VARIANT}_train_{TRAIN_SIZE}"
+        / f"preprocessed_{SELECTION_VARIANT}_train_{TRAIN_SIZE}"
         "_cross_magellan_pairs_formatted.csv"
     )
     valid = (
         MAGELLAN_DIR
-        / f"preprocessed_{VALIDATION_VARIANT}_valid_{TRAIN_SIZE}"
+        / f"preprocessed_{SELECTION_VARIANT}_valid_{TRAIN_SIZE}"
         "_cross_magellan_pairs_formatted.csv"
     )
     benchmark.RESULT_ROOT = "results/generated/cross_language/magellan"
@@ -33,7 +34,7 @@ def main():
             str(test),
             [["brand", "name", "desc", "price"]],
             benchmark.classifiers,
-            "de_train_000un_valid_test_050un",
+            EXPERIMENT_NAME,
             write_test_set_for_inspection=False,
         )
 

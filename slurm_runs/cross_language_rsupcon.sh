@@ -9,7 +9,10 @@
 #SBATCH --error=slurm_runs/logs/cross_rsupcon_%j.err
 
 set -euo pipefail
-cd "$(dirname "${BASH_SOURCE[0]}")/.."
+# sbatch runs a copy of this file out of /var/spool/slurmd, so BASH_SOURCE does
+# not point into the repository; SLURM_SUBMIT_DIR does.
+cd "${SLURM_SUBMIT_DIR:-$(dirname "${BASH_SOURCE[0]}")/..}"
+source slurm_runs/cross_language_protocol.sh
 
 pretrain_dir="results/generated/cross_language/r-supcon/pretrain/products80cc20rnd000un-large"
 if [[ ! -f "$pretrain_dir/model.safetensors" ]]; then
@@ -36,22 +39,33 @@ if [[ ! -f "$pretrain_dir/model.safetensors" ]]; then
     --augment=all
 fi
 
+python -u -m src.cross_language.provenance \
+  --output-dir "results/generated/cross_language/r-supcon" \
+  --model r-supcon \
+  --backbone "$BACKBONE" \
+  --validation-file "$SELECTION_VALIDATION_PKL" \
+  --train-file "$TRAIN_PKL" \
+  --seeds "0,1,2" \
+  --batch-size "$RSUPCON_TRAIN_BATCH_SIZE"
+
+# run_finetune_siamese.py loops seeds 0, 1, 2 internally and appends the seed
+# to --output_dir.
 python -u src/models/r-supCon/run_finetune_siamese.py \
   --model_pretrained_checkpoint "$pretrain_dir" \
   --do_train \
   --do_eval \
   --do_predict \
   --frozen=False \
-  --train_file "data/processed/training-sets/preprocessed_products80cc20rnd000un_train_large.pkl.gz" \
+  --train_file "$TRAIN_PKL" \
   --train_size=large \
-  --validation_file "data/processed_cross_language/validation-sets/preprocessed_products80cc20rnd050un_valid_large.pkl.gz" \
-  --test_file "data/processed/gold-standards_adjusted/preprocessed_products80cc20rnd050un_gs.pkl.gz" \
-  --cross_language_test_dir "data/processed_cross_language/gold-standards_adjusted" \
+  --validation_file "$SELECTION_VALIDATION_PKL" \
+  --test_file "$TEST_PKL" \
+  --cross_language_test_dir "$CROSS_TEST_PAIR_DIR" \
   --evaluation_strategy=epoch \
   --tokenizer=roberta-base \
   --grad_checkpoint=True \
   --output_dir "results/generated/cross_language/r-supcon/80cc20-large/" \
-  --per_device_train_batch_size=64 \
+  --per_device_train_batch_size="$RSUPCON_TRAIN_BATCH_SIZE" \
   --learning_rate=5e-5 \
   --weight_decay=0.01 \
   --num_train_epochs=50 \
