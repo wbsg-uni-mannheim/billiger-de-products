@@ -270,7 +270,10 @@ def main():
                 f"(backbone={summary['backbone']}, "
                 f"validation_file={summary['validation_file']})"
             )
-        if not summary["validation_file"]:
+        # An empty validation_file is legitimate for a zero-shot matcher, so a
+        # missing record is detected through backbone, which provenance.json
+        # always sets.
+        if not summary["backbone"]:
             print(f"WARNING {label}: no provenance.json found for these results")
 
     run_counts = {}

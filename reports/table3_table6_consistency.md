@@ -340,6 +340,18 @@ finishes; until then `metrics.csv` / `summary.csv` cover only the jobs that have
 completed, and the summarizer prints a `WARNING` for any matcher whose language
 variants have unequal run counts.
 
+The extended summarizer was checked against the archived results, where it
+reproduces by itself exactly the defect that had to be reconstructed by hand:
+
+```
+$ python -m src.summarize_cross_language_results \
+    --input results/generated/cross_language_legacy_050un_valid --output ... --summary-output ...
+WARNING wordcooc/DecisionTree: run counts differ across language variants: {'de_de': 6, 'de_en': 3, 'en_de': 3, 'en_en': 3, 'random': 3}
+WARNING wordcooc/NaiveBayes:   run counts differ across language variants: {'de_de': 5, 'de_en': 3, 'en_de': 3, 'en_en': 3, 'random': 3}
+...
+WARNING ditto/-/de_de: no provenance.json found for these results
+```
+
 GPT-5.2 was **not** rerun: it is zero-shot, selects nothing, and its three
 repetitions per variant are already consistent. A `provenance.json` recording
 `backbone=gpt-5.2 (zero-shot)` and no validation file was written for it so its
