@@ -267,7 +267,7 @@ if __name__ == "__main__":
             # The serialized text has no pair_id; recover it from the pair file
             # that produced it, in the same row order.
             source = Path("data/processed_cross_language/gold-standards_adjusted") / (
-                f"preprocessed_{path.stem}.pkl.gz"
+                f"{path.stem}.pkl.gz"  # stem already starts with preprocessed_
             )
             if not source.exists():
                 raise FileNotFoundError(

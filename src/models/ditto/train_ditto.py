@@ -121,7 +121,7 @@ if __name__=="__main__":
             # The serialized text carries no pair_id; recover it from the pair
             # file that produced it so predictions can be rescored later.
             source = Path("data/processed_cross_language/gold-standards_adjusted") / (
-                f"preprocessed_{path.stem}.pkl.gz"
+                f"{path.stem}.pkl.gz"  # stem already starts with preprocessed_
             )
             if source.exists():
                 cross_language_pair_sources[variant] = str(source)
