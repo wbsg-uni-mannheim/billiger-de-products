@@ -425,15 +425,18 @@ def main():
                 trainer.log_metrics(f"predict_cross_{variant}", metrics)
                 trainer.save_metrics(f"predict_cross_{variant}", metrics)
                 # Per-pair layer so the cell can be rescored without retraining.
-                import numpy as _np, torch as _torch
-                _logits = _np.asarray(predict_results.predictions)
-                _probs = _torch.softmax(_torch.tensor(_logits), dim=1)[:, 1].numpy()
+                import numpy as _np
+                # R-SupCon's head emits one sigmoid score per pair and
+                # compute_metrics_bce thresholds it at 0.5; mirror that exactly
+                # so the dumped predictions reproduce the reported metrics.
+                _scores = _np.asarray(predict_results.predictions).reshape(-1)
+                _preds = (_scores >= 0.5).astype(int)
                 write_per_pair_predictions(
                     _os.path.join(training_args.output_dir, f"predictions_cross_{variant}.csv"),
                     cross_language_pair_sources[variant],
-                    _np.asarray(predict_results.label_ids).astype(int),
-                    _probs,
-                    _np.argmax(_logits, axis=1),
+                    _np.asarray(predict_results.label_ids).reshape(-1).astype(int),
+                    _scores,
+                    _preds,
                 )
     return results
 
