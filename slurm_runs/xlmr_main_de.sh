@@ -23,6 +23,12 @@ BACKBONE="xlm-roberta-base"
 CATEGORY="products80cc20rnd000un"
 SIZES="${SIZES:-small medium large}"
 BATCH_SIZE=32
+# XLM-R warms up more slowly than RoBERTa: with the shipped patience of 10 the
+# early-stopping counter (F1=0.0 is the initial "best") killed most seeds at
+# epoch 11 before they emitted a single true positive. 25 gives the backbone
+# room to start learning. NOTE: the RoBERTa grid this is compared against ran
+# at the default patience of 10, so XLM-R gets the larger epoch budget here.
+export EARLY_STOPPING_PATIENCE="${EARLY_STOPPING_PATIENCE:-25}"
 echo "[xlmr] python=$(command -v python) host=$(hostname) date=$(date) backbone=$BACKBONE"
 
 for size in $SIZES; do
