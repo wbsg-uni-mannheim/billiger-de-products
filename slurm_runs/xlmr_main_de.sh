@@ -17,6 +17,7 @@
 set -euo pipefail
 cd "${SLURM_SUBMIT_DIR:-$(dirname "${BASH_SOURCE[0]}")/..}"
 mkdir -p slurm_runs/logs
+source slurm_runs/env.sh
 
 BACKBONE="xlm-roberta-base"
 CATEGORY="products80cc20rnd000un"
