@@ -12,7 +12,7 @@ from src.cross_language import provenance
 from src.cross_language.common import VARIANTS
 
 
-MODEL_NAMES = ("wordcooc", "magellan", "roberta", "r-supcon", "ditto", "hiergat", "gpt")
+MODEL_NAMES = ("wordcooc", "magellan", "xlmr", "roberta", "r-supcon", "ditto", "hiergat", "gpt")
 
 # Protocol identity carried through from provenance.json to metrics.csv and
 # summary.csv.  Table 3 and Table 6 disagreed because the two experiments
