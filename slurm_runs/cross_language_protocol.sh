@@ -17,7 +17,9 @@ SELECTION_VARIANT="products80cc20rnd000un"
 TRAIN_VARIANT="products80cc20rnd000un"
 TRAIN_SIZE="large"
 BACKBONE="roberta-base"
-SEEDS="0 1 2"
+# Overridable so a single collapsed seed can be rerun without redoing the cell:
+#   SEEDS=0 sbatch slurm_runs/cross_language_ditto.sh
+SEEDS="${SEEDS:-0 1 2}"
 
 TRAIN_PKL="data/processed/training-sets/preprocessed_${TRAIN_VARIANT}_train_${TRAIN_SIZE}.pkl.gz"
 SELECTION_VALIDATION_PKL="data/processed/validation-sets/preprocessed_${SELECTION_VARIANT}_valid_${TRAIN_SIZE}.pkl.gz"
