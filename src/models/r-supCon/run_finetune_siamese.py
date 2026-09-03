@@ -308,11 +308,18 @@ def main():
     callback = EarlyStoppingCallback(early_stopping_patience=10)
 
     output_dir = deepcopy(training_args.output_dir)
-    for run in range(3):
+    # Seeds default to 0,1,2. RERUN_SEEDS lets one seed run per job so the grid
+    # can be fanned out, and re-seeding per run makes each seed reproducible on
+    # its own -- set_seed() is otherwise called once before this loop, which made
+    # run k depend on how much randomness runs 0..k-1 consumed.
+    _rerun_seeds = os.environ.get("RERUN_SEEDS")
+    _seeds = [int(v) for v in _rerun_seeds.split(",")] if _rerun_seeds else list(range(3))
+    for run in _seeds:
         init_args = {}
 
         training_args.save_total_limit = 1
         training_args.seed = run
+        set_seed(run)
         training_args.output_dir = f'{output_dir}{run}'
 
         # Detecting last checkpoint.
