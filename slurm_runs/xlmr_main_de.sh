@@ -23,6 +23,10 @@ BACKBONE="xlm-roberta-base"
 CATEGORY="products80cc20rnd000un"
 SIZES="${SIZES:-small medium large}"
 BATCH_SIZE=32
+# Optimizer settings. Defaults reproduce the shipped RoBERTa-parity run; override
+# LR/WARMUP to fine-tune XLM-R separately (it is unstable at 5e-5 on the smaller splits).
+LR="${LR:-5e-5}"
+WARMUP="${WARMUP:-0.05}"
 # XLM-R warms up more slowly than RoBERTa: with the shipped patience of 10 the
 # early-stopping counter (F1=0.0 is the initial "best") killed most seeds at
 # epoch 11 before they emitted a single true positive. 25 gives the backbone
@@ -32,7 +36,7 @@ export EARLY_STOPPING_PATIENCE="${EARLY_STOPPING_PATIENCE:-25}"
 echo "[xlmr] python=$(command -v python) host=$(hostname) date=$(date) backbone=$BACKBONE"
 
 for size in $SIZES; do
-  out="results/generated/xlmr/de/${CATEGORY}-${size}/"
+  out="${OUT_ROOT:-results/generated/xlmr}/de/${CATEGORY}-${size}/"
   python -u -m src.cross_language.provenance \
     --output-dir "$out" \
     --model xlmr \
@@ -55,11 +59,11 @@ for size in $SIZES; do
     --grad_checkpoint=True \
     --output_dir "$out" \
     --per_device_train_batch_size="$BATCH_SIZE" \
-    --learning_rate=5e-5 \
+    --learning_rate="$LR" \
     --weight_decay=0.01 \
     --num_train_epochs=50 \
     --lr_scheduler_type=linear \
-    --warmup_ratio=0.05 \
+    --warmup_ratio="$WARMUP" \
     --max_grad_norm=1.0 \
     --fp16 \
     --metric_for_best_model=f1 \

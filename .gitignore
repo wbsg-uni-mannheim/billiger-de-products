@@ -261,3 +261,11 @@ results/generated/**/training_args.bin
 results/generated/**/optimizer.pt
 results/generated/**/scheduler.pt
 results/generated/**/rng_state.pth
+
+# XLM-R baseline (main grid + cross-language, and the archived lr=5e-5 runs):
+# same rule as the other result trees -- keep metrics, provenance and per-pair
+# predictions, never the checkpoints, tensorboard logs or serialised args.
+results/generated/xlmr/**/checkpoint-*/
+results/generated/xlmr_lr5e-5/**/checkpoint-*/
+results/generated/xlmr_lr5e-5_cross_language/**/checkpoint-*/
+results/generated/**/runs/

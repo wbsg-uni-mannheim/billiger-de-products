@@ -1,0 +1,10 @@
+{
+  "backbone": "xlm-roberta-base",
+  "batch_size": "32",
+  "model": "xlmr",
+  "seeds": "6",
+  "train_file": "data/processed/training-sets/preprocessed_products80cc20rnd000un_train_medium.pkl.gz",
+  "validation_file": "data/processed/validation-sets/preprocessed_products80cc20rnd000un_valid_medium.pkl.gz",
+  "validation_rows": 3455,
+  "validation_sha256": "f7ea5b1e2d25e9c1e18ae75da68e3be10dc72f87deec25348bae08ca0d2f3d36"
+}

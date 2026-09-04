@@ -19,9 +19,11 @@ mkdir -p slurm_runs/logs
 source slurm_runs/cross_language_protocol.sh
 XLMR_BACKBONE="xlm-roberta-base"
 XLMR_TRAIN_BATCH_SIZE="$ROBERTA_TRAIN_BATCH_SIZE"
+LR="${LR:-5e-5}"
+WARMUP="${WARMUP:-0.05}"
 
 python -u -m src.cross_language.provenance \
-  --output-dir "results/generated/cross_language/xlmr" \
+  --output-dir "${OUT_ROOT:-results/generated/cross_language/xlmr}" \
   --model xlmr \
   --backbone "$XLMR_BACKBONE" \
   --validation-file "$SELECTION_VALIDATION_PKL" \
@@ -41,13 +43,13 @@ python -u src/models/transformer_bert_confidence/run_finetune_baseline.py \
   --evaluation_strategy=epoch \
   --tokenizer="$XLMR_BACKBONE" \
   --grad_checkpoint=True \
-  --output_dir "results/generated/cross_language/xlmr/80cc20-large/" \
+  --output_dir "${OUT_ROOT:-results/generated/cross_language/xlmr}/80cc20-large/" \
   --per_device_train_batch_size="$XLMR_TRAIN_BATCH_SIZE" \
-  --learning_rate=5e-5 \
+  --learning_rate="$LR" \
   --weight_decay=0.01 \
   --num_train_epochs=50 \
   --lr_scheduler_type=linear \
-  --warmup_ratio=0.05 \
+  --warmup_ratio="$WARMUP" \
   --max_grad_norm=1.0 \
   --fp16 \
   --metric_for_best_model=f1 \
