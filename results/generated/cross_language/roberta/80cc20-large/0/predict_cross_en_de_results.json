@@ -1,11 +1,11 @@
 {
-    "predict_cross_en_de_accuracy": 0.899481631733153,
-    "predict_cross_en_de_f1": 0.5411522633744856,
-    "predict_cross_en_de_loss": 0.3537754416465759,
-    "predict_cross_en_de_precision": 0.43044189852700493,
-    "predict_cross_en_de_recall": 0.7285318559556787,
-    "predict_cross_en_de_runtime": 10.25,
+    "predict_cross_en_de_accuracy": 0.8636466080685148,
+    "predict_cross_en_de_f1": 0.4868532654792197,
+    "predict_cross_en_de_loss": 0.44684019684791565,
+    "predict_cross_en_de_precision": 0.3508557457212714,
+    "predict_cross_en_de_recall": 0.7950138504155124,
+    "predict_cross_en_de_runtime": 10.2716,
     "predict_cross_en_de_samples": 4437,
-    "predict_cross_en_de_samples_per_second": 432.878,
-    "predict_cross_en_de_steps_per_second": 54.146
+    "predict_cross_en_de_samples_per_second": 431.967,
+    "predict_cross_en_de_steps_per_second": 54.032
 }

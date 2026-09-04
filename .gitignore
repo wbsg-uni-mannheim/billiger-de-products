@@ -250,3 +250,14 @@ results/generated/roberta_bs32_full/**/runs/
 results/generated/roberta_bs32_full/**/model.safetensors
 results/generated/roberta_bs32_full/**/training_args.bin
 results/generated/roberta_bs32_full/**/config.json
+
+# Block 1/2 reruns: keep metrics, provenance and per-pair predictions; never the
+# checkpoints, optimiser state or tensorboard logs (176 GB across these trees).
+results/generated/cross_language/**/checkpoint-*/
+results/generated/main_grid/**/checkpoint-*/
+results/generated/**/tblogs_*/
+results/generated/**/*.safetensors
+results/generated/**/training_args.bin
+results/generated/**/optimizer.pt
+results/generated/**/scheduler.pt
+results/generated/**/rng_state.pth

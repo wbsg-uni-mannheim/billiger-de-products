@@ -1,11 +1,11 @@
 {
     "predict_cross_de_en_accuracy": 0.8494478251070543,
     "predict_cross_de_en_f1": 0.4577922077922078,
-    "predict_cross_de_en_loss": 0.7609871625900269,
+    "predict_cross_de_en_loss": 0.7609872221946716,
     "predict_cross_de_en_precision": 0.3237657864523536,
     "predict_cross_de_en_recall": 0.7811634349030471,
-    "predict_cross_de_en_runtime": 12.472,
+    "predict_cross_de_en_runtime": 23.2564,
     "predict_cross_de_en_samples": 4437,
-    "predict_cross_de_en_samples_per_second": 355.757,
-    "predict_cross_de_en_steps_per_second": 44.5
+    "predict_cross_de_en_samples_per_second": 190.786,
+    "predict_cross_de_en_steps_per_second": 23.864
 }

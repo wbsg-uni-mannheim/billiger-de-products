@@ -4,8 +4,8 @@
     "predict_loss": 0.6094937920570374,
     "predict_precision": 0.44505494505494503,
     "predict_recall": 0.8975069252077562,
-    "predict_runtime": 10.4601,
+    "predict_runtime": 10.3795,
     "predict_samples": 4437,
-    "predict_samples_per_second": 424.184,
-    "predict_steps_per_second": 53.059
+    "predict_samples_per_second": 427.478,
+    "predict_steps_per_second": 53.471
 }

@@ -4,8 +4,8 @@
     "predict_cross_random_loss": 1.018410325050354,
     "predict_cross_random_precision": 0.2929389312977099,
     "predict_cross_random_recall": 0.850415512465374,
-    "predict_cross_random_runtime": 11.5999,
+    "predict_cross_random_runtime": 23.1554,
     "predict_cross_random_samples": 4437,
-    "predict_cross_random_samples_per_second": 382.503,
-    "predict_cross_random_steps_per_second": 47.845
+    "predict_cross_random_samples_per_second": 191.618,
+    "predict_cross_random_steps_per_second": 23.968
 }

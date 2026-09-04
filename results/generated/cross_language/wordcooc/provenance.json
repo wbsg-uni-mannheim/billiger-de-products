@@ -6,5 +6,5 @@
   "train_file": "data/processed_cross_language/wordcooc/preprocessed_products80cc20rnd000un_train_large_wordcooc.pkl.gz",
   "validation_file": "data/processed_cross_language/wordcooc/preprocessed_products80cc20rnd000un_valid_large_wordcooc.pkl.gz",
   "validation_rows": 4452,
-  "validation_sha256": "22d7ba7225323960dfef9fc9d9159f8987901c8f67ee84f1497681a7069acbc5"
+  "validation_sha256": "5eb2144d5a22e173709fd4151f1a609cb22f4d091960e344bfdc123ae9140223"
 }

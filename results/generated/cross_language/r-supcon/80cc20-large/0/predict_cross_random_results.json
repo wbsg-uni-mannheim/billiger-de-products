@@ -1,11 +1,11 @@
 {
-    "predict_cross_random_accuracy": 0.8526031102096011,
-    "predict_cross_random_f1": 0.470873786407767,
-    "predict_cross_random_loss": 0.6887708902359009,
-    "predict_cross_random_precision": 0.3325714285714286,
-    "predict_cross_random_recall": 0.8060941828254847,
-    "predict_cross_random_runtime": 11.7488,
+    "predict_cross_random_accuracy": 0.8329952670723462,
+    "predict_cross_random_f1": 0.4482501861504095,
+    "predict_cross_random_loss": 0.8359072208404541,
+    "predict_cross_random_precision": 0.3065173116089613,
+    "predict_cross_random_recall": 0.8337950138504155,
+    "predict_cross_random_runtime": 23.7019,
     "predict_cross_random_samples": 4437,
-    "predict_cross_random_samples_per_second": 377.656,
-    "predict_cross_random_steps_per_second": 47.239
+    "predict_cross_random_samples_per_second": 187.2,
+    "predict_cross_random_steps_per_second": 23.416
 }

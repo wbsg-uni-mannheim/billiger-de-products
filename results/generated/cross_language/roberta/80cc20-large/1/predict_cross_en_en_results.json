@@ -4,8 +4,8 @@
     "predict_cross_en_en_loss": 0.6675912737846375,
     "predict_cross_en_en_precision": 0.416988416988417,
     "predict_cross_en_en_recall": 0.8975069252077562,
-    "predict_cross_en_en_runtime": 9.6757,
+    "predict_cross_en_en_runtime": 9.6251,
     "predict_cross_en_en_samples": 4437,
-    "predict_cross_en_en_samples_per_second": 458.572,
-    "predict_cross_en_en_steps_per_second": 57.36
+    "predict_cross_en_en_samples_per_second": 460.982,
+    "predict_cross_en_en_steps_per_second": 57.662
 }
