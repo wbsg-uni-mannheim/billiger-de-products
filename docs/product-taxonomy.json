@@ -1,0 +1,30 @@
+{
+  "name": "Billiger.de Products top-level product taxonomy",
+  "description": "The thirteen categories used for category-level benchmark analysis, with the German labels in the analysis artifacts and their English equivalents in the paper.",
+  "label_sources": [
+    "data_analysis/category_summary.csv",
+    "Paper section: Product Categories"
+  ],
+  "assignment_procedure": {
+    "source": "Procedure documented in the paper",
+    "input": "Retailer-provided category paths",
+    "first_stage": "Rule-based keyword mapping over normalized category paths",
+    "remaining_cases": "GPT-5-mini classification into the same fixed category vocabulary",
+    "scope": "This file documents the category vocabulary. It does not contain the original keyword rules or the per-offer assignments."
+  },
+  "categories": [
+    {"de": "Kleidung & Accessoires", "en": "Clothing & Accessories"},
+    {"de": "Möbel & Wohnen", "en": "Furniture & Living"},
+    {"de": "Elektronik & Computer", "en": "Electronics & Computers"},
+    {"de": "Werkzeug & Baumarkt", "en": "Tools & DIY"},
+    {"de": "Sport & Freizeit", "en": "Sports & Leisure"},
+    {"de": "Spielzeug & Baby", "en": "Toys & Baby"},
+    {"de": "Auto & Motorrad", "en": "Automotive & Motorcycle"},
+    {"de": "Kosmetik & Drogerie", "en": "Cosmetics & Drugstore"},
+    {"de": "Gesundheit & Pflege", "en": "Health & Care"},
+    {"de": "Bürobedarf", "en": "Office Supplies"},
+    {"de": "Lebensmittel & Getränke", "en": "Food & Beverages"},
+    {"de": "Bücher, Filme & Musik", "en": "Books, Films & Music"},
+    {"de": "Haustier & Tierbedarf", "en": "Pet Supplies"}
+  ]
+}
