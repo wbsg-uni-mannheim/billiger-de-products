@@ -1,0 +1,17 @@
+{
+  "files": 90,
+  "frozen_files_byte_identical": 42,
+  "split_checks_passed": 18,
+  "open_labels": 0,
+  "duplicate_pairs": 0,
+  "self_pairs": 0,
+  "global_label_conflicts": 0,
+  "de_en_aligned": true,
+  "offer_and_product_sets_preserved": true,
+  "replacements_verified": 49,
+  "spotcheck_sample_still_negative": 100,
+  "replacement_labels": {
+    "1": 18,
+    "0": 31
+  }
+}

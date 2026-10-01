@@ -10,6 +10,9 @@ import sklearn.metrics as metrics
 import argparse
 
 from .dataset import DittoDataset
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.abspath(_os.path.join(_os.path.dirname(__file__), '..', '..', '..', '..')))
+from src.cross_language.predictions import write_per_pair_predictions
 from torch.utils import data
 from transformers import AutoModel, AdamW, get_linear_schedule_with_warmup
 from tensorboardX import SummaryWriter
@@ -190,6 +193,8 @@ def train(
     hp,
     path,
     extra_testsets=None,
+    extra_pair_sources=None,
+    main_pair_sources=None,
 ):
     """Train and evaluate the model
 
@@ -272,7 +277,8 @@ def train(
     # logging with tensorboardX
     writer = SummaryWriter(log_dir=hp.logdir)
 
-    best_dev_f1 = best_test_f1 = best_test_f1_050 = best_test_f1_100 = 0.0
+    best_dev_f1 = -1.0
+    best_test_f1 = best_test_f1_050 = best_test_f1_100 = 0.0
     best_extra_metrics = {
         name: {"precision": 0.0, "recall": 0.0, "f1": 0.0}
         for name in extra_test_iters
@@ -317,6 +323,17 @@ def train(
                     ),
                     "f1": f1,
                 }
+                # Aggregate F1 alone cannot be rescored if the labels turn out to
+                # be wrong, so persist the per-pair layer keyed by pair_id.
+                source = (extra_pair_sources or {}).get(name)
+                if source:
+                    write_per_pair_predictions(
+                        _os.path.join(hp.output_dir, f"{run_tag}_cross_{name}_predictions.csv"),
+                        source,
+                        predictions["labels"],
+                        predictions["probs"],
+                        predictions["preds"],
+                    )
             
             if hp.save_model:
                 # create the directory if not exist
@@ -329,8 +346,10 @@ def train(
                 ckpt = {'model': model.state_dict(),
                         'optimizer': optimizer.state_dict(),
                         'scheduler': scheduler.state_dict(),
-                        'epoch': epoch}
-                torch.save(ckpt, ckpt_path)
+                        'epoch': epoch, 'threshold': th,
+                        'validation_f1': dev_f1, 'args': vars(hp)}
+                torch.save(ckpt, ckpt_path + '.tmp')
+                os.replace(ckpt_path + '.tmp', ckpt_path)
 
         print(f"epoch {epoch}: dev_f1={dev_f1}, f1={test_f1}, best_f1={best_test_f1}")
 
@@ -349,5 +368,19 @@ def train(
             result[f"best_{metric}_cross_{name}"] = value
     with open(output_file, "w") as f:
         f.write(repr(result) + '\n')
+
+    # Per-pair predictions for the three main-grid test conditions, keyed by
+    # pair_id, so a cell can be rescored against corrected labels without
+    # retraining. main_pair_sources maps 000un/050un/100un to the pair file that
+    # produced the serialized text, in the same row order.
+    for _cond, _preds in (("000un", best_test_preds),
+                          ("050un", best_test_preds_050),
+                          ("100un", best_test_preds_100)):
+        _src = (main_pair_sources or {}).get(_cond)
+        if _src and _preds:
+            write_per_pair_predictions(
+                _os.path.join(hp.output_dir, f"{run_tag}_{_cond}_predictions.csv"),
+                _src, _preds["labels"], _preds["probs"], _preds["preds"],
+            )
 
     writer.close()

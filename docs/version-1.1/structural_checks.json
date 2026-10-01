@@ -1,0 +1,174 @@
+{
+  "de": {
+    "split_checks": [
+      {
+        "family": "20cc80",
+        "left": "training-sets",
+        "right": "validation-sets",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "20cc80",
+        "left": "training-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "20cc80",
+        "left": "validation-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "50cc50",
+        "left": "training-sets",
+        "right": "validation-sets",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "50cc50",
+        "left": "training-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "50cc50",
+        "left": "validation-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "80cc20",
+        "left": "training-sets",
+        "right": "validation-sets",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "80cc20",
+        "left": "training-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "80cc20",
+        "left": "validation-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      }
+    ],
+    "global_label_conflicts": []
+  },
+  "en": {
+    "split_checks": [
+      {
+        "family": "20cc80",
+        "left": "training-sets",
+        "right": "validation-sets",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "20cc80",
+        "left": "training-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "20cc80",
+        "left": "validation-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "50cc50",
+        "left": "training-sets",
+        "right": "validation-sets",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "50cc50",
+        "left": "training-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "50cc50",
+        "left": "validation-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "80cc20",
+        "left": "training-sets",
+        "right": "validation-sets",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "80cc20",
+        "left": "training-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      },
+      {
+        "family": "80cc20",
+        "left": "validation-sets",
+        "right": "gold-standards_adjusted",
+        "shared_offers": 0,
+        "offer_ids": [],
+        "shared_pairs": 0,
+        "pair_ids": []
+      }
+    ],
+    "global_label_conflicts": []
+  }
+}

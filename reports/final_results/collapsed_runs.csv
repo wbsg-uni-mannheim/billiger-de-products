@@ -1,0 +1,11 @@
+model,table,language,cc,size,seed,validation_f1,all_positive_validation_f1,action
+ditto,cross_language,de,80,large,0,0.1965,0.1965,replaced by seed 3 (validation F1 0.818)
+ditto,main_grid,de,80,large,0,0.2597,0.1965,excluded
+ditto,main_grid,de,80,medium,0,0.2474,0.2462,excluded
+ditto,main_grid,en,20,large,2,0.1977,0.1977,replaced by seed 3 (validation F1 0.941)
+ditto,main_grid,en,50,large,0,0.1944,0.1944,replaced by seed 3 (validation F1 0.905)
+ditto,main_grid,en,50,small,1,0.3254,0.3254,replaced by seed 3 (validation F1 0.866)
+hiergat,main_grid,de,50,small,2,0.3358,0.3254,excluded
+hiergat,main_grid,de,80,small,1,0.2049,0.3283,excluded
+hiergat,main_grid,de,80,small,2,0.3775,0.3283,excluded
+hiergat,main_grid,en,80,small,2,0.0,0.3283,replaced by seed 3 (validation F1 0.669)

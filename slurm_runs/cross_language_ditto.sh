@@ -9,21 +9,37 @@
 #SBATCH --error=slurm_runs/logs/cross_ditto_%j.err
 
 set -euo pipefail
-cd "$(dirname "${BASH_SOURCE[0]}")/.."
+# sbatch runs a copy of this file out of /var/spool/slurmd, so BASH_SOURCE does
+# not point into the repository; SLURM_SUBMIT_DIR does.
+cd "${SLURM_SUBMIT_DIR:-$(dirname "${BASH_SOURCE[0]}")/..}"
+source slurm_runs/cross_language_protocol.sh
 
-for seed in 0 1 2; do
+python -u -m src.cross_language.provenance \
+  --output-dir "results/generated/cross_language/ditto" \
+  --model ditto \
+  --backbone "$BACKBONE" \
+  --validation-file "$SELECTION_VALIDATION_DITTO" \
+  --train-file "data/processed/ditto/data/final_output/preprocessed_${TRAIN_VARIANT}_train_${TRAIN_SIZE}.txt" \
+  --seeds "0,1,2" \
+  --batch-size "$DITTO_TRAIN_BATCH_SIZE"
+
+# Seeds 0, 1 and 2, all of them reported. A collapsed seed is a result, not a
+# reason to roll another one: the published Ditto cell of the main table is the
+# mean over run_ids 0, 3 and 4 because seeds 1 and 2 collapsed, which is why
+# that cell cannot be reproduced from the documented seed set.
+for seed in $SEEDS; do
   python -u src/models/ditto/train_ditto.py \
     --task final_large_80cc20rnd000un \
     --logdir src/models/ditto/results/ \
     --run_id "$seed" \
-    --batch_size 64 \
+    --batch_size "$DITTO_TRAIN_BATCH_SIZE" \
     --max_len 256 \
     --lr 5e-5 \
     --n_epochs 50 \
     --finetuning \
     --lm roberta \
     --da del \
-    --validation_file "data/processed_cross_language/ditto/data/final_output/preprocessed_products80cc20rnd050un_valid_large.txt" \
-    --cross_language_test_dir "data/processed_cross_language/ditto/data/final_output" \
+    --validation_file "$SELECTION_VALIDATION_DITTO" \
+    --cross_language_test_dir "$CROSS_TEST_DITTO_DIR" \
     --output_dir "results/generated/cross_language/ditto"
 done

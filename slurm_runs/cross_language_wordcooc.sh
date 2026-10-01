@@ -8,6 +8,18 @@
 #SBATCH --error=slurm_runs/logs/cross_wordcooc_%j.err
 
 set -euo pipefail
-cd "$(dirname "${BASH_SOURCE[0]}")/.."
+# sbatch runs a copy of this file out of /var/spool/slurmd, so BASH_SOURCE does
+# not point into the repository; SLURM_SUBMIT_DIR does.
+cd "${SLURM_SUBMIT_DIR:-$(dirname "${BASH_SOURCE[0]}")/..}"
+source slurm_runs/cross_language_protocol.sh
+
+python -u -m src.cross_language.provenance \
+  --output-dir "results/generated/cross_language/wordcooc" \
+  --model wordcooc \
+  --backbone "n/a (binary word co-occurrence features)" \
+  --validation-file "$SELECTION_VALIDATION_WORDCOOC" \
+  --train-file "$TRAIN_WORDCOOC" \
+  --seeds "1,2,3" \
+  --batch-size "n/a"
 
 python -u -m src.models.wordcooc.run_cross_language

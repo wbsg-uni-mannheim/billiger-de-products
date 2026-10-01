@@ -19,6 +19,9 @@ from torch.optim import AdamW
 from transformers import get_linear_schedule_with_warmup
 
 import time
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.abspath(_os.path.join(_os.path.dirname(__file__), '..', '..', '..')))
+from src.cross_language.predictions import write_per_pair_predictions
 
 import sys
 import random
@@ -62,6 +65,8 @@ def initialize_and_train(
     args,
     run_tag,
     extra_testsets=None,
+    extra_pair_sources=None,
+    main_pair_sources=None,
 ):
     padder = Dataset.pad
     valid_iter = data.DataLoader(dataset=validset, batch_size=args.batch_size,
@@ -112,6 +117,15 @@ def initialize_and_train(
         os.makedirs(args.logdir)
     writer = SummaryWriter(log_dir=args.logdir)
 
+    def save_selected(epoch_number, score):
+        if args.save_model:
+            checkpoint_dir = Path(args.logdir) / run_tag
+            checkpoint_dir.mkdir(parents=True, exist_ok=True)
+            temporary = checkpoint_dir / 'model.pt.tmp'
+            torch.save({'model': model.state_dict(), 'epoch': epoch_number,
+                        'validation_f1': score, 'args': vars(args)}, temporary)
+            os.replace(temporary, checkpoint_dir / 'model.pt')
+
     # start training
     best_dev_f1 = best_test_f1 = best_test_f1_050 = best_test_f1_100 = 0.0
     epoch = 1
@@ -133,11 +147,17 @@ def initialize_and_train(
         dev_f1, test_f1, test_preds, test_f1_050, test_preds_050, test_f1_100, test_preds_100 = eval_on_task(epoch, model, valid_iter, test_iter, test_iter050, test_iter100,
                                        writer, run_tag, return_preds=True)
 
+        # A collapsed seed is still a result and must have recoverable weights.
+        if best_test_preds is None and dev_f1 <= 1e-6:
+            save_selected(epoch, dev_f1)
+            best_test_preds, best_test_preds_050, best_test_preds_100 = test_preds, test_preds_050, test_preds_100
+            best_test_f1, best_test_f1_050, best_test_f1_100 = test_f1, test_f1_050, test_f1_100
         if dev_f1 > 1e-6:
             epoch += 1
 
             if dev_f1 > best_dev_f1:
                 best_dev_f1 = dev_f1
+                save_selected(epoch - 1, dev_f1)
                 best_test_f1 = test_f1
                 best_test_preds = test_preds
                 best_test_f1_050 = test_f1_050
@@ -145,12 +165,25 @@ def initialize_and_train(
                 best_test_f1_100 = test_f1_100
                 best_test_preds_100 = test_preds_100
                 for name, iterator in extra_test_iters.items():
-                    _, precision, recall, f1, _ = eval_classifier(model, iterator)
+                    _, precision, recall, f1, _, preds = eval_classifier(
+                        model, iterator, return_preds=True
+                    )
                     best_extra_metrics[name] = {
                         "precision": precision,
                         "recall": recall,
                         "f1": f1,
                     }
+                    # Persist the per-pair layer so the cell can be rescored
+                    # against corrected labels without retraining.
+                    source = (extra_pair_sources or {}).get(name)
+                    if source:
+                        write_per_pair_predictions(
+                            _os.path.join(args.output_dir, f"{run_tag}_cross_{name}_predictions.csv"),
+                            source,
+                            preds["labels"],
+                            None,
+                            preds["preds"],
+                        )
 
             print("current_best_test_f1: " + str(best_test_f1) + ", current_best_test_f1_050: " + str(best_test_f1_050) + ", current_best_test_f1_100: " + str(best_test_f1_100))
 
@@ -177,6 +210,19 @@ def initialize_and_train(
             result[f"best_test_{metric}_cross_{name}"] = value
     with open(os.path.join(args.output_dir, f'{run_tag}.txt'), "w") as f:
         f.write(repr(result) + '\n')
+
+    # Per-pair predictions for the three main-grid test conditions, keyed by
+    # pair_id, so a cell can be rescored without retraining. HierGAT's evaluator
+    # returns hard predictions only, hence no probability column.
+    for _cond, _preds in (("000un", best_test_preds),
+                          ("050un", best_test_preds_050),
+                          ("100un", best_test_preds_100)):
+        _src = (main_pair_sources or {}).get(_cond)
+        if _src and _preds:
+            write_per_pair_predictions(
+                _os.path.join(args.output_dir, f"{run_tag}_{_cond}_predictions.csv"),
+                _src, _preds["labels"], None, _preds["preds"],
+            )
     writer.close()
 
 
@@ -194,10 +240,14 @@ if __name__ == "__main__":
     parser.add_argument("--lm_path", type=str, default=None)
     parser.add_argument("--output_dir", default="results/generated/hiergat/de")
     parser.add_argument("--split", dest="split", action="store_true")
-    parser.add_argument("--lm", type=str, default='bert')
+    # roberta-base is the backbone for every reported Ditto/HierGAT number in
+    # both the main grid (all_runs*.py) and the cross-language runs; the old
+    # 'bert' default was never used and only made a silent mismatch possible.
+    parser.add_argument("--lm", type=str, default='roberta')
     parser.add_argument("--cross_language_test_dir", type=str, default=None)
     parser.add_argument("--validation_file", type=str, default=None)
 
+    parser.add_argument('--config_file', default='src/models/hiergat/task.json')
     args = parser.parse_args()
 
     # only a single task for baseline
@@ -208,7 +258,7 @@ if __name__ == "__main__":
     run_tag = run_tag.replace('/', '_')
 
     # load task configuration
-    configs = json.load(open('src/models/hiergat/task.json'))
+    configs = json.load(open(args.config_file))
     configs = {conf['name']: conf for conf in configs}
     config = configs[task]
 
@@ -229,6 +279,7 @@ if __name__ == "__main__":
     test_dataset050 = Dataset(testset050, category, lm=args.lm, lm_path=args.lm_path, split=args.split)
     test_dataset100 = Dataset(testset100, category, lm=args.lm, lm_path=args.lm_path, split=args.split)
     cross_language_datasets = {}
+    cross_language_pair_sources = {}
     if args.cross_language_test_dir:
         for path in sorted(Path(args.cross_language_test_dir).glob("*_gs_*.txt")):
             variant = next(
@@ -243,6 +294,23 @@ if __name__ == "__main__":
                 lm_path=args.lm_path,
                 split=args.split,
             )
+            # The serialized text has no pair_id; recover it from the pair file
+            # that produced it, in the same row order.
+            source = Path("data/processed_cross_language/gold-standards_adjusted") / (
+                f"{path.stem}.pkl.gz"  # stem already starts with preprocessed_
+            )
+            if not source.exists():
+                raise FileNotFoundError(
+                    f"No pair file with pair_id for cross-language variant {variant}: {source}"
+                )
+            cross_language_pair_sources[variant] = str(source)
+
+    main_pair_sources = {}
+    for _cond, _txt in (("000un", testset), ("050un", testset050), ("100un", testset100)):
+        _p = Path(_txt)
+        _src = _p.parent.parent.parent.parent / "gold-standards_adjusted" / f"{_p.stem}.pkl.gz"
+        if _src.exists():
+            main_pair_sources[_cond] = str(_src)
 
     initialize_and_train(
         trainset=train_dataset,
@@ -254,4 +322,6 @@ if __name__ == "__main__":
         args=args,
         run_tag=run_tag,
         extra_testsets=cross_language_datasets,
+        extra_pair_sources=cross_language_pair_sources,
+        main_pair_sources=main_pair_sources,
     )

@@ -1,2 +1,0 @@
-F1 Score: 0.8180677540777918
-Wrongly matched by GPT: 145

@@ -7,6 +7,9 @@
 #SBATCH --partition=gpu-vram-48gb
 
 set -euo pipefail
+# Reported results: batch size 32, seeds 0, 1, 2 (set RERUN_SEEDS=3 to rerun a single seed).
+# The originally shipped batch size of 1024 leaves about three optimizer steps per epoch on
+# the small training sets and lets early stopping end runs before they learn.
 cd "$(dirname "${BASH_SOURCE[0]}")/../../.."
 
 for category in products20cc80rnd000un products50cc50rnd000un products80cc20rnd000un; do
@@ -23,7 +26,7 @@ for category in products20cc80rnd000un products50cc50rnd000un products80cc20rnd0
       --tokenizer=roberta-base \
       --grad_checkpoint=True \
       --output_dir "results/generated/roberta/de/${category}-${size}/" \
-      --per_device_train_batch_size=1024 \
+      --per_device_train_batch_size=32 \
       --learning_rate=5e-5 \
       --weight_decay=0.01 \
       --num_train_epochs=50 \

@@ -1,5 +1,8 @@
 import glob
 import os
+import sys as _sys
+_sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..')))
+from src.cross_language.predictions import write_per_pair_predictions
 import random
 import time
 
@@ -14,6 +17,17 @@ from sklearn.model_selection import PredefinedSplit, RandomizedSearchCV
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier
+
+# run_wordcooc.py / run_magellan.py are launched both as scripts (REPRODUCTION.md)
+# and as modules (the cross-language runners), so the repository root is not
+# always on sys.path.
+if __package__ in (None, ""):
+    import sys
+    sys.path.insert(
+        0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+    )
+
+from src.models.report_lock import acquire_report_lock, release_report_lock
 
 np.random.seed(42)
 random.seed(42)
@@ -74,9 +88,11 @@ def run_magellan(train_set, valid_set, test_set, feature_combinations, classifie
 
     report_dir = os.path.join(RESULT_ROOT, experiment_name)
     os.makedirs(report_dir, exist_ok=True)
+    report_path = os.path.join(
+        report_dir, f'{report_train_name}_{report_test_name}.csv')
+    report_lock_handle = acquire_report_lock(report_path)
 
-    with open(f'{report_dir}/{report_train_name}_{report_test_name}.csv',
-              "w") as f:
+    with open(report_path, "w") as f:
         f.write(
             'feature#####model#####mean_train_score#####std_train_score#####mean_valid_score#####std_valid_score#####precision_test#####recall_test#####f1_test#####best_params#####train_time#####prediction_time#####feature_importance#####experiment_name#####train_set#####test_set\n')
 
@@ -276,6 +292,16 @@ def run_magellan(train_set, valid_set, test_set, feature_combinations, classifie
 
                 start = time.time()
                 preds_gs = model.predict(feats_gs)
+                # Per-pair predictions keyed by pair_id for later rescoring.
+                try:
+                    _scores = model.predict_proba(feats_gs)[:, 1]
+                except Exception:
+                    _scores = None
+                _pred_dir = os.path.join(RESULT_ROOT, 'predictions')
+                _pred_name = (os.path.basename(test_set).replace('.csv', '')
+                              + f'_{k}_run{run}.csv')
+                write_per_pair_predictions(os.path.join(_pred_dir, _pred_name), test_set,
+                                           labels_gs, _scores, preds_gs)
 
                 end = time.time()
 
@@ -303,7 +329,7 @@ def run_magellan(train_set, valid_set, test_set, feature_combinations, classifie
                     test_inspection_df['Class Prob'] = proba_gs
                     test_inspection_df.to_pickle(out_path + file_name, compression='gzip')
 
-                with open(f'{report_dir}/{report_train_name}_{report_test_name}.csv', "a") as f:
+                with open(report_path, "a") as f:
                     f.write(feature_report + '#####' + k + '#####' + str(
                         scores['mean_train_score']) + '#####' + str(scores['std_train_score'])
                             + '#####' + str(scores['mean_test_score']) + '#####' + str(
@@ -312,6 +338,8 @@ def run_magellan(train_set, valid_set, test_set, feature_combinations, classifie
                             + '#####' + str(parameters) + '#####' + str(train_time) + '#####' + str(pred_time)
                             + '#####' + str(word_importance[
                                             0:100]) + '#####' + experiment_name + '#####' + report_train_name + '#####' + report_test_name + '\n')
+
+    release_report_lock(report_lock_handle)
 
 if __name__ == '__main__':
     import argparse

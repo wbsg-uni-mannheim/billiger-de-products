@@ -28,7 +28,10 @@ if __name__=="__main__":
     parser.add_argument("--finetuning", dest="finetuning", action="store_true")
     parser.add_argument("--save_model", dest="save_model", action="store_true")
     parser.add_argument("--logdir", type=str, default="src/models/ditto/checkpoints/")
-    parser.add_argument("--lm", type=str, default='bert')
+    # roberta-base is the backbone for every reported Ditto/HierGAT number in
+    # both the main grid (all_runs*.py) and the cross-language runs; the old
+    # 'bert' default was never used and only made a silent mismatch possible.
+    parser.add_argument("--lm", type=str, default='roberta')
     parser.add_argument("--fp16", dest="fp16", action="store_true")
     parser.add_argument("--da", type=str, default=None)
     parser.add_argument("--alpha_aug", type=float, default=0.8)
@@ -39,6 +42,7 @@ if __name__=="__main__":
     parser.add_argument("--output_dir", type=str, default="results/generated/ditto/de")
     parser.add_argument("--validation_file", type=str, default=None)
 
+    parser.add_argument('--config_file', default='src/models/ditto/configs.json')
     hp = parser.parse_args()
 
     # set seeds
@@ -58,7 +62,7 @@ if __name__=="__main__":
     run_tag = run_tag.replace('/', '_')
 
     # load task configuration
-    configs = json.load(open('src/models/ditto/configs.json'))
+    configs = json.load(open(hp.config_file))
     configs = {conf['name'] : conf for conf in configs}
     if (task in configs):
         config = configs[task]
@@ -106,6 +110,7 @@ if __name__=="__main__":
     test_dataset050 = DittoDataset(testset050, lm=hp.lm)
     test_dataset100 = DittoDataset(testset100, lm=hp.lm)
     cross_language_datasets = {}
+    cross_language_pair_sources = {}
     if hp.cross_language_test_dir:
         for path in sorted(Path(hp.cross_language_test_dir).glob("*_gs_*.txt")):
             variant = next(
@@ -114,6 +119,25 @@ if __name__=="__main__":
                 if f"_{name}.txt" in path.name
             )
             cross_language_datasets[variant] = DittoDataset(str(path), lm=hp.lm)
+            # The serialized text carries no pair_id; recover it from the pair
+            # file that produced it so predictions can be rescored later.
+            source = Path("data/processed_cross_language/gold-standards_adjusted") / (
+                f"{path.stem}.pkl.gz"  # stem already starts with preprocessed_
+            )
+            if source.exists():
+                cross_language_pair_sources[variant] = str(source)
+            else:
+                raise FileNotFoundError(
+                    f"No pair file with pair_id for cross-language variant {variant}: {source}"
+                )
+
+    # Pair files (with pair_id) behind the serialized main-grid test sets.
+    main_pair_sources = {}
+    for _cond, _txt in (("000un", testset), ("050un", testset050), ("100un", testset100)):
+        _p = Path(_txt)
+        _src = _p.parent.parent.parent.parent / "gold-standards_adjusted" / f"{_p.stem}.pkl.gz"
+        if _src.exists():
+            main_pair_sources[_cond] = str(_src)
 
     train(
         trainset=train_dataset,
@@ -125,4 +149,6 @@ if __name__=="__main__":
         hp=hp,
         path=hp.output_dir,
         extra_testsets=cross_language_datasets,
+        extra_pair_sources=cross_language_pair_sources,
+        main_pair_sources=main_pair_sources,
     )

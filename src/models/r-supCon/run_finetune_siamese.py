@@ -14,6 +14,9 @@ import os
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.abspath(_os.path.join(_os.path.dirname(__file__), '..', '..', '..')))
+from src.cross_language.predictions import write_per_pair_predictions
 from typing import Optional
 import json
 
@@ -241,6 +244,7 @@ def main():
         data_files["test"] = data_args.test_file
     raw_datasets = data_files
     cross_language_datasets = {}
+    cross_language_pair_sources = {}
 
     # Load pretrained model and tokenizer
     #
@@ -285,6 +289,7 @@ def main():
                 for name in ("de_de", "de_en", "en_de", "en_en", "random")
                 if f"_{name}.pkl.gz" in path.name
             )
+            cross_language_pair_sources[variant] = str(path)
             cross_language_datasets[variant] = ContrastiveClassificationDataset(
                 str(path),
                 dataset_type="test",
@@ -303,11 +308,18 @@ def main():
     callback = EarlyStoppingCallback(early_stopping_patience=10)
 
     output_dir = deepcopy(training_args.output_dir)
-    for run in range(3):
+    # Seeds default to 0,1,2. RERUN_SEEDS lets one seed run per job so the grid
+    # can be fanned out, and re-seeding per run makes each seed reproducible on
+    # its own -- set_seed() is otherwise called once before this loop, which made
+    # run k depend on how much randomness runs 0..k-1 consumed.
+    _rerun_seeds = os.environ.get("RERUN_SEEDS")
+    _seeds = [int(v) for v in _rerun_seeds.split(",")] if _rerun_seeds else list(range(3))
+    for run in _seeds:
         init_args = {}
 
         training_args.save_total_limit = 1
         training_args.seed = run
+        set_seed(run)
         training_args.output_dir = f'{output_dir}{run}'
 
         # Detecting last checkpoint.
@@ -419,6 +431,20 @@ def main():
                 metrics[f"predict_cross_{variant}_samples"] = len(dataset)
                 trainer.log_metrics(f"predict_cross_{variant}", metrics)
                 trainer.save_metrics(f"predict_cross_{variant}", metrics)
+                # Per-pair layer so the cell can be rescored without retraining.
+                import numpy as _np
+                # R-SupCon's head emits one sigmoid score per pair and
+                # compute_metrics_bce thresholds it at 0.5; mirror that exactly
+                # so the dumped predictions reproduce the reported metrics.
+                _scores = _np.asarray(predict_results.predictions).reshape(-1)
+                _preds = (_scores >= 0.5).astype(int)
+                write_per_pair_predictions(
+                    _os.path.join(training_args.output_dir, f"predictions_cross_{variant}.csv"),
+                    cross_language_pair_sources[variant],
+                    _np.asarray(predict_results.label_ids).reshape(-1).astype(int),
+                    _scores,
+                    _preds,
+                )
     return results
 
 if __name__ == "__main__":

@@ -1,0 +1,25 @@
+{
+  "sample_seed_other": 20260905,
+  "shuffle_seed": 20260906,
+  "population": "2999 test offers with valid judgments from all three models",
+  "excluded_incomplete_audit_offer": "54158093151",
+  "strata": {
+    "flagged": {
+      "population": 75,
+      "sample": 75
+    },
+    "unanimous_clean": {
+      "population": 2458,
+      "sample": 100
+    },
+    "other": {
+      "population": 466,
+      "sample": 50
+    }
+  },
+  "source_sha256": {
+    "audit_verdicts.csv": "d490a75a0274e745948f9c505cbbaec8e4d7bb458d5fadae6e9d37a9143fdada",
+    "flagged_for_review.csv": "4e2e56d794173c529d024775cf95811b919dd88258f32da48905e7bb74735d65",
+    "calibration_sample.csv": "2435fb8ae206e41462453840747e89ec782328a0cb72f449c225d323e1005112"
+  }
+}

@@ -8,6 +8,10 @@
 #SBATCH --error=slurm_runs/logs/cross_summary_%j.err
 
 set -euo pipefail
-cd "$(dirname "${BASH_SOURCE[0]}")/.."
+# sbatch runs a copy of this file out of /var/spool/slurmd, so BASH_SOURCE does
+# not point into the repository; SLURM_SUBMIT_DIR does.
+cd "${SLURM_SUBMIT_DIR:-$(dirname "${BASH_SOURCE[0]}")/..}"
+
+source slurm_runs/env.sh
 
 python -u -m src.summarize_cross_language_results

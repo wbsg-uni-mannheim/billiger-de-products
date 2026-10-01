@@ -421,4 +421,3 @@ dependencies:
       - typing==3.7.4.3
       - ushlex==0.99.1
       - yaspin==3.3.0
-prefix: /home/kelagin/miniconda/envs/ditto_env_gpu

@@ -384,4 +384,3 @@ dependencies:
       - transformers==4.49.0
       - triton==3.5.0
       - yaspin==3.4.0
-prefix: /home/kelagin/miniconda/envs/hier_env

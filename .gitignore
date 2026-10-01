@@ -241,3 +241,12 @@ data/batch_inputs/
 data/batch_results/
 results/generated/
 slurm-*.out
+
+# Local and cluster artifacts
+.DS_Store
+slurm_runs/logs/
+reports/_internal_not_for_release/
+slurm_runs/v11/
+data/releases/
+data/recovered_gpt_history/
+output/
