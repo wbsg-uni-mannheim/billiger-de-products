@@ -17,9 +17,8 @@ authors:
   - family-names: Bizer
     given-names: Christian
 preferred-citation:
-  type: unpublished
+  type: generic
   title: "Billiger.de Products: A Bilingual Entity Matching Benchmark"
-  notes: "Submitted to BTW 2027"
   year: 2026
   authors:
     - family-names: Steiner

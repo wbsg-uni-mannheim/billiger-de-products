@@ -374,7 +374,7 @@
                 <div class="content is-size-6">
 					<p>
                         <b>Billiger.de Products</b> is an entity matching benchmark requiring matchers to identify product offers that refer to the same real-world product.
-						It contains 13,730 offers describing 2,168 distinct products, collected from the German price-comparison platform <a href="https://www.billiger.de">billiger.de</a>. The benchmark provides both the original German offers and machine-translated English versions of all training, validation, and test sets, enabling controlled analyses of how language affects entity matching performance. Following the multidimensional design of the <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/">WDC Products</a> benchmark, Billiger.de Products provides dataset variants that systematically vary the size of the training set, the proportion of difficult-to-match corner cases, and the proportion of products that are not observed during training. These variants support fine-grained evaluations of data efficiency, robustness to challenging examples, and generalization to previously unseen products. We validate the benchmark using six supervised entity matching methods and GPT-5.2 in a zero-shot setting. 
+						It contains 13,568 offers describing 2,168 distinct products, collected from the German price-comparison platform <a href="https://www.billiger.de">billiger.de</a>. The benchmark provides both the original German offers and machine-translated English versions of all training, validation, and test sets, enabling controlled analyses of how language affects entity matching performance. Following the multidimensional design of the <a href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/">WDC Products</a> benchmark, Billiger.de Products provides dataset variants that systematically vary the size of the training set, the proportion of difficult-to-match corner cases, and the proportion of products that are not observed during training. These variants support fine-grained evaluations of data efficiency, robustness to challenging examples, and generalization to previously unseen products. We validate the benchmark using six supervised entity matching methods and GPT-5.2 in a zero-shot setting. 
                     </p>
                 </div>
             </div>
@@ -431,16 +431,17 @@
                 <h2 class="title is-3 has-text-centered">The Benchmark</h2>
                 <div class="content is-size-6">
                     <p>
-                        The benchmark use product offers originating from the German price comparison portal <a href="https://www.billiger.de/">billiger.de</a>.  The benchmark consists of
-                        <b>13,730 product offers</b> describing
+                        The benchmark uses product offers originating from the German price comparison portal <a href="https://www.billiger.de/">billiger.de</a>.  The benchmark (version 1.1) consists of
+                        <b>13,568 product offers</b> describing
                         <b>2,168 distinct products</b>.
                         Every offer carries the attributes
                         <span class="mono">name</span>,
                         <span class="mono">description</span>,
                         <span class="mono">brand</span>, and
-                        <span class="mono">price</span>, with the attributes name and price
-                        having a value density of 100%, while brand and description have a density above 99&nbsp;%
-                        . Identifiers such as EAN or manufacturer part
+                        <span class="mono">price</span>. Name and price are
+                        available in every offer, while description has a value
+                        density of over 99&nbsp;% and brand of over 94&nbsp;% in
+                        all variants. Identifiers such as EAN or manufacturer part
                         numbers are deleted from the offers so that matchers need to
                         rely on the textual description of a product rather
                         than identifier lookup.
@@ -454,17 +455,15 @@
                 <div class="content is-size-6">
                     <ul>
                         <li>
-                            <b>Training set size:</b> before leakage cleaning,
-                            the small, medium, and large training sets contained
-                            2,500, 6,000, and 26,888&ndash;27,393 pairs. The
-                            released sets now contain 2,461&ndash;2,475,
-                            5,897&ndash;5,913, and 26,571&ndash;27,112 pairs,
+                            <b>Training set size:</b> the small, medium, and
+                            large training sets contain 2,461 to 2,475,
+                            5,897 to 5,913, and 26,571 to 27,112 pairs,
                             respectively. The smaller sets are subsets of the
                             larger ones, and all three are built from the same
-                            500 product groups.
+                            500 products.
                         </li>
                         <li>
-                            <b>Corner cases:</b> groups of four highly similar
+                            <b>Corner cases:</b> groups of five highly similar
                             but distinct products generate hard positives and
                             hard negatives. Datasets contain 20&nbsp;%,
                             50&nbsp;%, or 80&nbsp;% corner-case product groups.
@@ -490,136 +489,133 @@
                     <p>
                         The products belong to thirteen different product
                         categories. The figure below shows the amount of product
-                        offers that belong to each category. Clothing,
-                        furniture, and electronics account for the largest
+                        offers that belong to each category. Furniture,
+                        clothing, and electronics account for the largest
                         shares.
                     </p>
                 </div>
                 <div class="columns">
                     <div class="column is-two-thirds">
                         <div class="dombar">
-                            <span class="dlabel"
-                                >Clothing &amp; Accessories</span
-                            ><span class="dtrack"
-                                ><span
-                                    class="dfill"
-                                    style="width: 100%"
-                                ></span></span
-                            ><span class="dval">25.7%</span>
-                        </div>
-                        <div class="dombar">
                             <span class="dlabel">Furniture &amp; Living</span
                             ><span class="dtrack"
                                 ><span
                                     class="dfill"
-                                    style="width: 95%"
+                                    style="width: 100.0%"
                                 ></span></span
-                            ><span class="dval">24.4%</span>
+                            ><span class="dval">23.5%</span>
                         </div>
                         <div class="dombar">
-                            <span class="dlabel"
-                                >Electronics &amp; Computers</span
+                            <span class="dlabel">Clothing &amp; Accessories</span
                             ><span class="dtrack"
                                 ><span
                                     class="dfill"
-                                    style="width: 61%"
+                                    style="width: 91.9%"
                                 ></span></span
-                            ><span class="dval">15.7%</span>
+                            ><span class="dval">21.6%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Electronics &amp; Computers</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 79.6%"
+                                ></span></span
+                            ><span class="dval">18.7%</span>
                         </div>
                         <div class="dombar">
                             <span class="dlabel">Tools &amp; DIY</span
                             ><span class="dtrack"
                                 ><span
                                     class="dfill"
-                                    style="width: 36%"
+                                    style="width: 41.3%"
                                 ></span></span
-                            ><span class="dval">9.4%</span>
-                        </div>
-                        <div class="dombar">
-                            <span class="dlabel">Sports &amp; Leisure</span
-                            ><span class="dtrack"
-                                ><span
-                                    class="dfill"
-                                    style="width: 25%"
-                                ></span></span
-                            ><span class="dval">6.4%</span>
+                            ><span class="dval">9.7%</span>
                         </div>
                         <div class="dombar">
                             <span class="dlabel">Toys &amp; Baby</span
                             ><span class="dtrack"
                                 ><span
                                     class="dfill"
-                                    style="width: 22%"
+                                    style="width: 25.1%"
                                 ></span></span
-                            ><span class="dval">5.6%</span>
+                            ><span class="dval">5.9%</span>
                         </div>
                         <div class="dombar">
-                            <span class="dlabel"
-                                >Automotive &amp; Motorcycle</span
+                            <span class="dlabel">Sports &amp; Leisure</span
                             ><span class="dtrack"
                                 ><span
                                     class="dfill"
-                                    style="width: 18%"
+                                    style="width: 25.1%"
                                 ></span></span
-                            ><span class="dval">4.6%</span>
+                            ><span class="dval">5.9%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Automotive &amp; Motorcycle</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 23.0%"
+                                ></span></span
+                            ><span class="dval">5.4%</span>
                         </div>
                         <div class="dombar">
                             <span class="dlabel">Cosmetics &amp; Drugstore</span
                             ><span class="dtrack"
                                 ><span
                                     class="dfill"
-                                    style="width: 14%"
+                                    style="width: 17.0%"
                                 ></span></span
-                            ><span class="dval">3.6%</span>
+                            ><span class="dval">4.0%</span>
                         </div>
                         <div class="dombar">
                             <span class="dlabel">Health &amp; Care</span
                             ><span class="dtrack"
                                 ><span
                                     class="dfill"
-                                    style="width: 7%"
+                                    style="width: 9.4%"
                                 ></span></span
-                            ><span class="dval">1.8%</span>
-                        </div>
-                        <div class="dombar">
-                            <span class="dlabel">Office Supplies</span
-                            ><span class="dtrack"
-                                ><span
-                                    class="dfill"
-                                    style="width: 4%"
-                                ></span></span
-                            ><span class="dval">1.0%</span>
+                            ><span class="dval">2.2%</span>
                         </div>
                         <div class="dombar">
                             <span class="dlabel">Food &amp; Beverages</span
                             ><span class="dtrack"
                                 ><span
                                     class="dfill"
-                                    style="width: 3.3%"
+                                    style="width: 5.1%"
                                 ></span></span
-                            ><span class="dval">0.9%</span>
+                            ><span class="dval">1.2%</span>
                         </div>
                         <div class="dombar">
-                            <span class="dlabel">Books, Movies &amp; Music</span
+                            <span class="dlabel">Office Supplies</span
                             ><span class="dtrack"
                                 ><span
                                     class="dfill"
-                                    style="width: 3.2%"
+                                    style="width: 4.3%"
                                 ></span></span
-                            ><span class="dval">0.8%</span>
+                            ><span class="dval">1.0%</span>
+                        </div>
+                        <div class="dombar">
+                            <span class="dlabel">Books, Films &amp; Music</span
+                            ><span class="dtrack"
+                                ><span
+                                    class="dfill"
+                                    style="width: 2.1%"
+                                ></span></span
+                            ><span class="dval">0.5%</span>
                         </div>
                         <div class="dombar">
                             <span class="dlabel">Pet Supplies</span
                             ><span class="dtrack"
                                 ><span
                                     class="dfill"
-                                    style="width: 1.4%"
+                                    style="width: 1.3%"
                                 ></span></span
-                            ><span class="dval">0.4%</span>
+                            ><span class="dval">0.3%</span>
                         </div>
                         <p class="footer-note" style="margin-top: 0.6rem">
-                            Average share of offers belonging to the each
-                            product category across all benchmark variants.
+                            Share of all 13,568 offers of the benchmark that
+                            belong to each product category.
                         </p>
                     </div>
                 </div>
@@ -636,22 +632,28 @@
                         directly taken from these groups, negative pairs
                         (non-matches) are generated by combining offers from one
                         group with similar offers from other groups, resulting
-                        in hard negatives, with one randomly choosen negative
+                        in hard negatives, with one randomly chosen negative
                         per group. The amount of hard negatives per product
                         grows with the training set size.
                     </p>
                     <p>
-                        The test sets contain roughly 4,440 pairs each with a
-                        class imbalance of 1:10 to 1:12 between matches and
-                        non-matches. All nine test sets went through a two-round
-                        manual verification process involving two human
-                        annotators, who checked the pairs using a strict
+                        The test sets contain 4,372 to 4,458 pairs each with a
+                        class imbalance of about 1:10 to 1:13 between matches
+                        and non-matches. All nine test sets went through a
+                        two-round manual verification process involving two
+                        human annotators, who checked the pairs using a strict
                         definition of what constitutes a match: product variants
                         that differ in size, color, configuration, capacity, or
-                        package quantity were labeled as
-                        <em>non-matches</em>. The audit corrected pairs in which
-                        similar but distinct product variants had been grouped
-                        together.
+                        package quantity were labeled as <em>non-matches</em>.
+                        The audit corrected pairs in which similar but distinct
+                        product variants had been grouped together. To assess
+                        the resulting label quality, one author re-annotated a stratified
+                        random sample of 100 test pairs, 50 matches and 50
+                        non-matches, blind to the released labels. The
+                        re-annotation agreed with all 50 match labels and with
+                        49 of the 50 non-match labels, which corresponds to an
+                        estimated disagreement rate of 1.9&nbsp;% when weighted
+                        by the class imbalance of the test pairs.
                     </p>
                 </div>
                 <div class="columns">
@@ -692,27 +694,27 @@
                                         <td>485</td>
                                         <td>1,979</td>
                                         <td>2,464</td>
-                                        <td>490</td>
-                                        <td>1,984</td>
-                                        <td>2,474</td>
+                                        <td>491</td>
+                                        <td>1,993</td>
+                                        <td>2,484</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Medium</td>
                                         <td>1,457</td>
                                         <td>4,456</td>
                                         <td>5,913</td>
-                                        <td>490</td>
-                                        <td>2,979</td>
-                                        <td>3,469</td>
+                                        <td>491</td>
+                                        <td>2,989</td>
+                                        <td>3,480</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Large</td>
                                         <td>13,100</td>
                                         <td>14,012</td>
                                         <td>27,112</td>
-                                        <td>490</td>
-                                        <td>3,972</td>
-                                        <td>4,462</td>
+                                        <td>491</td>
+                                        <td>3,984</td>
+                                        <td>4,475</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left" rowspan="3">
@@ -722,8 +724,8 @@
                                         <td>482</td>
                                         <td>1,979</td>
                                         <td>2,461</td>
-                                        <td>487</td>
-                                        <td>1,978</td>
+                                        <td>479</td>
+                                        <td>1,986</td>
                                         <td>2,465</td>
                                     </tr>
                                     <tr>
@@ -731,17 +733,17 @@
                                         <td>1,464</td>
                                         <td>4,441</td>
                                         <td>5,905</td>
-                                        <td>487</td>
-                                        <td>2,966</td>
-                                        <td>3,453</td>
+                                        <td>479</td>
+                                        <td>2,977</td>
+                                        <td>3,456</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Large</td>
                                         <td>13,024</td>
                                         <td>14,000</td>
                                         <td>27,024</td>
-                                        <td>487</td>
-                                        <td>3,963</td>
+                                        <td>479</td>
+                                        <td>3,971</td>
                                         <td>4,450</td>
                                     </tr>
                                     <tr>
@@ -752,35 +754,36 @@
                                         <td>492</td>
                                         <td>1,983</td>
                                         <td>2,475</td>
-                                        <td>490</td>
-                                        <td>1,976</td>
-                                        <td>2,466</td>
+                                        <td>485</td>
+                                        <td>1,985</td>
+                                        <td>2,470</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Medium</td>
                                         <td>1,462</td>
                                         <td>4,435</td>
                                         <td>5,897</td>
-                                        <td>490</td>
-                                        <td>2,958</td>
-                                        <td>3,448</td>
+                                        <td>485</td>
+                                        <td>2,970</td>
+                                        <td>3,455</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">Large</td>
                                         <td>12,747</td>
                                         <td>13,824</td>
                                         <td>26,571</td>
-                                        <td>490</td>
-                                        <td>3,946</td>
-                                        <td>4,436</td>
+                                        <td>485</td>
+                                        <td>3,967</td>
+                                        <td>4,452</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <p class="footer-note">
                             All 9 training sets (3 corner-case ratios &times; 3
-                            sizes). The validation columns show the recommended
-                            50%-seen validation sets. Counts are identical for
+                            sizes). The validation columns show the Seen
+                            validation sets (<span class="mono">000un</span>)
+                            used for model selection. Counts are identical for
                             the German and the English version.
                         </p>
                     </div>
@@ -808,13 +811,13 @@
                                         </td>
                                         <td class="has-text-left">0&nbsp;%</td>
                                         <td>407</td>
-                                        <td>4,047</td>
-                                        <td>4,454</td>
+                                        <td>4,038</td>
+                                        <td>4,445</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">50&nbsp;%</td>
-                                        <td>352</td>
-                                        <td>4,077</td>
+                                        <td>347</td>
+                                        <td>4,082</td>
                                         <td>4,429</td>
                                     </tr>
                                     <tr>
@@ -830,14 +833,14 @@
                                             50&nbsp;%
                                         </td>
                                         <td class="has-text-left">0&nbsp;%</td>
-                                        <td>364</td>
-                                        <td>4,063</td>
-                                        <td>4,427</td>
+                                        <td>363</td>
+                                        <td>4,049</td>
+                                        <td>4,412</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">50&nbsp;%</td>
-                                        <td>346</td>
-                                        <td>4,072</td>
+                                        <td>326</td>
+                                        <td>4,092</td>
                                         <td>4,418</td>
                                     </tr>
                                     <tr>
@@ -853,15 +856,15 @@
                                             80&nbsp;%
                                         </td>
                                         <td class="has-text-left">0&nbsp;%</td>
-                                        <td>342</td>
-                                        <td>4,098</td>
-                                        <td>4,440</td>
+                                        <td>336</td>
+                                        <td>4,036</td>
+                                        <td>4,372</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">50&nbsp;%</td>
-                                        <td>361</td>
-                                        <td>4,076</td>
-                                        <td>4,437</td>
+                                        <td>339</td>
+                                        <td>4,088</td>
+                                        <td>4,427</td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-left">
@@ -875,7 +878,7 @@
                             </table>
                         </div>
                         <p class="footer-note">
-                            All 9 verified test sets (3 corner-case ratios
+                            All 9 test sets (3 corner-case ratios
                             &times; 3 unseen levels). Test sets do not vary with
                             the training set size. Counts are identical for the
                             German and the English version.
@@ -1290,106 +1293,104 @@
                                 </td>
                                 <td class="has-text-left" rowspan="3">Small</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>57.40</td>
-                                <td>55.85</td>
-                                <td>74.39</td>
-                                <td>63.01</td>
-                                <td>70.69</td>
-                                <td>77.31</td>
-                                <td class="best">85.34</td>
-                                <td>79.94</td>
+                                <td>52.89</td>
+                                <td>54.30</td>
+                                <td>74.54</td>
+                                <td>60.93</td>
+                                <td>61.67</td>
+                                <td>76.23</td>
+                                <td class="best">86.27</td>
+                                <td>80.29</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>45.70</td>
-                                <td>50.71</td>
-                                <td>59.57</td>
-                                <td>48.34</td>
-                                <td>64.50</td>
-                                <td>68.52</td>
-                                <td>81.81</td>
-                                <td class="best">84.91</td>
+                                <td>42.40</td>
+                                <td>47.35</td>
+                                <td>59.14</td>
+                                <td>44.11</td>
+                                <td>54.80</td>
+                                <td>61.43</td>
+                                <td>82.98</td>
+                                <td class="best">84.11</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>32.59</td>
-                                <td>48.62</td>
-                                <td>51.55</td>
-                                <td>41.68</td>
-                                <td>57.48</td>
-                                <td>59.16</td>
-                                <td>81.58</td>
-                                <td class="best">84.67</td>
+                                <td>31.66</td>
+                                <td>45.84</td>
+                                <td>51.54</td>
+                                <td>38.67</td>
+                                <td>47.91</td>
+                                <td>54.75</td>
+                                <td>82.00</td>
+                                <td class="best">84.88</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">
-                                    Medium
-                                </td>
+                                <td class="has-text-left" rowspan="3">Medium</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>67.36</td>
-                                <td>56.98</td>
-                                <td>82.07</td>
-                                <td>75.12</td>
-                                <td>85.17</td>
-                                <td class="best">87.51</td>
-                                <td>85.34</td>
-                                <td>79.94</td>
+                                <td>68.32</td>
+                                <td>56.34</td>
+                                <td>82.15</td>
+                                <td>78.04</td>
+                                <td>78.78</td>
+                                <td>82.68</td>
+                                <td class="best">86.27</td>
+                                <td>80.29</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>53.51</td>
-                                <td>52.90</td>
-                                <td>65.01</td>
-                                <td>54.26</td>
-                                <td>75.36</td>
-                                <td>75.29</td>
-                                <td>81.81</td>
-                                <td class="best">84.91</td>
+                                <td>53.57</td>
+                                <td>51.64</td>
+                                <td>64.33</td>
+                                <td>52.85</td>
+                                <td>66.21</td>
+                                <td>65.12</td>
+                                <td>82.98</td>
+                                <td class="best">84.11</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>37.45</td>
-                                <td>49.27</td>
+                                <td>35.52</td>
+                                <td>48.82</td>
                                 <td>54.87</td>
-                                <td>44.08</td>
-                                <td>63.40</td>
-                                <td>64.26</td>
-                                <td>81.58</td>
-                                <td class="best">84.67</td>
+                                <td>42.81</td>
+                                <td>57.03</td>
+                                <td>57.03</td>
+                                <td>82.00</td>
+                                <td class="best">84.88</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>72.12</td>
-                                <td>55.73</td>
-                                <td>83.99</td>
-                                <td>82.33</td>
-                                <td>89.41</td>
-                                <td class="best">91.76</td>
-                                <td>85.34</td>
-                                <td>79.94</td>
+                                <td>72.77</td>
+                                <td>57.03</td>
+                                <td>84.08</td>
+                                <td>84.85</td>
+                                <td>83.58</td>
+                                <td class="best">86.66</td>
+                                <td>86.27</td>
+                                <td>80.29</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>55.98</td>
-                                <td>49.78</td>
-                                <td>67.24</td>
-                                <td>58.28</td>
-                                <td>79.43</td>
-                                <td>78.54</td>
-                                <td>81.81</td>
-                                <td class="best">84.91</td>
+                                <td>53.19</td>
+                                <td>48.21</td>
+                                <td>66.23</td>
+                                <td>57.91</td>
+                                <td>67.52</td>
+                                <td>70.05</td>
+                                <td>82.98</td>
+                                <td class="best">84.11</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>38.11</td>
-                                <td>47.15</td>
+                                <td>34.62</td>
+                                <td>46.56</td>
                                 <td>57.20</td>
-                                <td>46.65</td>
-                                <td>65.80</td>
-                                <td>65.24</td>
-                                <td>81.58</td>
-                                <td class="best">84.67</td>
+                                <td>45.69</td>
+                                <td>56.86</td>
+                                <td>60.91</td>
+                                <td>82.00</td>
+                                <td class="best">84.88</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" rowspan="9">
@@ -1397,106 +1398,104 @@
                                 </td>
                                 <td class="has-text-left" rowspan="3">Small</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>43.42</td>
-                                <td>40.37</td>
-                                <td>58.31</td>
-                                <td>55.85</td>
-                                <td>37.51</td>
-                                <td>59.90</td>
-                                <td>80.62</td>
-                                <td class="best">83.93</td>
+                                <td>44.16</td>
+                                <td>40.79</td>
+                                <td>58.29</td>
+                                <td>56.41</td>
+                                <td>35.59</td>
+                                <td>52.90</td>
+                                <td>82.82</td>
+                                <td class="best">84.41</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>37.98</td>
-                                <td>39.66</td>
-                                <td>50.05</td>
-                                <td>42.63</td>
-                                <td>37.83</td>
-                                <td>55.66</td>
-                                <td>72.44</td>
-                                <td class="best">80.65</td>
+                                <td>33.78</td>
+                                <td>38.89</td>
+                                <td>46.58</td>
+                                <td>38.73</td>
+                                <td>34.37</td>
+                                <td>43.21</td>
+                                <td>73.13</td>
+                                <td class="best">81.35</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>27.38</td>
-                                <td>38.24</td>
-                                <td>42.78</td>
-                                <td>32.89</td>
-                                <td>35.02</td>
-                                <td>49.83</td>
-                                <td>74.86</td>
-                                <td class="best">77.78</td>
+                                <td>27.01</td>
+                                <td>38.36</td>
+                                <td>42.77</td>
+                                <td>32.33</td>
+                                <td>32.42</td>
+                                <td>40.75</td>
+                                <td>75.06</td>
+                                <td class="best">78.54</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">
-                                    Medium
-                                </td>
+                                <td class="has-text-left" rowspan="3">Medium</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>55.84</td>
-                                <td>43.78</td>
-                                <td>72.67</td>
-                                <td>66.25</td>
-                                <td>70.08</td>
-                                <td>78.08</td>
-                                <td>80.62</td>
-                                <td class="best">83.93</td>
+                                <td>56.59</td>
+                                <td>45.56</td>
+                                <td>72.60</td>
+                                <td>67.56</td>
+                                <td>61.48</td>
+                                <td>75.27</td>
+                                <td>82.82</td>
+                                <td class="best">84.41</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>48.32</td>
-                                <td>44.86</td>
-                                <td>58.18</td>
-                                <td>47.84</td>
-                                <td>64.68</td>
-                                <td>67.77</td>
-                                <td>72.44</td>
-                                <td class="best">80.65</td>
+                                <td>43.89</td>
+                                <td>43.49</td>
+                                <td>54.65</td>
+                                <td>44.54</td>
+                                <td>51.73</td>
+                                <td>59.79</td>
+                                <td>73.13</td>
+                                <td class="best">81.35</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>29.91</td>
-                                <td>42.11</td>
-                                <td>48.29</td>
-                                <td>36.14</td>
-                                <td>55.96</td>
-                                <td>59.33</td>
-                                <td>74.86</td>
-                                <td class="best">77.78</td>
+                                <td>29.16</td>
+                                <td>42.21</td>
+                                <td>48.26</td>
+                                <td>34.73</td>
+                                <td>46.77</td>
+                                <td>53.53</td>
+                                <td>75.06</td>
+                                <td class="best">78.54</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>64.78</td>
-                                <td>42.91</td>
-                                <td>77.84</td>
-                                <td>73.48</td>
-                                <td>79.90</td>
-                                <td class="best">84.91</td>
-                                <td>80.62</td>
-                                <td>83.93</td>
+                                <td>63.08</td>
+                                <td>43.85</td>
+                                <td>77.78</td>
+                                <td>76.63</td>
+                                <td>74.48</td>
+                                <td>81.40</td>
+                                <td>82.82</td>
+                                <td class="best">84.41</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>49.65</td>
-                                <td>42.87</td>
-                                <td>61.37</td>
-                                <td>50.83</td>
-                                <td>71.09</td>
-                                <td>71.75</td>
-                                <td>72.44</td>
-                                <td class="best">80.65</td>
+                                <td>47.73</td>
+                                <td>40.00</td>
+                                <td>57.74</td>
+                                <td>48.67</td>
+                                <td>59.14</td>
+                                <td>61.85</td>
+                                <td>73.13</td>
+                                <td class="best">81.35</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>31.08</td>
-                                <td>40.95</td>
+                                <td>28.27</td>
+                                <td>40.44</td>
                                 <td>48.67</td>
-                                <td>38.38</td>
-                                <td>62.16</td>
-                                <td>59.33</td>
-                                <td>74.86</td>
-                                <td class="best">77.78</td>
+                                <td>36.47</td>
+                                <td>53.97</td>
+                                <td>52.02</td>
+                                <td>75.06</td>
+                                <td class="best">78.54</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" rowspan="9">
@@ -1504,106 +1503,104 @@
                                 </td>
                                 <td class="has-text-left" rowspan="3">Small</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>38.72</td>
-                                <td>33.71</td>
+                                <td>35.87</td>
+                                <td>33.41</td>
                                 <td>47.91</td>
-                                <td>53.85</td>
-                                <td>30.10</td>
-                                <td>61.86</td>
-                                <td>72.79</td>
-                                <td class="best">79.32</td>
+                                <td>52.65</td>
+                                <td>34.11</td>
+                                <td>49.71</td>
+                                <td>74.37</td>
+                                <td class="best">79.23</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>36.40</td>
-                                <td>34.44</td>
-                                <td>41.37</td>
-                                <td>43.12</td>
-                                <td>31.79</td>
-                                <td>54.36</td>
-                                <td>68.03</td>
-                                <td class="best">79.82</td>
+                                <td>30.60</td>
+                                <td>32.49</td>
+                                <td>39.55</td>
+                                <td>37.33</td>
+                                <td>29.82</td>
+                                <td>42.26</td>
+                                <td>67.11</td>
+                                <td class="best">77.99</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>24.42</td>
-                                <td>32.79</td>
-                                <td>37.32</td>
-                                <td>30.77</td>
-                                <td>30.33</td>
-                                <td>49.38</td>
-                                <td>66.19</td>
-                                <td class="best">80.63</td>
+                                <td>23.80</td>
+                                <td>32.43</td>
+                                <td>37.31</td>
+                                <td>29.38</td>
+                                <td>33.11</td>
+                                <td>39.83</td>
+                                <td>66.25</td>
+                                <td class="best">80.90</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">
-                                    Medium
-                                </td>
+                                <td class="has-text-left" rowspan="3">Medium</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>49.72</td>
-                                <td>35.44</td>
-                                <td>64.67</td>
-                                <td>63.20</td>
-                                <td>65.10</td>
-                                <td>74.11</td>
-                                <td>72.79</td>
-                                <td class="best">79.32</td>
+                                <td>45.27</td>
+                                <td>35.99</td>
+                                <td>64.39</td>
+                                <td>63.09</td>
+                                <td>58.46</td>
+                                <td>67.52</td>
+                                <td>74.37</td>
+                                <td class="best">79.23</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>44.87</td>
-                                <td>37.39</td>
-                                <td>53.98</td>
-                                <td>47.14</td>
-                                <td>60.66</td>
-                                <td>64.91</td>
-                                <td>68.03</td>
-                                <td class="best">79.82</td>
+                                <td>36.02</td>
+                                <td>34.24</td>
+                                <td>49.30</td>
+                                <td>42.07</td>
+                                <td>48.55</td>
+                                <td>54.15</td>
+                                <td>67.11</td>
+                                <td class="best">77.99</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>25.68</td>
-                                <td>34.50</td>
-                                <td>43.72</td>
-                                <td>31.69</td>
-                                <td>52.61</td>
-                                <td>54.16</td>
-                                <td>66.19</td>
-                                <td class="best">80.63</td>
+                                <td>24.74</td>
+                                <td>34.29</td>
+                                <td>43.73</td>
+                                <td>31.75</td>
+                                <td>49.53</td>
+                                <td>48.08</td>
+                                <td>66.25</td>
+                                <td class="best">80.90</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>51.36</td>
-                                <td>35.98</td>
-                                <td>72.46</td>
-                                <td>65.65</td>
-                                <td>73.39</td>
-                                <td>72.69</td>
-                                <td>72.79</td>
-                                <td class="best">79.32</td>
+                                <td>52.90</td>
+                                <td>35.60</td>
+                                <td>72.23</td>
+                                <td>70.39</td>
+                                <td>66.65</td>
+                                <td>74.52</td>
+                                <td>74.37</td>
+                                <td class="best">79.23</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>43.16</td>
-                                <td>36.42</td>
-                                <td>59.29</td>
-                                <td>47.27</td>
-                                <td>65.40</td>
-                                <td>64.10</td>
-                                <td>68.03</td>
-                                <td class="best">79.82</td>
+                                <td>36.25</td>
+                                <td>33.76</td>
+                                <td>54.47</td>
+                                <td>47.24</td>
+                                <td>51.69</td>
+                                <td>57.24</td>
+                                <td>67.11</td>
+                                <td class="best">77.99</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>22.01</td>
-                                <td>33.63</td>
-                                <td>45.32</td>
-                                <td>30.86</td>
-                                <td>54.01</td>
-                                <td>51.69</td>
-                                <td>66.19</td>
-                                <td class="best">80.63</td>
+                                <td>21.15</td>
+                                <td>33.11</td>
+                                <td>45.28</td>
+                                <td>33.36</td>
+                                <td>47.35</td>
+                                <td>49.44</td>
+                                <td>66.25</td>
+                                <td class="best">80.90</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1617,8 +1614,9 @@
                     <summary>GPT-5.2 prompts</summary>
                     <div class="prompt-details-content content is-size-6">
                         <p>
-                            The German benchmark used German-language versions
-                            with the same instructions and record attributes.
+                            The German benchmark used the German-language
+                            versions shown below the English prompts, with the
+                            same instructions and record attributes.
                         </p>
                         <h3 class="title is-6">Simple prompt</h3>
                         <pre>
@@ -1643,23 +1641,47 @@ Respond ONLY with Yes or No.
 Product 1: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&gt; Price: &lt;price&gt; Euro
 Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&gt; Price: &lt;price&gt; Euro</pre
                         >
+                        <h3 class="title is-6">Simple prompt (German version)</h3>
+                        <pre>
+Beziehen sich diese beiden Produktbeschreibungen auf dasselbe reale Produkt?
+Antworte nur mit Ja oder Nein.
+Produkt 1: Marke: &lt;brand&gt; Name: &lt;name&gt; Beschreibung: &lt;description&gt; Preis: &lt;price&gt; Euro
+Produkt 2: Marke: &lt;brand&gt; Name: &lt;name&gt; Beschreibung: &lt;description&gt; Preis: &lt;price&gt; Euro</pre
+                        >
+                        <h3 class="title is-6">Rule-Guided prompt (German version)</h3>
+                        <pre>
+Du bist ein Experte für Produktabgleich. Deine Aufgabe ist zu entscheiden, ob sich zwei Produktdatensätze auf das EXAKT gleiche Produkt beziehen (gleiche GTIN/SKU).
+Analysiere die bereitgestellten Datensätze sorgfältig und gib deine Entscheidung strikt als Ja oder Nein zurück.
+
+KRITISCH: Produktvarianten sind KEINE Übereinstimmungen. Unterschiedliche Größen, Farben, Konfigurationen oder Verpackungsmengen sind UNTERSCHIEDLICHE Produkte mit unterschiedlichen GTINs.
+
+Richtlinien:
+- Ja NUR, wenn sich die Datensätze auf exakt dasselbe Produkt beziehen, das dieselbe GTIN/denselben Barcode hätte
+- Nein, wenn es sich um Varianten derselben Produktlinie handelt (unterschiedliche Größe, Farbe, Kapazität usw.)
+- Nein bei widersprüchlichen zentralen Identifikationsmerkmalen (Modellnummern, Abmessungen, Kapazität, Farbe und Konfiguration)
+- Fehlende Attribute allein sind KEIN Widerspruch.
+- Eine Übereinstimmung erfordert positive Evidenz der Gleichheit
+- Antworte AUSSCHLIESSLICH mit Ja oder Nein.
+
+Produkt 1: Marke: &lt;brand&gt; Name: &lt;name&gt; Beschreibung: &lt;description&gt; Preis: &lt;price&gt; Euro
+Produkt 2: Marke: &lt;brand&gt; Name: &lt;name&gt; Beschreibung: &lt;description&gt; Preis: &lt;price&gt; Euro</pre
+                        >
                     </div>
                 </details>
                 <div class="content is-size-6" style="margin-top: 1.4rem">
                     <p>
                         The baseline results underline the difficulty of the
                         benchmark. The traditional feature-based approaches
-                        WordCooc and Magellan average only 43.89 and 42.85 F1
+                        WordCooc and Magellan average only 41.67 and 42.04 F1
                         across the 27 German variants, which is too low for
                         practical use on this benchmark. Neural matchers such as
-                        Ditto reach up to 91.76 F1 in favorable configurations,
+                        Ditto reach up to 86.66 F1 in favorable configurations,
                         but, as reported for WDC Products, they remain strongly
                         affected by unseen entities. Averaged across all
-                        corner-case ratios and training sizes, Ditto loses 19.53
-                        F1 from Seen to Unseen test sets. Even zero-shot GPT-5.2
+                        corner-case ratios and training sizes, Ditto loses 21.17 F1 from Seen to Unseen test sets. Even zero-shot GPT-5.2
                         does not solve the benchmark: with the stronger
-                        Rule-Guided prompt, its scores remain between 77.78 and
-                        84.91 F1. The benchmark therefore remains challenging
+                        Rule-Guided prompt, its scores remain between 77.99 and
+                        84.88 F1. The benchmark therefore remains challenging
                         for traditional matchers, supervised neural models, and
                         the evaluated LLM.
                     </p>
@@ -1672,10 +1694,9 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         medium-to-large results can deviate from the overall
                         training-size trend. Comparing the Large, 20&nbsp;%
                         corner-case, Seen row with the Small, 80&nbsp;%
-                        corner-case, Unseen row, the losses range from 22.94 F1
-                        for Magellan (55.73 to 32.79) to 59.08 F1 for HierGAT (89.41 to 30.33). In the Large, 20&nbsp;% corner-case
+                        corner-case, Unseen row, the losses range from 24.60 F1 for Magellan (57.03 to 32.43) to 55.47 F1 for R-SupCon (84.85 to 29.38). In the Large, 20&nbsp;% corner-case
                         rows, the Seen-to-Unseen drops for R-SupCon, Ditto, and
-                        RoBERTa are 35.68, 26.52, and 26.79 F1, compared with
+                        RoBERTa are 39.16, 25.75, and 26.88 F1, compared with
                         26.59, 9.60, and 9.16 F1 reported for WDC Products. The
                         broader range of product categories may contribute to
                         the larger drops, but this comparison does not establish
@@ -1683,14 +1704,16 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                     </p>
                     <p>
                         Ditto and HierGAT are the strongest supervised systems
-                        and reach 91.76 and 89.41 F1 on the easiest German
-                        variant. Zero-shot GPT-5.2 behaves differently. Under
-                        the Rule-Guided prompt its F1 varies by 7.13 points
-                        across all difficulty settings (19.15 under the Simple
-                        prompt), and it leads on every Unseen test set, where
-                        supervised models lose the training signal they depend
-                        on. Supervised matchers overtake GPT-5.2 only on Seen
-                        test sets with medium or large training data. A caveat
+                        and reach 86.66 and 83.58 F1 on the easiest German variant. Zero-shot GPT-5.2 behaves differently. Under
+                        the Rule-Guided prompt its F1 varies by 6.89 points
+                        across all difficulty settings (20.02 under the Simple
+                        prompt), against 24.60 to 55.47 points for the
+                        supervised models. With the Rule-Guided prompt, GPT-5.2
+                        reaches the highest F1 in 24 of 27 German variants and
+                        leads on every Unseen test set, where supervised models
+                        lose the training signal they depend on. The Simple
+                        prompt leads on the Small and Medium Seen variants at
+                        20&nbsp;% corner cases. Supervised matchers overtake GPT-5.2 only on the easiest variant (Large, 20&nbsp;% corner cases, Seen), where Ditto is ahead by 0.39 F1. Averaged over the nine German test sets, GPT-5.2 reaches 76.66 F1 with the Simple and 81.30 F1 with the Rule-Guided prompt. A caveat
                         applies to interpreting the GPT-5.2 results on the
                         Seen/Unseen dimension. GPT-5.2 was trained on a large,
                         undisclosed corpus, and all products in the benchmark
@@ -1711,11 +1734,13 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         configuration. The category ranking is stable across the
                         model families. Among the nine largest categories,
                         Clothing &amp; Accessories and Furniture &amp; Living
-                        are the two hardest for every model except WordCooc, and
-                        Clothing is the single hardest category for seven of the
-                        eight model columns. Electronics &amp; Computers and
-                        Health &amp; Care rank among the three easiest
-                        categories for seven of the eight model columns each.
+                        are the two hardest for every model, and Clothing is
+                        the single hardest category for five of the eight model
+                        columns. Electronics &amp; Computers ranks among the
+                        three easiest categories for every model and
+                        Health &amp; Care for seven of the eight model columns,
+                        while Tools &amp; DIY and Toys &amp; Baby are in the
+                        upper half for every model.
                         Distinctive model numbers and standardized technical
                         specifications give both lexical and neural matchers
                         strong signals in the easier categories, while
@@ -1724,10 +1749,11 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                     </p>
                     <p>
                         Matching difficulty does not track the amount of
-                        training data: Health &amp; Care, with 1,006 training
-                        records against more than 8,700 in each of the three
+                        training data: Health &amp; Care, with 1,057 training
+                        records against more than 9,000 in each of the three
                         largest categories, scores above Clothing and Furniture
-                        for every model. Since electronics rank among the
+                        for every model and above Electronics for six of the
+                        eight model columns. Since electronics rank among the
                         easiest categories, evaluations on electronics-centric
                         benchmarks are likely to overestimate matching
                         performance on broader product assortments.
@@ -1756,149 +1782,149 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                     <td class="has-text-left">
                                         Furniture &amp; Living
                                     </td>
-                                    <td>12,537</td>
-                                    <td>2,794</td>
-                                    <td>39.29</td>
-                                    <td>39.76</td>
-                                    <td>47.12</td>
-                                    <td>45.99</td>
-                                    <td>47.29</td>
-                                    <td>52.50</td>
-                                    <td>71.85</td>
-                                    <td>78.29</td>
+                                    <td>11,946</td>
+                                    <td>2,760</td>
+                                    <td>36.88</td>
+                                    <td>38.27</td>
+                                    <td>49.46</td>
+                                    <td>44.85</td>
+                                    <td>48.35</td>
+                                    <td>50.66</td>
+                                    <td>71.25</td>
+                                    <td class="best">77.08</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Electronics &amp; Computers
                                     </td>
-                                    <td>11,170</td>
-                                    <td>870</td>
-                                    <td>54.20</td>
-                                    <td>57.83</td>
-                                    <td>71.53</td>
-                                    <td>67.49</td>
-                                    <td>74.00</td>
-                                    <td>80.86</td>
-                                    <td>88.18</td>
-                                    <td>89.73</td>
+                                    <td>11,737</td>
+                                    <td>885</td>
+                                    <td>49.55</td>
+                                    <td>58.19</td>
+                                    <td>77.82</td>
+                                    <td>67.34</td>
+                                    <td>77.40</td>
+                                    <td>80.95</td>
+                                    <td class="best">90.81</td>
+                                    <td>90.76</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Clothing &amp; Accessories
                                     </td>
-                                    <td>8,704</td>
-                                    <td>2,639</td>
-                                    <td>39.43</td>
-                                    <td>34.02</td>
-                                    <td>46.10</td>
-                                    <td>43.73</td>
-                                    <td>45.05</td>
-                                    <td>52.44</td>
-                                    <td>63.86</td>
-                                    <td>71.33</td>
+                                    <td>9,100</td>
+                                    <td>2,514</td>
+                                    <td>38.20</td>
+                                    <td>33.35</td>
+                                    <td>49.48</td>
+                                    <td>43.35</td>
+                                    <td>46.96</td>
+                                    <td>52.06</td>
+                                    <td>64.76</td>
+                                    <td class="best">70.94</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Tools &amp; DIY
                                     </td>
-                                    <td>6,412</td>
-                                    <td>689</td>
-                                    <td>54.42</td>
-                                    <td>56.66</td>
-                                    <td>64.96</td>
-                                    <td>63.84</td>
-                                    <td>67.83</td>
-                                    <td>72.71</td>
-                                    <td>90.00</td>
-                                    <td>86.68</td>
-                                </tr>
-                                <tr>
-                                    <td class="has-text-left">
-                                        Sports &amp; Leisure
-                                    </td>
-                                    <td>4,833</td>
-                                    <td>801</td>
-                                    <td>42.56</td>
-                                    <td>45.38</td>
-                                    <td>53.78</td>
-                                    <td>53.24</td>
-                                    <td>54.35</td>
-                                    <td>60.80</td>
-                                    <td>77.24</td>
-                                    <td>87.12</td>
+                                    <td>6,206</td>
+                                    <td>643</td>
+                                    <td>50.90</td>
+                                    <td>55.81</td>
+                                    <td>70.39</td>
+                                    <td>62.83</td>
+                                    <td>71.46</td>
+                                    <td>72.27</td>
+                                    <td class="best">90.25</td>
+                                    <td>88.05</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Toys &amp; Baby
                                     </td>
-                                    <td>3,908</td>
-                                    <td>380</td>
-                                    <td>51.73</td>
-                                    <td>51.86</td>
-                                    <td>68.02</td>
-                                    <td>71.88</td>
-                                    <td>69.28</td>
-                                    <td>78.41</td>
-                                    <td>92.28</td>
+                                    <td>3,754</td>
+                                    <td>367</td>
+                                    <td>48.80</td>
+                                    <td>51.74</td>
+                                    <td>76.70</td>
+                                    <td>70.24</td>
+                                    <td>72.80</td>
+                                    <td>75.88</td>
+                                    <td class="best">92.53</td>
                                     <td>88.52</td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-left">
+                                        Sports &amp; Leisure
+                                    </td>
+                                    <td>3,711</td>
+                                    <td>737</td>
+                                    <td>42.31</td>
+                                    <td>45.50</td>
+                                    <td>59.74</td>
+                                    <td>52.94</td>
+                                    <td>57.80</td>
+                                    <td>63.81</td>
+                                    <td>81.83</td>
+                                    <td class="best">89.59</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Automotive &amp; Motorcycle
                                     </td>
-                                    <td>2,517</td>
-                                    <td>287</td>
-                                    <td>39.34</td>
-                                    <td>50.44</td>
-                                    <td>53.31</td>
-                                    <td>49.10</td>
-                                    <td>52.56</td>
-                                    <td>58.82</td>
-                                    <td>83.12</td>
-                                    <td>92.74</td>
+                                    <td>3,044</td>
+                                    <td>293</td>
+                                    <td>43.54</td>
+                                    <td>50.60</td>
+                                    <td>64.75</td>
+                                    <td>50.06</td>
+                                    <td>62.10</td>
+                                    <td>65.38</td>
+                                    <td>86.48</td>
+                                    <td class="best">91.74</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Cosmetics &amp; Drugstore
                                     </td>
-                                    <td>1,249</td>
-                                    <td>268</td>
-                                    <td>43.56</td>
-                                    <td>49.41</td>
-                                    <td>58.86</td>
-                                    <td>53.04</td>
-                                    <td>57.84</td>
-                                    <td>65.33</td>
-                                    <td>79.76</td>
-                                    <td>79.83</td>
+                                    <td>1,178</td>
+                                    <td>282</td>
+                                    <td>39.01</td>
+                                    <td>49.14</td>
+                                    <td>61.22</td>
+                                    <td>50.49</td>
+                                    <td>59.43</td>
+                                    <td>64.69</td>
+                                    <td class="best">77.82</td>
+                                    <td>77.21</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Health &amp; Care
                                     </td>
-                                    <td>1,006</td>
-                                    <td>140</td>
-                                    <td>59.22</td>
-                                    <td>61.78</td>
-                                    <td>71.28</td>
-                                    <td>68.34</td>
-                                    <td>78.49</td>
-                                    <td>79.46</td>
-                                    <td>96.59</td>
-                                    <td>83.21</td>
+                                    <td>1,057</td>
+                                    <td>222</td>
+                                    <td>56.42</td>
+                                    <td>67.91</td>
+                                    <td>79.70</td>
+                                    <td>68.31</td>
+                                    <td>81.04</td>
+                                    <td>80.26</td>
+                                    <td class="best">95.50</td>
+                                    <td>82.72</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Food &amp; Beverages<sup>&dagger;</sup>
                                     </td>
-                                    <td>713</td>
-                                    <td>39</td>
-                                    <td>58.57</td>
-                                    <td>58.36</td>
-                                    <td>63.44</td>
-                                    <td>68.95</td>
-                                    <td>64.25</td>
-                                    <td>68.99</td>
+                                    <td>648</td>
+                                    <td>72</td>
+                                    <td>55.66</td>
+                                    <td>44.28</td>
+                                    <td>69.95</td>
+                                    <td>69.78</td>
+                                    <td>67.95</td>
+                                    <td class="best">70.36</td>
                                     <td>65.37</td>
                                     <td>60.61</td>
                                 </tr>
@@ -1906,30 +1932,30 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                     <td class="has-text-left">
                                         Office Supplies<sup>&dagger;</sup>
                                     </td>
-                                    <td>451</td>
-                                    <td>82</td>
-                                    <td>40.17</td>
-                                    <td>43.08</td>
-                                    <td>59.34</td>
-                                    <td>65.61</td>
-                                    <td>67.19</td>
-                                    <td>63.02</td>
-                                    <td>74.07</td>
-                                    <td>71.85</td>
+                                    <td>491</td>
+                                    <td>58</td>
+                                    <td>41.19</td>
+                                    <td>56.94</td>
+                                    <td>79.48</td>
+                                    <td>71.57</td>
+                                    <td>78.62</td>
+                                    <td>81.64</td>
+                                    <td class="best">88.89</td>
+                                    <td>75.56</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Books, Films &amp; Music<sup>&dagger;</sup>
                                     </td>
-                                    <td>276</td>
-                                    <td>11</td>
-                                    <td>60.00</td>
-                                    <td>69.37</td>
-                                    <td>72.61</td>
-                                    <td>89.63</td>
-                                    <td>74.08</td>
-                                    <td>89.50</td>
-                                    <td>96.00</td>
+                                    <td>233</td>
+                                    <td>21</td>
+                                    <td>62.00</td>
+                                    <td>70.96</td>
+                                    <td>87.56</td>
+                                    <td>90.96</td>
+                                    <td>77.38</td>
+                                    <td>85.01</td>
+                                    <td class="best">96.00</td>
                                     <td>60.00</td>
                                 </tr>
                             </tbody>
@@ -1949,16 +1975,19 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         Magellan use the selected classifier per configuration.
                         Pet Supplies is omitted, as it has no records in the
                         recommended configuration.
-                        <sup>&dagger;</sup>Categories resting on at most 36
-                        same-category test pairs from the test sets in which
-                        they occur, reported for completeness.
+                        Bold marks the best value per category.
+                        <sup>&dagger;</sup>Categories with fewer than 100 test
+                        records in the recommended configuration, reported for
+                        completeness.
                     </p>
                     <p>
                         The category ranking is largely language-independent.
                         Repeating the analysis on the English benchmark version
-                        preserves the ranking of the nine largest categories,
-                        and the per-category shifts are of the same order as
-                        each matcher's overall language difference. The table
+                        for WordCooc, Magellan, RoBERTa, R-SupCon, and GPT-5.2
+                        yields the same picture: the ranking of the categories
+                        stays largely unchanged, and the per-category shifts are
+                        of the same order as each matcher's overall language
+                        difference reported in the next section. The table
                         below reports the same-category F1 on the English
                         version.
                     </p>
@@ -1982,132 +2011,132 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                     <td class="has-text-left">
                                         Furniture &amp; Living
                                     </td>
-                                    <td>39.83</td>
-                                    <td>38.12</td>
-                                    <td>49.98</td>
-                                    <td>46.17</td>
-                                    <td>71.89</td>
-                                    <td>79.33</td>
+                                    <td>37.67</td>
+                                    <td>36.45</td>
+                                    <td>53.57</td>
+                                    <td>45.18</td>
+                                    <td>71.39</td>
+                                    <td class="best">78.38</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Electronics &amp; Computers
                                     </td>
-                                    <td>54.16</td>
-                                    <td>56.23</td>
-                                    <td>71.41</td>
-                                    <td>67.57</td>
-                                    <td>89.79</td>
-                                    <td>88.52</td>
+                                    <td>52.84</td>
+                                    <td>57.39</td>
+                                    <td>79.95</td>
+                                    <td>67.10</td>
+                                    <td class="best">91.80</td>
+                                    <td>88.64</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Clothing &amp; Accessories
                                     </td>
-                                    <td>41.06</td>
-                                    <td>32.82</td>
-                                    <td>48.94</td>
-                                    <td>45.28</td>
-                                    <td>66.44</td>
-                                    <td>74.64</td>
+                                    <td>40.44</td>
+                                    <td>32.12</td>
+                                    <td>55.08</td>
+                                    <td>44.26</td>
+                                    <td>67.28</td>
+                                    <td class="best">74.10</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Tools &amp; DIY
                                     </td>
-                                    <td>56.50</td>
-                                    <td>54.29</td>
-                                    <td>63.45</td>
-                                    <td>62.14</td>
-                                    <td>89.45</td>
-                                    <td>89.57</td>
-                                </tr>
-                                <tr>
-                                    <td class="has-text-left">
-                                        Sports &amp; Leisure
-                                    </td>
-                                    <td>52.78</td>
-                                    <td>42.42</td>
-                                    <td>57.84</td>
-                                    <td>54.91</td>
-                                    <td>77.13</td>
-                                    <td>84.59</td>
+                                    <td>52.97</td>
+                                    <td>53.80</td>
+                                    <td>72.10</td>
+                                    <td>61.29</td>
+                                    <td class="best">89.34</td>
+                                    <td>89.15</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Toys &amp; Baby
                                     </td>
-                                    <td>52.64</td>
-                                    <td>50.35</td>
-                                    <td>67.84</td>
-                                    <td>67.09</td>
-                                    <td>89.71</td>
-                                    <td>84.46</td>
+                                    <td>46.04</td>
+                                    <td>50.59</td>
+                                    <td>76.05</td>
+                                    <td>65.27</td>
+                                    <td class="best">90.35</td>
+                                    <td>84.47</td>
+                                </tr>
+                                <tr>
+                                    <td class="has-text-left">
+                                        Sports &amp; Leisure
+                                    </td>
+                                    <td>54.77</td>
+                                    <td>42.09</td>
+                                    <td>67.05</td>
+                                    <td>56.75</td>
+                                    <td>80.79</td>
+                                    <td class="best">85.63</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Automotive &amp; Motorcycle
                                     </td>
-                                    <td>40.01</td>
-                                    <td>49.79</td>
-                                    <td>52.95</td>
-                                    <td>48.66</td>
-                                    <td>81.96</td>
-                                    <td>91.20</td>
+                                    <td>44.80</td>
+                                    <td>50.59</td>
+                                    <td>65.09</td>
+                                    <td>51.91</td>
+                                    <td>85.52</td>
+                                    <td class="best">91.72</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Cosmetics &amp; Drugstore
                                     </td>
-                                    <td>45.80</td>
-                                    <td>48.32</td>
-                                    <td>60.35</td>
-                                    <td>52.80</td>
-                                    <td>78.81</td>
-                                    <td>77.52</td>
+                                    <td>45.12</td>
+                                    <td>47.88</td>
+                                    <td>65.61</td>
+                                    <td>52.23</td>
+                                    <td>74.23</td>
+                                    <td class="best">76.02</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Health &amp; Care
                                     </td>
-                                    <td>53.74</td>
-                                    <td>61.96</td>
-                                    <td>70.89</td>
-                                    <td>68.53</td>
-                                    <td>92.52</td>
-                                    <td>89.37</td>
+                                    <td>58.59</td>
+                                    <td>66.21</td>
+                                    <td>81.64</td>
+                                    <td>69.71</td>
+                                    <td class="best">91.16</td>
+                                    <td>89.02</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Food &amp; Beverages<sup>&dagger;</sup>
                                     </td>
-                                    <td>62.64</td>
-                                    <td>56.52</td>
-                                    <td>60.63</td>
-                                    <td>62.71</td>
-                                    <td>70.13</td>
+                                    <td>52.35</td>
+                                    <td>42.11</td>
+                                    <td>70.05</td>
+                                    <td>67.57</td>
+                                    <td class="best">70.13</td>
                                     <td>63.81</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Office Supplies<sup>&dagger;</sup>
                                     </td>
-                                    <td>43.52</td>
-                                    <td>37.48</td>
-                                    <td>57.72</td>
-                                    <td>64.02</td>
-                                    <td>74.07</td>
-                                    <td>68.52</td>
+                                    <td>43.23</td>
+                                    <td>35.81</td>
+                                    <td>82.95</td>
+                                    <td>72.26</td>
+                                    <td class="best">82.96</td>
+                                    <td>79.63</td>
                                 </tr>
                                 <tr>
                                     <td class="has-text-left">
                                         Books, Films &amp; Music<sup>&dagger;</sup>
                                     </td>
-                                    <td>61.56</td>
-                                    <td>44.87</td>
-                                    <td>79.85</td>
-                                    <td>96.15</td>
-                                    <td>96.00</td>
+                                    <td>68.22</td>
+                                    <td>55.34</td>
+                                    <td>93.19</td>
+                                    <td>93.04</td>
+                                    <td class="best">96.00</td>
                                     <td>80.00</td>
                                 </tr>
                             </tbody>
@@ -2119,12 +2148,13 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         record counts per category are identical to the German
                         version, as both language versions share all splits and
                         identifiers. WordCooc and Magellan use the classifier
-                        selected on the English validation sets. HierGAT and
-                        Ditto are omitted, as their English per-category scores
-                        are not yet available on the same evaluation basis as
-                        the German table.
-                        <sup>&dagger;</sup>Categories resting on at most 36
-                        same-category test pairs, reported for completeness.
+                        selected on the English validation sets. The English
+                        category analysis covers WordCooc, Magellan, RoBERTa,
+                        R-SupCon, and GPT-5.2; HierGAT and Ditto are not
+                        included. Bold marks the best value per category.
+                        <sup>&dagger;</sup>Categories with fewer than 100 test
+                        records in the recommended configuration, reported for
+                        completeness.
                     </p>
                 </div>
             </div>
@@ -2175,105 +2205,103 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                 </td>
                                 <td class="has-text-left" rowspan="3">Small</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>&minus;0.52</td>
-                                <td>&minus;3.50</td>
-                                <td>+2.55</td>
-                                <td>+5.11</td>
-                                <td>+1.22</td>
-                                <td>&minus;0.52</td>
-                                <td>&minus;0.10</td>
-                                <td>&minus;2.19</td>
+                                <td>+4.23</td>
+                                <td>&minus;2.55</td>
+                                <td>+2.56</td>
+                                <td>+2.44</td>
+                                <td>+12.41</td>
+                                <td>&minus;5.71</td>
+                                <td>+0.20</td>
+                                <td>&minus;2.21</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>+0.58</td>
-                                <td>&minus;4.17</td>
-                                <td>+2.85</td>
-                                <td>+0.11</td>
-                                <td>&minus;0.14</td>
-                                <td>&minus;3.73</td>
-                                <td>&minus;0.09</td>
-                                <td>+0.63</td>
+                                <td>+2.19</td>
+                                <td>&minus;1.58</td>
+                                <td>+2.05</td>
+                                <td>&minus;0.08</td>
+                                <td>+9.70</td>
+                                <td>&minus;3.40</td>
+                                <td>&minus;1.43</td>
+                                <td>&minus;0.48</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>+4.72</td>
-                                <td>&minus;3.83</td>
-                                <td>+4.41</td>
-                                <td>&minus;1.33</td>
-                                <td>+0.06</td>
-                                <td>&minus;2.65</td>
-                                <td>&minus;0.82</td>
+                                <td>+5.72</td>
+                                <td>&minus;1.73</td>
+                                <td>+4.43</td>
+                                <td>&minus;0.11</td>
+                                <td>+11.10</td>
+                                <td>&minus;2.31</td>
+                                <td>&minus;0.84</td>
                                 <td>+0.15</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left" rowspan="3">
-                                    Medium
-                                </td>
+                                <td class="has-text-left" rowspan="3">Medium</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>&minus;0.04</td>
-                                <td>&minus;1.67</td>
-                                <td>+1.33</td>
-                                <td>+3.90</td>
-                                <td>&minus;6.88</td>
-                                <td>&minus;3.72</td>
-                                <td>&minus;0.10</td>
-                                <td>&minus;2.19</td>
+                                <td>&minus;2.05</td>
+                                <td>&minus;2.43</td>
+                                <td>+1.38</td>
+                                <td>&minus;0.12</td>
+                                <td>&minus;1.54</td>
+                                <td>+3.35</td>
+                                <td>+0.20</td>
+                                <td>&minus;2.21</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>+1.44</td>
-                                <td>&minus;2.20</td>
-                                <td>+1.13</td>
-                                <td>+0.89</td>
-                                <td>&minus;8.91</td>
-                                <td>&minus;6.99</td>
-                                <td>&minus;0.09</td>
-                                <td>+0.63</td>
+                                <td>&minus;1.47</td>
+                                <td>&minus;3.34</td>
+                                <td>+0.91</td>
+                                <td>&minus;0.92</td>
+                                <td>&minus;1.23</td>
+                                <td>+4.53</td>
+                                <td>&minus;1.43</td>
+                                <td>&minus;0.48</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>+4.43</td>
-                                <td>&minus;1.69</td>
+                                <td>+5.60</td>
+                                <td>&minus;2.26</td>
                                 <td>+1.55</td>
-                                <td>+1.17</td>
-                                <td>&minus;5.38</td>
-                                <td>&minus;5.27</td>
-                                <td>&minus;0.82</td>
+                                <td>&minus;0.31</td>
+                                <td>+0.03</td>
+                                <td>+4.15</td>
+                                <td>&minus;0.84</td>
                                 <td>+0.15</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>+0.81</td>
-                                <td>&minus;0.79</td>
-                                <td>+2.18</td>
-                                <td>+1.67</td>
-                                <td>&minus;5.23</td>
-                                <td>&minus;5.60</td>
-                                <td>&minus;0.10</td>
-                                <td>&minus;2.19</td>
+                                <td>+0.60</td>
+                                <td>&minus;0.36</td>
+                                <td>+2.22</td>
+                                <td>+0.20</td>
+                                <td>+1.89</td>
+                                <td>+1.49</td>
+                                <td>+0.20</td>
+                                <td>&minus;2.21</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>+0.71</td>
-                                <td>&minus;0.38</td>
-                                <td>&minus;0.61</td>
-                                <td>&minus;0.82</td>
-                                <td>&minus;8.87</td>
-                                <td>&minus;9.18</td>
-                                <td>&minus;0.09</td>
-                                <td>+0.63</td>
+                                <td>+1.48</td>
+                                <td>+1.19</td>
+                                <td>&minus;0.89</td>
+                                <td>&minus;0.68</td>
+                                <td>+1.91</td>
+                                <td>+0.73</td>
+                                <td>&minus;1.43</td>
+                                <td>&minus;0.48</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>+6.47</td>
-                                <td>+0.38</td>
+                                <td>+6.64</td>
+                                <td>+0.58</td>
                                 <td>&minus;1.44</td>
-                                <td>&minus;0.68</td>
-                                <td>&minus;3.83</td>
-                                <td>&minus;4.92</td>
-                                <td>&minus;0.82</td>
+                                <td>+0.09</td>
+                                <td>+3.92</td>
+                                <td>+1.73</td>
+                                <td>&minus;0.84</td>
                                 <td>+0.15</td>
                             </tr>
                             <tr>
@@ -2282,106 +2310,104 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                 </td>
                                 <td class="has-text-left" rowspan="3">Small</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>+0.85</td>
-                                <td>&minus;0.33</td>
-                                <td>+7.20</td>
-                                <td>+1.36</td>
-                                <td>+18.86</td>
-                                <td>&minus;22.47</td>
-                                <td>+0.57</td>
-                                <td>&minus;2.08</td>
-                            </tr>
-                            <tr>
-                                <td class="has-text-left">Half-Seen</td>
+                                <td>+2.36</td>
+                                <td>&minus;1.42</td>
+                                <td>+7.15</td>
+                                <td>+4.60</td>
+                                <td>+14.02</td>
+                                <td>+9.64</td>
                                 <td>+0.54</td>
-                                <td>+0.03</td>
-                                <td>+6.48</td>
-                                <td>&minus;2.02</td>
-                                <td>+13.49</td>
-                                <td>&minus;21.29</td>
-                                <td>+0.41</td>
-                                <td>+2.89</td>
-                            </tr>
-                            <tr>
-                                <td class="has-text-left">Unseen</td>
-                                <td>+4.86</td>
-                                <td>&minus;0.65</td>
-                                <td>+6.78</td>
-                                <td>&minus;0.45</td>
-                                <td>+12.63</td>
-                                <td>&minus;18.08</td>
-                                <td>&minus;1.06</td>
-                                <td>+3.34</td>
-                            </tr>
-                            <tr>
-                                <td class="has-text-left" rowspan="3">
-                                    Medium
-                                </td>
-                                <td class="has-text-left">Seen</td>
-                                <td>+0.30</td>
-                                <td>+1.29</td>
-                                <td>+4.97</td>
-                                <td>+4.35</td>
-                                <td>+0.69</td>
-                                <td>&minus;4.91</td>
-                                <td>+0.57</td>
-                                <td>&minus;2.08</td>
+                                <td>&minus;1.98</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>&minus;0.57</td>
-                                <td>+0.14</td>
-                                <td>+4.09</td>
-                                <td>&minus;0.33</td>
-                                <td>&minus;0.94</td>
-                                <td>&minus;7.26</td>
-                                <td>+0.41</td>
-                                <td>+2.89</td>
+                                <td>+2.92</td>
+                                <td>&minus;1.14</td>
+                                <td>+7.27</td>
+                                <td>+2.35</td>
+                                <td>+11.38</td>
+                                <td>+7.94</td>
+                                <td>&minus;0.07</td>
+                                <td>+1.43</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>+2.99</td>
-                                <td>&minus;0.99</td>
-                                <td>+5.50</td>
-                                <td>+0.27</td>
-                                <td>+1.85</td>
-                                <td>&minus;4.92</td>
-                                <td>&minus;1.06</td>
-                                <td>+3.34</td>
+                                <td>+3.59</td>
+                                <td>&minus;2.61</td>
+                                <td>+6.79</td>
+                                <td>+1.10</td>
+                                <td>+10.40</td>
+                                <td>+6.08</td>
+                                <td>&minus;1.10</td>
+                                <td>+3.40</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Medium</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>&minus;1.36</td>
+                                <td>&minus;0.90</td>
+                                <td>+4.98</td>
+                                <td>+3.36</td>
+                                <td>+11.15</td>
+                                <td>&minus;10.25</td>
+                                <td>+0.54</td>
+                                <td>&minus;1.98</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>+2.11</td>
+                                <td>&minus;0.10</td>
+                                <td>+4.42</td>
+                                <td>&minus;1.24</td>
+                                <td>+11.32</td>
+                                <td>&minus;3.92</td>
+                                <td>&minus;0.07</td>
+                                <td>+1.43</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Unseen</td>
+                                <td>+4.48</td>
+                                <td>&minus;1.85</td>
+                                <td>+5.54</td>
+                                <td>+0.23</td>
+                                <td>+12.07</td>
+                                <td>&minus;2.86</td>
+                                <td>&minus;1.10</td>
+                                <td>+3.40</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>&minus;1.72</td>
-                                <td>&minus;1.27</td>
-                                <td>+2.39</td>
-                                <td>+1.81</td>
-                                <td>&minus;4.92</td>
-                                <td>&minus;6.91</td>
-                                <td>+0.57</td>
-                                <td>&minus;2.08</td>
+                                <td>+0.34</td>
+                                <td>&minus;1.32</td>
+                                <td>+2.43</td>
+                                <td>+2.40</td>
+                                <td>+3.61</td>
+                                <td>+0.91</td>
+                                <td>+0.54</td>
+                                <td>&minus;1.98</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>+1.18</td>
-                                <td>&minus;2.99</td>
-                                <td>+0.99</td>
-                                <td>&minus;0.48</td>
-                                <td>&minus;5.46</td>
-                                <td>&minus;9.04</td>
-                                <td>+0.41</td>
-                                <td>+2.89</td>
+                                <td>+1.42</td>
+                                <td>&minus;1.09</td>
+                                <td>+1.86</td>
+                                <td>+1.29</td>
+                                <td>+5.21</td>
+                                <td>+2.54</td>
+                                <td>&minus;0.07</td>
+                                <td>+1.43</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>+3.74</td>
-                                <td>&minus;2.53</td>
-                                <td>+2.44</td>
-                                <td>&minus;1.29</td>
-                                <td>&minus;2.55</td>
-                                <td>&minus;6.06</td>
-                                <td>&minus;1.06</td>
-                                <td>+3.34</td>
+                                <td>+6.45</td>
+                                <td>&minus;2.65</td>
+                                <td>+2.48</td>
+                                <td>+0.51</td>
+                                <td>+4.45</td>
+                                <td>+3.39</td>
+                                <td>&minus;1.10</td>
+                                <td>+3.40</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" rowspan="9">
@@ -2389,132 +2415,143 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                                 </td>
                                 <td class="has-text-left" rowspan="3">Small</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>+3.06</td>
-                                <td>&minus;1.57</td>
-                                <td>+8.78</td>
-                                <td>&minus;0.03</td>
-                                <td>+12.56</td>
-                                <td>&minus;3.60</td>
-                                <td>&minus;0.76</td>
-                                <td>&minus;0.38</td>
+                                <td>+4.42</td>
+                                <td>&minus;1.26</td>
+                                <td>+8.59</td>
+                                <td>+1.49</td>
+                                <td>+15.03</td>
+                                <td>+10.87</td>
+                                <td>&minus;0.26</td>
+                                <td>+0.36</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>+0.39</td>
-                                <td>&minus;1.17</td>
-                                <td>+6.46</td>
-                                <td>&minus;1.17</td>
-                                <td>+9.42</td>
-                                <td>+0.03</td>
-                                <td>+2.99</td>
-                                <td>+2.96</td>
+                                <td>+4.42</td>
+                                <td>&minus;0.88</td>
+                                <td>+5.82</td>
+                                <td>+2.19</td>
+                                <td>+13.64</td>
+                                <td>+9.56</td>
+                                <td>+1.99</td>
+                                <td>+2.55</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>+1.65</td>
-                                <td>&minus;0.55</td>
-                                <td>+4.75</td>
-                                <td>&minus;0.97</td>
-                                <td>+7.62</td>
-                                <td>&minus;2.15</td>
-                                <td>+1.31</td>
-                                <td>+0.89</td>
-                            </tr>
-                            <tr>
-                                <td class="has-text-left" rowspan="3">
-                                    Medium
-                                </td>
-                                <td class="has-text-left">Seen</td>
-                                <td>&minus;2.66</td>
-                                <td>&minus;2.61</td>
-                                <td>+5.09</td>
-                                <td>+0.51</td>
-                                <td>&minus;1.94</td>
-                                <td>&minus;6.40</td>
-                                <td>&minus;0.76</td>
-                                <td>&minus;0.38</td>
-                            </tr>
-                            <tr>
-                                <td class="has-text-left">Half-Seen</td>
-                                <td>&minus;2.82</td>
-                                <td>&minus;3.02</td>
-                                <td>+7.50</td>
-                                <td>&minus;0.81</td>
-                                <td>&minus;2.72</td>
+                                <td>+0.57</td>
                                 <td>&minus;0.99</td>
-                                <td>+2.99</td>
-                                <td>+2.96</td>
+                                <td>+4.77</td>
+                                <td>+1.70</td>
+                                <td>+10.64</td>
+                                <td>+8.84</td>
+                                <td>+1.27</td>
+                                <td>+0.53</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" rowspan="3">Medium</td>
+                                <td class="has-text-left">Seen</td>
+                                <td>+4.44</td>
+                                <td>&minus;2.69</td>
+                                <td>+5.19</td>
+                                <td>+1.04</td>
+                                <td>+6.28</td>
+                                <td>&minus;10.76</td>
+                                <td>&minus;0.26</td>
+                                <td>+0.36</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Half-Seen</td>
+                                <td>+3.98</td>
+                                <td>&minus;2.27</td>
+                                <td>+8.35</td>
+                                <td>+0.69</td>
+                                <td>+5.77</td>
+                                <td>&minus;4.50</td>
+                                <td>+1.99</td>
+                                <td>+2.55</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>+3.07</td>
-                                <td>&minus;1.63</td>
-                                <td>+5.61</td>
-                                <td>+1.24</td>
-                                <td>&minus;1.04</td>
-                                <td>&minus;1.24</td>
-                                <td>+1.31</td>
-                                <td>+0.89</td>
+                                <td>+1.46</td>
+                                <td>&minus;2.45</td>
+                                <td>+5.59</td>
+                                <td>&minus;0.05</td>
+                                <td>+2.34</td>
+                                <td>&minus;3.18</td>
+                                <td>+1.27</td>
+                                <td>+0.53</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" rowspan="3">Large</td>
                                 <td class="has-text-left">Seen</td>
-                                <td>+0.93</td>
-                                <td>&minus;2.59</td>
-                                <td>+1.25</td>
-                                <td>&minus;0.59</td>
-                                <td>&minus;5.30</td>
-                                <td>+0.27</td>
-                                <td>&minus;0.76</td>
-                                <td>&minus;0.38</td>
+                                <td>&minus;1.67</td>
+                                <td>&minus;2.58</td>
+                                <td>+1.42</td>
+                                <td>&minus;0.89</td>
+                                <td>+3.97</td>
+                                <td>&minus;0.07</td>
+                                <td>&minus;0.26</td>
+                                <td>+0.36</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Half-Seen</td>
-                                <td>+1.18</td>
-                                <td>&minus;1.85</td>
-                                <td>+5.90</td>
-                                <td>&minus;0.73</td>
-                                <td>&minus;2.54</td>
-                                <td>+0.40</td>
-                                <td>+2.99</td>
-                                <td>+2.96</td>
+                                <td>+1.28</td>
+                                <td>&minus;1.32</td>
+                                <td>+5.36</td>
+                                <td>&minus;3.33</td>
+                                <td>+7.81</td>
+                                <td>+4.38</td>
+                                <td>+1.99</td>
+                                <td>+2.55</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Unseen</td>
-                                <td>+4.74</td>
-                                <td>&minus;1.10</td>
-                                <td>+7.04</td>
-                                <td>+1.16</td>
-                                <td>&minus;0.52</td>
-                                <td>+2.55</td>
-                                <td>+1.31</td>
-                                <td>+0.89</td>
+                                <td>+2.19</td>
+                                <td>+0.31</td>
+                                <td>+7.05</td>
+                                <td>&minus;1.31</td>
+                                <td>+7.31</td>
+                                <td>+4.92</td>
+                                <td>+1.27</td>
+                                <td>+0.53</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" colspan="3">
                                     <b>Mean (all 27 variants)</b>
                                 </td>
-                                <td><b>+1.49</b></td>
-                                <td><b>&minus;1.53</b></td>
-                                <td><b>+3.97</b></td>
-                                <td><b>+0.44</b></td>
+                                <td><b>+2.46</b></td>
+                                <td><b>&minus;1.47</b></td>
+                                <td><b>+3.99</b></td>
+                                <td><b>+0.62</b></td>
+                                <td><b>+7.21</b></td>
+                                <td><b>+1.41</b></td>
+                                <td><b>+0.03</b></td>
                                 <td><b>+0.42</b></td>
-                                <td><b>&minus;5.73</b></td>
-                                <td><b>+0.27</b></td>
-                                <td><b>+0.69</b></td>
                             </tr>
                             <tr>
                                 <td class="has-text-left" colspan="3">
                                     <b>Median (all 27 variants)</b>
                                 </td>
-                                <td><b>+0.93</b></td>
-                                <td><b>&minus;1.57</b></td>
-                                <td><b>+4.41</b></td>
-                                <td><b>&minus;0.03</b></td>
-                                <td><b>&minus;1.04</b></td>
-                                <td><b>&minus;4.92</b></td>
-                                <td><b>&minus;0.09</b></td>
-                                <td><b>+0.63</b></td>
+                                <td><b>+2.19</b></td>
+                                <td><b>&minus;1.42</b></td>
+                                <td><b>+4.43</b></td>
+                                <td><b>+0.23</b></td>
+                                <td><b>+7.31</b></td>
+                                <td><b>+1.73</b></td>
+                                <td><b>&minus;0.07</b></td>
+                                <td><b>+0.36</b></td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left" colspan="3">
+                                    <b>Variants with English ahead</b>
+                                </td>
+                                <td><b>23</b></td>
+                                <td><b>3</b></td>
+                                <td><b>25</b></td>
+                                <td><b>16</b></td>
+                                <td><b>25</b></td>
+                                <td><b>17</b></td>
+                                <td><b>12</b></td>
+                                <td><b>18</b></td>
                             </tr>
                         </tbody>
                     </table>
@@ -2523,50 +2560,40 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                     F1 difference English minus German per benchmark variant,
                     shown for all three training sizes. Positive values mean the
                     model scores higher on the English version, negative values
-                    mean it scores higher on the German original. The mean and
-                    median rows summarize all 27 variants. GPT-5.2 results are
+                    mean it scores higher on the German original. The mean,
+                    median, and count rows summarize all 27 variants. GPT-5.2 results are
                     independent of the training set size.
                 </p>
                 <div class="content is-size-6" style="margin-top: 1.4rem">
                     <p>
-                        The main result is that changing the language rarely
-                        changes the practical assessment of a matcher. WordCooc
-                        and Magellan remain below 46 mean F1 in both languages,
-                        which is too low for practical matching on this
-                        benchmark. Their small mean language differences do not
-                        alter that conclusion. More generally, the mean language
-                        difference remains within &plusmn;3.97 F1 for every matcher except Ditto. GPT-5.2 is similarly stable: the
-                        mean differences are +0.27 F1 with the Simple prompt and
-                        +0.69 F1 with the Rule-Guided prompt, and no individual
-                        difference exceeds 3.34 F1. At this scale, the results
-                        do not suggest a substantial systematic language effect
-                        for GPT-5.2.
+                        The main result is that changing the language rarely changes the practical assessment of a matcher. WordCooc and Magellan remain below 46 mean F1 in both languages, which is too low for practical matching on this benchmark. Averaged across all variants, every transformer-based matcher scores higher on the English version, and GPT-5.2 is nearly indifferent to the language: its mean differences are +0.03 F1 with the Simple prompt and +0.42 F1 with the Rule-Guided prompt, and no individual difference exceeds 3.40 F1. This largest GPT-5.2 difference stems from single runs per variant, and the cross-language section below reports a run-to-run spread of 1.10 F1 for repeated DE-DE requests, so a small language effect under the Rule-Guided prompt remains plausible.
                     </p>
                     <p>
-                        Ditto is the notable exception. It scores 5.73 F1 lower
-                        on average on the English version, which is surprising
-                        because its RoBERTa backbone was pre-trained primarily
-                        on English text. The English disadvantage is largest
-                        with Small training sets at 8.27 F1 on average and
-                        narrows to 4.63 with Medium and 4.28 with Large training
-                        sets. Although the disadvantage becomes smaller as the
-                        training set grows, the results do not explain why Ditto
-                        performs worse on English overall.
+                        WordCooc shows a slight advantage on English that is most visible on the Unseen test sets, reaching 6.64 F1 (Large, 20&nbsp;% corner cases), possibly because German compounds reduce exact token overlap between matching records. Magellan instead slightly favours German (mean &minus;1.47 F1). RoBERTa favours English with a mean difference of +3.99 F1 and English ahead in 25 of 27 variants, consistent with its predominantly English pre-training. The advantage is largest with Small training sets (+5.49 F1) and shrinks to +2.27 F1 with Large sets, so fine-tuning an English model on German data costs only little matching performance once enough training data is available. HierGAT shows the largest mean difference (+7.21 F1, English ahead in 25 of 27 variants), while Ditto (+1.41 F1) and R-SupCon (+0.62 F1) are close to parity, although all three fine-tune the same RoBERTa backbone.
                     </p>
                     <p>
-                        Across the six supervised matchers, the mean absolute
-                        language gap decreases from 4.56 F1 with Small training
-                        sets to 2.89 with Medium and 2.83 with Large sets.
-                        Language sensitivity therefore tends to be larger when
-                        little training data is available. RoBERTa favours
-                        English with a mean difference of +3.97 F1 and English
-                        ahead in 25 of 27 variants, consistent with its
-                        predominantly English pre-training. The advantage is
-                        largest with Small training sets (+5.58 F1) and shrinks
-                        to +2.24 F1 with Large sets, so fine-tuning an English
-                        model on German data costs only little matching
-                        performance once enough training data is available.
+                        Across the six supervised matchers, the mean absolute language gap decreases from 5.24 F1 with Small training sets to 3.52 with Medium and 2.40 with Large sets. Language sensitivity therefore tends to be larger when little training data is available.
                     </p>
+                    <p>
+                        The multilingual encoder XLM-R, evaluated on the 80&nbsp;% corner-case variants, scores above RoBERTa on German in all nine cells, by 1.9 to 9.6 F1, with the largest gains on the Small training sets, and stays within 3.8 F1 of RoBERTa on English, with RoBERTa ahead on the Large sets. The average language difference is small with the multilingual backbone: over the nine cells, XLM-R scores 0.69 F1 higher on English than on German, RoBERTa 5.79 F1. This indicates that the English advantage of RoBERTa stems mainly from its backbone rather than from differences between the German and the translated English data. For matching in a non-English market, a multilingual encoder is the better starting point: it gains 1.9 to 9.6 F1 on German at a cost of at most 3.2 F1 on the Large English sets.
+                    </p>
+                    <div class="table-container">
+                        <table class="table is-narrow is-fullwidth is-striped has-text-right">
+                        <thead><tr><th class="has-text-left">Training size</th><th class="has-text-left">Test set</th><th>RoBERTa (DE)</th><th>XLM-R (DE)</th><th>RoBERTa (EN)</th><th>XLM-R (EN)</th></tr></thead>
+                        <tbody>
+                            <tr><td class="has-text-left" rowspan="3">Small</td><td class="has-text-left">Seen</td><td>47.91</td><td>57.54</td><td>56.50</td><td>57.51</td></tr>
+                            <tr><td class="has-text-left">Half-Seen</td><td>39.55</td><td>48.07</td><td>45.37</td><td>49.13</td></tr>
+                            <tr><td class="has-text-left">Unseen</td><td>37.31</td><td>43.31</td><td>42.07</td><td>45.23</td></tr>
+                            <tr><td class="has-text-left" rowspan="3">Medium</td><td class="has-text-left">Seen</td><td>64.39</td><td>68.66</td><td>69.59</td><td>71.77</td></tr>
+                            <tr><td class="has-text-left">Half-Seen</td><td>49.30</td><td>55.65</td><td>57.65</td><td>57.96</td></tr>
+                            <tr><td class="has-text-left">Unseen</td><td>43.73</td><td>50.26</td><td>49.32</td><td>52.80</td></tr>
+                            <tr><td class="has-text-left" rowspan="3">Large</td><td class="has-text-left">Seen</td><td>72.23</td><td>74.09</td><td>73.65</td><td>72.75</td></tr>
+                            <tr><td class="has-text-left">Half-Seen</td><td>54.47</td><td>58.01</td><td>59.83</td><td>56.90</td></tr>
+                            <tr><td class="has-text-left">Unseen</td><td>45.28</td><td>51.36</td><td>52.33</td><td>49.09</td></tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    <p class="footer-note">F1 of RoBERTa and XLM-R (xlm-roberta-base, fine-tuned with the RoBERTa pipeline at learning rate 2e-5, warmup ratio 0.1, early-stopping patience 25, and batch size 32) on the 80&nbsp;% corner-case variants of both language versions, mean over three seeds.</p>
                     <p>
                         Comparing the results of the matchers on the English
                         version of the billiger.de benchmark to the results of
@@ -2575,10 +2602,18 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                             href="https://webdatacommons.org/largescaleproductcorpus/wdc-products/#toc4"
                             >WDC Products Benchmark</a
                         >, which also features English product data, shows that
-                        the F1 results on billiger.de are generally lower,
-                        meaning that billiger.de Products (English) is more
-                        difficult than WDC Products. A reason for this might
-                        that Billiger.de Products spans a broader range of
+                        the F1 results on billiger.de are generally lower:
+                        averaged over the 27 shared configurations, RoBERTa,
+                        Ditto, HierGAT, and R-SupCon score 9.8 to 19.6 F1 lower
+                        on the English version of Billiger.de Products than on
+                        WDC Products, while the ranking of the six matchers is
+                        the same on both benchmarks. Billiger.de Products
+                        (English) is therefore more difficult than WDC Products.
+                        Even on the easiest English configuration (20&nbsp;%
+                        corner cases, Large, Seen), RoBERTa, Ditto, and R-SupCon
+                        score 1.2 to 8.7 F1 below their published Abt-Buy
+                        results. A reason for this might
+                        be that Billiger.de Products spans a broader range of
                         product categories, whereas WDC Products is dominated by
                         offers for electronic products.
                     </p>
@@ -2600,17 +2635,26 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         languages. This section evaluates this setting directly:
                         all supervised matchers are trained on the German
                         80&nbsp;% corner-case large training set (26,571 pairs)
-                        and selected on the corresponding German validation set
-                        (4,436 pairs). Each matcher is then evaluated on five
-                        variants of the 50&nbsp;% unseen test set (4,437 pairs
-                        each) in which only the language of the records changes.
+                        and selected on the corresponding German Seen validation set (4,452 pairs). The multilingual encoder XLM-R is trained and selected in the same way. Each matcher is then evaluated, without further training, on five
+                        variants of the 80&nbsp;% corner-case Half-Seen test set
+                        (4,427 pairs each) in which only the language of the
+                        records changes.
                         In DE-DE both records are German, in DE-EN and EN-DE one
                         record is German and the other English, in EN-EN both
-                        records are English, and Mixed combines the four combinations evenly (1,109 or 1,110 pairs each). Pair
+                        records are English, and Mixed combines the four combinations in equal shares (1,106 or 1,107 pairs each). Pair
                         IDs, labels, and the seen/unseen composition are
-                        identical in all five variants, so the differences
-                        between the columns are attributable to the language
-                        combination alone.
+                        identical in all five variants. GPT-5.2 receives the
+                        German prompt in all five variants, and its zero-shot
+                        requests were repeated three times per prompt and
+                        variant. The supervised matchers report the mean over
+                        three seeds from training runs that are separate from
+                        the main evaluation but use the same training and
+                        validation splits, so the DE-DE scores can differ from
+                        the corresponding cells of the main table. For WordCooc
+                        and XLM-R, whose training is deterministic, the scores
+                        coincide. Language
+                        effects are measured relative to each model's own DE-DE
+                        baseline.
                     </p>
                 </div>
                 <div class="table-container">
@@ -2630,69 +2674,75 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                         <tbody>
                             <tr>
                                 <td class="has-text-left">WordCooc</td>
-                                <td>43.6</td>
-                                <td>&minus;6.8</td>
-                                <td>&minus;7.0</td>
-                                <td>&minus;15.4</td>
+                                <td>36.2</td>
+                                <td>&minus;6.0</td>
+                                <td>&minus;6.6</td>
                                 <td>&minus;10.5</td>
+                                <td>&minus;7.0</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">Magellan</td>
-                                <td>36.3</td>
-                                <td>&minus;2.5</td>
-                                <td>&minus;3.2</td>
-                                <td>&minus;0.7</td>
-                                <td>&minus;0.7</td>
+                                <td>33.8</td>
+                                <td>&minus;2.2</td>
+                                <td>&minus;3.0</td>
+                                <td>&minus;0.5</td>
+                                <td>&minus;1.2</td>
                             </tr>
                             <tr>
                                 <td class="has-text-left">RoBERTa</td>
-                                <td>63.4</td>
-                                <td>&minus;10.1</td>
-                                <td>&minus;8.9</td>
+                                <td>53.3</td>
+                                <td>&minus;7.2</td>
+                                <td>&minus;7.7</td>
                                 <td>&minus;5.3</td>
-                                <td>&minus;6.7</td>
-                            </tr>
-                            <tr>
-                                <td class="has-text-left">R-SupCon</td>
-                                <td>48.5</td>
-                                <td>&minus;1.5</td>
-                                <td>&minus;1.9</td>
-                                <td>&minus;6.2</td>
-                                <td>&minus;3.3</td>
-                            </tr>
-                            <tr>
-                                <td class="has-text-left">HierGAT</td>
-                                <td>60.8</td>
-                                <td>&minus;11.5</td>
-                                <td>&minus;10.9</td>
-                                <td>&minus;3.2</td>
-                                <td>&minus;6.4</td>
-                            </tr>
-                            <tr>
-                                <td class="has-text-left">Ditto</td>
-                                <td>64.2</td>
-                                <td>&minus;8.6</td>
-                                <td>&minus;10.0</td>
-                                <td>&minus;1.7</td>
                                 <td>&minus;5.2</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left">GPT-5.2 Simple</td>
-                                <td>70.4</td>
-                                <td>+1.6</td>
-                                <td>+0.4</td>
-                                <td>+2.9</td>
-                                <td>+0.9</td>
+                                <td class="has-text-left">XLM-R</td>
+                                <td>58.0</td>
+                                <td>&minus;4.8</td>
+                                <td>&minus;5.6</td>
+                                <td>+0.3</td>
+                                <td>&minus;1.4</td>
                             </tr>
                             <tr>
-                                <td class="has-text-left">
-                                    GPT-5.2 Rule-Guided
-                                </td>
-                                <td>81.6</td>
-                                <td>+1.1</td>
-                                <td>&minus;0.3</td>
-                                <td>+0.1</td>
-                                <td>+0.4</td>
+                                <td class="has-text-left">R-SupCon</td>
+                                <td>43.1</td>
+                                <td>&minus;0.8</td>
+                                <td>&minus;1.8</td>
+                                <td>&minus;5.8</td>
+                                <td>&minus;2.2</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">HierGAT</td>
+                                <td>51.4</td>
+                                <td>&minus;7.4</td>
+                                <td>&minus;6.9</td>
+                                <td>&minus;0.7</td>
+                                <td>&minus;4.0</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">Ditto</td>
+                                <td>55.3</td>
+                                <td>&minus;6.4</td>
+                                <td>&minus;6.2</td>
+                                <td>&minus;2.4</td>
+                                <td>&minus;3.4</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">GPT-5.2 Simple</td>
+                                <td>68.4</td>
+                                <td>+1.4</td>
+                                <td>&minus;0.4</td>
+                                <td>+0.5</td>
+                                <td>+1.3</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-left">GPT-5.2 Rule-Guided</td>
+                                <td>79.6</td>
+                                <td>&minus;0.7</td>
+                                <td>&minus;0.7</td>
+                                <td>&minus;0.8</td>
+                                <td>&minus;0.8</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2708,58 +2758,26 @@ Product 2: Brand: &lt;brand&gt; Name: &lt;name&gt; Description: &lt;description&
                 </p>
                 <div class="content is-size-6" style="margin-top: 1.4rem">
                     <p>
-                        WordCooc and Magellan both lose performance once records
-                        leave the training language, but to a different degree.
-                        WordCooc loses 15.4 F1 points on the fully English
-                        variant, since translation removes the exact token
-                        overlap it relies on. Magellan stays within 3.1 F1
-                        points of its DE-DE score across all variants, as its
-                        character-level similarity features depend less on the
-                        language. Both matchers operate between 28.2 and 43.6 F1
-                        on this test set, so these differences carry limited
-                        practical weight. R-SupCon is stable across the four
-                        variants that still contain German records (at most 3.3
-                        F1 points below DE-DE) and only loses clearly on the
-                        fully English variant (6.2 points), though again at a
-                        low absolute level.
+                        WordCooc and Magellan both lose performance once records leave the training language, but to a different degree. WordCooc loses most on the fully English variant (10.5 F1), since its co-occurrence features fire only when a token appears in both records and newly shared English tokens may lie outside the feature space fitted on German pairs. Magellan stays within 3.0 F1 points of its DE-DE score across all variants, as its similarity features depend less on the language. Both matchers operate between 25.7 and 36.2 F1 on this test set, so these differences carry limited practical weight. R-SupCon is the exception among the transformer-based matchers: it stays within 1.8 F1 of DE-DE on the two cross-language variants and loses most on the fully English variant (5.8 points). Its cross-language F1 remains below XLM-R and Ditto, so the smaller loss does not imply stronger absolute performance.
                     </p>
                     <p>
-                        HierGAT reaches its best score on the German pairs it
-                        was trained on (60.8 F1), closely followed by the fully
-                        English variant (3.2 points lower), while both mixed
-                        variants lose around 11 F1 points. RoBERTa and Ditto
-                        show the same
-                        ordering, and for all three models the Mixed variant,
-                        in which half of the pairs are same-language, lies in
-                        between. The models therefore do not fail on English
-                        data as such. As long as both records switch language
-                        together, the cues learned on German pairs, such as
-                        overlapping tokens between the two names and
-                        descriptions, stay intact, and the English pre-training
-                        of the underlying language models likely supports the
-                        transfer. In a mixed pair, the translation removes this
-                        surface overlap on one side only, and pairs that cross
-                        the language boundary never occur in the German training
-                        data. For a price comparison portal this distinction
-                        matters, because the cross-border case is exactly the
-                        mixed-language case. Translating one record into the
-                        language of the other before matching may recover much
-                        of the loss, although the experiment does not test this.
+                        The four transformer-based matchers RoBERTa, XLM-R, HierGAT, and Ditto lose 4.8 to 7.7 F1 on the two cross-language variants DE-EN and EN-DE, and each of them loses less when both records switch to English, where the differences range from a gain of 0.3 to a loss of 5.3 F1. The Mixed variant, in which half of the pairs are same-language, loses less than the two cross-language variants. The models therefore do not fail on English data as such. As long as both records switch language together, the cues learned on German pairs, such as overlapping tokens between the two names and descriptions, stay intact. In a cross-language pair, the translation removes this surface overlap on one side only, and pairs that cross the language boundary never occur in the German training data. XLM-R loses 4.8 and 5.6 F1 on DE-EN and EN-DE but gains 0.3 F1 on EN-EN, so multilingual pre-training alone does not prevent the cross-language loss in this setting. For a price comparison portal this distinction matters, because the cross-border case is exactly the cross-language case.
                     </p>
                     <p>
                         GPT-5.2 delivers the best scores in every variant and
-                        reaches 81.6 F1 with the Rule-Guided prompt and 70.4 F1
-                        with the Simple prompt on DE-DE. Across three repeated
-                        runs, the Rule-Guided scores differ by at most 1.1 F1
-                        points from DE-DE, which is within the observed
-                        repetition noise. The Simple prompt varies more, with
-                        EN-EN scoring 2.9 points above DE-DE, so a small language
-                        effect remains plausible there. Neither prompt shows a
-                        practically large penalty for mixed-language pairs. For
-                        applications that have to match offers across languages,
-                        and where the budget allows it, a zero-shot LLM is
-                        therefore the most reliable choice among the evaluated
-                        systems.
+                        reaches 79.6 F1 with the Rule-Guided prompt and 68.4 F1
+                        with the Simple prompt on DE-DE. Its scores differ from
+                        DE-DE by at most 1.4 F1 in any variant. With both
+                        prompts, the spread across the five variants (0.77 F1
+                        Rule-Guided, 1.85 F1 Simple) is smaller than the spread
+                        across three repetitions of identical DE-DE requests
+                        (1.10 and 1.98 F1). These comparisons describe the
+                        observed spread rather than establish statistical
+                        significance. Neither prompt shows a practically large
+                        penalty for cross-language pairs. For applications that
+                        have to match offers across languages, and where the
+                        budget allows it, a zero-shot LLM is therefore the most
+                        reliable choice among the evaluated systems.
                     </p>
                 </div>
             </div>
@@ -2840,32 +2858,42 @@ python src/processing/prepare_magellan.py</pre
                         <p>
                             <b>Recommended default:</b> If you only want to report results for a single variant of billiger.de Products, we recommend
                             <span class="mono">80cc20rnd050un</span>: 80&nbsp;%
-                            corner cases and a half seen test set. Use
+                            corner cases and the Half-Seen test set. Evaluate on
                             <span class="mono"
                                 >products80cc20rnd050un_gs.json.gz</span
+                            >. For supervised matchers, train on the
+                            <span class="mono"
+                                >products80cc20rnd000un_train_&lt;size&gt;.json.gz</span
                             >
-                            and, for supervised matchers, the corresponding
-                            training and validation files. Please always state the
-                            language and training-set size.
+                            file of the chosen size and select models on the
+                            Seen validation set
+                            <span class="mono"
+                                >products80cc20rnd000un_valid_&lt;size&gt;.json.gz</span
+                            >, as done for all reference results on this page.
+                            Please always state the language, the training-set
+                            size, and the benchmark version (currently 1.1).
                         </p>
                         <p>
                             Report the result as:
                             <i
-                                >Billiger.de Products (German or English),
-                                80&nbsp;% corner cases, half-seen (<span class="mono"
+                                >Billiger.de Products v1.1 (German or English),
+                                80&nbsp;% corner cases, Half-Seen (<span class="mono"
                                     >050un</span
-                                >), [training size], F1 = X (mean &plusmn;
-                                standard deviation over seeds 0, 1, and 2).</i
+                                >), [training size], F1 = X &plusmn; Y (mean and
+                                standard deviation over three seeds).</i
                             >
-                            Cite the benchmark paper once available and link to
+                            Cite the benchmark paper (see Citation below) and link to
                             this repository. For zero-shot methods, state the
                             model version and prompt instead of a training size.
                         </p>
                     </div>
                     <p>
                         For <b>supervised matchers</b>, pick a training set,
-                        select hyperparameters on the corresponding validation
-                        set, and report F1 on the nine test sets. The test sets
+                        select hyperparameters on the Seen validation set of the
+                        same corner-case ratio and size
+                        (<span class="mono">000un_valid</span>), and report F1 on
+                        the nine test sets as mean and standard deviation over
+                        three seeds. The test sets
                         are the same for all training set sizes, so results
                         obtained with different amounts of training data remain
                         comparable.
@@ -2899,7 +2927,22 @@ python src/processing/prepare_magellan.py</pre
                         containing all training, validation, and test sets
                         described above. The five aligned test set variants of
                         the cross-language experiment are available as a
-                        separate archive.
+                        separate archive. The archives are stored with Git LFS
+                        in the
+                        <a href="https://github.com/wbsg-uni-mannheim/billiger-de-products/tree/main/data">data</a>
+                        folder of the GitHub repository, which also contains the
+                        unpacked German and English files. Per-seed results,
+                        standard deviations, precision, and recall for all
+                        matchers are available under
+                        <a href="https://github.com/wbsg-uni-mannheim/billiger-de-products/tree/main/reports/final_results">reports/final_results</a>.
+                    </p>
+                    <p>
+                        The downloads are version 1.1 of the benchmark (git tag
+                        <span class="mono">v1.1.0</span>). The changes relative
+                        to version 1.0 are documented in the
+                        <a href="https://github.com/wbsg-uni-mannheim/billiger-de-products/blob/main/docs/CHANGELOG.md">CHANGELOG</a>;
+                        version 1.0 remains available as git tag
+                        <span class="mono">v1.0.0</span>.
                     </p>
                 </div>
                 <div class="columns">
@@ -2914,7 +2957,7 @@ python src/processing/prepare_magellan.py</pre
                             <div class="db">
                                 <p>
                                     9 training sets, 27 validation sets, 9
-                                    manually verified test sets.
+                                    test sets (143.5 MB).
                                 </p>
                                 <a
                                     class="button is-small is-dark is-rounded"
@@ -2941,7 +2984,7 @@ python src/processing/prepare_magellan.py</pre
                                 <p>
                                     Structurally identical translation of every
                                     record with the same splits, labels, and
-                                    identifiers.
+                                    identifiers (131.7 MB).
                                 </p>
                                 <a
                                     class="button is-small is-dark is-rounded"
@@ -2968,7 +3011,8 @@ python src/processing/prepare_magellan.py</pre
                                 <p>
                                     The five aligned test set variants of the
                                     cross-language experiment (DE-DE, DE-EN,
-                                    EN-DE, EN-EN, Mixed), 4,437 pairs each.
+                                    EN-DE, EN-EN, Mixed), 4,427 pairs each
+                                    (13.3 MB).
                                 </p>
                                 <a
                                     class="button is-small is-dark is-rounded"
@@ -3013,15 +3057,20 @@ python src/processing/prepare_magellan.py</pre
                         results. Supervised matchers generally benefit from the
                         larger training sets and score lower as the share of
                         corner-cases or the amount of unseen entities in the
-                        test set increases. Tools and electronics are among the
-                        easiest product categories, whereas for clothing and
-                        furniture matchers generally achieve lower scores.
+                        test set increases. No supervised matcher exceeds 55 F1
+                        in the 80&nbsp;% corner-case Unseen variants. Clothing
+                        and furniture are the hardest product categories for
+                        every matcher and electronics is among the easiest,
+                        which shows the value of evaluating matchers beyond
+                        electronics.
                     </p>
                     <p>
                         The comparison of the performance of the matchers on
                         billiger.de Products (English) to the performance of the
                         same matchers on WDC Products showed that Billiger.de
-                        Products is more difficult than WDC Products. This
+                        Products is more difficult than WDC Products: the
+                        PLM-based matchers score 10 to 20 F1 below their
+                        published results on WDC Products. This
                         feature might make the English version of Billiger.de
                         Products an interesting alternative to WDC Products for
                         matchers that have saturated WDC Products.
@@ -3029,10 +3078,9 @@ python src/processing/prepare_magellan.py</pre
                     <p>
                         The cross-language experiment showed that supervised
                         matchers trained on German pairs keep most of their
-                        performance when both records switch to English but lose
-                        about 10 F1 points on mixed German-English pairs.
+                        performance when both records switch to English, but RoBERTa, XLM-R, HierGAT, and Ditto lose 5 to 8 F1 points on cross-language German-English pairs, whereas R-SupCon stays close to its German score.
                         Zero-shot GPT-5.2 reaches the best scores on all
-                        language combinations and shows no language effect,
+                        language combinations and changes by at most 1.4 F1,
                         which makes LLMs the most reliable choice for
                         cross-language matching among the evaluated systems.
                     </p>
@@ -3056,12 +3104,16 @@ python src/processing/prepare_magellan.py</pre
             <div class="container is-max-desktop">
                 <h2 class="title is-3 has-text-centered">Citation</h2>
                 <div class="content is-size-6">
-                    <!-- TODO: add BibTeX once the paper is published -->
                     <p>
-                        A paper describing the benchmark will be published on
-                        arXiv in August 2026. Citation information will be added
-                        here as soon as it is available.
+                        If you use the benchmark, please cite the paper
+                        describing it:
                     </p>
+                    <pre>
+@misc{steiner2026billiger,
+  author = {Steiner, Aaron and Elagin, Ksenia and Peeters, Ralph and Knopp, Johannes and Bizer, Christian},
+  title  = {Billiger.de Products: A Bilingual Entity Matching Benchmark},
+  year   = {2026}
+}</pre>
                 </div>
             </div>
         </section>

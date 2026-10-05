@@ -8,7 +8,7 @@ The raw billiger.de corpus and the intermediate files (pickles, DBSCAN cluster t
 
 | Step | File | Input | Output |
 | --- | --- | --- | --- |
-| 1. Cleansing and filtering | `cleansing/data_cleaning.ipynb` | raw offer dump `data/raw/rev2_docs_since_2020_01_01.json` (6,309,224 offers), fastText language model `lid.176.bin` | `data/working/dedup_preprocessed_..._only_long_name.pkl.gz` |
+| 1. Cleansing and filtering | `cleansing/data_cleaning.ipynb` | raw offer dump `data/raw/rev2_docs_since_2020_01_01.json`, fastText language model `lid.176.bin` | `data/working/dedup_preprocessed_..._only_long_name.pkl.gz` |
 | 2. DBSCAN clustering | `../notebooks/USB_code/dbscan_clustering.ipynb` (already in this repo, identical to the thesis version) | cleansed corpus from step 1 | `data/working/dbscan/{seen,unseen}_dbscan_{clusters,mapping}.csv` |
 | 3. Product selection, splits, pairs | `set_generation/generate-sets-final.py` | cleansed corpus, DBSCAN tables, fastText product embeddings `deepmatcher_product_datasets.model` | `data/derived/{training-sets,validation-sets,gold-standards}/products*.json.gz` (pairwise and multi-class) |
 | 4. Test label review | `label_review/error_analysis_excel_creation.py`, `label_review/adjust_testset.py` | gold standards, GPT matcher predictions, manually reviewed Excel sheets | `data/derived/gold-standards_adjusted/` |

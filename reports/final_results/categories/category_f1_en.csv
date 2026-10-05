@@ -1,0 +1,14 @@
+category,wordcooc,magellan,roberta,r-supcon,gpt-5.2-simple,gpt-5.2-rule-guided,test_sets_present
+Automotive & Motorcycle,44.8,50.59,65.09,51.91,85.52,91.72,9
+"Books, Films & Music",68.22,55.34,93.19,93.04,96.0,80.0,5
+Clothing & Accessories,40.44,32.12,55.08,44.26,67.28,74.1,9
+Cosmetics & Drugstore,45.12,47.88,65.61,52.23,74.23,76.02,9
+Electronics & Computers,52.84,57.39,79.95,67.1,91.8,88.64,9
+Food & Beverages,52.35,42.11,70.05,67.57,70.13,63.81,7
+Furniture & Living,37.67,36.45,53.57,45.18,71.39,78.38,9
+Health & Care,58.59,66.21,81.64,69.71,91.16,89.02,9
+Office Supplies,43.23,35.81,82.95,72.26,82.96,79.63,9
+Pet Supplies,33.33,66.67,66.67,66.67,66.67,33.33,3
+Sports & Leisure,54.77,42.09,67.05,56.75,80.79,85.63,9
+Tools & DIY,52.97,53.8,72.1,61.29,89.34,89.15,9
+Toys & Baby,46.04,50.59,76.05,65.27,90.35,84.47,9

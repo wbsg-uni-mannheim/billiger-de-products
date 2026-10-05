@@ -52,10 +52,9 @@ website/              benchmark website
 ## Citation
 
 ```bibtex
-@unpublished{steiner2026billiger,
+@misc{steiner2026billiger,
   author = {Steiner, Aaron and Elagin, Ksenia and Peeters, Ralph and Knopp, Johannes and Bizer, Christian},
   title  = {Billiger.de Products: A Bilingual Entity Matching Benchmark},
-  note   = {Submitted to BTW 2027},
   year   = {2026}
 }
 ```

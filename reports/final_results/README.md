@@ -8,6 +8,7 @@ Precision, recall, and F1 of the match class for every matcher, on the v1.1 test
 | `summary.csv` | Cell means of precision, recall, and F1, the F1 standard deviation across seeds (`f1_std`), and the number of seeds. |
 | `collapsed_runs.csv` | Training runs treated as collapsed, with their validation scores and how they were handled. |
 | `build.py` | Script that produces these files from the per-run outputs. |
+| `categories/` | Same-category F1 on the German (`category_f1.csv`) and English (`category_f1_en.csv`) test sets, per-run values, record counts, and the category of every offer (`offer_categories.csv`); produced by `categories/category_f1.py`. |
 
 Test conditions in `main_grid`: `Seen` (`*000un_gs`), `Half-Seen` (`*050un_gs`), `Unseen` (`*100un_gs`). Test conditions in `cross_language`: the five language variants of the 80 % corner-case Half-Seen test set (`de_de`, `de_en`, `en_de`, `en_en`, `random` = Mixed), with models trained on German `large` data.
 

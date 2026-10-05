@@ -13,9 +13,10 @@ the nine German test sets, then mean over the test sets in which the category oc
 
 Run from the repository root:
 
-    python reports/final_results/categories/category_f1.py <prediction dir> <export json>
+    python reports/final_results/categories/category_f1.py <prediction dir> <export json> [de|en]
 
-Outputs (next to this script): category_f1.csv (table), category_f1_long.csv (per run), category_counts.csv.
+Outputs (next to this script): category_f1.csv (table), category_f1_long.csv (per run), category_counts.csv;
+with "en": category_f1_en.csv and category_f1_long_en.csv.
 """
 
 import gzip
@@ -29,6 +30,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[3]
 EV = Path(__file__).resolve().parent
 PRED = Path(sys.argv[1])
+LANG = sys.argv[3] if len(sys.argv) > 3 else "de"  # "en" scores the English version (same pairs and categories)
+SUFFIX = "" if LANG == "de" else f"_{LANG}"
 SERVER_PREFIX = re.compile(r"^.*?/results/generated/")  # export paths are absolute on the cluster
 MODELS = ["wordcooc", "magellan", "roberta", "r-supcon", "hiergat", "ditto", "gpt-5.2-simple", "gpt-5.2-rule-guided"]
 TESTS = {"Seen": "000", "Half-Seen": "050", "Unseen": "100"}
@@ -42,8 +45,10 @@ CAT_EN = {"Kleidung & Accessoires": "Clothing & Accessories", "Möbel & Wohnen":
 
 cats = pd.read_csv(EV / "offer_categories.csv").set_index("offer_id").category_de
 export = json.loads(Path(sys.argv[2]).read_text())
-rows = [r for r in export["rows"] if r["table"] == "main_grid" and r["language"] == "de" and r["model"] in MODELS]
-assert len(rows) == 6 * 81 + 2 * 9, len(rows)
+if LANG != "de":  # the English category analysis covers the matchers named in the paper
+    MODELS = [m for m in MODELS if m not in ("ditto", "hiergat")]
+rows = [r for r in export["rows"] if r["table"] == "main_grid" and r["language"] == LANG and r["model"] in MODELS]
+assert len(rows) == (len(MODELS) - 2) * 81 + 2 * 9, len(rows)
 
 
 def local_path(r):
@@ -90,15 +95,15 @@ checks = pd.DataFrame(checks)
 assert checks.ok.all(), checks[~checks.ok]
 long = pd.DataFrame(long)
 collapsed = pd.read_csv(ROOT / "reports/final_results/collapsed_runs.csv")
-collapsed = collapsed[(collapsed.table == "main_grid") & (collapsed.language == "de") & (collapsed.action == "excluded")]
+collapsed = collapsed[(collapsed.table == "main_grid") & (collapsed.language == LANG) & (collapsed.action == "excluded")]
 excluded = set(zip(collapsed.model, collapsed.cc, collapsed["size"], collapsed.seed))
 long["excluded_collapsed"] = [k in excluded for k in zip(long.model, long.cc, long["size"], long.seed)]
-long.to_csv(EV / "category_f1_long.csv", index=False)
+long.to_csv(EV / f"category_f1_long{SUFFIX}.csv", index=False)
 kept = long[~long.excluded_collapsed]
 table = (kept.groupby(["category", "model", "cc", "un"]).f1.mean().groupby(["category", "model"]).mean().unstack("model")[MODELS] * 100)
 n_tests = long.groupby("category")[["cc", "un"]].apply(lambda g: g.drop_duplicates().shape[0])
 table["test_sets_present"] = n_tests
-table.round(2).to_csv(EV / "category_f1.csv")
+table.round(2).to_csv(EV / f"category_f1{SUFFIX}.csv")
 
 # Record occurrences (2 per pair) per category in the 80% large training set and the v1.1 80% Half-Seen test set.
 def occurrences(path):
@@ -116,7 +121,8 @@ counts = pd.DataFrame({
     "train_large_80cc": occurrences(data / "training-sets/products80cc20rnd000un_train_large.json.gz"),
     "test_half_seen_80cc": occurrences(data / "gold-standards_adjusted/products80cc20rnd050un_gs.json.gz"),
 }).fillna(0).astype(int).sort_values("train_large_80cc", ascending=False)
-counts.to_csv(EV / "category_counts.csv")
+if LANG == "de":
+    counts.to_csv(EV / "category_counts.csv")
 
 print(f"all {len(checks)} prediction files reproduce the exported cell F1")
 print(table.round(2).to_string())
