@@ -4,6 +4,8 @@ Billiger.de Products is an entity matching benchmark for German product offers, 
 
 The benchmark varies three dimensions: the share of corner cases (20 %, 50 %, 80 %), the share of products unseen during training (Seen, Half-Seen, Unseen), and the development set size (small, medium, large). German and English files have identical splits, labels, and identifiers. The repository contains the released pairs, the construction code, preprocessing, eight matchers (WordCooc, Magellan, RoBERTa, XLM-R, R-SupCon, HierGAT, Ditto, GPT-5.2 zero-shot), and per-seed reference results.
 
+Paper: [arXiv:2609.37713](https://arxiv.org/abs/2609.37713). Website: [wbsg-uni-mannheim.github.io/billiger-de-products](https://wbsg-uni-mannheim.github.io/billiger-de-products/).
+
 The current release is version 1.1 (see [docs/CHANGELOG.md](docs/CHANGELOG.md)). The data is released with the permission of solute GmbH, the operator of billiger.de. The records contain no information identifying shops, sellers, or persons.
 
 ## Data
@@ -55,6 +57,10 @@ website/              benchmark website
 @misc{steiner2026billiger,
   author = {Steiner, Aaron and Elagin, Ksenia and Peeters, Ralph and Knopp, Johannes and Bizer, Christian},
   title  = {Billiger.de Products: A Bilingual Entity Matching Benchmark},
-  year   = {2026}
+  year   = {2026},
+  eprint = {2609.37713},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url    = {https://arxiv.org/abs/2609.37713}
 }
 ```

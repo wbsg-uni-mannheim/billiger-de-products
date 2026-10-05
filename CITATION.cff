@@ -17,7 +17,12 @@ authors:
   - family-names: Bizer
     given-names: Christian
 preferred-citation:
-  type: generic
+  type: article
+  journal: "arXiv preprint arXiv:2609.37713"
+  url: "https://arxiv.org/abs/2609.37713"
+  identifiers:
+    - type: other
+      value: "arXiv:2609.37713"
   title: "Billiger.de Products: A Bilingual Entity Matching Benchmark"
   year: 2026
   authors:
